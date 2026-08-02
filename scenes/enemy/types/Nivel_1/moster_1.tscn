@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c8srfw33nwa51"]
+
+[ext_resource type="Script" uid="uid://ceswd4nxlqt51" path="res://scenes/enemy/types/Nivel_1/moster_1.gd" id="1_648m5"]
+[ext_resource type="PackedScene" uid="uid://cdqgktxobpvq8" path="res://scenes/items/item_nivel_1/item_bueno/item_bueno.tscn" id="2_rwh8r"]
+[ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="2_xnk5b"]
+[ext_resource type="PackedScene" uid="uid://dcahg1o3ley0n" path="res://scenes/items/item_nivel_1/item_malo/ladrillo.tscn" id="3_7wisy"]
+
+[node name="Moster1" type="Node2D" unique_id=1862692794]
+script = ExtResource("1_648m5")
+item_bueno_scene = ExtResource("2_rwh8r")
+item_malo_scene = ExtResource("3_7wisy")
+velocidad = 1000
+
+[node name="Timer" type="Timer" parent="." unique_id=1652395765]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=392144195]
+position = Vector2(3, -41)
+scale = Vector2(1, 0.640625)
+texture = ExtResource("2_xnk5b")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=799700115]
+position = Vector2(-25, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=1381204802]
+position = Vector2(25, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=695385933]
+position = Vector2(50, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="." unique_id=1639174749]
+
+[node name="Marker2D5" type="Marker2D" parent="." unique_id=1343888616]
+position = Vector2(-50, 0)

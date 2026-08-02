@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cdh2i66q22hgy"]
+
+[ext_resource type="Script" uid="uid://btdfpb34o3k7p" path="res://scenes/items/item_nivel_1/item_bueno/buen_item.gd" id="1_fbrb3"]
+[ext_resource type="Texture2D" uid="uid://bah2wfptvk272" path="res://assets/items_nivel_1/cebolla.png" id="2_fbrb3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8xd5"]
+size = Vector2(132.5301, 150.60239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktwcm"]
+size = Vector2(5.0256996, 5.7110224)
+
+[node name="cebolla" type="RigidBody2D" unique_id=187353056]
+physics_material_override = SubResource("PhysicsMaterial_q8xd5")
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_fbrb3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=320987563]
+scale = Vector2(3.3200004, 3.3200004)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1934045899]
+position = Vector2(-2.8725123e-07, 1.6157881e-07)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_q8xd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513923610]
+scale = Vector2(0.22168244, 0.22168247)
+texture = ExtResource("2_fbrb3")
+region_enabled = true
+region_rect = Rect2(174.97235, 264.58875, 211.05054, 224.36624)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544021474]
+position = Vector2(0, 1.013279e-06)
+scale = Vector2(8.755, 8.755)
+shape = SubResource("RectangleShape2D_ktwcm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

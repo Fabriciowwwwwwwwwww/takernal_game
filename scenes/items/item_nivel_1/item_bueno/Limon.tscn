@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b365x50io0wq7"]
+
+[ext_resource type="Script" uid="uid://btdfpb34o3k7p" path="res://scenes/items/item_nivel_1/item_bueno/buen_item.gd" id="1_wgc1h"]
+[ext_resource type="Texture2D" uid="uid://dprju33m3ndwu" path="res://assets/items_nivel_1/limón.png" id="2_wgc1h"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8xd5"]
+size = Vector2(102.40963, 90.361435)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktwcm"]
+size = Vector2(3.8834953, 3.4266133)
+
+[node name="limon" type="RigidBody2D" unique_id=187353056]
+physics_material_override = SubResource("PhysicsMaterial_q8xd5")
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_wgc1h")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=320987563]
+scale = Vector2(3.3200004, 3.3200004)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1934045899]
+position = Vector2(1.4362561e-07, 0)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_q8xd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513923610]
+scale = Vector2(0.19285715, 0.19285715)
+texture = ExtResource("2_wgc1h")
+region_enabled = true
+region_rect = Rect2(195.9906, 375.56247, 175.54565, 161.05112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544021474]
+position = Vector2(0, 4.7683716e-07)
+scale = Vector2(8.755, 8.755)
+shape = SubResource("RectangleShape2D_ktwcm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

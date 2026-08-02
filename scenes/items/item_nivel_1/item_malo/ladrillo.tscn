@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dcahg1o3ley0n"]
+
+[ext_resource type="Script" uid="uid://c44x23eb327ty" path="res://scenes/items/item_nivel_1/item_malo/mal_item.gd" id="1_ejtq3"]
+[ext_resource type="Texture2D" uid="uid://bu452mif6fbw6" path="res://assets/items_nivel_1/ladrillo .png" id="2_ejtq3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8xd5"]
+size = Vector2(189.759, 159.63852)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktwcm"]
+size = Vector2(7.1958885, 6.0536838)
+
+[node name="ladrillo" type="RigidBody2D" unique_id=187353056]
+physics_material_override = SubResource("PhysicsMaterial_q8xd5")
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_ejtq3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=320987563]
+scale = Vector2(3.3200004, 3.3200004)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1934045899]
+position = Vector2(0.15060247, -0.15060219)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_q8xd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513923610]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ejtq3")
+region_enabled = true
+region_rect = Rect2(0, 113.04925, 640, 526.95074)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544021474]
+position = Vector2(0.49999976, -0.49999976)
+scale = Vector2(8.755, 8.755)
+shape = SubResource("RectangleShape2D_ktwcm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
