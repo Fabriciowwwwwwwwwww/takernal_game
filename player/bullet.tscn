@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ckwkhbdrbvc0k"]
+
+[ext_resource type="Texture2D" uid="uid://cjthrfyhggfp" path="res://player/player_sprite/bala.png" id="1_1y6ct"]
+[ext_resource type="Script" uid="uid://duxigdkjui6el" path="res://player/bullet.gd" id="1_j40gx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j40gx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1y6ct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j40gx"]
+radius = 18.110771
+
+[node name="Bullet" type="Area2D" unique_id=178091810]
+script = ExtResource("1_j40gx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=176154318]
+position = Vector2(3.000002, 3.8146973e-06)
+rotation = 1.6016797
+scale = Vector2(0.055496167, 0.037283596)
+sprite_frames = SubResource("SpriteFrames_j40gx")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1398089051]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365285930]
+shape = SubResource("CircleShape2D_j40gx")
