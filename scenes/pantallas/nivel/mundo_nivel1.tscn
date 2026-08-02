@@ -40,8 +40,13 @@ sal_especial_scene = ExtResource("6_6k5lx")
 chicharron_scene = ExtResource("7_n00vl")
 basura_scene = ExtResource("8_4x6ec")
 ladrillo_scene = ExtResource("9_oxw66")
-spawn_interval = 0.4
+items_por_tanda_max = 2
+limite_izquierdo = 90.0
 limite_derecho = 1090.0
+tiempo_preparacion_min = 0.3
+tiempo_preparacion_max = 0.8
+fuerza_parabola = 550.0
+velocidad = 450
 
 [node name="P" parent="." unique_id=1738953310 instance=ExtResource("2_0bc7o")]
 position = Vector2(409, 525)
