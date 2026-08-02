@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctsjcxaol8jw2"
-path="res://.godot/imported/personaje1_atras_d.png-8f1b614ee2dfb3c079f0a363563f217e.ctex"
+uid="uid://d0rj7nq7kemsv"
+path="res://.godot/imported/cuy_correr0001.png-95794a953f8a439e70cfbae0e30104f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/player_sprite/personaje 2/personaje1_atras_d.png"
-dest_files=["res://.godot/imported/personaje1_atras_d.png-8f1b614ee2dfb3c079f0a363563f217e.ctex"]
+source_file="res://player/player_sprite/cuy/cuy_correr0001.png"
+dest_files=["res://.godot/imported/cuy_correr0001.png-95794a953f8a439e70cfbae0e30104f7.ctex"]
 
 [params]
 

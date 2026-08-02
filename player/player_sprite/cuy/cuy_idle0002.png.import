@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8r0y56uvwiv1"
-path="res://.godot/imported/personaje1_idle_d.png-98582736b7995cb56cb2281718b6719f.ctex"
+uid="uid://dc71y6uc5u6rf"
+path="res://.godot/imported/cuy_idle0002.png-e2bdaa8f64a20606fa988347374ff560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/player_sprite/personaje 2/personaje1_idle_d.png"
-dest_files=["res://.godot/imported/personaje1_idle_d.png-98582736b7995cb56cb2281718b6719f.ctex"]
+source_file="res://player/player_sprite/cuy/cuy_idle0002.png"
+dest_files=["res://.godot/imported/cuy_idle0002.png-e2bdaa8f64a20606fa988347374ff560.ctex"]
 
 [params]
 
