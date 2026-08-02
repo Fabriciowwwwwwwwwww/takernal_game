@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b1kln6lxwj247"]
+
+[ext_resource type="Texture2D" uid="uid://tqylcr6opin6" path="res://player/player_sprite/cuy/cuy_correr0003.png" id="1_2s8nv"]
+[ext_resource type="Texture2D" uid="uid://dc71y6uc5u6rf" path="res://player/player_sprite/cuy/cuy_idle0002.png" id="2_4lcwf"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2s8nv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4lcwf")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]

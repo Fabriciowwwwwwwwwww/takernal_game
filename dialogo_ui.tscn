@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://fhayl63kddwe"]
+
+[ext_resource type="Script" uid="uid://date0wtdson10" path="res://dialogo_ui.gd" id="1_lpbjp"]
+
+[sub_resource type="Theme" id="Theme_wolft"]
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpbjp"]
+bg_color = Color(0.35416022, 0.6045222, 0.943652, 1)
+corner_radius_top_right = 50
+corner_detail = 1
+
+[node name="dialogo_ui" type="Control" unique_id=420216601]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wolft")
+script = ExtResource("1_lpbjp")
+
+[node name="dialog_line" type="PanelContainer" parent="." unique_id=1630305603]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 539.0
+offset_right = 1154.0
+offset_bottom = 650.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="dialog_line" unique_id=1373562048]
+layout_mode = 2
+text = "bvhnjgfhgfhgfhfghfg"
+
+[node name="speakerName" type="PanelContainer" parent="." unique_id=1287224531]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 0.007
+offset_left = -0.06400013
+offset_top = 477.0
+offset_right = 207.936
+offset_bottom = 537.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lpbjp")
+
+[node name="Label" type="Label" parent="speakerName" unique_id=1694160435]
+layout_mode = 2
+text = "nombre"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1137423989]
+anchors_preset = 0
+offset_left = -25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Control" unique_id=111073242]
+position = Vector2(1084, 570)
+polygon = PackedVector2Array(0, 0, 50, 25, 0, 50)

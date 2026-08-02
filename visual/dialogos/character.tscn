@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://8sxo21au16tw"]
+
+[ext_resource type="Script" uid="uid://oafc2tqj2dcf" path="res://visual/dialogos/character.gd" id="1_yqm87"]
+[ext_resource type="SpriteFrames" uid="uid://b1kln6lxwj247" path="res://player/player_sprite/cuy/cuy.tres" id="2_e01wl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e01wl"]
+
+[node name="Character" type="Node2D" unique_id=1792491478]
+script = ExtResource("1_yqm87")
+character_frames = Dictionary[String, SpriteFrames]({
+"Phoenix": ExtResource("2_e01wl"),
+"Trucy": ExtResource("2_e01wl")
+})
+talking = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=74001975]
+sprite_frames = SubResource("SpriteFrames_e01wl")

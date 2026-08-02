@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bimdsu5nupunf"]
+
+[ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_04c0s"]
+[ext_resource type="Script" uid="uid://tchefywvbov0" path="res://visual/dialoguer.gd" id="1_8jp05"]
+[ext_resource type="Resource" uid="uid://b15k1msa1g5ra" path="res://visual/dialogos/dialogo_prueba.dialogue" id="2_1x58t"]
+[ext_resource type="PackedScene" uid="uid://8sxo21au16tw" path="res://visual/dialogos/character.tscn" id="3_jddu3"]
+[ext_resource type="SpriteFrames" uid="uid://b1kln6lxwj247" path="res://player/player_sprite/cuy/cuy.tres" id="5_1x58t"]
+
+[node name="visual" type="Node2D" unique_id=1074617880]
+script = ExtResource("1_8jp05")
+dialogue = ExtResource("2_1x58t")
+next_scene = "C:/Users/Admin/Documents/cuphead/mundo.tscn"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1961522530]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2" unique_id=1176086047]
+offset_left = -15.0
+offset_top = -66.0
+offset_right = 1143.0
+offset_bottom = 672.0
+texture = ExtResource("1_04c0s")
+
+[node name="Control" type="Control" parent="CanvasLayer2" unique_id=1551800409]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 91.0
+offset_top = 9.0
+offset_right = 131.0
+offset_bottom = 49.0
+
+[node name="Character" parent="CanvasLayer2/Control" unique_id=1792491478 instance=ExtResource("3_jddu3")]
+position = Vector2(440, 341)
+character_frames = Dictionary[String, SpriteFrames]({
+"Apollo": ExtResource("5_1x58t"),
+"Phoenix": ExtResource("5_1x58t"),
+"Trucy": ExtResource("5_1x58t")
+})
+talking = false
+
+[node name="CanvasLayer22" type="CanvasLayer" parent="." unique_id=1137710267]

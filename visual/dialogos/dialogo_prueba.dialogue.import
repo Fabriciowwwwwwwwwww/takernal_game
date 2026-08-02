@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b15k1msa1g5ra"
+path="res://.godot/imported/dialogo_prueba.dialogue-a8da0fdc741b84bfeea1df5be6041321.tres"
+
+[deps]
+
+source_file="res://visual/dialogos/dialogo_prueba.dialogue"
+dest_files=["res://.godot/imported/dialogo_prueba.dialogue-a8da0fdc741b84bfeea1df5be6041321.tres"]
+
+[params]
+
+defaults=true
