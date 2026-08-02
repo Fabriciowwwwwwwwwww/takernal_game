@@ -31,6 +31,18 @@ window/size/mode=3
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://resource/": "green",
+"res://scenes/": "red"
+}
+
+[global_group]
+
+plataforma="Describe el objeto playaforma"
+
 [input]
 
 dash={

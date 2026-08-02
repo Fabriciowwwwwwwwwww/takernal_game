@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bxucdsixlqcqa"]
+
+[ext_resource type="Script" uid="uid://btdfpb34o3k7p" path="res://scenes/items/item_nivel_1/item_bueno/buen_item.gd" id="1_l7tq8"]
+[ext_resource type="Texture2D" uid="uid://dyy3iff21ymfs" path="res://assets/items_nivel_1/la sal .png" id="2_l7tq8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8xd5"]
+size = Vector2(72.28914, 90.361435)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktwcm"]
+size = Vector2(2.7412908, 3.4266133)
+
+[node name="sal" type="RigidBody2D" unique_id=187353056]
+physics_material_override = SubResource("PhysicsMaterial_q8xd5")
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_l7tq8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=320987563]
+scale = Vector2(3.3200004, 3.3200004)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1934045899]
+position = Vector2(-7.1812806e-08, 1.5260223e-07)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_q8xd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513923610]
+scale = Vector2(0.052173913, 0.052173916)
+texture = ExtResource("2_l7tq8")
+region_enabled = true
+region_rect = Rect2(90.78305, 74.58271, 460.60587, 566.89954)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544021474]
+position = Vector2(1.1920929e-07, -5.364418e-07)
+scale = Vector2(8.755, 8.755)
+shape = SubResource("RectangleShape2D_ktwcm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
