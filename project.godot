@@ -23,6 +23,10 @@ SceneManager="*uid://tr8vjkb7hbj1"
 
 runtime/balloon_path="uid://73jm5qjy52vq"
 
+[display]
+
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")

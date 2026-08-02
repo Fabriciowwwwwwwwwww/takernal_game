@@ -6,26 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(384, 23)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgngo"]
+size = Vector2(384, 23)
+
 [node name="Mundo" type="Node2D" unique_id=694270786]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1863855115]
-position = Vector2(91, 281)
-collision_layer = 3
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1400259405]
-position = Vector2(182, 16)
-shape = SubResource("RectangleShape2D_xwo6f")
-one_way_collision = true
-one_way_collision_margin = 4.0
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=173629970]
-position = Vector2(183, 16.000004)
-scale = Vector2(3.015625, 0.17187506)
-texture = ExtResource("1_lgngo")
-
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1180186910]
-position = Vector2(105, 177)
+position = Vector2(118, 258)
 collision_layer = 2
 collision_mask = 0
 
@@ -40,19 +27,34 @@ position = Vector2(183, 16.000004)
 scale = Vector2(3.015625, 0.17187506)
 texture = ExtResource("1_lgngo")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=689847171]
-position = Vector2(-130, 347)
+[node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=1992283159]
+position = Vector2(137, 364)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1974579394]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6" unique_id=252528912]
 position = Vector2(182, 16)
 shape = SubResource("RectangleShape2D_xwo6f")
 one_way_collision = true
 one_way_collision_margin = 4.0
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1139576482]
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6" unique_id=879711737]
 position = Vector2(183, 16.000004)
+scale = Vector2(3.015625, 0.17187506)
+texture = ExtResource("1_lgngo")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=689847171]
+position = Vector2(-67, 500)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1974579394]
+position = Vector2(182, 16)
+shape = SubResource("RectangleShape2D_lgngo")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1139576482]
+position = Vector2(183, 14.000004)
 scale = Vector2(3.015625, 0.17187506)
 texture = ExtResource("1_lgngo")
 
@@ -72,6 +74,22 @@ position = Vector2(183, 16.000004)
 scale = Vector2(3.015625, 0.17187506)
 texture = ExtResource("1_lgngo")
 
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=75494089]
+position = Vector2(1266, -188)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=150921203]
+position = Vector2(182, 16)
+shape = SubResource("RectangleShape2D_xwo6f")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=393593670]
+position = Vector2(183, 16.000004)
+scale = Vector2(3.015625, 0.17187506)
+texture = ExtResource("1_lgngo")
+
 [node name="P" parent="." unique_id=1738953310 instance=ExtResource("1_6ba58")]
-position = Vector2(287, 245)
+position = Vector2(65, 438)
 jump_force = -600.0
