@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cbh360115teeg" path="res://player/player_sprite/cuy/cuy_run/cuy04.png" id="11_8wf7i"]
 [ext_resource type="Texture2D" uid="uid://cajpii3j4gc0" path="res://player/player_sprite/cuy/cuy_run/cuy05.png" id="12_mlnhs"]
 [ext_resource type="Texture2D" uid="uid://jy4bhylis5ip" path="res://player/player_sprite/cuy/cuy_run/cuy06.png" id="13_m4xa4"]
+[ext_resource type="AudioStream" uid="uid://bin8t5pfgwe20" path="res://player/player_sprite/cuy/cuy_audio/salto1.ogg" id="16_ah26a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0c8go"]
 animations = [{
@@ -453,7 +454,7 @@ bullet_scene = ExtResource("2_y5xqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=292702301]
 texture_filter = 1
-position = Vector2(-1.0000038, -0.33333397)
+position = Vector2(-1, -2.9802322e-08)
 scale = Vector2(0.037968434, 0.034118425)
 sprite_frames = SubResource("SpriteFrames_0c8go")
 animation = &"run"
@@ -480,3 +481,6 @@ animation = &"disparo_revolver"
 [node name="arma_sonido" type="AudioStreamPlayer2D" parent="arma" unique_id=1582543490]
 stream = ExtResource("6_kqs56")
 volume_db = -13.0
+
+[node name="salto_audio" type="AudioStreamPlayer2D" parent="." unique_id=1241917363]
+stream = ExtResource("16_ah26a")

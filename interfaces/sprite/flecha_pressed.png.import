@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqowq226hetvx"
-path="res://.godot/imported/botella_3.png-06f53a5e511082628433549edc24b2e6.ctex"
+uid="uid://bp8fbmlplp2g2"
+path="res://.godot/imported/flecha_pressed.png-2edae901fb6eb9c727cb7b0114d51e74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interfaces/sprite/botella_3.png"
-dest_files=["res://.godot/imported/botella_3.png-06f53a5e511082628433549edc24b2e6.ctex"]
+source_file="res://interfaces/sprite/flecha_pressed.png"
+dest_files=["res://.godot/imported/flecha_pressed.png-2edae901fb6eb9c727cb7b0114d51e74.ctex"]
 
 [params]
 

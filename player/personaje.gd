@@ -51,6 +51,7 @@ func _physics_process(delta):
 
 		# Salto
 		if Input.is_action_just_pressed("ui_accept"):
+			$salto_audio.play()
 
 			if Input.is_action_pressed("down"):
 				drop_from_platform()

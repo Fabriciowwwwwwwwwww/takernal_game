@@ -53,9 +53,8 @@ _data = {
 }
 
 [node name="Sombras_transición" type="ColorRect" unique_id=1903981448]
-visible = false
-offset_right = 1923.0
-offset_bottom = 1087.0
+offset_right = 3883.0
+offset_bottom = 2475.0
 color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=380527825]

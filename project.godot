@@ -25,7 +25,8 @@ runtime/balloon_path="uid://73jm5qjy52vq"
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 

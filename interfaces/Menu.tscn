@@ -10,8 +10,10 @@
 [ext_resource type="Shader" uid="uid://com58ff036i8q" path="res://interfaces/shaders/Shaders/Menu.gdshader" id="7_i7q02"]
 [ext_resource type="Script" uid="uid://dc3qawe6568dg" path="res://interfaces/shaders/Shaders/Shader_Menu.gd" id="8_mm3o3"]
 [ext_resource type="Texture2D" uid="uid://ca536qv5kheeo" path="res://interfaces/sprite/2.png" id="9_rwmma"]
-[ext_resource type="Texture2D" uid="uid://cqowq226hetvx" path="res://interfaces/sprite/botella_3.png" id="10_n513h"]
+[ext_resource type="Texture2D" uid="uid://dv3u5oeml25cu" path="res://interfaces/sprite/flecha.png" id="10_h63se"]
 [ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="10_t8o0a"]
+[ext_resource type="Texture2D" uid="uid://bp8fbmlplp2g2" path="res://interfaces/sprite/flecha_pressed.png" id="11_5sfv6"]
+[ext_resource type="Texture2D" uid="uid://ccchl24uqdqbu" path="res://interfaces/sprite/flecha_hover.png" id="12_rwmma"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2qgrd"]
 shader = ExtResource("7_i7q02")
@@ -66,9 +68,10 @@ _data = {
 
 [node name="Menu" type="Control" unique_id=469561961]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_right = 0.887
 anchor_bottom = 1.0
+offset_right = 1452.64
+offset_bottom = 634.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -86,7 +89,8 @@ motion_mirroring = Vector2(1149, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/Espacio" unique_id=1505332283]
 texture_filter = 1
-scale = Vector2(0.60520834, 0.6018518)
+position = Vector2(7.9999986, -2)
+scale = Vector2(0.6661458, 0.68981487)
 texture = ExtResource("3_jbtba")
 centered = false
 
@@ -108,8 +112,8 @@ texture = ExtResource("5_6it8d")
 centered = false
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=1510230933]
-position = Vector2(1.9999924, -372)
-scale = Vector2(1.2333333, 1.6137255)
+position = Vector2(1.9999924, 24)
+scale = Vector2(1.2909092, 1.3784313)
 texture = ExtResource("6_5sfv6")
 centered = false
 
@@ -120,34 +124,36 @@ script = ExtResource("8_mm3o3")
 [node name="Título" type="Sprite2D" parent="Control" unique_id=726667771]
 material = SubResource("ShaderMaterial_2qgrd")
 use_parent_material = true
-position = Vector2(-3, 2)
+position = Vector2(25, 66)
+scale = Vector2(1, 0.57058823)
 texture = ExtResource("9_rwmma")
 centered = false
 
 [node name="Start" type="TextureButton" parent="Control" unique_id=1159925552 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_mm3o3")
 use_parent_material = true
-offset_left = 80.0
-offset_top = 367.0
-offset_right = 920.0
-offset_bottom = 2502.0
+offset_left = 187.0
+offset_top = 298.0
+offset_right = 787.0
+offset_bottom = 692.0
+scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Quit")
 focus_neighbor_bottom = NodePath("../Tutorial")
 button_mask = 0
-texture_normal = ExtResource("10_n513h")
-texture_pressed = ExtResource("10_n513h")
-texture_hover = ExtResource("10_n513h")
-texture_focused = ExtResource("10_n513h")
+texture_normal = ExtResource("10_h63se")
+texture_pressed = ExtResource("11_5sfv6")
+texture_hover = ExtResource("12_rwmma")
+texture_focused = ExtResource("12_rwmma")
 
 [node name="Label" type="Label" parent="Control/Start" unique_id=536612969]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
-offset_left = 72.0
-offset_top = 116.0
-offset_right = 962.0
-offset_bottom = 477.0
-rotation = -0.235619
+offset_left = 63.333366
+offset_top = 143.33333
+offset_right = 1566.4784
+offset_bottom = 504.3333
+rotation = 0.04465805
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -158,33 +164,33 @@ theme_override_constants/outline_size = 20
 theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("5_erq20")
 theme_override_font_sizes/font_size = 128
-text = "Start
- Game"
+text = "Start Game"
 
 [node name="Tutorial" type="TextureButton" parent="Control" unique_id=352330779 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_mm3o3")
 use_parent_material = true
-offset_left = 94.0
-offset_top = 347.0
-offset_right = 934.0
-offset_bottom = 2482.0
+offset_left = 197.0
+offset_top = 568.0
+offset_right = 797.0
+offset_bottom = 962.0
+scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Start")
 focus_neighbor_bottom = NodePath("../Options")
 button_mask = 0
-texture_normal = ExtResource("10_n513h")
-texture_pressed = ExtResource("10_n513h")
-texture_hover = ExtResource("10_n513h")
-texture_focused = ExtResource("10_n513h")
+texture_normal = ExtResource("10_h63se")
+texture_pressed = ExtResource("11_5sfv6")
+texture_hover = ExtResource("12_rwmma")
+texture_focused = ExtResource("12_rwmma")
 
 [node name="Label" type="Label" parent="Control/Tutorial" unique_id=704218450]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
-offset_left = 55.0
-offset_top = 140.0
-offset_right = 945.0
-offset_bottom = 501.0
-rotation = -0.235619
+offset_left = 65.0
+offset_top = 162.5
+offset_right = 955.0
+offset_bottom = 523.5
+rotation = -0.0009083748
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -200,27 +206,28 @@ text = "Tutorial"
 [node name="Options" type="TextureButton" parent="Control" unique_id=1548086522 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
-offset_left = 143.0
-offset_top = 590.0
-offset_right = 983.0
-offset_bottom = 2725.0
+offset_left = 189.0
+offset_top = 850.0
+offset_right = 1029.0
+offset_bottom = 1272.5
+scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Tutorial")
 focus_neighbor_bottom = NodePath("../Quit")
 button_mask = 0
-texture_normal = ExtResource("10_n513h")
-texture_pressed = ExtResource("10_n513h")
-texture_hover = ExtResource("10_n513h")
-texture_focused = ExtResource("10_n513h")
+texture_normal = ExtResource("10_h63se")
+texture_pressed = ExtResource("11_5sfv6")
+texture_hover = ExtResource("12_rwmma")
+texture_focused = ExtResource("12_rwmma")
 
 [node name="Label" type="Label" parent="Control/Options" unique_id=1868631330]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
-offset_left = 48.0
-offset_top = 156.0
-offset_right = 938.0
-offset_bottom = 335.0
-rotation = -0.235619
+offset_left = 79.99997
+offset_top = 144.99994
+offset_right = 970.0
+offset_bottom = 323.99994
+rotation = -0.006470233
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -236,17 +243,18 @@ text = "Options"
 [node name="Quit" type="TextureButton" parent="Control" unique_id=1040227390 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
-offset_left = 179.0
-offset_top = 813.0
-offset_right = 1019.0
-offset_bottom = 2948.0
+offset_left = 175.0
+offset_top = 1124.0
+offset_right = 1015.0
+offset_bottom = 1518.0
+scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_bottom = NodePath("../Start")
 button_mask = 0
-texture_normal = ExtResource("10_n513h")
-texture_pressed = ExtResource("10_n513h")
-texture_hover = ExtResource("10_n513h")
-texture_focused = ExtResource("10_n513h")
+texture_normal = ExtResource("10_h63se")
+texture_pressed = ExtResource("11_5sfv6")
+texture_hover = ExtResource("12_rwmma")
+texture_focused = ExtResource("12_rwmma")
 
 [node name="Label" type="Label" parent="Control/Quit" unique_id=1277900499]
 material = SubResource("ShaderMaterial_w4fob")
@@ -256,7 +264,7 @@ offset_left = 78.0
 offset_top = 148.0
 offset_right = 968.0
 offset_bottom = 327.0
-rotation = -0.235619
+rotation = 0.020596132
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -275,8 +283,8 @@ autostart = true
 
 [node name="Sombras_transición" parent="." unique_id=618434902 instance=ExtResource("10_t8o0a")]
 layout_mode = 0
-offset_right = 2065.0
-offset_bottom = 1280.0
+offset_right = 2586.0
+offset_bottom = 1476.0
 
 [node name="Sombra_time" type="Timer" parent="Sombras_transición" unique_id=161622666]
 
