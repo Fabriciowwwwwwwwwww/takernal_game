@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dfb1g16vlk7hf" path="res://armas/RainAttack.tscn" id="8_t8jxu"]
 [ext_resource type="Script" uid="uid://kdy0xag5a510" path="res://spawn_lluvia.gd" id="9_pfhxm"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="11_0oi55"]
+[ext_resource type="Script" uid="uid://bognet8idgjwn" path="res://bola_spawner.gd" id="12_57gmc"]
+[ext_resource type="PackedScene" uid="uid://dnthfqxk8by4k" path="res://player/BolaDiablo .tscn" id="13_0crsg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(1298.5, 23)
@@ -26,12 +28,12 @@ jugador2 = ExtResource("1_6ba58")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=689847171]
 position = Vector2(-8, 618)
-collision_mask = 0
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1974579394]
 position = Vector2(623, 16)
 shape = SubResource("RectangleShape2D_xwo6f")
-one_way_collision = true
 one_way_collision_margin = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1139576482]
@@ -43,7 +45,7 @@ texture = ExtResource("1_lgngo")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1067900165]
 position = Vector2(1, 464)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=770017337]
 position = Vector2(83, 64)
@@ -59,12 +61,11 @@ texture = ExtResource("1_lgngo")
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=892334228]
 position = Vector2(1, 193)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1003044014]
 position = Vector2(593.75, 16)
 shape = SubResource("RectangleShape2D_xwo6f")
-one_way_collision = true
 one_way_collision_margin = 4.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D4" unique_id=142133832]
@@ -75,6 +76,8 @@ texture = ExtResource("1_lgngo")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=688854187]
 position = Vector2(820, 461)
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=96236707]
 position = Vector2(184, 0)
@@ -90,12 +93,11 @@ texture = ExtResource("1_lgngo")
 position = Vector2(11, -519)
 rotation = 1.5707964
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D5" unique_id=230537866]
 position = Vector2(577.5, 16)
 shape = SubResource("RectangleShape2D_xwo6f")
-one_way_collision = true
 one_way_collision_margin = 4.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D5" unique_id=213319206]
@@ -108,12 +110,11 @@ texture = ExtResource("1_lgngo")
 position = Vector2(1167, -525)
 rotation = 1.5707964
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D6" unique_id=1726394666]
 position = Vector2(539, -92)
 shape = SubResource("RectangleShape2D_xwo6f")
-one_way_collision = true
 one_way_collision_margin = 4.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D6" unique_id=1373397560]
@@ -181,3 +182,24 @@ distancia_salida = 150.0
 position = Vector2(604, 252)
 
 [node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("11_0oi55")]
+visible = false
+
+[node name="BolaSpawner" type="Node2D" parent="." unique_id=2041489638]
+script = ExtResource("12_57gmc")
+bola_scene = ExtResource("13_0crsg")
+
+[node name="Spawn1" type="Marker2D" parent="BolaSpawner" unique_id=632885260]
+position = Vector2(359, 325)
+
+[node name="Spawn2" type="Marker2D" parent="BolaSpawner" unique_id=692614126]
+position = Vector2(531, 331)
+
+[node name="Spawn3" type="Marker2D" parent="BolaSpawner" unique_id=380579551]
+position = Vector2(317, 502)
+
+[node name="Spawn4" type="Marker2D" parent="BolaSpawner" unique_id=2141045447]
+position = Vector2(699, 468)
+
+[node name="Timer" type="Timer" parent="BolaSpawner" unique_id=1814647377]
+wait_time = 15.0
+autostart = true
