@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bdcomvhmo3lf1"]
 
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_dtdnh"]
+[ext_resource type="PackedScene" uid="uid://dku8abeq4hwff" path="res://scenes/ui/ui.tscn" id="1_sn2vc"]
 [ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_0bc7o"]
 [ext_resource type="PackedScene" uid="uid://comvjcbenw74r" path="res://scenes/items/item_nivel_1/item_bueno/pan.tscn" id="2_xsy0r"]
 [ext_resource type="PackedScene" uid="uid://cdh2i66q22hgy" path="res://scenes/items/item_nivel_1/item_bueno/Cebolla.tscn" id="2_yb6q5"]
@@ -24,15 +25,17 @@ size = Vector2(1171, 20)
 
 [node name="Mundo" type="Node2D" unique_id=694270786]
 
+[node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=26694079]
-position = Vector2(569, 329)
+position = Vector2(559, 315)
 limit_left = 0
 limit_top = 0
 limit_right = 1150
 limit_bottom = 640
 
 [node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
-position = Vector2(561, 153)
+position = Vector2(558, 213)
 pan_scene = ExtResource("2_xsy0r")
 cebolla_scene = ExtResource("2_yb6q5")
 camote_scene = ExtResource("3_gy6bw")
@@ -41,15 +44,16 @@ sal_especial_scene = ExtResource("6_6k5lx")
 chicharron_scene = ExtResource("7_n00vl")
 basura_scene = ExtResource("8_4x6ec")
 ladrillo_scene = ExtResource("9_oxw66")
-items_por_tanda_max = 2
+intervalo_min = 1.0
+intervalo_max = 1.5
 limite_izquierdo = 90.0
 limite_derecho = 1090.0
-tiempo_preparacion_min = 0.3
-tiempo_preparacion_max = 0.8
+tiempo_preparacion_min = 0.4
+tiempo_preparacion_max = 1.0
 fuerza_parabola = 550.0
 velocidad = 450
 
-[node name="P" parent="." unique_id=1738953310 instance=ExtResource("2_0bc7o")]
+[node name="P" parent="." unique_id=1738953310 groups=["player"] instance=ExtResource("2_0bc7o")]
 position = Vector2(409, 525)
 scale = Vector2(4.4991555, 4.454631)
 speed = 560.0
@@ -82,7 +86,7 @@ scale = Vector2(1.7890619, 0.17187506)
 texture = ExtResource("1_dtdnh")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=892334228]
-position = Vector2(-5, 148)
+position = Vector2(-2, 209)
 collision_layer = 2
 collision_mask = 0
 

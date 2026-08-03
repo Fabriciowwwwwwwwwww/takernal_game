@@ -12,10 +12,12 @@ size = Vector2(189.759, 150.60239)
 size = Vector2(7.1958885, 5.728879)
 
 [node name="camote" type="RigidBody2D" unique_id=187353056]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_dls0o")
+nombre = "camote"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=320987563]
 scale = Vector2(3.3200004, 3.3200004)

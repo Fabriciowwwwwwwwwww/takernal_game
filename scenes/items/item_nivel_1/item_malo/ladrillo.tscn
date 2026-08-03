@@ -12,6 +12,7 @@ size = Vector2(189.759, 159.63852)
 size = Vector2(7.1958885, 6.0536838)
 
 [node name="ladrillo" type="RigidBody2D" unique_id=187353056]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10

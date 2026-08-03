@@ -94,6 +94,7 @@ func _physics_process(delta):
 			comenzar_dash()
 
 
+	
 # Flip personaje
 	if facing > 0:
 		$AnimatedSprite2D.flip_h = false
@@ -149,6 +150,7 @@ func comenzar_dash():
 
 
 func drop_from_platform():
+	
 
 	print("BAJANDO")
 
@@ -169,3 +171,10 @@ func drop_from_platform():
 	set_collision_mask_value(2, true)
 
 	dropping = false
+	
+func perder_vida():
+	$"../Ui".perder_vida()
+
+
+func sumar_progreso():
+	$"../Ui".sumar_progreso()

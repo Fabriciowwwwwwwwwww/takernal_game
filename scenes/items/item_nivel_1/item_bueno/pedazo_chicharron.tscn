@@ -12,10 +12,12 @@ size = Vector2(189.759, 183.73492)
 size = Vector2(7.1958885, 6.9674473)
 
 [node name="chicharron" type="RigidBody2D" unique_id=187353056]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_wroxu")
+nombre = "chicharron"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=320987563]
 scale = Vector2(3.3200004, 3.3200004)
