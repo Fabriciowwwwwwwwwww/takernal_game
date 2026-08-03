@@ -12,6 +12,7 @@ size = Vector2(132.5301, 150.60239)
 size = Vector2(5.0256996, 5.7110224)
 
 [node name="cebolla" type="RigidBody2D" unique_id=187353056]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10

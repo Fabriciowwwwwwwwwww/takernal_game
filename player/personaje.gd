@@ -172,3 +172,9 @@ func drop_from_platform():
 
 	dropping = false
 	
+func perder_vida():
+	$"../Ui".perder_vida()
+
+
+func sumar_progreso():
+	$"../Ui".sumar_progreso()

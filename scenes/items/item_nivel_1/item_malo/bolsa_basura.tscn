@@ -12,6 +12,7 @@ size = Vector2(123.49396, 162.65057)
 size = Vector2(4.683038, 6.167904)
 
 [node name="basura" type="RigidBody2D" unique_id=187353056]
+collision_layer = 4
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10

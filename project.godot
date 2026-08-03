@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 DialogueManager="*uid://c3rodes2l3gxb"
 SceneManager="*uid://tr8vjkb7hbj1"
-GameManager="*uid://eyndqidv0eja"
 PauseOverlay="*uid://bo2gd4sehdugm"
+GameManager="*uid://eyndqidv0eja"
 
 [dialogue_manager]
 

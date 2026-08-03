@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfb1g16vlk7hf" path="res://armas/RainAttack.tscn" id="8_t8jxu"]
 [ext_resource type="Script" uid="uid://kdy0xag5a510" path="res://spawn_lluvia.gd" id="9_pfhxm"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="11_0oi55"]
+[ext_resource type="PackedScene" uid="uid://dku8abeq4hwff" path="res://scenes/ui/ui.tscn" id="12_57gmc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(1298.5, 23)
@@ -181,3 +182,5 @@ distancia_salida = 150.0
 position = Vector2(604, 252)
 
 [node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("11_0oi55")]
+
+[node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("12_57gmc")]

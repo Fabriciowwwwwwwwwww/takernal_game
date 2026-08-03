@@ -42,11 +42,10 @@ offset_bottom = -77.24002
 theme_override_styles/panel = SubResource("StyleBoxFlat_f5cxw")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1377565292]
-offset_left = 683.0
-offset_top = 32.0
-offset_right = 1037.0
-offset_bottom = 60.0
-value = 10.0
+offset_left = 783.0
+offset_top = 38.0
+offset_right = 1137.0
+offset_bottom = 66.0
 
 [node name="Label" type="Label" parent="ProgressBar" unique_id=1498071556]
 layout_mode = 0
@@ -72,10 +71,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_aac20")
 
 [node name="Label" type="Label" parent="Panel2" unique_id=839757538]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 1.0
-offset_right = 196.0
-offset_bottom = 24.0
+offset_left = 34.552002
+offset_top = 4.488
+offset_right = 204.552
+offset_bottom = 27.487999
 theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "CONSEGUIR INGREDIENTES"
@@ -87,10 +86,10 @@ anchor_left = -0.076000005
 anchor_top = 0.69600004
 anchor_right = 1.0710001
 anchor_bottom = 1.7390001
-offset_left = 24.252
-offset_top = -29.328003
-offset_right = 3589.262
-offset_bottom = 586.683
+offset_left = 37.69124
+offset_top = -29.631874
+offset_right = 3602.7012
+offset_bottom = 586.3791
 scale = Vector2(0.055, 0.055)
 
 [node name="ingre1" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=1017960300]
@@ -147,10 +146,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_aac20")
 
 [node name="Label" type="Label" parent="Panel3" unique_id=379935388]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 2.0
-offset_right = 203.0
-offset_bottom = 25.0
+offset_left = 23.823975
+offset_top = 2.9920006
+offset_right = 212.82397
+offset_bottom = 25.992
 theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "INGREDIENTES CONSEGUIDOS"
@@ -162,10 +161,10 @@ anchor_left = -0.076000005
 anchor_top = 0.69600004
 anchor_right = 1.0710001
 anchor_bottom = 1.7390001
-offset_left = 21.56801
-offset_top = -29.024004
-offset_right = 3586.578
-offset_bottom = 586.987
+offset_left = 34.18196
+offset_top = -29.431879
+offset_right = 3599.192
+offset_bottom = 586.5791
 scale = Vector2(0.055, 0.055)
 
 [node name="ingre1" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=1136093768]
