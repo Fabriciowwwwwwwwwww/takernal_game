@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dfb1g16vlk7hf"]
+
+[ext_resource type="Script" uid="uid://d1gr42sa1w4wa" path="res://armas/rain_attack.gd" id="1_1b4ci"]
+[ext_resource type="PackedScene" uid="uid://ckwkhbdrbvc0k" path="res://player/bullet.tscn" id="2_b03jo"]
+
+[node name="RainAttack" type="Node2D" unique_id=875108492]
+script = ExtResource("1_1b4ci")
+proyectil = ExtResource("2_b03jo")
+
+[node name="Centro" type="Marker2D" parent="." unique_id=549784570]
+position = Vector2(590, 713)
+
+[node name="Izquierda" type="Marker2D" parent="." unique_id=695731216]
+position = Vector2(1, -28)
+
+[node name="Derecha" type="Marker2D" parent="." unique_id=1228083809]
+position = Vector2(1293, -20)

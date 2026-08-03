@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bo2gd4sehdugm"]
+
+[ext_resource type="Script" uid="uid://dtyorwjrdnc6" path="res://interfaces/pause_overlay.gd" id="1_lf64b"]
+[ext_resource type="Texture2D" uid="uid://cyo4tn5r602i7" path="res://interfaces/sprite/fondo_pausa.png" id="4_ai8ue"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai8ue"]
+texture = ExtResource("4_ai8ue")
+modulate_color = Color(1, 1, 1, 0.498039)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tcw0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjd51"]
+texture = ExtResource("4_ai8ue")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+
+[node name="PauseOverlay" type="CanvasLayer" unique_id=674599032]
+process_mode = 3
+layer = 2
+script = ExtResource("1_lf64b")
+
+[node name="Panel" type="Panel" parent="." unique_id=511978179]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxTexture_ai8ue")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=487957552]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.5
+offset_top = -278.5
+offset_right = 254.5
+offset_bottom = 278.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1tcw0")
+tab_alignment = 1
+current_tab = 0
+tabs_position = 1
+tabs_visible = false
+
+[node name="PauseMenu" type="PanelContainer" parent="TabContainer" unique_id=2105623166]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mjd51")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PauseMenu" unique_id=1105666558]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=120168927]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"PlayerRibbon"
+
+[node name="Label" type="Label" parent="TabContainer/PauseMenu/VBoxContainer/PanelContainer" unique_id=1804828608]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Game Paused"
+
+[node name="ResumeButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=856785960]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 60
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=127127736]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 60
+text = "Options"
+
+[node name="TitleScreenButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=479465900]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 60
+text = "Exit to Title"
+
+[connection signal="pressed" from="TabContainer/PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="TabContainer/PauseMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="TabContainer/PauseMenu/VBoxContainer/TitleScreenButton" to="." method="_on_title_screen_button_pressed"]

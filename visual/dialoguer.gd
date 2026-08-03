@@ -5,7 +5,6 @@ extends Node2D
 
 
 func _ready():
-	print("Iniciando diálogo")
 
 	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
 
@@ -13,7 +12,5 @@ func _ready():
 
 
 func _on_dialogue_finished(_resource: DialogueResource):
-	print("Dialogo terminado")
-	print("Cambiando a:", next_scene)
 
 	SceneManager.change_scene(self, "mundo")

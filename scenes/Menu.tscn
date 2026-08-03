@@ -1,32 +1,32 @@
 [gd_scene format=3 uid="uid://cnl10kue3lo6a"]
 
-[ext_resource type="Script" uid="uid://dkqeejyflyid2" path="res://interfaces/menu.gd" id="1_siyfo"]
-[ext_resource type="Script" uid="uid://cjj3nds1by33q" path="res://interfaces/parallax_backgroundMENU.gd" id="2_mm3o3"]
-[ext_resource type="Texture2D" uid="uid://cckmdwfaywbx4" path="res://interfaces/sprite/Fondo1.png" id="3_jbtba"]
-[ext_resource type="Texture2D" uid="uid://c3uihxpyjeutf" path="res://interfaces/sprite/Estrellas grandes.png" id="4_h63se"]
-[ext_resource type="Texture2D" uid="uid://c2eft6dnnig65" path="res://interfaces/sprite/Estrellas chicas.png" id="5_6it8d"]
-[ext_resource type="FontFile" uid="uid://c4lty2phrrmm3" path="res://letra/Slackey-Regular.ttf" id="5_erq20"]
-[ext_resource type="Texture2D" uid="uid://cspyutl4yl5o6" path="res://interfaces/sprite/111.png" id="6_5sfv6"]
-[ext_resource type="Shader" uid="uid://com58ff036i8q" path="res://interfaces/shaders/Shaders/Menu.gdshader" id="7_i7q02"]
-[ext_resource type="Script" uid="uid://dc3qawe6568dg" path="res://interfaces/shaders/Shaders/Shader_Menu.gd" id="8_mm3o3"]
-[ext_resource type="Texture2D" uid="uid://ca536qv5kheeo" path="res://interfaces/sprite/2.png" id="9_rwmma"]
-[ext_resource type="Texture2D" uid="uid://dv3u5oeml25cu" path="res://interfaces/sprite/flecha.png" id="10_h63se"]
-[ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="10_t8o0a"]
-[ext_resource type="Texture2D" uid="uid://bp8fbmlplp2g2" path="res://interfaces/sprite/flecha_pressed.png" id="11_5sfv6"]
-[ext_resource type="Texture2D" uid="uid://ccchl24uqdqbu" path="res://interfaces/sprite/flecha_hover.png" id="12_rwmma"]
+[ext_resource type="Script" uid="uid://dkqeejyflyid2" path="res://interfaces/menu.gd" id="1_2af52"]
+[ext_resource type="Script" uid="uid://cjj3nds1by33q" path="res://interfaces/parallax_backgroundMENU.gd" id="2_7ycwl"]
+[ext_resource type="Texture2D" uid="uid://cckmdwfaywbx4" path="res://interfaces/sprite/Fondo1.png" id="3_rtd1e"]
+[ext_resource type="Texture2D" uid="uid://c3uihxpyjeutf" path="res://interfaces/sprite/Estrellas grandes.png" id="4_6c8sk"]
+[ext_resource type="Texture2D" uid="uid://c2eft6dnnig65" path="res://interfaces/sprite/Estrellas chicas.png" id="5_5p0sf"]
+[ext_resource type="Texture2D" uid="uid://cspyutl4yl5o6" path="res://interfaces/sprite/111.png" id="6_7t7qg"]
+[ext_resource type="Script" uid="uid://dc3qawe6568dg" path="res://interfaces/shaders/Shaders/Shader_Menu.gd" id="7_l3wcu"]
+[ext_resource type="Shader" uid="uid://com58ff036i8q" path="res://interfaces/shaders/Shaders/Menu.gdshader" id="8_i7htd"]
+[ext_resource type="Texture2D" uid="uid://ca536qv5kheeo" path="res://interfaces/sprite/2.png" id="9_dek3k"]
+[ext_resource type="Texture2D" uid="uid://dv3u5oeml25cu" path="res://interfaces/sprite/flecha.png" id="10_8fhjo"]
+[ext_resource type="Texture2D" uid="uid://bp8fbmlplp2g2" path="res://interfaces/sprite/flecha_pressed.png" id="11_760fv"]
+[ext_resource type="Texture2D" uid="uid://ccchl24uqdqbu" path="res://interfaces/sprite/flecha_hover.png" id="12_rehui"]
+[ext_resource type="FontFile" uid="uid://c4lty2phrrmm3" path="res://letra/Slackey-Regular.ttf" id="13_yvxia"]
+[ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="14_nxcfj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2qgrd"]
-shader = ExtResource("7_i7q02")
+shader = ExtResource("8_i7htd")
 shader_parameter/transition_progress = 0.0
 shader_parameter/screen_size = Vector2(1152, 648)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mm3o3"]
-shader = ExtResource("7_i7q02")
+shader = ExtResource("8_i7htd")
 shader_parameter/transition_progress = 0.0
 shader_parameter/screen_size = Vector2(800, 600)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w4fob"]
-shader = ExtResource("7_i7q02")
+shader = ExtResource("8_i7htd")
 shader_parameter/transition_progress = 0.0
 shader_parameter/screen_size = Vector2(800, 600)
 
@@ -75,13 +75,13 @@ offset_bottom = 634.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_siyfo")
+script = ExtResource("1_2af52")
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1549198536]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax" unique_id=804014649]
 scroll_ignore_camera_zoom = true
-script = ExtResource("2_mm3o3")
+script = ExtResource("2_7ycwl")
 
 [node name="Espacio" type="ParallaxLayer" parent="Parallax/ParallaxBackground" unique_id=1755201240]
 motion_scale = Vector2(0.2, 0.2)
@@ -91,7 +91,7 @@ motion_mirroring = Vector2(1149, 0)
 texture_filter = 1
 position = Vector2(7.9999986, -2)
 scale = Vector2(0.6661458, 0.68981487)
-texture = ExtResource("3_jbtba")
+texture = ExtResource("3_rtd1e")
 centered = false
 
 [node name="Estrellas Grandes" type="ParallaxLayer" parent="Parallax/ParallaxBackground" unique_id=2088878958]
@@ -100,7 +100,7 @@ motion_mirroring = Vector2(1153.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/Estrellas Grandes" unique_id=897227498]
 scale = Vector2(0.60260415, 0.5462963)
-texture = ExtResource("4_h63se")
+texture = ExtResource("4_6c8sk")
 centered = false
 
 [node name="Estrellas Pequeñas" type="ParallaxLayer" parent="Parallax/ParallaxBackground" unique_id=924621189]
@@ -108,81 +108,43 @@ motion_mirroring = Vector2(1153.92, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/Estrellas Pequeñas" unique_id=1417501927]
 scale = Vector2(0.69427085, 0.59814817)
-texture = ExtResource("5_6it8d")
+texture = ExtResource("5_5p0sf")
 centered = false
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=1510230933]
 position = Vector2(1.9999924, 24)
 scale = Vector2(1.2909092, 1.3784313)
-texture = ExtResource("6_5sfv6")
+texture = ExtResource("6_7t7qg")
 centered = false
 
 [node name="Control" type="Node2D" parent="." unique_id=1929182962]
 position = Vector2(-673, 0)
-script = ExtResource("8_mm3o3")
+script = ExtResource("7_l3wcu")
 
 [node name="Título" type="Sprite2D" parent="Control" unique_id=726667771]
 material = SubResource("ShaderMaterial_2qgrd")
 use_parent_material = true
 position = Vector2(25, 66)
 scale = Vector2(1, 0.57058823)
-texture = ExtResource("9_rwmma")
+texture = ExtResource("9_dek3k")
 centered = false
 
-[node name="Start" type="TextureButton" parent="Control" unique_id=1159925552 groups=["ui_botones"]]
+[node name="Single_Player" type="TextureButton" parent="Control" unique_id=352330779 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_mm3o3")
 use_parent_material = true
 offset_left = 187.0
-offset_top = 298.0
+offset_top = 340.0
 offset_right = 787.0
-offset_bottom = 692.0
+offset_bottom = 734.0
 scale = Vector2(0.7, 0.7)
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../Tutorial")
+focus_neighbor_bottom = NodePath("../Multi_Player")
 button_mask = 0
-texture_normal = ExtResource("10_h63se")
-texture_pressed = ExtResource("11_5sfv6")
-texture_hover = ExtResource("12_rwmma")
-texture_focused = ExtResource("12_rwmma")
+texture_normal = ExtResource("10_8fhjo")
+texture_pressed = ExtResource("11_760fv")
+texture_hover = ExtResource("12_rehui")
+texture_focused = ExtResource("12_rehui")
 
-[node name="Label" type="Label" parent="Control/Start" unique_id=536612969]
-material = SubResource("ShaderMaterial_w4fob")
-use_parent_material = true
-layout_mode = 0
-offset_left = 63.333366
-offset_top = 143.33333
-offset_right = 1566.4784
-offset_bottom = 504.3333
-rotation = 0.04465805
-scale = Vector2(0.4, 0.4)
-theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("5_erq20")
-theme_override_font_sizes/font_size = 128
-text = "Start Game"
-
-[node name="Tutorial" type="TextureButton" parent="Control" unique_id=352330779 groups=["ui_botones"]]
-material = SubResource("ShaderMaterial_mm3o3")
-use_parent_material = true
-offset_left = 197.0
-offset_top = 568.0
-offset_right = 797.0
-offset_bottom = 962.0
-scale = Vector2(0.7, 0.7)
-focus_neighbor_top = NodePath("../Start")
-focus_neighbor_bottom = NodePath("../Options")
-button_mask = 0
-texture_normal = ExtResource("10_h63se")
-texture_pressed = ExtResource("11_5sfv6")
-texture_hover = ExtResource("12_rwmma")
-texture_focused = ExtResource("12_rwmma")
-
-[node name="Label" type="Label" parent="Control/Tutorial" unique_id=704218450]
+[node name="Label" type="Label" parent="Control/Single_Player" unique_id=704218450]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
@@ -199,27 +161,27 @@ theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 15
 theme_override_constants/outline_size = 20
 theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("5_erq20")
+theme_override_fonts/font = ExtResource("13_yvxia")
 theme_override_font_sizes/font_size = 128
-text = "Tutorial"
+text = "Single Player"
 
-[node name="Options" type="TextureButton" parent="Control" unique_id=1548086522 groups=["ui_botones"]]
+[node name="Multi_Player" type="TextureButton" parent="Control" unique_id=1548086522 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
-offset_left = 189.0
-offset_top = 850.0
-offset_right = 1029.0
-offset_bottom = 1272.5
+offset_left = 167.0
+offset_top = 664.0
+offset_right = 1007.0
+offset_bottom = 1086.5
 scale = Vector2(0.7, 0.7)
-focus_neighbor_top = NodePath("../Tutorial")
+focus_neighbor_top = NodePath("../Single_Player")
 focus_neighbor_bottom = NodePath("../Quit")
 button_mask = 0
-texture_normal = ExtResource("10_h63se")
-texture_pressed = ExtResource("11_5sfv6")
-texture_hover = ExtResource("12_rwmma")
-texture_focused = ExtResource("12_rwmma")
+texture_normal = ExtResource("10_8fhjo")
+texture_pressed = ExtResource("11_760fv")
+texture_hover = ExtResource("12_rehui")
+texture_focused = ExtResource("12_rehui")
 
-[node name="Label" type="Label" parent="Control/Options" unique_id=1868631330]
+[node name="Label" type="Label" parent="Control/Multi_Player" unique_id=1868631330]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
@@ -236,25 +198,24 @@ theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 15
 theme_override_constants/outline_size = 20
 theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("5_erq20")
+theme_override_fonts/font = ExtResource("13_yvxia")
 theme_override_font_sizes/font_size = 128
-text = "Options"
+text = "Multi_Player"
 
 [node name="Quit" type="TextureButton" parent="Control" unique_id=1040227390 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 offset_left = 175.0
-offset_top = 1124.0
+offset_top = 995.99994
 offset_right = 1015.0
-offset_bottom = 1518.0
+offset_bottom = 1390.0
 scale = Vector2(0.7, 0.7)
-focus_neighbor_top = NodePath("../Options")
-focus_neighbor_bottom = NodePath("../Start")
+focus_neighbor_top = NodePath("../Multi_Player")
 button_mask = 0
-texture_normal = ExtResource("10_h63se")
-texture_pressed = ExtResource("11_5sfv6")
-texture_hover = ExtResource("12_rwmma")
-texture_focused = ExtResource("12_rwmma")
+texture_normal = ExtResource("10_8fhjo")
+texture_pressed = ExtResource("11_760fv")
+texture_hover = ExtResource("12_rehui")
+texture_focused = ExtResource("12_rehui")
 
 [node name="Label" type="Label" parent="Control/Quit" unique_id=1277900499]
 material = SubResource("ShaderMaterial_w4fob")
@@ -273,7 +234,7 @@ theme_override_constants/shadow_offset_x = 10
 theme_override_constants/shadow_offset_y = 15
 theme_override_constants/outline_size = 20
 theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("5_erq20")
+theme_override_fonts/font = ExtResource("13_yvxia")
 theme_override_font_sizes/font_size = 128
 text = "Quit"
 
@@ -281,7 +242,7 @@ text = "Quit"
 wait_time = 2.0
 autostart = true
 
-[node name="Sombras_transición" parent="." unique_id=618434902 instance=ExtResource("10_t8o0a")]
+[node name="Sombras_transición" parent="." unique_id=618434902 instance=ExtResource("14_nxcfj")]
 layout_mode = 0
 offset_right = 2586.0
 offset_bottom = 1476.0
@@ -292,9 +253,8 @@ offset_bottom = 1476.0
 libraries/ = SubResource("AnimationLibrary_w4fob")
 autoplay = &"Movimiento"
 
-[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Control/Tutorial" to="." method="_on_tutorial_pressed"]
-[connection signal="pressed" from="Control/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Control/Single_Player" to="." method="_on_single_player_pressed"]
+[connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
 [connection signal="timeout" from="Sombras_transición/Sombra_time" to="." method="_on_sombra_time_timeout"]

@@ -21,6 +21,14 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_bxgr4")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_8py2f")
 }, {
 "duration": 1.0,
@@ -450,6 +458,7 @@ animations = [{
 scale = Vector2(3, 3)
 collision_mask = 3
 script = ExtResource("1_oohw6")
+jump_force = -850.0
 bullet_scene = ExtResource("2_y5xqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=292702301]
@@ -457,8 +466,7 @@ texture_filter = 1
 position = Vector2(-1, -2.9802322e-08)
 scale = Vector2(0.037968434, 0.034118425)
 sprite_frames = SubResource("SpriteFrames_0c8go")
-animation = &"run"
-frame_progress = 0.36007428
+animation = &"dash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203787327]
 position = Vector2(-1, 4.5)

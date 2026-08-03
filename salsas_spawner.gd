@@ -27,6 +27,7 @@ func _ready():
 
 		timer.timeout.connect(
 			func():
+				
 				salsa.disparar()
 		)
 

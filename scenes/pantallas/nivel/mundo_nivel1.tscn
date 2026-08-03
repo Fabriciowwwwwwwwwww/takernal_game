@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bdjcto0xi60cy" path="res://scenes/items/item_nivel_1/item_bueno/pedazo_chicharron.tscn" id="7_n00vl"]
 [ext_resource type="PackedScene" uid="uid://62l7es0iw2lh" path="res://scenes/items/item_nivel_1/item_malo/bolsa_basura.tscn" id="8_4x6ec"]
 [ext_resource type="PackedScene" uid="uid://dcahg1o3ley0n" path="res://scenes/items/item_nivel_1/item_malo/ladrillo.tscn" id="9_oxw66"]
+[ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="12_sn2vc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgngo"]
 size = Vector2(215, 20)
@@ -161,3 +162,6 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(575.00006, 3.0000033)
 scale = Vector2(9.1953125, 0.17187506)
 texture = ExtResource("1_dtdnh")
+
+[node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("12_sn2vc")]
+visible = false
