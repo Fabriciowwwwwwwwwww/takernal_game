@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b7ohhbxl2vwhb"]
+
+[ext_resource type="Texture2D" uid="uid://b7pey840tu5q6" path="res://armas/sprite/las salsas/aji .png" id="1_mdv11"]
+[ext_resource type="Script" uid="uid://d0742wxkcqww0" path="res://armas/salsas.gd" id="1_u6geb"]
+[ext_resource type="PackedScene" uid="uid://ckwkhbdrbvc0k" path="res://player/bullet.tscn" id="3_bxgxf"]
+
+[node name="Salsas" type="Node2D" unique_id=1743966541]
+script = ExtResource("1_u6geb")
+sprite_arma = ExtResource("1_mdv11")
+proyectil = ExtResource("3_bxgxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=502294336]
+position = Vector2(5, -1)
+scale = Vector2(0.3089844, 0.23203124)
+texture = ExtResource("1_mdv11")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=577960443]
+position = Vector2(7, -72)

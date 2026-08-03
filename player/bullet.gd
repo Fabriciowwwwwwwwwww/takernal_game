@@ -5,9 +5,21 @@ extends Area2D
 
 var direction := Vector2.RIGHT
 
+
+func iniciar(nueva_direccion: Vector2):
+
+	direction = nueva_direccion.normalized()
+
+	rotation = direction.angle()
+
+
+
 func _physics_process(delta):
 
-	global_position += direction.normalized() * speed * delta
+	global_position += direction * speed * delta
+
+
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+
 	queue_free()

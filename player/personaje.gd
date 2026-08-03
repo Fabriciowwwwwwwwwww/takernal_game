@@ -118,36 +118,6 @@ func comenzar_dash():
 
 
 
-func _process(delta):
-
-	if Input.is_action_pressed("shoot") and can_shoot:
-		disparar()
-
-
-
-func disparar():
-
-	can_shoot = false
-
-	if bullet_scene == null:
-		return
-
-
-	var bala = bullet_scene.instantiate()
-
-	get_tree().current_scene.add_child(bala)
-
-
-	bala.global_position = $arma/Marker2D.global_position
-
-	var mouse = get_global_mouse_position()
-
-	bala.direction = (mouse - bala.global_position).normalized()
-
-
-	await get_tree().create_timer(fire_rate).timeout
-
-	can_shoot = true
 
 
 

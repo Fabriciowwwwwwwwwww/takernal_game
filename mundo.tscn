@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="1_6ba58"]
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_lgngo"]
+[ext_resource type="PackedScene" uid="uid://b7ohhbxl2vwhb" path="res://armas/salsas.tscn" id="3_fw4w5"]
+[ext_resource type="Script" uid="uid://o5ekgetjqg3n" path="res://salsas_spawner.gd" id="4_otwa2"]
+[ext_resource type="Texture2D" uid="uid://b278upjroqg61" path="res://armas/sprite/las salsas/chimi chrriii .png" id="5_aou4a"]
+[ext_resource type="Texture2D" uid="uid://byhe8f31x8jtv" path="res://armas/sprite/las salsas/ketchup .png" id="6_2hh7m"]
+[ext_resource type="Texture2D" uid="uid://d3vwcpvwn2x4u" path="res://armas/sprite/las salsas/mayoneiai .png" id="7_t8jxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(1298.5, 23)
@@ -9,7 +14,7 @@ size = Vector2(1298.5, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgngo"]
 size = Vector2(150, 20)
 
-[node name="Mundo" type="Node2D" unique_id=694270786]
+[node name="Mundo2" type="Node2D" unique_id=694270786]
 position = Vector2(12, 72)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=689847171]
@@ -117,3 +122,49 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(583.00006, -92.99996)
 scale = Vector2(9.1953125, 0.17187506)
 texture = ExtResource("1_lgngo")
+
+[node name="SalsasSpawner" type="Node2D" parent="." unique_id=1303004183]
+script = ExtResource("4_otwa2")
+armas = Array[NodePath]([NodePath("Salsas"), NodePath("Salsas2"), NodePath("Salsas3"), NodePath("Salsas4"), NodePath("Salsas5"), NodePath("Salsas6")])
+tiempos = Array[float]([3.0, 4.0, 5.0, 3.0, 6.0, 3.0])
+
+[node name="Timer" type="Timer" parent="SalsasSpawner" unique_id=834973366]
+autostart = true
+
+[node name="Salsas" parent="SalsasSpawner" unique_id=315806570 instance=ExtResource("3_fw4w5")]
+position = Vector2(835, 724)
+tipo_direccion = 1
+sentido = -1
+
+[node name="Salsas2" parent="SalsasSpawner" unique_id=1743966541 instance=ExtResource("3_fw4w5")]
+position = Vector2(333, 724)
+sprite_arma = ExtResource("5_aou4a")
+tipo_direccion = 1
+sentido = -1
+
+[node name="Salsas3" parent="SalsasSpawner" unique_id=710359168 instance=ExtResource("3_fw4w5")]
+position = Vector2(-87, 408)
+rotation = 1.5707964
+sprite_arma = ExtResource("6_2hh7m")
+distancia_salida = 120.0
+
+[node name="Salsas4" parent="SalsasSpawner" unique_id=321362996 instance=ExtResource("3_fw4w5")]
+position = Vector2(1336, 534)
+rotation = -1.5707964
+sprite_arma = ExtResource("7_t8jxu")
+sentido = -1
+distancia_salida = 120.0
+
+[node name="Salsas5" parent="SalsasSpawner" unique_id=1997071695 instance=ExtResource("3_fw4w5")]
+position = Vector2(672, -145)
+rotation = -3.1415927
+sprite_arma = ExtResource("6_2hh7m")
+tipo_direccion = 1
+distancia_salida = 150.0
+
+[node name="Salsas6" parent="SalsasSpawner" unique_id=705696587 instance=ExtResource("3_fw4w5")]
+position = Vector2(315, -148)
+rotation = -3.1415927
+sprite_arma = ExtResource("7_t8jxu")
+tipo_direccion = 1
+distancia_salida = 150.0
