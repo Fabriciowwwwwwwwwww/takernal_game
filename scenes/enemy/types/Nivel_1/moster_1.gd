@@ -7,10 +7,8 @@ extends "res://scenes/enemy/monster_base.gd"
 @export var chicharron_scene: PackedScene
 @export var basura_scene: PackedScene
 @export var ladrillo_scene: PackedScene
-@export var intervalo_min: float = 0.4
-@export var intervalo_max: float = 1.1
-@export var items_por_tanda_min: int = 1
-@export var items_por_tanda_max: int = 3
+@export var intervalo_min: float = 1.2
+@export var intervalo_max: float = 2.5
 @export var limite_izquierdo: float = 160.0
 @export var limite_derecho: float = 1158.0
 @export var margen_frenado: float = 250.0
@@ -18,11 +16,16 @@ extends "res://scenes/enemy/monster_base.gd"
 @export var tiempo_preparacion_min: float = 0.6
 @export var tiempo_preparacion_max: float = 1.4
 @export var fuerza_parabola: float = 350.0
+@export var fuerza_extremo_min: float = 500.0
+@export var fuerza_extremo_max: float = 750.0
 var _spawn_points: Array[Marker2D] = []
 var _spawn_timer: float = 0.0
 var _proximo_intervalo: float = 0.0
 var _velocidad_normal: float
-var _pool: Array = []
+var _pool_buenos: Array = []
+var _pool_malos: Array = []
+var _marker_izq_extremo: Marker2D = null
+var _marker_der_extremo: Marker2D = null
 enum Estado { PATRULLANDO, ATACANDO }
 var _estado: Estado = Estado.PATRULLANDO
 func _ready():
@@ -30,16 +33,23 @@ func _ready():
 	for child in get_children():
 		if child is Marker2D:
 			_spawn_points.append(child)
-	_pool = [
+	_pool_buenos = [
 		{ "escena": pan_scene,          "prob": 0.08 },
 		{ "escena": cebolla_scene,      "prob": 0.06 },
 		{ "escena": camote_scene,       "prob": 0.05 },
 		{ "escena": limon_scene,        "prob": 0.04 },
 		{ "escena": sal_especial_scene, "prob": 0.03 },
 		{ "escena": chicharron_scene,   "prob": 0.03 },
+	]
+	_pool_malos = [
 		{ "escena": basura_scene,       "prob": 0.42 },
 		{ "escena": ladrillo_scene,     "prob": 0.29 },
 	]
+	for m in _spawn_points:
+		if _marker_izq_extremo == null or m.global_position.x < _marker_izq_extremo.global_position.x:
+			_marker_izq_extremo = m
+		if _marker_der_extremo == null or m.global_position.x > _marker_der_extremo.global_position.x:
+			_marker_der_extremo = m
 	_proximo_intervalo = randf_range(intervalo_min, intervalo_max)
 func _process(delta):
 	if _estado != Estado.PATRULLANDO:
@@ -66,41 +76,44 @@ func _ajustar_velocidad_por_borde():
 		velocidad = lerp(_velocidad_normal * velocidad_minima_factor, _velocidad_normal, t)
 	else:
 		velocidad = _velocidad_normal
-func _elegir_item_random() -> PackedScene:
+func _elegir_item_random(pool: Array) -> PackedScene:
 	var total_prob := 0.0
-	for entrada in _pool:
+	for entrada in pool:
 		total_prob += entrada["prob"]
 	var r := randf() * total_prob
 	var acumulado := 0.0
-	for entrada in _pool:
+	for entrada in pool:
 		acumulado += entrada["prob"]
 		if r <= acumulado:
 			return entrada["escena"]
-	return _pool[-1]["escena"]
+	return pool[-1]["escena"]
 func spawnear_tanda():
 	if _spawn_points.is_empty():
 		return
-	var cantidad = randi_range(items_por_tanda_min, items_por_tanda_max)
-	cantidad = min(cantidad, _spawn_points.size())
-	var markers_disponibles = _spawn_points.duplicate()
-	markers_disponibles.shuffle()
-	for i in range(cantidad):
-		spawnear_item(markers_disponibles[i])
-func spawnear_item(punto: Marker2D = null):
-	if _spawn_points.is_empty():
-		return
-	var escena: PackedScene = _elegir_item_random()
+	var markers = _spawn_points.duplicate()
+	markers.shuffle()
+	var indice_bueno = randi() % markers.size()
+	for i in range(markers.size()):
+		if i == indice_bueno:
+			spawnear_item(markers[i], _pool_buenos)
+		else:
+			spawnear_item(markers[i], _pool_malos)
+func spawnear_item(punto: Marker2D, pool: Array):
+	var escena: PackedScene = _elegir_item_random(pool)
 	if escena == null:
 		return
-	if punto == null:
-		punto = _spawn_points[randi() % _spawn_points.size()]
 	var item = escena.instantiate()
 	item.global_position = punto.global_position
 	get_tree().current_scene.add_child(item)
 	if item is RigidBody2D:
 		var centro = (limite_izquierdo + limite_derecho) / 2.0
 		var lado = 1.0 if punto.global_position.x < centro else -1.0
-		var magnitud = randf_range(0.0, fuerza_parabola)
+		var es_extremo = punto == _marker_izq_extremo or punto == _marker_der_extremo
+		var magnitud: float
+		if es_extremo:
+			magnitud = randf_range(fuerza_extremo_min, fuerza_extremo_max)
+		else:
+			magnitud = randf_range(0.0, fuerza_parabola)
 		item.linear_velocity = Vector2(lado * magnitud, 0)
 func _llegar_a_extremo():
 	if _estado != Estado.PATRULLANDO:

@@ -16,6 +16,7 @@ physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_wroxu")
+nombre = "chicharron"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=320987563]
 scale = Vector2(3.3200004, 3.3200004)
