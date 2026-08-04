@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbkig3r2hc313"
+path="res://.godot/imported/pan_monster_risa3.ogg-13f97dd4c47cd1069844fac456fb3614.oggvorbisstr"
+
+[deps]
+
+source_file="res://sonidos/pan con chicharron/pan_monster_risa3.ogg"
+dest_files=["res://.godot/imported/pan_monster_risa3.ogg-13f97dd4c47cd1069844fac456fb3614.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

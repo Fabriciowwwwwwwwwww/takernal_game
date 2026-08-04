@@ -35,4 +35,6 @@ position = Vector2(-0.5, 2.9206262e-08)
 scale = Vector2(8.755, 8.755)
 shape = SubResource("RectangleShape2D_ktwcm")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1808470871]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

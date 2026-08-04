@@ -1,22 +1,166 @@
 [gd_scene format=3 uid="uid://c8srfw33nwa51"]
 
 [ext_resource type="Script" uid="uid://ceswd4nxlqt51" path="res://scenes/enemy/types/Nivel_1/moster_1.gd" id="1_648m5"]
-[ext_resource type="PackedScene" uid="uid://cdqgktxobpvq8" path="res://scenes/items/item_nivel_1/item_bueno/item_bueno.tscn" id="2_rwh8r"]
-[ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="2_xnk5b"]
+[ext_resource type="PackedScene" uid="uid://comvjcbenw74r" path="res://scenes/items/item_nivel_1/item_bueno/pan.tscn" id="2_j5lxu"]
 [ext_resource type="PackedScene" uid="uid://dcahg1o3ley0n" path="res://scenes/items/item_nivel_1/item_malo/ladrillo.tscn" id="3_7wisy"]
+[ext_resource type="PackedScene" uid="uid://cdh2i66q22hgy" path="res://scenes/items/item_nivel_1/item_bueno/Cebolla.tscn" id="3_ucnuj"]
+[ext_resource type="AudioStream" uid="uid://cgjqgjuhl6fx6" path="res://sonidos/pan con chicharron/pan_monster_escupe2.ogg" id="3_xnk5b"]
+[ext_resource type="PackedScene" uid="uid://pmwlgntprm6k" path="res://scenes/items/item_nivel_1/item_bueno/Camote.tscn" id="4_2fuf5"]
+[ext_resource type="PackedScene" uid="uid://b365x50io0wq7" path="res://scenes/items/item_nivel_1/item_bueno/Limon.tscn" id="5_lmlpi"]
+[ext_resource type="PackedScene" uid="uid://bxucdsixlqcqa" path="res://scenes/items/item_nivel_1/item_bueno/sal.tscn" id="6_qfgr7"]
+[ext_resource type="PackedScene" uid="uid://bdjcto0xi60cy" path="res://scenes/items/item_nivel_1/item_bueno/pedazo_chicharron.tscn" id="7_ffydr"]
+[ext_resource type="PackedScene" uid="uid://62l7es0iw2lh" path="res://scenes/items/item_nivel_1/item_malo/bolsa_basura.tscn" id="8_ydsta"]
+[ext_resource type="Texture2D" uid="uid://bkcdmc06ng4ab" path="res://assets/enemy_nivel1/chicharrdisparo00.png" id="10_j5lxu"]
+[ext_resource type="Texture2D" uid="uid://cq2euxruakk5x" path="res://assets/enemy_nivel1/chicharron00.png" id="10_jjbe7"]
+[ext_resource type="Texture2D" uid="uid://dnd0hoj7vylle" path="res://assets/enemy_nivel1/chicharron01.png" id="11_w5vw2"]
+[ext_resource type="Texture2D" uid="uid://fo721w3lf1gy" path="res://assets/enemy_nivel1/chicharron02.png" id="12_iuf3y"]
+[ext_resource type="Texture2D" uid="uid://b6vknsfo71ljf" path="res://assets/enemy_nivel1/chicharrdisparo01.png" id="14_nr6eg"]
+[ext_resource type="Texture2D" uid="uid://calimyn6fhn23" path="res://assets/enemy_nivel1/chicharrdisparo02.png" id="15_4vt6s"]
+[ext_resource type="Texture2D" uid="uid://cmwjwmnh5cno3" path="res://assets/enemy_nivel1/chicharrdisparo03.png" id="16_ryg8t"]
+[ext_resource type="Texture2D" uid="uid://ohnwwfofam1g" path="res://assets/enemy_nivel1/chicharrdisparo04.png" id="17_x03cn"]
+[ext_resource type="Texture2D" uid="uid://ctkyioyic7so6" path="res://assets/enemy_nivel1/chicharrdisparo05.png" id="18_tu750"]
+[ext_resource type="Texture2D" uid="uid://csuolnpu70d1j" path="res://assets/enemy_nivel1/chicharrmove00.png" id="19_1j881"]
+[ext_resource type="Texture2D" uid="uid://drrxn43ar1cho" path="res://assets/enemy_nivel1/chicharrmove01.png" id="20_b2ydo"]
+[ext_resource type="Texture2D" uid="uid://bq8pji8ok3uhy" path="res://assets/enemy_nivel1/chicharrmove02.png" id="21_fle7d"]
+[ext_resource type="Texture2D" uid="uid://dg5f2alx5essy" path="res://assets/enemy_nivel1/chicharrmove03.png" id="22_2syoa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op20q"]
+atlas = ExtResource("10_jjbe7")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uuob"]
+atlas = ExtResource("11_w5vw2")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmr6y"]
+atlas = ExtResource("12_iuf3y")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgcic"]
+atlas = ExtResource("10_j5lxu")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00nfl"]
+atlas = ExtResource("14_nr6eg")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvth4"]
+atlas = ExtResource("15_4vt6s")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eunw2"]
+atlas = ExtResource("16_ryg8t")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75qpk"]
+atlas = ExtResource("17_x03cn")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghbpi"]
+atlas = ExtResource("18_tu750")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddxgl"]
+atlas = ExtResource("19_1j881")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6sn7"]
+atlas = ExtResource("20_b2ydo")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ervpi"]
+atlas = ExtResource("21_fle7d")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3hwc"]
+atlas = ExtResource("22_2syoa")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etj3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op20q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uuob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmr6y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgcic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00nfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvth4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eunw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75qpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghbpi")
+}],
+"loop": true,
+"name": &"lanzar",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddxgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6sn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ervpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3hwc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_5hy7d"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ic28m"]
+_data = {
+&"idle": SubResource("Animation_5hy7d")
+}
 
 [node name="Moster1" type="Node2D" unique_id=1862692794]
 script = ExtResource("1_648m5")
-item_bueno_scene = ExtResource("2_rwh8r")
-item_malo_scene = ExtResource("3_7wisy")
+pan_scene = ExtResource("2_j5lxu")
+cebolla_scene = ExtResource("3_ucnuj")
+camote_scene = ExtResource("4_2fuf5")
+limon_scene = ExtResource("5_lmlpi")
+sal_especial_scene = ExtResource("6_qfgr7")
+chicharron_scene = ExtResource("7_ffydr")
+basura_scene = ExtResource("8_ydsta")
+ladrillo_scene = ExtResource("3_7wisy")
 velocidad = 1000
 
 [node name="Timer" type="Timer" parent="." unique_id=1652395765]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=392144195]
-position = Vector2(3, -41)
-scale = Vector2(1, 0.640625)
-texture = ExtResource("2_xnk5b")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2080245554]
+scale = Vector2(0.2825824, 0.28258243)
+sprite_frames = SubResource("SpriteFrames_etj3q")
+animation = &"lanzar"
+frame_progress = 0.9671191
+offset = Vector2(25.36697, -65.22935)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=799700115]
 position = Vector2(-25, 0)
@@ -31,3 +175,10 @@ position = Vector2(50, 0)
 
 [node name="Marker2D5" type="Marker2D" parent="." unique_id=1343888616]
 position = Vector2(-50, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1170923878]
+stream = ExtResource("3_xnk5b")
+volume_db = 11.556
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=815675352]
+libraries/ = SubResource("AnimationLibrary_ic28m")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cgjqgjuhl6fx6"
+path="res://.godot/imported/pan_monster_escupe2.ogg-186fc7351276e43631323d7c82da5295.oggvorbisstr"
+
+[deps]
+
+source_file="res://sonidos/pan con chicharron/pan_monster_escupe2.ogg"
+dest_files=["res://.godot/imported/pan_monster_escupe2.ogg-186fc7351276e43631323d7c82da5295.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
