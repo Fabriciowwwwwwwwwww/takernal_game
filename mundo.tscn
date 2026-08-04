@@ -4,15 +4,32 @@
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_lgngo"]
 [ext_resource type="Script" uid="uid://dpux3yy1jy17" path="res://mundo.gd" id="1_pij3u"]
 [ext_resource type="PackedScene" uid="uid://b7ohhbxl2vwhb" path="res://armas/salsas.tscn" id="3_fw4w5"]
+[ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="3_t4fig"]
+[ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="4_muygd"]
 [ext_resource type="Script" uid="uid://o5ekgetjqg3n" path="res://salsas_spawner.gd" id="4_otwa2"]
 [ext_resource type="Texture2D" uid="uid://b278upjroqg61" path="res://armas/sprite/las salsas/chimi chrriii .png" id="5_aou4a"]
 [ext_resource type="Texture2D" uid="uid://byhe8f31x8jtv" path="res://armas/sprite/las salsas/ketchup .png" id="6_2hh7m"]
+[ext_resource type="Texture2D" uid="uid://fgd3q5ypj06g" path="res://armas/sprite/inka kola/inca kola move/inca kola chargel1.png" id="6_83snu"]
+[ext_resource type="Texture2D" uid="uid://cvgdx2ikh2vce" path="res://armas/sprite/inka kola/inca kola move/inca kola chargel2.png" id="7_bve4g"]
 [ext_resource type="Texture2D" uid="uid://d3vwcpvwn2x4u" path="res://armas/sprite/las salsas/mayoneiai .png" id="7_t8jxu"]
+[ext_resource type="Texture2D" uid="uid://b88auiq7lh5l6" path="res://armas/sprite/inka kola/inca kola move/inca kola chargel3.png" id="8_t4fig"]
 [ext_resource type="PackedScene" uid="uid://dfb1g16vlk7hf" path="res://armas/RainAttack.tscn" id="8_t8jxu"]
+[ext_resource type="Texture2D" uid="uid://dm2ie0x4vg1ok" path="res://armas/sprite/inka kola/inca kola move/inca kola idel1.png" id="9_muygd"]
 [ext_resource type="Script" uid="uid://kdy0xag5a510" path="res://spawn_lluvia.gd" id="9_pfhxm"]
+[ext_resource type="Texture2D" uid="uid://fx641i4x2bq0" path="res://armas/sprite/inka kola/inca kola move/inca kola idel2.png" id="10_y1gce"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="11_0oi55"]
+[ext_resource type="Texture2D" uid="uid://drb8cntrugkao" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl1.png" id="11_nf3ij"]
 [ext_resource type="Script" uid="uid://bognet8idgjwn" path="res://bola_spawner.gd" id="12_57gmc"]
+[ext_resource type="Texture2D" uid="uid://cxyrsfa6wtk3h" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl2.png" id="12_f3apa"]
 [ext_resource type="PackedScene" uid="uid://dnthfqxk8by4k" path="res://player/BolaDiablo .tscn" id="13_0crsg"]
+[ext_resource type="Texture2D" uid="uid://bet7ewl87i780" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl3.png" id="13_a2s0j"]
+[ext_resource type="Texture2D" uid="uid://cjufotjtllxf1" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl4.png" id="14_vfvg0"]
+[ext_resource type="Texture2D" uid="uid://p4tw4q5buwt5" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl5.png" id="15_6occ4"]
+[ext_resource type="Texture2D" uid="uid://cqymhdawiu7vc" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl6.png" id="16_fjyh4"]
+[ext_resource type="Script" uid="uid://cbd0fwt4qbbyt" path="res://cebolla_spawner_2.gd" id="24_muygd"]
+[ext_resource type="PackedScene" uid="uid://brxmt5vaxpy63" path="res://armas/cebolla/cebolla.tscn" id="25_y1gce"]
+[ext_resource type="Script" uid="uid://cb0ym167xj7nw" path="res://spawn_cafe.gd" id="29_nf3ij"]
+[ext_resource type="PackedScene" uid="uid://cseltb3truywj" path="res://armas/sprite/cafe/cafe.tscn" id="30_f3apa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(1298.5, 23)
@@ -20,11 +37,64 @@ size = Vector2(1298.5, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgngo"]
 size = Vector2(150, 20)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_py6jr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_83snu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bve4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t4fig")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_muygd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_y1gce")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_nf3ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f3apa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a2s0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vfvg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6occ4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_fjyh4")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
 [node name="Mundo2" type="Node2D" unique_id=694270786]
 position = Vector2(12, 72)
 script = ExtResource("1_pij3u")
 jugador1 = ExtResource("1_6ba58")
 jugador2 = ExtResource("1_6ba58")
+sprite_frame_jugador1 = ExtResource("3_t4fig")
+sprite_frame_jugador2 = ExtResource("4_muygd")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=689847171]
 position = Vector2(-8, 618)
@@ -125,12 +195,33 @@ texture = ExtResource("1_lgngo")
 
 [node name="RainAttack" parent="." unique_id=875108492 instance=ExtResource("8_t8jxu")]
 
-[node name="spawn_lluvia" type="Node2D" parent="." unique_id=538924717]
+[node name="spawn_lluvia_inka" type="Node2D" parent="." unique_id=538924717]
+visible = false
 script = ExtResource("9_pfhxm")
 tiempo_lluvia = 4.0
 
-[node name="Timer" type="Timer" parent="spawn_lluvia" unique_id=1763559120]
+[node name="Timer" type="Timer" parent="spawn_lluvia_inka" unique_id=1763559120]
 autostart = true
+
+[node name="gaseosa" type="Node2D" parent="spawn_lluvia_inka" unique_id=1111972669]
+position = Vector2(264, 575)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spawn_lluvia_inka/gaseosa" unique_id=1342006381]
+position = Vector2(57.999992, -129.99998)
+scale = Vector2(0.37812498, 0.27617186)
+sprite_frames = SubResource("SpriteFrames_py6jr")
+animation = &"idle"
+frame_progress = 0.6506725
+
+[node name="gaseosa2" type="Node2D" parent="spawn_lluvia_inka" unique_id=266055524]
+position = Vector2(725, 576)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spawn_lluvia_inka/gaseosa2" unique_id=1693094685]
+position = Vector2(57.999992, -129.99998)
+scale = Vector2(0.37812498, 0.27617186)
+sprite_frames = SubResource("SpriteFrames_py6jr")
+animation = &"idle"
+frame_progress = 0.986888
 
 [node name="SalsasSpawner" type="Node2D" parent="." unique_id=1149292236]
 script = ExtResource("4_otwa2")
@@ -178,6 +269,65 @@ sprite_arma = ExtResource("7_t8jxu")
 tipo_direccion = 1
 distancia_salida = 150.0
 
+[node name="cebollaSpawner2" type="Node2D" parent="." unique_id=831090137]
+script = ExtResource("24_muygd")
+
+[node name="Timer" type="Timer" parent="cebollaSpawner2" unique_id=1792834442]
+autostart = true
+
+[node name="Cebolla" parent="cebollaSpawner2" unique_id=307812441 instance=ExtResource("25_y1gce")]
+position = Vector2(172, -83)
+tipo_direccion = 1
+distancia_salida = 1200.0
+
+[node name="Cebolla2" parent="cebollaSpawner2" unique_id=164138557 instance=ExtResource("25_y1gce")]
+position = Vector2(471, -94)
+tipo_direccion = 1
+distancia_salida = 1200.0
+
+[node name="Cebolla10" parent="cebollaSpawner2" unique_id=520266063 instance=ExtResource("25_y1gce")]
+position = Vector2(737, -99)
+tipo_direccion = 1
+distancia_salida = 1200.0
+
+[node name="Cebolla3" parent="cebollaSpawner2" unique_id=587039102 instance=ExtResource("25_y1gce")]
+position = Vector2(939, -75)
+tipo_direccion = 1
+distancia_salida = 1200.0
+
+[node name="Cebolla4" parent="cebollaSpawner2" unique_id=912391995 instance=ExtResource("25_y1gce")]
+position = Vector2(-47, 295)
+rotation = -1.5707964
+distancia_salida = 1200.0
+
+[node name="Cebolla5" parent="cebollaSpawner2" unique_id=1169160305 instance=ExtResource("25_y1gce")]
+position = Vector2(-66, 422)
+rotation = -1.5707964
+distancia_salida = 1200.0
+
+[node name="Cebolla6" parent="cebollaSpawner2" unique_id=1395752635 instance=ExtResource("25_y1gce")]
+position = Vector2(-59, 578)
+rotation = -1.5707964
+distancia_salida = 1200.0
+
+[node name="Cebolla7" parent="cebollaSpawner2" unique_id=272738479 instance=ExtResource("25_y1gce")]
+position = Vector2(1280, 330)
+rotation = 1.5707964
+sentido = -1
+distancia_salida = 1200.0
+
+[node name="Cebolla8" parent="cebollaSpawner2" unique_id=857637499 instance=ExtResource("25_y1gce")]
+position = Vector2(1285, 458)
+rotation = 1.5707964
+sentido = -1
+distancia_salida = 1200.0
+
+[node name="Cebolla9" parent="cebollaSpawner2" unique_id=49819658 instance=ExtResource("25_y1gce")]
+position = Vector2(1306, 571)
+rotation = 1.5707964
+sentido = -1
+distancia_salida = 1200.0
+
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1068985228]
 position = Vector2(604, 252)
 
@@ -185,6 +335,7 @@ position = Vector2(604, 252)
 visible = false
 
 [node name="BolaSpawner" type="Node2D" parent="." unique_id=2041489638]
+position = Vector2(58, -339)
 script = ExtResource("12_57gmc")
 bola_scene = ExtResource("13_0crsg")
 
@@ -203,3 +354,20 @@ position = Vector2(699, 468)
 [node name="Timer" type="Timer" parent="BolaSpawner" unique_id=1814647377]
 wait_time = 15.0
 autostart = true
+
+[node name="spawn_cafe" type="Node2D" parent="." unique_id=1604349693 node_paths=PackedStringArray("cafe")]
+position = Vector2(58, -339)
+script = ExtResource("29_nf3ij")
+cafe = NodePath("Cafe")
+
+[node name="Timer" type="Timer" parent="spawn_cafe" unique_id=366078554]
+wait_time = 15.0
+autostart = true
+
+[node name="Cafe" parent="spawn_cafe" unique_id=25083689 instance=ExtResource("30_f3apa")]
+position = Vector2(298, 931.00006)
+velocidad_misil = 340.0
+
+[node name="Cafe2" parent="spawn_cafe" unique_id=1739035584 instance=ExtResource("30_f3apa")]
+position = Vector2(727, 935)
+velocidad_misil = 305.0

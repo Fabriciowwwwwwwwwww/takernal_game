@@ -1,5 +1,13 @@
 extends CharacterBody2D
+var siendo_lanzado := false
 
+@export var tiempo_lanzamiento := 0.35
+@export var angulo_lanzamiento := 35.0
+@export var throw_force := 1200.0
+var grab_action := ""
+var jugador_cargado: CharacterBody2D = null
+var siendo_cargado := false
+var cargando := false
 @export var speed := 260.0
 @export var jump_force := -520.0
 @export var gravity := 1400.0
@@ -16,8 +24,9 @@ var down_action := ""
 @export var dash_speed := 650.0
 @export var dash_time := 0.18
 @export var dash_cooldown := 0.35
-
 @export var bullet_scene: PackedScene
+@export var sprite_frame: SpriteFrames
+@onready var animacion_recurso: AnimatedSprite2D = $AnimatedSprite2D
 
 var facing := 1
 
@@ -26,26 +35,71 @@ var dash_timer := 0.0
 var cooldown_timer := 0.0
 
 func _ready():
+	animacion_recurso.sprite_frames = sprite_frame
+	$Arrow.visible = false
 
 	if jugador == "Jugador 1":
-
 		left_action = "p1_left"
 		right_action = "p1_right"
 		jump_action = "p1_jump"
 		dash_action = "p1_dash"
 		down_action = "p1_down"
+		grab_action = "p1_grab"
 
 	else:
-
 		left_action = "p2_left"
 		right_action = "p2_right"
 		jump_action = "p2_jump"
 		dash_action = "p2_dash"
 		down_action = "p2_down"
+		grab_action = "p2_grab"
 
 
 	print("Controles asignados:", jugador)
 func _physics_process(delta):
+
+	# Si está siendo lanzado mantiene la fuerza recibida
+	if siendo_lanzado:
+
+		tiempo_lanzamiento -= delta
+
+		move_and_slide()
+
+		if tiempo_lanzamiento <= 0:
+			siendo_lanzado = false
+			tiempo_lanzamiento = 0.35
+
+		return
+	if Input.is_action_just_pressed(grab_action):
+
+		if cargando:
+			lanzar_companero()
+		else:
+			intentar_cargar()
+
+
+	# Flecha mientras carga
+	if cargando:
+
+		$Arrow.visible = true
+
+		var aim := Input.get_vector(
+			left_action,
+			right_action,
+			jump_action,
+			down_action
+		)
+
+		if aim != Vector2.ZERO:
+			$Arrow.global_rotation = aim.angle()
+
+	else:
+		$Arrow.visible = false
+
+	if siendo_cargado:
+		velocity = Vector2.ZERO
+		global_position = get_parent().global_position
+		return
 
 	# Gravedad
 	if !is_on_floor() and !is_dashing:
@@ -178,3 +232,73 @@ func perder_vida():
 
 func sumar_progreso():
 	$"../Ui".sumar_progreso()
+func cargar_companero(companero: CharacterBody2D):
+
+	if cargando:
+		return
+
+	jugador_cargado = companero
+	cargando = true
+
+	companero.siendo_cargado = true
+	companero.velocity = Vector2.ZERO
+
+	# Poner detrás del jugador que carga
+	companero.z_index = -1
+
+	# Desactivar colisión mientras está encima
+	companero.get_node("CollisionShape2D").set_deferred("disabled", true)
+
+	companero.reparent($CarryMarker)
+	companero.position = Vector2.ZERO
+
+	$Arrow.visible = true
+
+func lanzar_companero():
+
+	if jugador_cargado == null:
+		return
+
+	var direccion := Vector2.ZERO
+
+	if cos($Arrow.global_rotation) >= 0:
+		direccion = Vector2.RIGHT.rotated(deg_to_rad(-angulo_lanzamiento))
+	else:
+		direccion = Vector2.LEFT.rotated(deg_to_rad(angulo_lanzamiento))
+
+	direccion = direccion.normalized()
+
+
+	jugador_cargado.reparent(get_parent())
+
+	# Restaurar orden al salir
+	jugador_cargado.z_index = 0
+
+	jugador_cargado.global_position = $CarryMarker.global_position
+
+
+	jugador_cargado.get_node("CollisionShape2D").set_deferred("disabled", false)
+
+
+	jugador_cargado.siendo_cargado = false
+	jugador_cargado.siendo_lanzado = true
+	jugador_cargado.tiempo_lanzamiento = tiempo_lanzamiento
+
+
+	jugador_cargado.velocity = direccion * throw_force
+
+
+	jugador_cargado = null
+	cargando = false
+
+	$Arrow.visible = false
+func intentar_cargar():
+
+	if cargando:
+		return
+
+	for body in $GrabArea.get_overlapping_bodies():
+
+		if body != self and body is CharacterBody2D:
+			cargar_companero(body)
+			break

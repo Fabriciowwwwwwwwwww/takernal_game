@@ -2,93 +2,12 @@
 
 [ext_resource type="Script" uid="uid://btfwq0hw2t1cp" path="res://player/personaje.gd" id="1_oohw6"]
 [ext_resource type="PackedScene" uid="uid://ckwkhbdrbvc0k" path="res://player/bullet.tscn" id="2_y5xqi"]
-[ext_resource type="Texture2D" uid="uid://b3kjg31nr77ix" path="res://player/player_sprite/cuy/cuy_idle/cuy00.png" id="3_bqu37"]
-[ext_resource type="Texture2D" uid="uid://phi47lje5h18" path="res://player/player_sprite/cuy/cuy_idle/cuy01.png" id="4_8py2f"]
-[ext_resource type="Texture2D" uid="uid://bwt4tfwjfehy8" path="res://player/player_sprite/cuy/cuy_idle/cuy02.png" id="5_cbfup"]
+[ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="3_bqu37"]
+[ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="3_p0brf"]
 [ext_resource type="Texture2D" uid="uid://cjthrfyhggfp" path="res://player/player_sprite/bala.png" id="5_dnsbo"]
 [ext_resource type="AudioStream" uid="uid://c2dipcxcg6yuj" path="res://player/player_sprite/Sonido de Disparo de Mosquete - Efecto de sonido.ogg" id="6_kqs56"]
-[ext_resource type="Texture2D" uid="uid://bpojaspb3p8ut" path="res://player/player_sprite/cuy/cuy_idle/cuy03.png" id="6_vf2yw"]
-[ext_resource type="Texture2D" uid="uid://iw0rc6aalbt2" path="res://player/player_sprite/cuy/cuy_run/cuy00.png" id="7_e1yrx"]
-[ext_resource type="Texture2D" uid="uid://lq2gmy2ipdq7" path="res://player/player_sprite/cuy/cuy_run/cuy01.png" id="8_ah26a"]
-[ext_resource type="Texture2D" uid="uid://bmh05kmq7npc6" path="res://player/player_sprite/cuy/cuy_run/cuy02.png" id="9_bxgr4"]
-[ext_resource type="Texture2D" uid="uid://c4yh5o8ho647i" path="res://player/player_sprite/cuy/cuy_run/cuy03.png" id="10_adwek"]
-[ext_resource type="Texture2D" uid="uid://cbh360115teeg" path="res://player/player_sprite/cuy/cuy_run/cuy04.png" id="11_8wf7i"]
-[ext_resource type="Texture2D" uid="uid://cajpii3j4gc0" path="res://player/player_sprite/cuy/cuy_run/cuy05.png" id="12_mlnhs"]
-[ext_resource type="Texture2D" uid="uid://jy4bhylis5ip" path="res://player/player_sprite/cuy/cuy_run/cuy06.png" id="13_m4xa4"]
 [ext_resource type="AudioStream" uid="uid://bin8t5pfgwe20" path="res://player/player_sprite/cuy/cuy_audio/salto1.ogg" id="16_ah26a"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0c8go"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_bxgr4")
-}],
-"loop": true,
-"name": &"dash",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_8py2f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cbfup")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_bqu37")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_8py2f")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cbfup")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_vf2yw")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_8py2f")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_e1yrx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_ah26a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_bxgr4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_adwek")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_8wf7i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_mlnhs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_m4xa4")
-}],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://dv3u5oeml25cu" path="res://interfaces/sprite/flecha.png" id="17_bxgr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oohw6"]
 size = Vector2(13.333334, 18.333334)
@@ -454,19 +373,26 @@ animations = [{
 "speed": 21.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxgr4"]
+radius = 13.106401
+
 [node name="P" type="CharacterBody2D" unique_id=1738953310]
 scale = Vector2(3, 3)
 collision_mask = 3
 script = ExtResource("1_oohw6")
+tiempo_lanzamiento = 0.4
+throw_force = 700.0
 jump_force = -850.0
 bullet_scene = ExtResource("2_y5xqi")
+sprite_frame = ExtResource("3_bqu37")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=292702301]
 texture_filter = 1
 position = Vector2(-1, -2.9802322e-08)
 scale = Vector2(0.037968434, 0.034118425)
-sprite_frames = SubResource("SpriteFrames_0c8go")
-animation = &"dash"
+sprite_frames = ExtResource("3_p0brf")
+animation = &"fall"
+frame_progress = 0.6760935
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203787327]
 position = Vector2(-1.333333, 1.166667)
@@ -492,3 +418,19 @@ volume_db = -13.0
 
 [node name="salto_audio" type="AudioStreamPlayer2D" parent="." unique_id=1241917363]
 stream = ExtResource("16_ah26a")
+
+[node name="CarryMarker" type="Marker2D" parent="." unique_id=894320470]
+position = Vector2(-1.3333334, -12.666667)
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1552114197]
+position = Vector2(-0.6666666, -11.666667)
+scale = Vector2(0.020868054, 0.018295262)
+texture = ExtResource("17_bxgr4")
+offset = Vector2(290, 0)
+
+[node name="GrabArea" type="Area2D" parent="." unique_id=437776696]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea" unique_id=764803900]
+position = Vector2(-1.6666667, 0.33333334)
+shape = SubResource("CircleShape2D_bxgr4")
+debug_color = Color(0.7837472, 0.42067003, 0.30358067, 0.41960785)
