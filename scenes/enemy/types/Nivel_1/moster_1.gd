@@ -26,6 +26,9 @@ var _pool_buenos: Array = []
 var _pool_malos: Array = []
 var _marker_izq_extremo: Marker2D = null
 var _marker_der_extremo: Marker2D = null
+var _lanzando := false
+@onready var _audio_lanzamiento: AudioStreamPlayer2D = $AudioStreamPlayer
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 enum Estado { PATRULLANDO, ATACANDO }
 var _estado: Estado = Estado.PATRULLANDO
 func _ready():
@@ -56,6 +59,7 @@ func _process(delta):
 		return
 	_ajustar_velocidad_por_borde()
 	mover(delta)
+	_actualizar_animacion_patrulla()
 	if position.x <= limite_izquierdo:
 		direccion = 1
 		_llegar_a_extremo()
@@ -67,6 +71,13 @@ func _process(delta):
 		_spawn_timer = 0.0
 		_proximo_intervalo = randf_range(intervalo_min, intervalo_max)
 		spawnear_tanda()
+func _actualizar_animacion_patrulla():
+	if _sprite == null or _lanzando:
+		return
+	_sprite.flip_h = direccion < 0
+	if _sprite.animation != "run":
+		_sprite.play("run")
+	_sprite.speed_scale = clamp(velocidad / _velocidad_normal, 0.15, 1.0)
 func _ajustar_velocidad_por_borde():
 	var distancia_izq = position.x - limite_izquierdo
 	var distancia_der = limite_derecho - position.x
@@ -76,6 +87,17 @@ func _ajustar_velocidad_por_borde():
 		velocidad = lerp(_velocidad_normal * velocidad_minima_factor, _velocidad_normal, t)
 	else:
 		velocidad = _velocidad_normal
+func _reproducir_animacion_lanzar(nombre: String) -> void:
+	if _sprite == null or _sprite.sprite_frames == null or not _sprite.sprite_frames.has_animation(nombre):
+		return
+	_lanzando = true
+	_sprite.speed_scale = 1.0
+	_sprite.play(nombre)
+	var fotogramas = _sprite.sprite_frames.get_frame_count(nombre)
+	var velocidad_anim = _sprite.sprite_frames.get_animation_speed(nombre)
+	var duracion = float(fotogramas) / max(velocidad_anim, 0.01)
+	await get_tree().create_timer(duracion).timeout
+	_lanzando = false
 func _elegir_item_random(pool: Array) -> PackedScene:
 	var total_prob := 0.0
 	for entrada in pool:
@@ -87,9 +109,12 @@ func _elegir_item_random(pool: Array) -> PackedScene:
 		if r <= acumulado:
 			return entrada["escena"]
 	return pool[-1]["escena"]
-func spawnear_tanda():
+func spawnear_tanda(nombre_animacion: String = "lanzar"):
 	if _spawn_points.is_empty():
 		return
+	if _audio_lanzamiento:
+		_audio_lanzamiento.play()
+	_reproducir_animacion_lanzar(nombre_animacion)
 	var markers = _spawn_points.duplicate()
 	markers.shuffle()
 	var indice_bueno = randi() % markers.size()
@@ -122,7 +147,10 @@ func _llegar_a_extremo():
 	_secuencia_de_ataque()
 func _secuencia_de_ataque() -> void:
 	velocidad = 0.0
+	if _sprite:
+		_sprite.speed_scale = 1.0
+		_sprite.play("idle")
 	await get_tree().create_timer(randf_range(tiempo_preparacion_min, tiempo_preparacion_max)).timeout
-	spawnear_tanda()
+	spawnear_tanda("lanzar")
 	velocidad = _velocidad_normal
 	_estado = Estado.PATRULLANDO

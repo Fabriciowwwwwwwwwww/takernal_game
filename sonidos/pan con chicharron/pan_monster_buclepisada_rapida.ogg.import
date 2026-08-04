@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wxdnx3d5yghj"
+path="res://.godot/imported/pan_monster_buclepisada_rapida.ogg-448c41f1dfc0faa5d6d7a0dd1e182c6d.oggvorbisstr"
+
+[deps]
+
+source_file="res://sonidos/pan con chicharron/pan_monster_buclepisada_rapida.ogg"
+dest_files=["res://.godot/imported/pan_monster_buclepisada_rapida.ogg-448c41f1dfc0faa5d6d7a0dd1e182c6d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

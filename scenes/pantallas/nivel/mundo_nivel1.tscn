@@ -3,16 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_dtdnh"]
 [ext_resource type="PackedScene" uid="uid://dku8abeq4hwff" path="res://scenes/ui/ui.tscn" id="1_sn2vc"]
 [ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_0bc7o"]
-[ext_resource type="PackedScene" uid="uid://comvjcbenw74r" path="res://scenes/items/item_nivel_1/item_bueno/pan.tscn" id="2_xsy0r"]
-[ext_resource type="PackedScene" uid="uid://cdh2i66q22hgy" path="res://scenes/items/item_nivel_1/item_bueno/Cebolla.tscn" id="2_yb6q5"]
 [ext_resource type="PackedScene" uid="uid://c8srfw33nwa51" path="res://scenes/enemy/types/Nivel_1/moster_1.tscn" id="3_00txm"]
-[ext_resource type="PackedScene" uid="uid://pmwlgntprm6k" path="res://scenes/items/item_nivel_1/item_bueno/Camote.tscn" id="3_gy6bw"]
-[ext_resource type="PackedScene" uid="uid://b365x50io0wq7" path="res://scenes/items/item_nivel_1/item_bueno/Limon.tscn" id="5_ywi86"]
-[ext_resource type="PackedScene" uid="uid://bxucdsixlqcqa" path="res://scenes/items/item_nivel_1/item_bueno/sal.tscn" id="6_6k5lx"]
-[ext_resource type="PackedScene" uid="uid://bdjcto0xi60cy" path="res://scenes/items/item_nivel_1/item_bueno/pedazo_chicharron.tscn" id="7_n00vl"]
-[ext_resource type="PackedScene" uid="uid://62l7es0iw2lh" path="res://scenes/items/item_nivel_1/item_malo/bolsa_basura.tscn" id="8_4x6ec"]
-[ext_resource type="PackedScene" uid="uid://dcahg1o3ley0n" path="res://scenes/items/item_nivel_1/item_malo/ladrillo.tscn" id="9_oxw66"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="12_sn2vc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u84de"]
+bg_color = Color(0.38908264, 0.4078815, 0.42152596, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgngo"]
 size = Vector2(215, 20)
@@ -25,6 +20,14 @@ size = Vector2(1171, 20)
 
 [node name="Mundo" type="Node2D" unique_id=694270786]
 
+[node name="Panel" type="Panel" parent="." unique_id=1743825345]
+visible = false
+offset_left = -104.0
+offset_top = -88.0
+offset_right = 1318.0
+offset_bottom = 759.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u84de")
+
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=26694079]
@@ -34,25 +37,6 @@ limit_top = 0
 limit_right = 1150
 limit_bottom = 640
 
-[node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
-position = Vector2(558, 213)
-pan_scene = ExtResource("2_xsy0r")
-cebolla_scene = ExtResource("2_yb6q5")
-camote_scene = ExtResource("3_gy6bw")
-limon_scene = ExtResource("5_ywi86")
-sal_especial_scene = ExtResource("6_6k5lx")
-chicharron_scene = ExtResource("7_n00vl")
-basura_scene = ExtResource("8_4x6ec")
-ladrillo_scene = ExtResource("9_oxw66")
-intervalo_min = 1.0
-intervalo_max = 1.5
-limite_izquierdo = 90.0
-limite_derecho = 1090.0
-tiempo_preparacion_min = 0.4
-tiempo_preparacion_max = 1.0
-fuerza_parabola = 550.0
-velocidad = 450
-
 [node name="P" parent="." unique_id=1738953310 groups=["player"] instance=ExtResource("2_0bc7o")]
 position = Vector2(409, 525)
 scale = Vector2(4.4991555, 4.454631)
@@ -60,7 +44,7 @@ speed = 560.0
 jump_force = -800.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1067900165 groups=["plataforma"]]
-position = Vector2(5, 386)
+position = Vector2(5, 509)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=770017337]
 position = Vector2(86.5, 0)
@@ -73,7 +57,7 @@ scale = Vector2(1.6054684, 0.17187506)
 texture = ExtResource("1_dtdnh")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=688854187 groups=["plataforma"]]
-position = Vector2(824, 383)
+position = Vector2(824, 506)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=96236707]
 position = Vector2(218.5, 0)
@@ -86,7 +70,7 @@ scale = Vector2(1.7890619, 0.17187506)
 texture = ExtResource("1_dtdnh")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=892334228]
-position = Vector2(-2, 209)
+position = Vector2(2, 270)
 collision_layer = 2
 collision_mask = 0
 
@@ -166,6 +150,19 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(575.00006, 3.0000033)
 scale = Vector2(9.1953125, 0.17187506)
 texture = ExtResource("1_dtdnh")
+
+[node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
+position = Vector2(579, 286)
+intervalo_min = 1.5
+intervalo_max = 2.0
+limite_izquierdo = 100.0
+limite_derecho = 1025.0
+tiempo_preparacion_min = 1.5
+tiempo_preparacion_max = 2.0
+fuerza_parabola = 550.0
+fuerza_extremo_min = 600.0
+fuerza_extremo_max = 800.0
+velocidad = 450
 
 [node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("12_sn2vc")]
 visible = false

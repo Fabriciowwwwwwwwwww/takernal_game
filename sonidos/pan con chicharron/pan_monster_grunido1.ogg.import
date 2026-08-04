@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://r6dtmxf8xogs"
+path="res://.godot/imported/pan_monster_grunido1.ogg-af1a92077f20c76647a307f5388e2dee.oggvorbisstr"
+
+[deps]
+
+source_file="res://sonidos/pan con chicharron/pan_monster_grunido1.ogg"
+dest_files=["res://.godot/imported/pan_monster_grunido1.ogg-af1a92077f20c76647a307f5388e2dee.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
