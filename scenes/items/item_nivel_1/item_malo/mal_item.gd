@@ -1,26 +1,33 @@
 extends RigidBody2D
 
 var desapareciendo := false
+var puede_chocar := false
 
-func _on_body_entered(body: Node) -> void:
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _audio: AudioStreamPlayer2D = $roto
+
+func _ready() -> void:
+	_sprite.play("lanzamiento")
+	await _sprite.animation_finished
+	puede_chocar = true
 	
-	if body.is_in_group("player"):
-		body.perder_vida()
-		queue_free()
-		
+func _on_body_entered(body):
+	if not puede_chocar:
+		return
 	if desapareciendo:
 		return
+
+	_audio.play()
+
+	if body.is_in_group("player"):
+		body.perder_vida()
 		desapareciendo = true
 		animacion_desaparicion()
-
 	elif body.is_in_group("plataforma"):
 		desapareciendo = true
 		animacion_desaparicion()
-
-
+		
 func animacion_desaparicion():
-	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2.ZERO, 0.3)
-	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.3)
-	await tween.finished
+	_sprite.play("explosion")
+	await _sprite.animation_finished
 	queue_free()

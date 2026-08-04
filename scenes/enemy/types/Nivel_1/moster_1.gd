@@ -7,26 +7,26 @@ extends "res://scenes/enemy/monster_base.gd"
 @export var chicharron_scene: PackedScene
 @export var basura_scene: PackedScene
 @export var ladrillo_scene: PackedScene
-@export var intervalo_min: float = 1.2
-@export var intervalo_max: float = 2.5
+@export var intervalo_lanzamiento: float = 1.5
+@export var intervalo_entre_disparos: float = 0.2
+@export var probabilidad_doble_malo: float = 0.65
 @export var limite_izquierdo: float = 160.0
 @export var limite_derecho: float = 1158.0
 @export var margen_frenado: float = 250.0
 @export var velocidad_minima_factor: float = 0.1
-@export var tiempo_preparacion_min: float = 0.6
-@export var tiempo_preparacion_max: float = 1.4
+@export var tiempo_preparacion: float = 1.0
 @export var fuerza_parabola: float = 350.0
 @export var fuerza_extremo_min: float = 500.0
 @export var fuerza_extremo_max: float = 750.0
 var _spawn_points: Array[Marker2D] = []
 var _spawn_timer: float = 0.0
-var _proximo_intervalo: float = 0.0
 var _velocidad_normal: float
 var _pool_buenos: Array = []
 var _pool_malos: Array = []
 var _marker_izq_extremo: Marker2D = null
 var _marker_der_extremo: Marker2D = null
 var _lanzando := false
+var activo := false
 @onready var _audio_lanzamiento: AudioStreamPlayer2D = $AudioStreamPlayer
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 enum Estado { PATRULLANDO, ATACANDO }
@@ -37,12 +37,12 @@ func _ready():
 		if child is Marker2D:
 			_spawn_points.append(child)
 	_pool_buenos = [
-		{ "escena": pan_scene,          "prob": 0.08 },
-		{ "escena": cebolla_scene,      "prob": 0.06 },
-		{ "escena": camote_scene,       "prob": 0.05 },
-		{ "escena": limon_scene,        "prob": 0.04 },
-		{ "escena": sal_especial_scene, "prob": 0.03 },
-		{ "escena": chicharron_scene,   "prob": 0.03 },
+		{ "escena": pan_scene,          "prob": 0.02 },
+		{ "escena": cebolla_scene,      "prob": 0.08 },
+		{ "escena": camote_scene,       "prob": 0.07 },
+		{ "escena": limon_scene,        "prob": 0.06 },
+		{ "escena": sal_especial_scene, "prob": 0.05 },
+		{ "escena": chicharron_scene,   "prob": 0.05 },
 	]
 	_pool_malos = [
 		{ "escena": basura_scene,       "prob": 0.42 },
@@ -53,8 +53,13 @@ func _ready():
 			_marker_izq_extremo = m
 		if _marker_der_extremo == null or m.global_position.x > _marker_der_extremo.global_position.x:
 			_marker_der_extremo = m
-	_proximo_intervalo = randf_range(intervalo_min, intervalo_max)
+func set_activo(valor: bool) -> void:
+	activo = valor
+	if not activo:
+		velocidad = 0.0
 func _process(delta):
+	if not activo:
+		return
 	if _estado != Estado.PATRULLANDO:
 		return
 	_ajustar_velocidad_por_borde()
@@ -67,9 +72,8 @@ func _process(delta):
 		direccion = -1
 		_llegar_a_extremo()
 	_spawn_timer += delta
-	if _spawn_timer >= _proximo_intervalo:
+	if _spawn_timer >= intervalo_lanzamiento:
 		_spawn_timer = 0.0
-		_proximo_intervalo = randf_range(intervalo_min, intervalo_max)
 		spawnear_tanda()
 func _actualizar_animacion_patrulla():
 	if _sprite == null or _lanzando:
@@ -110,19 +114,32 @@ func _elegir_item_random(pool: Array) -> PackedScene:
 			return entrada["escena"]
 	return pool[-1]["escena"]
 func spawnear_tanda(nombre_animacion: String = "lanzar"):
-	if _spawn_points.is_empty():
+	if not activo:
+		return
+	if _spawn_points.size() < 2:
 		return
 	if _audio_lanzamiento:
 		_audio_lanzamiento.play()
 	_reproducir_animacion_lanzar(nombre_animacion)
 	var markers = _spawn_points.duplicate()
 	markers.shuffle()
-	var indice_bueno = randi() % markers.size()
-	for i in range(markers.size()):
-		if i == indice_bueno:
-			spawnear_item(markers[i], _pool_buenos)
+	var pool_1: Array
+	var pool_2: Array
+	if randf() < probabilidad_doble_malo:
+		pool_1 = _pool_malos
+		pool_2 = _pool_malos
+	else:
+		if randf() < 0.5:
+			pool_1 = _pool_buenos
+			pool_2 = _pool_malos
 		else:
-			spawnear_item(markers[i], _pool_malos)
+			pool_1 = _pool_malos
+			pool_2 = _pool_buenos
+	spawnear_item(markers[0], pool_1)
+	await get_tree().create_timer(intervalo_entre_disparos).timeout
+	if not activo:
+		return
+	spawnear_item(markers[1], pool_2)
 func spawnear_item(punto: Marker2D, pool: Array):
 	var escena: PackedScene = _elegir_item_random(pool)
 	if escena == null:
@@ -141,8 +158,11 @@ func spawnear_item(punto: Marker2D, pool: Array):
 			magnitud = randf_range(0.0, fuerza_parabola)
 		item.linear_velocity = Vector2(lado * magnitud, 0)
 func _llegar_a_extremo():
+	if not activo:
+		return
 	if _estado != Estado.PATRULLANDO:
 		return
+	_spawn_timer = 0.0
 	_estado = Estado.ATACANDO
 	_secuencia_de_ataque()
 func _secuencia_de_ataque() -> void:
@@ -150,7 +170,9 @@ func _secuencia_de_ataque() -> void:
 	if _sprite:
 		_sprite.speed_scale = 1.0
 		_sprite.play("idle")
-	await get_tree().create_timer(randf_range(tiempo_preparacion_min, tiempo_preparacion_max)).timeout
-	spawnear_tanda("lanzar")
+	await get_tree().create_timer(tiempo_preparacion).timeout
+	if activo:
+		spawnear_tanda("lanzar")
 	velocidad = _velocidad_normal
 	_estado = Estado.PATRULLANDO
+	_spawn_timer = 0.0

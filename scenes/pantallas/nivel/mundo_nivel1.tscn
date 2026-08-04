@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bdcomvhmo3lf1"]
 
+[ext_resource type="Script" uid="uid://b0ovh8722fe27" path="res://scenes/pantallas/nivel/configuarcion_nivel_1.gd" id="1_d4qrc"]
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_dtdnh"]
 [ext_resource type="PackedScene" uid="uid://dku8abeq4hwff" path="res://scenes/ui/ui.tscn" id="1_sn2vc"]
 [ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_0bc7o"]
 [ext_resource type="PackedScene" uid="uid://c8srfw33nwa51" path="res://scenes/enemy/types/Nivel_1/moster_1.tscn" id="3_00txm"]
+[ext_resource type="AudioStream" uid="uid://bfwakangwvsta" path="res://sonidos/nivel1/festejo_pan_chicharron.ogg" id="7_4vjds"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="12_sn2vc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u84de"]
@@ -19,9 +21,9 @@ size = Vector2(1175, 23)
 size = Vector2(1171, 20)
 
 [node name="Mundo" type="Node2D" unique_id=694270786]
+script = ExtResource("1_d4qrc")
 
 [node name="Panel" type="Panel" parent="." unique_id=1743825345]
-visible = false
 offset_left = -104.0
 offset_top = -88.0
 offset_right = 1318.0
@@ -153,16 +155,15 @@ texture = ExtResource("1_dtdnh")
 
 [node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
 position = Vector2(579, 286)
-intervalo_min = 1.5
-intervalo_max = 2.0
 limite_izquierdo = 100.0
 limite_derecho = 1025.0
-tiempo_preparacion_min = 1.5
-tiempo_preparacion_max = 2.0
 fuerza_parabola = 550.0
 fuerza_extremo_min = 600.0
 fuerza_extremo_max = 800.0
-velocidad = 450
+velocidad = 550
 
 [node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("12_sn2vc")]
 visible = false
+
+[node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=1268955572]
+stream = ExtResource("7_4vjds")
