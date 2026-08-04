@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dnthfqxk8by4k"]
+
+[ext_resource type="Script" uid="uid://dqwitiuj1nxpm" path="res://player/bola_diablo_.gd" id="1_jj140"]
+[ext_resource type="Texture2D" uid="uid://1qgsh7am13g0" path="res://armas/sprite/disparo inca kola/disparo inca kola.png" id="2_gnfm1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j40gx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gnfm1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8gek"]
+radius = 18.027756
+
+[node name="BolaDiablo" type="CharacterBody2D" unique_id=934223403]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jj140")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=176154318]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(1.1920929e-07, 0)
+rotation = -1.5726897
+scale = Vector2(0.10703814, 0.108958334)
+sprite_frames = SubResource("SpriteFrames_j40gx")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1398089051]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365285930]
+position = Vector2(3, 0)
+rotation = -1.5707964
+shape = SubResource("CircleShape2D_a8gek")
