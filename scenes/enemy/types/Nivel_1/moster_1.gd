@@ -26,7 +26,7 @@ var _pool_malos: Array = []
 var _marker_izq_extremo: Marker2D = null
 var _marker_der_extremo: Marker2D = null
 var _lanzando := false
-var activo := false
+var activo := true
 @onready var _audio_lanzamiento: AudioStreamPlayer2D = $AudioStreamPlayer
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 enum Estado { PATRULLANDO, ATACANDO }

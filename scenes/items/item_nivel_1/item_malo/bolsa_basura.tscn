@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c44x23eb327ty" path="res://scenes/items/item_nivel_1/item_malo/mal_item.gd" id="1_y6ko0"]
 [ext_resource type="AudioStream" uid="uid://bbl1vcgkpn3ot" path="res://sonidos/ataques/basura_impacto3.ogg" id="2_fdnve"]
+[ext_resource type="AudioStream" uid="uid://c24gf0hqa3q00" path="res://sonidos/ataques/basura_impacto1.ogg" id="2_r00wr"]
 [ext_resource type="Texture2D" uid="uid://c18np0arts4eb" path="res://assets/items_nivel_1/bolsaade basura -Sheet.png" id="2_y6ko0"]
+[ext_resource type="AudioStream" uid="uid://c26yw5eatm8j3" path="res://sonidos/ataques/basura_impacto2.ogg" id="3_lopa5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
 
@@ -93,8 +95,17 @@ position = Vector2(-0.5, -4.4999995)
 scale = Vector2(8.755, 8.755)
 shape = SubResource("RectangleShape2D_ktwcm")
 
-[node name="roto" type="AudioStreamPlayer2D" parent="." unique_id=1808470871]
+[node name="roto1" type="AudioStreamPlayer2D" parent="." unique_id=1808470871]
+stream = ExtResource("2_r00wr")
+volume_db = 14.0
+
+[node name="roto2" type="AudioStreamPlayer2D" parent="." unique_id=643056760]
+stream = ExtResource("3_lopa5")
+volume_db = 14.0
+
+[node name="roto3" type="AudioStreamPlayer2D" parent="." unique_id=712215316]
 stream = ExtResource("2_fdnve")
+volume_db = 14.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2019170771]
 scale = Vector2(0.084375, 0.084375)
