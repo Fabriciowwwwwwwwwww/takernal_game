@@ -1,9 +1,8 @@
 extends Node
 
-# Arrastra tu nodo Puzle desde el inspector aquí
+
 @export var nodo_puzle : Node2D 
 
-# Arrastra aquí tu Sprite, Panel o Partículas
 @export var imagen_victoria : Sprite2D 
 
 

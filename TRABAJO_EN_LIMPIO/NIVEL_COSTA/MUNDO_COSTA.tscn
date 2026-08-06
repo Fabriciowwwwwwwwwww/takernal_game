@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cjowccasph742"]
+
+[ext_resource type="Script" uid="uid://cl0836kepuqfw" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/codigo_infinito.gd" id="1_fwl6c"]
+[ext_resource type="Texture2D" uid="uid://ctww1xjf6xrms" path="res://assets/NIVEL_costa-ASSETS/cielo limeño 02 .png" id="1_gh53d"]
+[ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_13w4h"]
+[ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="3_fwl6c"]
+[ext_resource type="PackedScene" uid="uid://7qyuabqc8lnb" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Platos/platos.tscn" id="5_ahcmn"]
+[ext_resource type="PackedScene" uid="uid://c002oax282d0d" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/enemigo_causa.tscn" id="6_ahusb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahusb"]
+size = Vector2(810, 202.00002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0hfp"]
+size = Vector2(1171, 20)
+
+[node name="MundoCosta" type="Node2D" unique_id=528600275]
+
+[node name="Fondo_movimiento" type="ParallaxBackground" parent="." unique_id=1119883681]
+script = ExtResource("1_fwl6c")
+velocidad_scroll = 20.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Fondo_movimiento" unique_id=571015494]
+motion_mirroring = Vector2(2680, 0)
+
+[node name="CieloLimeño" type="Sprite2D" parent="Fondo_movimiento/ParallaxLayer" unique_id=1037139859]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("1_gh53d")
+centered = false
+
+[node name="CieloLimeño2" type="Sprite2D" parent="Fondo_movimiento/ParallaxLayer" unique_id=141419139]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1345, 1)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("1_gh53d")
+centered = false
+flip_h = true
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1818463589]
+position = Vector2(60, -478)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D5" unique_id=1661906894]
+position = Vector2(853, 104.99997)
+shape = SubResource("RectangleShape2D_ahusb")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D5" unique_id=321942971]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(830.65533, 106.18859)
+scale = Vector2(6.766964, 1.5810714)
+texture = ExtResource("3_fwl6c")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="StaticBody2D5" unique_id=653610485]
+position = Vector2(1679, -1192.0002)
+rotation = 3.1259604
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D5/StaticBody2D5" unique_id=468806282]
+position = Vector2(853, 104.99997)
+shape = SubResource("RectangleShape2D_ahusb")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D5/StaticBody2D5" unique_id=621121129]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(830.65533, 106.18859)
+scale = Vector2(6.766964, 1.5810714)
+texture = ExtResource("3_fwl6c")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1443645232 groups=["plataforma"]]
+position = Vector2(45, 666)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=404235036]
+position = Vector2(575.5, 0)
+shape = SubResource("RectangleShape2D_s0hfp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D3" unique_id=1460253415]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(575.00006, 3.0000033)
+scale = Vector2(9.1953125, 0.17187506)
+texture = ExtResource("3_fwl6c")
+
+[node name="Platos" parent="." unique_id=1143187593 instance=ExtResource("5_ahcmn")]
+position = Vector2(618, 420)
+
+[node name="P" parent="." unique_id=1738953310 instance=ExtResource("2_13w4h")]
+position = Vector2(606, 429)
+
+[node name="EnemigoCausa" parent="." unique_id=1140111242 instance=ExtResource("6_ahusb")]
+position = Vector2(1136.9999, 601)
+scale = Vector2(9.04, 9.04)
