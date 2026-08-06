@@ -67,6 +67,7 @@ func actualizar_progreso():
 		progreso = 0
 
 
+
 	barra.value = progreso
 
 	if progreso >= 50 and not cebolla_llamada:

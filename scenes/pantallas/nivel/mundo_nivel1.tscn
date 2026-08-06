@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bdcomvhmo3lf1"]
 
+[ext_resource type="Script" uid="uid://b0ovh8722fe27" path="res://scenes/pantallas/nivel/configuarcion_nivel_1.gd" id="1_d4qrc"]
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_dtdnh"]
 [ext_resource type="PackedScene" uid="uid://dku8abeq4hwff" path="res://scenes/ui/ui.tscn" id="1_sn2vc"]
 [ext_resource type="Script" uid="uid://dpux3yy1jy17" path="res://mundo.gd" id="1_u84de"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c2jkj20jrosb" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/fondo .png" id="9_aae4c"]
 [ext_resource type="PackedScene" uid="uid://bhng1ewjs4apw" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma.tscn" id="11_f40s6"]
 [ext_resource type="Texture2D" uid="uid://d0mk34i3ut8hp" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/piso .png" id="11_sn2vc"]
+[ext_resource type="AudioStream" uid="uid://bfwakangwvsta" path="res://sonidos/nivel1/festejo_pan_chicharron.ogg" id="7_4vjds"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="12_sn2vc"]
 [ext_resource type="PackedScene" uid="uid://cseltb3truywj" path="res://armas/sprite/cafe/cafe.tscn" id="13_gvbt3"]
 [ext_resource type="PackedScene" uid="uid://ch8wj232dc7x2" path="res://armas/sprite/cafe/BALA_CAFE.tscn" id="14_ccdgp"]
@@ -39,6 +41,7 @@ offset_left = -1.0
 offset_top = -48.0
 offset_right = 1422.0
 offset_bottom = 784.0
+
 theme_override_styles/panel = SubResource("StyleBoxFlat_u84de")
 
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
@@ -134,10 +137,11 @@ intervalo_max = 2.0
 limite_izquierdo = 100.0
 tiempo_preparacion_min = 1.5
 tiempo_preparacion_max = 2.0
+
 fuerza_parabola = 550.0
 fuerza_extremo_min = 600.0
 fuerza_extremo_max = 800.0
-velocidad = 450
+velocidad = 550
 
 [node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("12_sn2vc")]
 visible = false
@@ -255,3 +259,5 @@ position = Vector2(1477, 574)
 rotation = 1.5707964
 sentido = -1
 distancia_salida = 1200.0
+[node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=1268955572]
+stream = ExtResource("7_4vjds")

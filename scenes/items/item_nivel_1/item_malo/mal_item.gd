@@ -1,39 +1,37 @@
 extends RigidBody2D
 
 var desapareciendo := false
+var puede_chocar := false
 
-@onready var animacion: AnimatedSprite2D = $Sprite2D
+
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _audios := [$roto1, $roto2, $roto3]
 
 func _ready() -> void:
-	# Layer 4
-	collision_layer = 1 << 3
+	_sprite.play("lanzamiento")
+	await _sprite.animation_finished
+	puede_chocar = true
 
-	# Detectar Layer 1 (jugador) y Layer 2 (plataforma)
-	collision_mask = (1 << 0) | (1 << 1)
-
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(body):
+	if not puede_chocar:
+		return
 	if desapareciendo:
 		return
 
+	_audios.pick_random().play()
+
 	if body.is_in_group("player"):
+		body.perder_vida()
 		desapareciendo = true
 		body.perder_vida()
 		animacion_desaparicion()
-
 	elif body.is_in_group("plataforma"):
 		desapareciendo = true
 		animacion_desaparicion()
 
-func animacion_desaparicion() -> void:
 
-	# esperar a que termine la consulta de física
-	set_deferred("freeze", true)
-	set_deferred("linear_velocity", Vector2.ZERO)
+func animacion_desaparicion():
 
-	animacion.play("romper")
-
-
-	await animacion.animation_finished
-
-
+	_sprite.play("explosion")
+	await _sprite.animation_finished
 	queue_free()

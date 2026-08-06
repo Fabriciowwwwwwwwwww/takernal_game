@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://62l7es0iw2lh"]
 
 [ext_resource type="Script" uid="uid://c44x23eb327ty" path="res://scenes/items/item_nivel_1/item_malo/mal_item.gd" id="1_y6ko0"]
-[ext_resource type="Texture2D" uid="uid://btte1mvqcwhbx" path="res://assets/items_nivel_1/bolsa_basura.png" id="2_y6ko0"]
-[ext_resource type="Texture2D" uid="uid://c18np0arts4eb" path="res://assets/items_nivel_1/bolsaade basura -Sheet.png" id="3_fdnve"]
+
+[ext_resource type="AudioStream" uid="uid://bbl1vcgkpn3ot" path="res://sonidos/ataques/basura_impacto3.ogg" id="2_fdnve"]
+[ext_resource type="AudioStream" uid="uid://c24gf0hqa3q00" path="res://sonidos/ataques/basura_impacto1.ogg" id="2_r00wr"]
+[ext_resource type="Texture2D" uid="uid://c18np0arts4eb" path="res://assets/items_nivel_1/bolsaade basura -Sheet.png" id="2_y6ko0"]
+[ext_resource type="AudioStream" uid="uid://c26yw5eatm8j3" path="res://sonidos/ataques/basura_impacto2.ogg" id="3_lopa5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8xd5"]
-size = Vector2(123.49396, 162.65057)
+size = Vector2(123.49396, 135.54214)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfv8e"]
 atlas = ExtResource("3_fdnve")
@@ -68,7 +71,68 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktwcm"]
-size = Vector2(4.683038, 6.167904)
+size = Vector2(4.683038, 5.1399198)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdnve"]
+atlas = ExtResource("2_y6ko0")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfv8e"]
+atlas = ExtResource("2_y6ko0")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r00wr"]
+atlas = ExtResource("2_y6ko0")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lopa5"]
+atlas = ExtResource("2_y6ko0")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5ye1"]
+atlas = ExtResource("2_y6ko0")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljuxb"]
+atlas = ExtResource("2_y6ko0")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4s3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdnve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfv8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lopa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5ye1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5ye1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljuxb")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdnve")
+}],
+"loop": false,
+"name": &"lanzamiento",
+"speed": 5.0
+}]
 
 [node name="basura" type="RigidBody2D" unique_id=187353056]
 collision_layer = 9
@@ -82,20 +146,31 @@ script = ExtResource("1_y6ko0")
 scale = Vector2(3.3200004, 3.3200004)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1934045899]
-position = Vector2(-0.1506021, 1.4362561e-07)
+position = Vector2(-0.1506021, -1.3554213)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_q8xd5")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1798846638]
-scale = Vector2(0.089062504, 0.084375)
-sprite_frames = SubResource("SpriteFrames_ahi22")
-animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544021474]
-position = Vector2(-0.5, 2.9206262e-08)
+position = Vector2(-0.5, -4.4999995)
 scale = Vector2(8.755, 8.755)
 shape = SubResource("RectangleShape2D_ktwcm")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1808470871]
+[node name="roto1" type="AudioStreamPlayer2D" parent="." unique_id=1808470871]
+stream = ExtResource("2_r00wr")
+volume_db = 14.0
+
+[node name="roto2" type="AudioStreamPlayer2D" parent="." unique_id=643056760]
+stream = ExtResource("3_lopa5")
+volume_db = 14.0
+
+[node name="roto3" type="AudioStreamPlayer2D" parent="." unique_id=712215316]
+stream = ExtResource("2_fdnve")
+volume_db = 14.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2019170771]
+scale = Vector2(0.084375, 0.084375)
+sprite_frames = SubResource("SpriteFrames_d4s3k")
+animation = &"lanzamiento"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
