@@ -18,7 +18,7 @@ func perder_vida():
 
 
 func sumar_progreso():
-	progreso += 10
+	progreso += 5
 	
 	if progreso > 100:
 		progreso = 100

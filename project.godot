@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="cuphead"
-run/main_scene="uid://bdcomvhmo3lf1"
+run/main_scene="uid://bven55ih1jpw5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
