@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bi66lj0w05d1x" path="res://assets/corazonn  .png" id="2_f5cxw"]
 [ext_resource type="Texture2D" uid="uid://bseafg4fcivv8" path="res://assets/items_nivel_1/camote  .png" id="2_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://bah2wfptvk272" path="res://assets/items_nivel_1/cebolla.png" id="3_uegxj"]
+[ext_resource type="FontFile" uid="uid://c4lty2phrrmm3" path="res://letra/Slackey-Regular.ttf" id="3_y220t"]
 [ext_resource type="Texture2D" uid="uid://dyy3iff21ymfs" path="res://assets/items_nivel_1/la sal .png" id="4_y220t"]
 [ext_resource type="Texture2D" uid="uid://dprju33m3ndwu" path="res://assets/items_nivel_1/limón.png" id="5_4kltc"]
 [ext_resource type="Texture2D" uid="uid://dxrihpfcjabaa" path="res://assets/items_nivel_1/pan.png" id="6_hl07w"]
@@ -30,7 +31,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Ui" type="CanvasLayer" unique_id=1530218491]
+[node name="Ui" type="CanvasLayer" unique_id=1530218491 groups=["hud"]]
 script = ExtResource("1_u7n8c")
 
 [node name="Panel" type="Panel" parent="." unique_id=1851388026]
@@ -42,10 +43,10 @@ offset_bottom = -77.24002
 theme_override_styles/panel = SubResource("StyleBoxFlat_f5cxw")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1377565292]
-offset_left = 783.0
-offset_top = 38.0
-offset_right = 1137.0
-offset_bottom = 66.0
+offset_left = 912.0
+offset_top = 43.0
+offset_right = 1266.0
+offset_bottom = 71.0
 
 [node name="Label" type="Label" parent="ProgressBar" unique_id=1498071556]
 layout_mode = 0
@@ -63,10 +64,10 @@ anchor_left = 0.19100001
 anchor_top = 0.021000002
 anchor_right = 0.38500002
 anchor_bottom = 0.127
-offset_left = -0.03201294
-offset_top = -4.6080008
-offset_right = 3.4799805
-offset_bottom = -0.29600525
+offset_left = 135.51999
+offset_top = 0.87999916
+offset_right = 139.03201
+offset_bottom = 5.1919937
 theme_override_styles/panel = SubResource("StyleBoxFlat_aac20")
 
 [node name="Label" type="Label" parent="Panel2" unique_id=839757538]
@@ -79,58 +80,213 @@ theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "CONSEGUIR INGREDIENTES"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel2" unique_id=1260420937]
+[node name="HBoxContainer" type="Control" parent="Panel2" unique_id=902006013]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = -0.076000005
 anchor_top = 0.69600004
 anchor_right = 1.0710001
 anchor_bottom = 1.7390001
-offset_left = 37.69124
-offset_top = -29.631874
-offset_right = 3602.7012
-offset_bottom = 586.3791
+offset_left = 33.69124
+offset_top = -36.631874
+offset_right = 3598.7012
+offset_bottom = 579.3791
 scale = Vector2(0.055, 0.055)
 
 [node name="ingre1" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=1017960300]
 custom_minimum_size = Vector2(700, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = -200.0
+offset_top = 18.181818
+offset_right = 500.0
+offset_bottom = 718.1818
 texture = ExtResource("2_jcn1r")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="x" type="Label" parent="Panel2/HBoxContainer/ingre1" unique_id=1004278513]
+layout_mode = 0
+offset_left = 54.54544
+offset_top = 636.36365
+offset_right = 277.54544
+offset_bottom = 1055.3638
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="camote_label" type="Label" parent="Panel2/HBoxContainer/ingre1" unique_id=815964367]
+layout_mode = 0
+offset_left = 327.27274
+offset_top = 636.36365
+offset_right = 541.27277
+offset_bottom = 1055.3638
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
 [node name="ingre2" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=1408281747]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 199.99997
+offset_top = -400.0
+offset_right = 1781.8184
+offset_bottom = 818.18176
 texture = ExtResource("3_uegxj")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="x" type="Label" parent="Panel2/HBoxContainer/ingre2" unique_id=328067795]
+layout_mode = 0
+offset_left = 454.5454
+offset_top = 1054.5454
+offset_right = 677.5454
+offset_bottom = 1473.5454
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="cebolla_label" type="Label" parent="Panel2/HBoxContainer/ingre2" unique_id=390483024]
+layout_mode = 0
+offset_left = 727.2727
+offset_top = 1054.5454
+offset_right = 941.2727
+offset_bottom = 1473.5455
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
 [node name="ingre3" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=1666914832]
-layout_mode = 2
+layout_mode = 0
+offset_left = 1272.7272
+offset_right = 1912.7272
+offset_bottom = 700.0
 texture = ExtResource("4_y220t")
 stretch_mode = 6
 
+[node name="x" type="Label" parent="Panel2/HBoxContainer/ingre3" unique_id=1966225899]
+layout_mode = 0
+offset_left = 72.727264
+offset_top = 672.7273
+offset_right = 295.72726
+offset_bottom = 1091.7273
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="sal_label" type="Label" parent="Panel2/HBoxContainer/ingre3" unique_id=745570472]
+layout_mode = 0
+offset_left = 345.45456
+offset_top = 672.7273
+offset_right = 559.4546
+offset_bottom = 1091.7273
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
 [node name="ingre4" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=1088695451]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 1418.182
+offset_top = -854.5454
+offset_right = 3290.9092
+offset_bottom = 927.2727
 texture = ExtResource("5_4kltc")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="x" type="Label" parent="Panel2/HBoxContainer/ingre4" unique_id=927129268]
+layout_mode = 0
+offset_left = 636.3636
+offset_top = 1527.2726
+offset_right = 859.3636
+offset_bottom = 1946.2726
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="Limon_label" type="Label" parent="Panel2/HBoxContainer/ingre4" unique_id=1955029579]
+layout_mode = 0
+offset_left = 890.90906
+offset_top = 1545.4545
+offset_right = 1104.909
+offset_bottom = 1964.4545
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
 [node name="ingre5" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=166778168]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 2399.9998
+offset_top = -181.81818
+offset_right = 3571.2717
+offset_bottom = 836.36365
 texture = ExtResource("6_hl07w")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="x" type="Label" parent="Panel2/HBoxContainer/ingre5" unique_id=1620954093]
+layout_mode = 0
+offset_left = 290.9091
+offset_top = 836.36365
+offset_right = 513.90906
+offset_bottom = 1255.3638
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="pan_label" type="Label" parent="Panel2/HBoxContainer/ingre5" unique_id=1379716185]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 854.5455
+offset_right = 814.0
+offset_bottom = 1273.5455
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
 [node name="ingre6" type="TextureRect" parent="Panel2/HBoxContainer" unique_id=2060541421]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 3454.5457
+offset_top = 90.90909
+offset_right = 4181.8174
+offset_bottom = 836.36365
+scale = Vector2(0.805, 0.805)
 texture = ExtResource("7_swkix")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="x" type="Label" parent="Panel2/HBoxContainer/ingre6" unique_id=1945180988]
+layout_mode = 0
+offset_left = 67.75818
+offset_top = 745.34155
+offset_right = 290.75818
+offset_bottom = 1164.3416
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="chicharron_label" type="Label" parent="Panel2/HBoxContainer/ingre6" unique_id=775586769]
+layout_mode = 0
+offset_left = 406.54993
+offset_top = 745.34174
+offset_right = 620.5499
+offset_bottom = 1164.3418
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
 
 [node name="Panel3" type="Panel" parent="." unique_id=1075474444]
 anchors_preset = -1
@@ -138,10 +294,10 @@ anchor_left = 0.39200002
 anchor_top = 0.014
 anchor_right = 0.57600003
 anchor_bottom = 0.120000005
-offset_left = 0.4159851
-offset_top = -0.0720005
-offset_right = 6.447937
-offset_bottom = 3.2399979
+offset_left = 143.23999
+offset_top = 3.92
+offset_right = 149.27197
+offset_bottom = 7.2320023
 theme_override_styles/panel = SubResource("StyleBoxFlat_aac20")
 
 [node name="Label" type="Label" parent="Panel3" unique_id=379935388]
@@ -154,9 +310,8 @@ theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "INGREDIENTES CONSEGUIDOS"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel3" unique_id=140787620]
+[node name="HBoxContainer" type="Control" parent="Panel3" unique_id=1526406453]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = -0.076000005
 anchor_top = 0.69600004
 anchor_right = 1.0710001
@@ -167,54 +322,211 @@ offset_right = 3599.192
 offset_bottom = 586.5791
 scale = Vector2(0.055, 0.055)
 
-[node name="ingre1" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=1136093768]
+[node name="ingre1" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=1334799902]
 custom_minimum_size = Vector2(700, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = -181.81818
+offset_top = -72.72734
+offset_right = 518.1818
+offset_bottom = 627.27264
 texture = ExtResource("2_jcn1r")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ingre2" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=26968834]
+[node name="x" type="Label" parent="Panel3/HBoxContainer/ingre1" unique_id=1241894071]
+layout_mode = 0
+offset_left = 36.363617
+offset_top = 600.0
+offset_right = 259.36362
+offset_bottom = 1019.00006
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="camote_label" type="Label" parent="Panel3/HBoxContainer/ingre1" unique_id=794958462]
+layout_mode = 0
+offset_left = 345.45453
+offset_top = 600.0
+offset_right = 559.4545
+offset_bottom = 1019.00006
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
+[node name="ingre2" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=1930266102]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 218.1818
+offset_top = -490.90915
+offset_right = 1800.0001
+offset_bottom = 727.2726
 texture = ExtResource("3_uegxj")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ingre3" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=151200552]
-layout_mode = 2
+[node name="x" type="Label" parent="Panel3/HBoxContainer/ingre2" unique_id=1908296799]
+layout_mode = 0
+offset_left = 399.99997
+offset_top = 1018.1818
+offset_right = 623.0
+offset_bottom = 1437.1819
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="cebolla_label" type="Label" parent="Panel3/HBoxContainer/ingre2" unique_id=171809986]
+layout_mode = 0
+offset_left = 727.2727
+offset_top = 1036.3636
+offset_right = 941.2727
+offset_bottom = 1455.3638
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
+[node name="ingre3" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=795679300]
+layout_mode = 0
+offset_left = 1290.9089
+offset_top = -90.90916
+offset_right = 1930.9089
+offset_bottom = 609.0908
 texture = ExtResource("4_y220t")
 stretch_mode = 6
 
-[node name="ingre4" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=1890081724]
+[node name="x" type="Label" parent="Panel3/HBoxContainer/ingre3" unique_id=2139870260]
+layout_mode = 0
+offset_left = 90.90909
+offset_top = 636.36365
+offset_right = 313.9091
+offset_bottom = 1055.3636
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="sal_label" type="Label" parent="Panel3/HBoxContainer/ingre3" unique_id=252868041]
+layout_mode = 0
+offset_left = 381.81818
+offset_top = 672.7273
+offset_right = 595.81824
+offset_bottom = 1091.7273
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
+[node name="ingre4" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=29066158]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 1436.3638
+offset_top = -945.4546
+offset_right = 3309.0908
+offset_bottom = 836.3635
 texture = ExtResource("5_4kltc")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ingre5" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=1210486956]
+[node name="x" type="Label" parent="Panel3/HBoxContainer/ingre4" unique_id=283702531]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 1509.0911
+offset_right = 823.0
+offset_bottom = 1928.0911
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="Limon_label" type="Label" parent="Panel3/HBoxContainer/ingre4" unique_id=1742923732]
+layout_mode = 0
+offset_left = 890.90906
+offset_top = 1509.091
+offset_right = 1104.909
+offset_bottom = 1928.091
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
+[node name="ingre5" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=660133157]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 2418.1816
+offset_top = -272.72733
+offset_right = 3589.4536
+offset_bottom = 745.45447
 texture = ExtResource("6_hl07w")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ingre6" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=351507245]
+[node name="x" type="Label" parent="Panel3/HBoxContainer/ingre5" unique_id=1666039527]
+layout_mode = 0
+offset_left = 290.9091
+offset_top = 818.1818
+offset_right = 513.90906
+offset_bottom = 1237.1819
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="pan_label" type="Label" parent="Panel3/HBoxContainer/ingre5" unique_id=2003135880]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 818.1818
+offset_right = 814.0
+offset_bottom = 1237.1819
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
+
+[node name="ingre6" type="TextureRect" parent="Panel3/HBoxContainer" unique_id=2074770025]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+layout_mode = 0
+offset_left = 3472.7275
+offset_top = -6.866455e-05
+offset_right = 4199.999
+offset_bottom = 745.4545
+scale = Vector2(0.805, 0.805)
 texture = ExtResource("7_swkix")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="x" type="Label" parent="Panel3/HBoxContainer/ingre6" unique_id=820414961]
+layout_mode = 0
+offset_left = -45.172363
+offset_top = 745.34174
+offset_right = 177.82764
+offset_bottom = 1164.3418
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "X"
+
+[node name="chicharron_label" type="Label" parent="Panel3/HBoxContainer/ingre6" unique_id=1750619862]
+layout_mode = 0
+offset_left = 316.2055
+offset_top = 745.34174
+offset_right = 530.2055
+offset_bottom = 1164.3418
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_y220t")
+theme_override_font_sizes/font_size = 300
+text = "x"
 
 [node name="Hearts" type="HBoxContainer" parent="." unique_id=1054148548]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.000001
-offset_top = 6.9999995
-offset_right = 786.0
-offset_bottom = -1.0
+offset_left = 12.999878
+offset_top = 14.0
+offset_right = 1949.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.10675144, 0.10675144)
@@ -228,5 +540,13 @@ layout_mode = 2
 texture = ExtResource("2_f5cxw")
 
 [node name="heart3" type="TextureRect" parent="Hearts" unique_id=884037500]
+layout_mode = 2
+texture = ExtResource("2_f5cxw")
+
+[node name="heart4" type="TextureRect" parent="Hearts" unique_id=1986956134]
+layout_mode = 2
+texture = ExtResource("2_f5cxw")
+
+[node name="heart5" type="TextureRect" parent="Hearts" unique_id=816782730]
 layout_mode = 2
 texture = ExtResource("2_f5cxw")

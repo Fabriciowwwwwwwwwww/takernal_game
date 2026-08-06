@@ -6,7 +6,7 @@ extends Node2D
 @export var sprite_frame_jugador1: SpriteFrames
 @export var sprite_frame_jugador2: SpriteFrames
 
-@onready var posicion_inicial: Marker2D = $Marker2D
+@onready var posicion_inicial: Marker2D = $posicion_inicial
 
 
 func _ready():

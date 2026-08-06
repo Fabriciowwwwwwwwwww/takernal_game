@@ -12,12 +12,12 @@ enum TipoDireccion {
 @export var tipo_direccion: TipoDireccion = TipoDireccion.HORIZONTAL
 
 # Horizontal:
-# 1 = derecha
-# -1 = izquierda
+# 1 derecha
+# -1 izquierda
 #
 # Vertical:
-# 1 = abajo
-# -1 = arriba
+# 1 abajo
+# -1 arriba
 @export var sentido := 1
 
 
@@ -30,18 +30,17 @@ enum TipoDireccion {
 @export var velocidad_maxima := 800.0
 @export var aceleracion := 600.0
 
-@export var tiempo_antes_salir := 0.5
-
 
 
 @export_category("Daño")
 
 @export var daño := 20
+@export var tiempo_entre_daños := 0.5
 
 
 
 @onready var hitbox: Area2D = $Area2D
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 
 
@@ -50,27 +49,41 @@ var posicion_inicial: Vector2
 var moviendo := false
 var activa := false
 
+var puede_dañar := true
+
 
 
 func _ready():
 
+	print("CEBOLLA READY:", name)
+
 	posicion_inicial = global_position
+
+	sprite.play("idle")
 
 	ocultar()
 
-	hitbox.monitoring = false
+	hitbox.set_deferred("monitoring", false)
 
 
 
 func activar():
 
-	print("CEBOLLA ACTIVADA: ", name)
+	print("CEBOLLA ACTIVADA:", name)
+
 
 	if moviendo:
+		print("YA ESTABA MOVIENDOSE")
 		return
 
 
 	activa = true
+
+	puede_dañar = true
+
+
+	hitbox.set_deferred("monitoring", true)
+
 
 	salir()
 
@@ -80,9 +93,9 @@ func desactivar():
 
 	activa = false
 
-	ocultar()
+	hitbox.set_deferred("monitoring", false)
 
-	hitbox.monitoring = false
+	ocultar()
 
 
 
@@ -109,15 +122,15 @@ func obtener_direccion() -> Vector2:
 			)
 
 
-
 	return Vector2.RIGHT
+
 
 
 
 
 func salir():
 
-	print("CEBOLLA SALE: ", name)
+	print("CEBOLLA SALE:", name)
 
 
 	moviendo = true
@@ -125,7 +138,8 @@ func salir():
 
 	mostrar()
 
-	hitbox.monitoring = true
+
+	sprite.play("idle")
 
 
 
@@ -134,7 +148,7 @@ func salir():
 
 	var recorrido := 0.0
 
-	var velocidad := velocidad_inicial
+	var velocidad_actual := velocidad_inicial
 
 
 
@@ -144,21 +158,19 @@ func salir():
 		var delta := get_process_delta_time()
 
 
-		velocidad += aceleracion * delta
+		velocidad_actual += aceleracion * delta
 
 
-		velocidad = min(
-			velocidad,
+		velocidad_actual = min(
+			velocidad_actual,
 			velocidad_maxima
 		)
 
 
 
-		var movimiento := velocidad * delta
+		var movimiento := velocidad_actual * delta
 
 
-
-		# Movimiento SOLO horizontal o vertical
 
 		if tipo_direccion == TipoDireccion.HORIZONTAL:
 
@@ -180,12 +192,13 @@ func salir():
 
 
 
-	print("CEBOLLA REGRESA: ", name)
+
+	print("CEBOLLA REGRESA:", name)
 
 
-	await get_tree().create_timer(
-		0.2
-	).timeout
+
+	await get_tree().create_timer(0.2).timeout
+
 
 
 	regresar()
@@ -193,10 +206,14 @@ func salir():
 
 
 
+
 func regresar():
 
 
-	hitbox.monitoring = false
+	hitbox.set_deferred(
+		"monitoring",
+		false
+	)
 
 
 
@@ -206,6 +223,7 @@ func regresar():
 	tween.set_trans(
 		Tween.TRANS_QUAD
 	)
+
 
 	tween.set_ease(
 		Tween.EASE_IN
@@ -226,17 +244,16 @@ func regresar():
 
 
 
-	# asegurar posición exacta
-
 	global_position = posicion_inicial
 
 
 
-	print("CEBOLLA TERMINO: ", name)
+	print("CEBOLLA TERMINO:", name)
 
 
 
 	moviendo = false
+
 
 
 	desactivar()
@@ -247,23 +264,65 @@ func regresar():
 
 func mostrar():
 
-	sprite.show()
+	sprite.visible = true
 
 
 
 func ocultar():
 
-	sprite.hide()
+	sprite.visible = false
 
 
 
 
 
-func _on_area_2d_body_entered(body):
-
-	if body.is_in_group("jugador"):
+func _on_area_2d_body_entered(body: Node2D):
 
 
-		if body.has_method("recibir_daño"):
+	if body.is_in_group("player"):
 
-			body.recibir_daño(daño)
+
+		if not puede_dañar:
+
+			return
+
+
+
+		puede_dañar = false
+
+
+
+		print(
+			"CEBOLLA GOLPEO A:",
+			body.name
+		)
+
+
+
+		var ui = get_tree().current_scene.get_node("Ui")
+
+
+
+		if ui:
+
+
+			print("QUITANDO VIDA")
+
+
+			ui.perder_vida()
+
+
+		else:
+
+
+			print("NO SE ENCONTRO UI")
+
+
+
+		await get_tree().create_timer(
+			tiempo_entre_daños
+		).timeout
+
+
+
+		puede_dañar = true

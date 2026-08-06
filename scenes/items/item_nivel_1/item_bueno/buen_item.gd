@@ -7,7 +7,14 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.sumar_progreso()
+
+		var hud = get_tree().get_first_node_in_group("hud")
+
+		if hud:
+			hud.agregar_ingrediente(nombre)
+
+
+
 		queue_free()
 
 	if body.is_in_group("plataforma") and !sobre_plataforma:

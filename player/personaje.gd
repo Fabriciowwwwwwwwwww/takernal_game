@@ -230,8 +230,6 @@ func perder_vida():
 	$"../Ui".perder_vida()
 
 
-func sumar_progreso():
-	$"../Ui".sumar_progreso()
 func cargar_companero(companero: CharacterBody2D):
 
 	if cargando:

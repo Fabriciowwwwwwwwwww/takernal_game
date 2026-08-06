@@ -12,7 +12,8 @@ size = Vector2(72.28914, 90.361435)
 size = Vector2(2.7412908, 3.4266133)
 
 [node name="sal" type="RigidBody2D" unique_id=187353056]
-collision_layer = 4
+collision_layer = 8
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10

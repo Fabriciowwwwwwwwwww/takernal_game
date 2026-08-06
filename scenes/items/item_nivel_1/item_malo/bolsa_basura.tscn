@@ -2,17 +2,77 @@
 
 [ext_resource type="Script" uid="uid://c44x23eb327ty" path="res://scenes/items/item_nivel_1/item_malo/mal_item.gd" id="1_y6ko0"]
 [ext_resource type="Texture2D" uid="uid://btte1mvqcwhbx" path="res://assets/items_nivel_1/bolsa_basura.png" id="2_y6ko0"]
+[ext_resource type="Texture2D" uid="uid://c18np0arts4eb" path="res://assets/items_nivel_1/bolsaade basura -Sheet.png" id="3_fdnve"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8xd5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8xd5"]
 size = Vector2(123.49396, 162.65057)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfv8e"]
+atlas = ExtResource("3_fdnve")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r00wr"]
+atlas = ExtResource("3_fdnve")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lopa5"]
+atlas = ExtResource("3_fdnve")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5ye1"]
+atlas = ExtResource("3_fdnve")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljuxb"]
+atlas = ExtResource("3_fdnve")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4s3k"]
+atlas = ExtResource("3_fdnve")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahi22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y6ko0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfv8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r00wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lopa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5ye1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljuxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4s3k")
+}],
+"loop": false,
+"name": &"romper",
+"speed": 13.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ktwcm"]
 size = Vector2(4.683038, 6.167904)
 
 [node name="basura" type="RigidBody2D" unique_id=187353056]
-collision_layer = 4
+collision_layer = 9
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10
@@ -26,9 +86,10 @@ position = Vector2(-0.1506021, 1.4362561e-07)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_q8xd5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1513923610]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1798846638]
 scale = Vector2(0.089062504, 0.084375)
-texture = ExtResource("2_y6ko0")
+sprite_frames = SubResource("SpriteFrames_ahi22")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544021474]
 position = Vector2(-0.5, 2.9206262e-08)

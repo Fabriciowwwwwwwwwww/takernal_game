@@ -1,24 +1,47 @@
 [gd_scene format=3 uid="uid://brxmt5vaxpy63"]
 
 [ext_resource type="Script" uid="uid://dh74y13r1kd40" path="res://armas/cebolla/cebolla.gd" id="1_0lm4n"]
-[ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_g3cwr"]
+[ext_resource type="Texture2D" uid="uid://dwaxl8qjestx3" path="res://assets/items_nivel_1/latigo cebolla/cebollalaatigo05.png" id="2_0lm4n"]
+[ext_resource type="Texture2D" uid="uid://ced3078uyopyc" path="res://assets/items_nivel_1/latigo cebolla/cebollalaatigo04.png" id="2_vhu3c"]
+[ext_resource type="Texture2D" uid="uid://7fde6wpvjro0" path="res://assets/items_nivel_1/latigo cebolla/cebollalaatigo03.png" id="4_3268a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b44wv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vhu3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0lm4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3268a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lm4n"]
-size = Vector2(20, 253.5)
+size = Vector2(25, 1332)
 
 [node name="Cebolla" type="Node2D" unique_id=307812441]
 script = ExtResource("1_0lm4n")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=59218618]
-position = Vector2(8.5, -588.25)
-scale = Vector2(0.16406205, 9.542969)
-texture = ExtResource("1_g3cwr")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=887934390]
+position = Vector2(15.000001, -962.2508)
+scale = Vector2(0.15136942, 1.4212016)
+sprite_frames = SubResource("SpriteFrames_b44wv")
+animation = &"idle"
+frame_progress = 0.91423637
 
 [node name="Area2D" type="Area2D" parent="." unique_id=13904160]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1579157662]
-position = Vector2(11, -107.75)
+position = Vector2(13.5, -647)
 shape = SubResource("RectangleShape2D_0lm4n")
 
 [node name="Pivot" type="Marker2D" parent="." unique_id=1132243272]
-position = Vector2(9, 18)
+position = Vector2(26, 183)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

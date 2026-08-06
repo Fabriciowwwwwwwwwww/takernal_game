@@ -1,138 +1,214 @@
 extends Node2D
 
-
+@export var cantidad_balas := 3
 @onready var CUERPO: AnimatedSprite2D = $CUERPO
 @onready var ESPUMA: AnimatedSprite2D = $ESPUMA
 
-
-@export_category("Ataque")
-
-@export var velocidad_misil := 300.0
-
-@export var tiempo_entre_misiles := 0.2
+@onready var punto_inicio: Marker2D = $"../PuntoInicio"
+@onready var punto_final: Marker2D = $"../PuntoFinal"
+@onready var salida: Marker2D = $Salida
 
 
+@export var velocidad := 80.0
+@export var tiempo_disparo := 1.0
 
-var rutas: Array[PathFollow2D] = []
+@export var escena_bala_cafe: PackedScene
+
 
 var atacando := false
 
 
-func _ready() -> void:
 
-	ESPUMA.play("idle")
+func _ready():
+
+	print("CAFE READY")
+
+
+	print("Inicio:", punto_inicio.global_position)
+	print("Final:", punto_final.global_position)
+
+
 	CUERPO.play("idle")
-
-
-	for hijo in get_children():
-
-		if hijo is Path2D:
-
-
-			var follow: PathFollow2D = hijo.get_node("PathFollow2D")
-
-
-			# limpiar transformaciones heredadas
-			follow.position = Vector2.ZERO
-			follow.rotation = 0
-			follow.progress = 0
-
-
-			var area = follow.get_node("Area2D")
-
-			area.position = Vector2.ZERO
-			area.rotation = 0
-
-
-			rutas.append(follow)
-
-
-			hijo.hide()
+	ESPUMA.play("idle")
+	ESPUMA.visible = true
 
 func _ataque():
 
+	print("RECIBI ATAQUE")
+
+
 	if atacando:
+		print("YA ESTABA ATACANDO")
 		return
 
 
 	atacando = true
 
 
-	ESPUMA.play("ataque")
-	CUERPO.play("ataque")
+	print("VOY AL PUNTO FINAL")
 
 
-	disparar_rutas()
+	await mover(punto_final.global_position)
 
 
-
-func disparar_rutas():
-
-
-	# Mezcla las rutas
-
-	rutas.shuffle()
+	print("LLEGUE AL FINAL")
 
 
-
-	for ruta in rutas:
-
-
-		lanzar_misil(ruta)
+	await get_tree().create_timer(0.5).timeout
 
 
-		await get_tree().create_timer(
-			tiempo_entre_misiles
-		).timeout
+	print("AHORA REGRESO AL INICIO")
+
+
+	await mover(punto_inicio.global_position)
+
+
+	print("VOLVI AL INICIO")
 
 
 
-	await get_tree().create_timer(1.0).timeout
-
-
-	ESPUMA.play("idle")
 	CUERPO.play("idle")
+	ESPUMA.play("idle")
+	ESPUMA.visible = true
 
 
 	atacando = false
 
 
-func lanzar_misil(follow: PathFollow2D):
-
-	var path: Path2D = follow.get_parent()
+	print("ATAQUE TERMINADO")
 
 
-	path.show()
+func mover(destino: Vector2):
+
+	print("----------------")
+	print("MOVIENDO")
+	print("Actual:", global_position)
+	print("Destino:", destino)
 
 
-	follow.progress = 0
+	var distancia = global_position.distance_to(destino)
 
-
-	var distancia = path.curve.get_baked_length()
+	var tiempo = distancia / velocidad
 
 
 	var tween = create_tween()
 
 
-	tween.set_trans(
-		Tween.TRANS_LINEAR
-	)
-
-
 	tween.tween_property(
-		follow,
-		"progress",
-		distancia,
-		distancia / velocidad_misil
+		self,
+		"global_position",
+		destino,
+		tiempo
 	)
 
 
-	await tween.finished
+	print("TWEEN CREADO")
 
 
-	# desaparece inmediatamente al terminar
+	while tween.is_running():
 
-	path.hide()
+		disparar.call_deferred()
 
 
-	follow.progress = 0
+		await get_tree().create_timer(
+			tiempo_disparo
+		).timeout
+
+
+
+	print("TWEEN TERMINO")
+
+
+	print("LLEGO A:", global_position)
+func disparar():
+
+	print("DISPARANDO 3 CAFES")
+
+
+	# iniciar ataque
+	CUERPO.play("ataque")
+	ESPUMA.visible = false
+
+
+	# esperar un poco la animación antes de lanzar
+	await get_tree().create_timer(0.15).timeout
+
+
+
+	if escena_bala_cafe == null:
+
+		print("ERROR: NO HAY BALA CAFE")
+
+		CUERPO.play("idle")
+		ESPUMA.visible = true
+		return
+
+
+	var cantidad = [3, 4, 5].pick_random()
+
+	print("CANTIDAD DE BALAS:", cantidad)
+
+
+	var direcciones = []
+
+
+	var apertura = 1.2
+
+
+	for i in range(cantidad):
+
+		var porcentaje = 0.0
+
+		if cantidad > 1:
+			porcentaje = float(i) / float(cantidad - 1)
+
+
+		var angulo = lerp(
+			- apertura,
+			apertura,
+			porcentaje
+		)
+
+
+		var direccion = Vector2(
+			angulo,
+			-1
+		).normalized()
+
+
+		direcciones.append(direccion)
+
+
+	for direccion in direcciones:
+
+
+		var bala = escena_bala_cafe.instantiate()
+
+
+		get_tree().current_scene.add_child(bala)
+
+
+		bala.global_position = salida.global_position
+
+
+		print("BALA DIRECCION:", direccion)
+
+
+		if bala.has_method("disparar"):
+
+			bala.disparar(direccion)
+
+
+
+	# terminar animación ataque
+	await get_tree().create_timer(0.25).timeout
+
+
+
+	CUERPO.play("idle")
+
+
+	ESPUMA.visible = true
+	ESPUMA.play("idle")
+
+	print("CAFE VOLVIO A IDLE")

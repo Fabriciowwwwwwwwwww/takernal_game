@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://bdcomvhmo3lf1"]
+
+[ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_dtdnh"]
+[ext_resource type="PackedScene" uid="uid://dku8abeq4hwff" path="res://scenes/ui/ui.tscn" id="1_sn2vc"]
+[ext_resource type="Script" uid="uid://dpux3yy1jy17" path="res://mundo.gd" id="1_u84de"]
+[ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_0bc7o"]
+[ext_resource type="PackedScene" uid="uid://c8srfw33nwa51" path="res://scenes/enemy/types/Nivel_1/moster_1.tscn" id="3_00txm"]
+[ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="3_6d5th"]
+[ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="4_aae4c"]
+[ext_resource type="Texture2D" uid="uid://c33st7xotr4xg" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma .png" id="6_f40s6"]
+[ext_resource type="Texture2D" uid="uid://c2jkj20jrosb" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/fondo .png" id="9_aae4c"]
+[ext_resource type="PackedScene" uid="uid://bhng1ewjs4apw" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma.tscn" id="11_f40s6"]
+[ext_resource type="Texture2D" uid="uid://d0mk34i3ut8hp" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/piso .png" id="11_sn2vc"]
+[ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="12_sn2vc"]
+[ext_resource type="PackedScene" uid="uid://cseltb3truywj" path="res://armas/sprite/cafe/cafe.tscn" id="13_gvbt3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u84de"]
+bg_color = Color(0.38908264, 0.4078815, 0.42152596, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
+size = Vector2(1435, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00txm"]
+size = Vector2(1442, 22)
+
+[node name="Mundo" type="Node2D" unique_id=694270786]
+script = ExtResource("1_u84de")
+jugador1 = ExtResource("2_0bc7o")
+jugador2 = ExtResource("2_0bc7o")
+sprite_frame_jugador1 = ExtResource("3_6d5th")
+sprite_frame_jugador2 = ExtResource("4_aae4c")
+
+[node name="Panel" type="Panel" parent="." unique_id=1743825345]
+visible = false
+offset_left = -1.0
+offset_top = -48.0
+offset_right = 1422.0
+offset_bottom = 784.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_u84de")
+
+[node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
+
+[node name="piso_mounstruo" type="StaticBody2D" parent="." unique_id=892334228]
+position = Vector2(-3, 217)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="piso_mounstruo" unique_id=1003044014]
+position = Vector2(707.5, 16)
+shape = SubResource("RectangleShape2D_xwo6f")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="piso_mounstruo" unique_id=142133832]
+position = Vector2(715.625, 132.00002)
+scale = Vector2(0.48898435, 0.23287325)
+texture = ExtResource("6_f40s6")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=1316768286]
+position = Vector2(-3, -19)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D7" unique_id=1290522233]
+position = Vector2(577.5, 16)
+shape = SubResource("RectangleShape2D_xwo6f")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D7" unique_id=658698136]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(577.00006, 16.00003)
+scale = Vector2(9.1953125, 0.17187506)
+texture = ExtResource("1_dtdnh")
+
+[node name="pared" type="StaticBody2D" parent="." unique_id=997180355]
+position = Vector2(-12, -431)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="pared" unique_id=230537866]
+position = Vector2(626, -3.0000277)
+shape = SubResource("RectangleShape2D_xwo6f")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="pared" unique_id=213319206]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(635.00006, -1.0000267)
+scale = Vector2(9.1953125, 0.17187506)
+texture = ExtResource("1_dtdnh")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=509024624]
+position = Vector2(1334, -420)
+rotation = 1.5707964
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D6" unique_id=1726394666]
+position = Vector2(633, -102)
+shape = SubResource("RectangleShape2D_xwo6f")
+one_way_collision_margin = 4.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D6" unique_id=1373397560]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(624.00006, -100.99996)
+scale = Vector2(9.1953125, 0.17187506)
+texture = ExtResource("1_dtdnh")
+
+[node name="piso" type="StaticBody2D" parent="." unique_id=119919082 groups=["plataforma"]]
+position = Vector2(-13, 798)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piso" unique_id=610402048]
+position = Vector2(716, -1)
+shape = SubResource("RectangleShape2D_00txm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="piso" unique_id=1449528272]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(710.375, -0.9999962)
+scale = Vector2(11.33789, 0.17187506)
+texture = ExtResource("1_dtdnh")
+
+[node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
+position = Vector2(648, 235)
+intervalo_min = 1.5
+intervalo_max = 2.0
+limite_izquierdo = 100.0
+tiempo_preparacion_min = 1.5
+tiempo_preparacion_max = 2.0
+fuerza_parabola = 550.0
+fuerza_extremo_min = 600.0
+fuerza_extremo_max = 800.0
+velocidad = 450
+
+[node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("12_sn2vc")]
+visible = false
+
+[node name="posicion_inicial" type="Marker2D" parent="." unique_id=939756903]
+position = Vector2(609, 366)
+
+[node name="fondo" type="Sprite2D" parent="." unique_id=192011346]
+z_index = -2
+position = Vector2(723, 397)
+scale = Vector2(0.45218748, 0.45055553)
+texture = ExtResource("9_aae4c")
+
+[node name="muros" type="Sprite2D" parent="." unique_id=642573598]
+z_index = -2
+position = Vector2(701.25, 429.99997)
+scale = Vector2(0.4926563, 0.4405555)
+texture = ExtResource("11_sn2vc")
+
+[node name="Plataforma" parent="." unique_id=800985412 instance=ExtResource("11_f40s6")]
+position = Vector2(194, 573)
+
+[node name="Plataforma2" parent="." unique_id=332697378 instance=ExtResource("11_f40s6")]
+position = Vector2(530, 677)
+
+[node name="Plataforma3" parent="." unique_id=1379313556 instance=ExtResource("11_f40s6")]
+position = Vector2(908, 577)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1759075108]
+position = Vector2(713, 394)
+zoom = Vector2(0.9, 0.9)
+
+[node name="Cafe" parent="." unique_id=25083689 instance=ExtResource("13_gvbt3")]
+position = Vector2(1348, 731)
+tiempo_entre_ataques = 4.0
+direccion_path = "Derecha"

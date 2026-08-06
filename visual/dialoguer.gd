@@ -1,16 +1,42 @@
 extends Node2D
 
 @export var dialogue: DialogueResource
-@export_file("*.tscn") var next_scene: String = "res://mundo.tscn"
+
+@export_file("*.tscn") var next_scene: String
 
 
 func _ready():
 
-	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
+	print("===== DIALOGO INICIADO =====")
+
+	print("Escena actual:",
+		get_tree().current_scene.name
+	)
+
+	print("Escena siguiente:",
+		next_scene
+	)
+
+
+	DialogueManager.dialogue_ended.connect(
+		_on_dialogue_finished
+	)
+
 
 	DialogueManager.show_dialogue_balloon(dialogue)
 
 
+
 func _on_dialogue_finished(_resource: DialogueResource):
 
-	SceneManager.change_scene(self, "mundo")
+	print("===== DIALOGO TERMINADO =====")
+
+	print("Voy a cargar:",
+		next_scene
+	)
+
+
+	SceneManager.change_scene(
+		self,
+		next_scene
+	)

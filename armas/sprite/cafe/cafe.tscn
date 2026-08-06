@@ -50,7 +50,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"ataque",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -116,91 +116,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve2D" id="Curve2D_4nlbj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -248, -385, 0, 0, 0, 0, -255, -405, 0, 0, 0, 0, -573.3333, -663.3333)
-}
-point_count = 3
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ilt0c"]
-radius = 49.39694
-
-[sub_resource type="Curve2D" id="Curve2D_3tqh0"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -36.666664, -642.564, 0, 0, 0, 0, 19.999998, -1078.9742)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_r0k3n"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 190, -386.66666, 0, 0, 0, 0, 516.6666, -536.6666)
-}
-point_count = 2
-
 [node name="Cafe" type="Node2D" unique_id=25083689]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_5g548")
-velocidad_misil = 325.0
 
 [node name="CUERPO" type="AnimatedSprite2D" parent="." unique_id=335014278]
-position = Vector2(-81, -462)
-scale = Vector2(1, 0.794)
+position = Vector2(-86.66666, -399.99988)
+scale = Vector2(1, 0.7940001)
 sprite_frames = SubResource("SpriteFrames_rov5j")
-animation = &"idle"
-frame_progress = 0.9781553
+animation = &"ataque"
 
 [node name="ESPUMA" type="AnimatedSprite2D" parent="." unique_id=1951117876]
-position = Vector2(-73, -477)
+position = Vector2(-103.33333, -466.66663)
 sprite_frames = SubResource("SpriteFrames_8em7r")
-animation = &"ataque"
-frame = 6
+animation = &"idle"
+frame_progress = 0.9242164
 
-[node name="Path1" type="Path2D" parent="." unique_id=69304716]
-curve = SubResource("Curve2D_4nlbj")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path1" unique_id=1308127947]
-position = Vector2(-248, -385)
-rotation = -1.9074712
-
-[node name="Area2D" type="Area2D" parent="Path1/PathFollow2D" unique_id=1379595462]
-position = Vector2(16.384245, -9.826326)
-rotation = 2.7062395
-scale = Vector2(0.9999999, 0.9999999)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path1/PathFollow2D/Area2D" unique_id=1480245013]
-position = Vector2(0.41844866, -0.06984849)
-shape = SubResource("CircleShape2D_ilt0c")
-
-[node name="Path2D" type="Path2D" parent="." unique_id=870726672]
-position = Vector2(0, 23.96399)
-scale = Vector2(1, 1.0540541)
-curve = SubResource("Curve2D_3tqh0")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=452790957]
-position = Vector2(-36.666664, -642.564)
-rotation = -1.4416715
-
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" unique_id=1552811020]
-position = Vector2(8.167097, 3.7220764)
-rotation = 2.7062395
-scale = Vector2(0.9999999, 0.9999999)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D" unique_id=1553127549]
-position = Vector2(0.41844866, -0.06984849)
-shape = SubResource("CircleShape2D_ilt0c")
-
-[node name="Path2D2" type="Path2D" parent="." unique_id=1674835278]
-curve = SubResource("Curve2D_r0k3n")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1918399489]
-position = Vector2(190, -386.66666)
-rotation = -0.43046474
-
-[node name="Area2D" type="Area2D" parent="Path2D2/PathFollow2D" unique_id=1663236230]
-position = Vector2(15.336914, 6.523984)
-rotation = 2.7062395
-scale = Vector2(0.9999999, 0.9999999)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PathFollow2D/Area2D" unique_id=1519792278]
-position = Vector2(0.41844866, -0.06984849)
-shape = SubResource("CircleShape2D_ilt0c")
+[node name="Salida" type="Marker2D" parent="." unique_id=374858547]
+position = Vector2(-53.333317, -120.000046)
+rotation = 3.1415925

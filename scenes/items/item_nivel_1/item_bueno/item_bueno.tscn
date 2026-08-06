@@ -12,6 +12,8 @@ size = Vector2(5.797103, 5.072465)
 size = Vector2(5.652173, 5.289854)
 
 [node name="ItemBueno" type="RigidBody2D" unique_id=187353056]
+collision_layer = 8
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10

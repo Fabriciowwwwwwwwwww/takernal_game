@@ -12,7 +12,8 @@ size = Vector2(102.40963, 90.361435)
 size = Vector2(3.8834953, 3.4266133)
 
 [node name="limon" type="RigidBody2D" unique_id=187353056]
-collision_layer = 4
+collision_layer = 8
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_q8xd5")
 contact_monitor = true
 max_contacts_reported = 10

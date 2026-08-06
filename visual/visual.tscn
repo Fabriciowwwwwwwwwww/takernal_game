@@ -9,7 +9,7 @@
 [node name="visual" type="Node2D" unique_id=1074617880]
 script = ExtResource("1_8jp05")
 dialogue = ExtResource("2_1x58t")
-next_scene = "C:/Users/Admin/Documents/cuphead/mundo.tscn"
+next_scene = "uid://bdcomvhmo3lf1"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1961522530]
 

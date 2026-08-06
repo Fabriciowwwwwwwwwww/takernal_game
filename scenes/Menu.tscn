@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dkqeejyflyid2" path="res://interfaces/menu.gd" id="1_2af52"]
 [ext_resource type="Script" uid="uid://cjj3nds1by33q" path="res://interfaces/parallax_backgroundMENU.gd" id="2_7ycwl"]
-[ext_resource type="Texture2D" uid="uid://cckmdwfaywbx4" path="res://interfaces/sprite/Fondo1.png" id="3_rtd1e"]
 [ext_resource type="Texture2D" uid="uid://c3uihxpyjeutf" path="res://interfaces/sprite/Estrellas grandes.png" id="4_6c8sk"]
 [ext_resource type="Texture2D" uid="uid://c2eft6dnnig65" path="res://interfaces/sprite/Estrellas chicas.png" id="5_5p0sf"]
-[ext_resource type="Texture2D" uid="uid://cspyutl4yl5o6" path="res://interfaces/sprite/111.png" id="6_7t7qg"]
+[ext_resource type="Texture2D" uid="uid://dmks0k1n2jqly" path="res://interfaces/sprite/escenario3.png" id="5_thu7x"]
 [ext_resource type="Script" uid="uid://dc3qawe6568dg" path="res://interfaces/shaders/Shaders/Shader_Menu.gd" id="7_l3wcu"]
 [ext_resource type="Shader" uid="uid://com58ff036i8q" path="res://interfaces/shaders/Shaders/Menu.gdshader" id="8_i7htd"]
 [ext_resource type="Texture2D" uid="uid://ca536qv5kheeo" path="res://interfaces/sprite/2.png" id="9_dek3k"]
@@ -13,7 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bp8fbmlplp2g2" path="res://interfaces/sprite/flecha_pressed.png" id="11_760fv"]
 [ext_resource type="Texture2D" uid="uid://ccchl24uqdqbu" path="res://interfaces/sprite/flecha_hover.png" id="12_rehui"]
 [ext_resource type="FontFile" uid="uid://c4lty2phrrmm3" path="res://letra/Slackey-Regular.ttf" id="13_yvxia"]
+[ext_resource type="Texture2D" uid="uid://c0rcf2ioohfe5" path="res://interfaces/sprite/camion-Sheet.png" id="14_2af52"]
 [ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="14_nxcfj"]
+[ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="15_rtd1e"]
+[ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="16_6c8sk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2qgrd"]
 shader = ExtResource("8_i7htd")
@@ -66,6 +68,42 @@ _data = {
 &"RESET": SubResource("Animation_2qgrd")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ycwl"]
+atlas = ExtResource("14_2af52")
+region = Rect2(0, 0, 1690, 783)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtd1e"]
+atlas = ExtResource("14_2af52")
+region = Rect2(1690, 0, 1690, 783)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c8sk"]
+atlas = ExtResource("14_2af52")
+region = Rect2(3380, 0, 1690, 783)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p0sf"]
+atlas = ExtResource("14_2af52")
+region = Rect2(5070, 0, 1690, 783)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7t7qg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ycwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtd1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c8sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p0sf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="Menu" type="Control" unique_id=469561961]
 layout_mode = 3
 anchor_right = 0.887
@@ -87,13 +125,6 @@ script = ExtResource("2_7ycwl")
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(1149, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/Espacio" unique_id=1505332283]
-texture_filter = 1
-position = Vector2(7.9999986, -2)
-scale = Vector2(0.6661458, 0.68981487)
-texture = ExtResource("3_rtd1e")
-centered = false
-
 [node name="Estrellas Grandes" type="ParallaxLayer" parent="Parallax/ParallaxBackground" unique_id=2088878958]
 motion_scale = Vector2(0.8, 0.8)
 motion_mirroring = Vector2(1153.92, 0)
@@ -112,9 +143,9 @@ texture = ExtResource("5_5p0sf")
 centered = false
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=1510230933]
-position = Vector2(1.9999924, 24)
-scale = Vector2(1.2909092, 1.3784313)
-texture = ExtResource("6_7t7qg")
+position = Vector2(1.9999924, -3.999998)
+scale = Vector2(1.1921824, 1.3944069)
+texture = ExtResource("5_thu7x")
 centered = false
 
 [node name="Control" type="Node2D" parent="." unique_id=1929182962]
@@ -252,6 +283,24 @@ offset_bottom = 1476.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1165050831]
 libraries/ = SubResource("AnimationLibrary_w4fob")
 autoplay = &"Movimiento"
+
+[node name="carro" type="AnimatedSprite2D" parent="." unique_id=1855687197]
+position = Vector2(1530, 670)
+sprite_frames = SubResource("SpriteFrames_7t7qg")
+animation = &"idle"
+frame_progress = 0.8650822
+
+[node name="cuy1" type="AnimatedSprite2D" parent="." unique_id=487181208]
+position = Vector2(1434, 1006.0001)
+scale = Vector2(0.765625, 0.690625)
+sprite_frames = ExtResource("15_rtd1e")
+animation = &"idle"
+
+[node name="cuy2" type="AnimatedSprite2D" parent="." unique_id=579187892]
+position = Vector2(2122, 1000)
+scale = Vector2(0.7375, 0.725)
+sprite_frames = ExtResource("16_6c8sk")
+animation = &"idle"
 
 [connection signal="pressed" from="Control/Single_Player" to="." method="_on_single_player_pressed"]
 [connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]

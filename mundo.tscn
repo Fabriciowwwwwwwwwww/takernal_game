@@ -28,8 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://cqymhdawiu7vc" path="res://armas/sprite/inka kola/inca kola move/inca kola shotl6.png" id="16_fjyh4"]
 [ext_resource type="Script" uid="uid://cbd0fwt4qbbyt" path="res://cebolla_spawner_2.gd" id="24_muygd"]
 [ext_resource type="PackedScene" uid="uid://brxmt5vaxpy63" path="res://armas/cebolla/cebolla.tscn" id="25_y1gce"]
-[ext_resource type="Script" uid="uid://cb0ym167xj7nw" path="res://spawn_cafe.gd" id="29_nf3ij"]
-[ext_resource type="PackedScene" uid="uid://cseltb3truywj" path="res://armas/sprite/cafe/cafe.tscn" id="30_f3apa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo6f"]
 size = Vector2(1298.5, 23)
@@ -88,7 +86,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mundo2" type="Node2D" unique_id=694270786]
+[node name="posicion_inicial" type="Node2D" unique_id=694270786]
 position = Vector2(12, 72)
 script = ExtResource("1_pij3u")
 jugador1 = ExtResource("1_6ba58")
@@ -196,7 +194,6 @@ texture = ExtResource("1_lgngo")
 [node name="RainAttack" parent="." unique_id=875108492 instance=ExtResource("8_t8jxu")]
 
 [node name="spawn_lluvia_inka" type="Node2D" parent="." unique_id=538924717]
-visible = false
 script = ExtResource("9_pfhxm")
 tiempo_lluvia = 4.0
 
@@ -328,7 +325,7 @@ rotation = 1.5707964
 sentido = -1
 distancia_salida = 1200.0
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1068985228]
+[node name="posicion_inicial" type="Marker2D" parent="." unique_id=1068985228]
 position = Vector2(604, 252)
 
 [node name="PauseOverlay" parent="." unique_id=674599032 instance=ExtResource("11_0oi55")]
@@ -354,20 +351,3 @@ position = Vector2(699, 468)
 [node name="Timer" type="Timer" parent="BolaSpawner" unique_id=1814647377]
 wait_time = 15.0
 autostart = true
-
-[node name="spawn_cafe" type="Node2D" parent="." unique_id=1604349693 node_paths=PackedStringArray("cafe")]
-position = Vector2(58, -339)
-script = ExtResource("29_nf3ij")
-cafe = NodePath("Cafe")
-
-[node name="Timer" type="Timer" parent="spawn_cafe" unique_id=366078554]
-wait_time = 15.0
-autostart = true
-
-[node name="Cafe" parent="spawn_cafe" unique_id=25083689 instance=ExtResource("30_f3apa")]
-position = Vector2(298, 931.00006)
-velocidad_misil = 340.0
-
-[node name="Cafe2" parent="spawn_cafe" unique_id=1739035584 instance=ExtResource("30_f3apa")]
-position = Vector2(727, 935)
-velocidad_misil = 305.0
