@@ -1,98 +1,114 @@
 [gd_scene format=3 uid="uid://bo2gd4sehdugm"]
 
-[ext_resource type="Script" uid="uid://dtyorwjrdnc6" path="res://interfaces/pause_overlay.gd" id="1_lf64b"]
-[ext_resource type="Texture2D" uid="uid://cyo4tn5r602i7" path="res://interfaces/sprite/fondo_pausa.png" id="4_ai8ue"]
+[ext_resource type="Script" uid="uid://dtyorwjrdnc6" path="res://interfaces/pause_overlay.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b1g2iobcjaj5h" path="res://interfaces/sprite/sheet/pausa.png" id="2_w5v8g"]
+[ext_resource type="SpriteFrames" uid="uid://d1f0gr6kyoeis" path="res://mounstruo.tres" id="3_rxb3m"]
+[ext_resource type="SpriteFrames" uid="uid://di468sbs68w1q" path="res://gaseosa.tres" id="4_2ujgf"]
+[ext_resource type="SpriteFrames" uid="uid://cdcfwkxs0ihjx" path="res://cafe_cuerpo.tres" id="5_b6smg"]
+[ext_resource type="SpriteFrames" uid="uid://b6fy4tk8ikjwy" path="res://cafe_espuma.tres" id="6_1x1x4"]
+[ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="7_b6smg"]
+[ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="8_1x1x4"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai8ue"]
-texture = ExtResource("4_ai8ue")
-modulate_color = Color(1, 1, 1, 0.498039)
+[sub_resource type="StyleBoxEmpty" id="Empty"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tcw0"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjd51"]
-texture = ExtResource("4_ai8ue")
-texture_margin_left = 64.0
-texture_margin_top = 64.0
-texture_margin_right = 64.0
-texture_margin_bottom = 64.0
-
-[node name="PauseOverlay" type="CanvasLayer" unique_id=674599032]
+[node name="PauseOverlay" type="CanvasLayer" unique_id=21925564]
 process_mode = 3
 layer = 2
-script = ExtResource("1_lf64b")
+script = ExtResource("1")
+menu_scene = "uid://cnl10kue3lo6a"
 
-[node name="Panel" type="Panel" parent="." unique_id=511978179]
+[node name="Background" type="Sprite2D" parent="." unique_id=1771014887]
+position = Vector2(643, 364.5)
+scale = Vector2(0.8853591, 0.66390425)
+texture = ExtResource("2_w5v8g")
+
+[node name="PauseContainer" type="Control" parent="." unique_id=312303521]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = 3.0
+offset_right = -8.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 10
-theme_override_styles/panel = SubResource("StyleBoxTexture_ai8ue")
 
-[node name="TabContainer" type="TabContainer" parent="." unique_id=487957552]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -254.5
-offset_top = -278.5
-offset_right = 254.5
-offset_bottom = 278.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_1tcw0")
-tab_alignment = 1
-current_tab = 0
-tabs_position = 1
-tabs_visible = false
+[node name="RightPanel" type="PanelContainer" parent="PauseContainer" unique_id=430112830]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 120.0
+offset_right = 1150.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("Empty")
 
-[node name="PauseMenu" type="PanelContainer" parent="TabContainer" unique_id=2105623166]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseContainer/RightPanel" unique_id=1857426595]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_mjd51")
-metadata/_tab_index = 0
+theme_override_constants/separation = 35
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/PauseMenu" unique_id=1105666558]
+[node name="Title" type="Label" parent="PauseContainer/RightPanel/VBoxContainer" unique_id=543867885]
 layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=120168927]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"PlayerRibbon"
-
-[node name="Label" type="Label" parent="TabContainer/PauseMenu/VBoxContainer/PanelContainer" unique_id=1804828608]
-layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-text = "Game Paused"
+text = "GAME PAUSE"
+horizontal_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=856785960]
-unique_name_in_owner = true
+[node name="ResumeButton" type="Button" parent="PauseContainer/RightPanel/VBoxContainer" unique_id=243798508]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 60
-text = "Resume"
+theme_override_font_sizes/font_size = 45
+text = "RESUME"
 
-[node name="OptionsButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=127127736]
-unique_name_in_owner = true
+[node name="RetryButton" type="Button" parent="PauseContainer/RightPanel/VBoxContainer" unique_id=1140287677]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 60
-text = "Options"
+theme_override_font_sizes/font_size = 45
+text = "RETRY"
 
-[node name="TitleScreenButton" type="Button" parent="TabContainer/PauseMenu/VBoxContainer" unique_id=479465900]
-unique_name_in_owner = true
+[node name="ExitButton" type="Button" parent="PauseContainer/RightPanel/VBoxContainer" unique_id=1332804678]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 60
-text = "Exit to Title"
+theme_override_font_sizes/font_size = 45
+text = "EXIT"
 
-[connection signal="pressed" from="TabContainer/PauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="TabContainer/PauseMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="TabContainer/PauseMenu/VBoxContainer/TitleScreenButton" to="." method="_on_title_screen_button_pressed"]
+[node name="Adorno" type="Node2D" parent="." unique_id=1112438008]
+
+[node name="adorno" type="AnimatedSprite2D" parent="Adorno" unique_id=1404641358]
+position = Vector2(540, 576)
+scale = Vector2(0.20882766, 0.2036392)
+sprite_frames = ExtResource("3_rxb3m")
+animation = &"idle"
+
+[node name="adorno2" type="AnimatedSprite2D" parent="Adorno" unique_id=996861646]
+position = Vector2(318, 105.99999)
+scale = Vector2(0.20882766, 0.2036392)
+sprite_frames = ExtResource("4_2ujgf")
+animation = &"idle"
+
+[node name="adorno3" type="AnimatedSprite2D" parent="Adorno" unique_id=678156531]
+position = Vector2(1195.8125, 382.87497)
+scale = Vector2(0.20882766, 0.2036392)
+sprite_frames = ExtResource("5_b6smg")
+animation = &"idle"
+
+[node name="adorno4" type="AnimatedSprite2D" parent="Adorno" unique_id=1210222367]
+position = Vector2(1192.8125, 390.87497)
+scale = Vector2(0.20882766, 0.2036392)
+sprite_frames = ExtResource("6_1x1x4")
+animation = &"idle"
+
+[node name="adorno5" type="AnimatedSprite2D" parent="Adorno" unique_id=11547804]
+position = Vector2(270, 364)
+scale = Vector2(0.20882766, 0.2036392)
+sprite_frames = ExtResource("7_b6smg")
+animation = &"idle"
+
+[node name="adorno6" type="AnimatedSprite2D" parent="Adorno" unique_id=1699216557]
+position = Vector2(350, 366)
+scale = Vector2(0.20882766, 0.2036392)
+sprite_frames = ExtResource("8_1x1x4")
+animation = &"idle"
+
+[connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/ExitButton" to="." method="_on_title_screen_button_pressed"]

@@ -1,37 +1,107 @@
 extends RigidBody2D
 
+
 var desapareciendo := false
-var puede_chocar := false
 
 
-@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _audios := [$roto1, $roto2, $roto3]
+@onready var animacion: AnimatedSprite2D = $AnimatedSprite2D
 
-func _ready() -> void:
-	_sprite.play("lanzamiento")
-	await _sprite.animation_finished
-	puede_chocar = true
 
-func _on_body_entered(body):
-	if not puede_chocar:
-		return
+@onready var sonidos := [
+	$roto1,
+	$roto2,
+	$roto3
+]
+
+func _ready():
+
+	body_entered.connect(_on_body_entered)
+
+	contact_monitor = true
+	max_contacts_reported = 10
+	# Evita que atraviese al jugador cuando cae rápido
+	continuous_cd = RigidBody2D.CCD_MODE_CAST_SHAPE
+
+
+
+func _on_body_entered(body: Node) -> void:
+
 	if desapareciendo:
 		return
 
-	_audios.pick_random().play()
 
+	print("Objeto golpeó a: ", body.name)
+
+
+	# Daño al jugador
 	if body.is_in_group("player"):
-		body.perder_vida()
+
+		print("DAÑO AL JUGADOR")
+
 		desapareciendo = true
-		body.perder_vida()
+
+		if body.has_method("perder_vida"):
+			body.perder_vida()
+
 		animacion_desaparicion()
-	elif body.is_in_group("plataforma"):
+
+		return
+
+
+
+	# Romper al tocar plataforma
+	if body.is_in_group("plataforma"):
+
+		print("Golpeó plataforma")
+
 		desapareciendo = true
+
 		animacion_desaparicion()
 
 
-func animacion_desaparicion():
 
-	_sprite.play("explosion")
-	await _sprite.animation_finished
+func animacion_desaparicion() -> void:
+
+
+	freeze = true
+
+	linear_velocity = Vector2.ZERO
+
+	angular_velocity = 0
+
+
+
+	# sonido aleatorio
+
+	if sonidos.size() > 0:
+
+		var sonido = sonidos.pick_random()
+
+		sonido.play()
+
+
+
+	# animación
+
+	if animacion.sprite_frames.has_animation("explosion"):
+
+		animacion.play("explosion")
+
+
+	elif animacion.sprite_frames.has_animation("romper"):
+
+		animacion.play("romper")
+
+
+	else:
+
+		queue_free()
+
+		return
+
+
+
+	await animacion.animation_finished
+
+
 	queue_free()

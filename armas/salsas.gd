@@ -12,8 +12,11 @@ enum TipoDireccion {
 
 @export_category("Arma")
 
+@export_category("Arma")
+
 @export var sprite_arma: Texture2D
 @export var proyectil: PackedScene
+@export var spriteframes_proyectil: SpriteFrames
 
 
 
@@ -172,12 +175,10 @@ func disparar():
 
 
 
-
 func crear_proyectil():
 
 	if proyectil == null:
 		return
-
 
 	var bala = proyectil.instantiate()
 
@@ -185,20 +186,19 @@ func crear_proyectil():
 
 	bala.global_position = marker.global_position
 
+	# Asignar SpriteFrames desde el Inspector
+	if spriteframes_proyectil:
+		bala.sprite_frames = spriteframes_proyectil
 
 	var direccion_bala := Vector2.ZERO
-
 
 	match tipo_direccion:
 
 		TipoDireccion.HORIZONTAL:
 			direccion_bala = Vector2.RIGHT * sentido
 
-
 		TipoDireccion.VERTICAL:
 			direccion_bala = Vector2.DOWN * sentido
-
-
 
 	if bala.has_method("iniciar"):
 		bala.iniciar(direccion_bala)

@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dnhf8eacqaa1y"]
+
+[ext_resource type="Texture2D" uid="uid://da63eii851qco" path="res://interfaces/sprite/sheet/mostaza1.png" id="1_kngcr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbv86"]
+atlas = ExtResource("1_kngcr")
+region = Rect2(0, 0, 518, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oefuc"]
+atlas = ExtResource("1_kngcr")
+region = Rect2(518, 0, 518, 270)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbv86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oefuc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

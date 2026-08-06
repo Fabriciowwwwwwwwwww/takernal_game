@@ -8,7 +8,7 @@ var cafe_llamado := false
 	$Hearts/heart4,
 	$Hearts/heart5
 ]
-
+@export_file("*.tscn") var escena_game_over
 var vidas := 5
 
 @onready var barra = $ProgressBar
@@ -40,16 +40,52 @@ var progreso := 0
 
 
 func _ready():
+
 	generar_objetivos()
 	actualizar_panel3()
 
-
+	for corazon in corazones:
+		corazon.visible = true
+		corazon.play("idle")
 func perder_vida():
+
+	if vidas <= 0:
+		return
+
+	# Corazón que se rompe (empieza por el de la derecha)
+	var indice := vidas - 1
+
 	vidas -= 1
-	actualizar_corazones()
+
+	if indice >= 0 and indice < corazones.size():
+
+		var corazon: AnimatedSprite2D = corazones[indice]
+
+		corazon.play("romper")
+
+		await corazon.animation_finished
+
+		corazon.visible = false
+
+	if vidas <= 0:
+		mostrar_game_over()
+func mostrar_game_over():
+
+	get_tree().paused = false
 
 
+	if escena_game_over != "":
 
+		print("Cargando Game Over con transición:", escena_game_over)
+
+		SceneManager.change_scene(
+			self,
+			escena_game_over
+		)
+
+	else:
+
+		print("NO HAY ESCENA GAME OVER ASIGNADA")
 func actualizar_progreso():
 
 	var total_necesario := 0
@@ -70,7 +106,7 @@ func actualizar_progreso():
 
 	barra.value = progreso
 
-	if progreso >= 50 and not cebolla_llamada:
+	if progreso >= 10 and not cebolla_llamada:
 
 		cebolla_llamada = true
 
@@ -144,5 +180,15 @@ func actualizar_panel3():
 
 
 func actualizar_corazones():
+
 	for i in corazones.size():
-		corazones[i].visible = i < vidas
+
+		if i < vidas:
+
+			if corazones[i].animation != "idle":
+				corazones[i].play("idle")
+
+		else:
+
+			if corazones[i].animation != "romper":
+				corazones[i].play("romper")

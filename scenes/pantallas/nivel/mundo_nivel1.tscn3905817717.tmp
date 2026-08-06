@@ -43,7 +43,6 @@ offset_bottom = 784.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u84de")
 
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
-escena_game_over = "uid://dpax7lj5ax0lu"
 
 [node name="piso_mounstruo" type="StaticBody2D" parent="." unique_id=892334228]
 position = Vector2(-3, 217)

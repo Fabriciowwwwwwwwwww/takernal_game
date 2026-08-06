@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://5sdsi4pbosmc"]
+
+[ext_resource type="Texture2D" uid="uid://dw27wxpydejov" path="res://interfaces/sprite/sheet/capsup1.png" id="1_cbugf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkr3u"]
+atlas = ExtResource("1_cbugf")
+region = Rect2(0, 0, 518, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dybtm"]
+atlas = ExtResource("1_cbugf")
+region = Rect2(518, 0, 518, 270)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkr3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dybtm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

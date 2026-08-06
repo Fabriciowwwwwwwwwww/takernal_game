@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dku8abeq4hwff"]
 
 [ext_resource type="Script" uid="uid://crj6gewayhiq4" path="res://scenes/ui/hud.gd" id="1_u7n8c"]
-[ext_resource type="Texture2D" uid="uid://bi66lj0w05d1x" path="res://assets/corazonn  .png" id="2_f5cxw"]
 [ext_resource type="Texture2D" uid="uid://bseafg4fcivv8" path="res://assets/items_nivel_1/camote  .png" id="2_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://bah2wfptvk272" path="res://assets/items_nivel_1/cebolla.png" id="3_uegxj"]
 [ext_resource type="FontFile" uid="uid://c4lty2phrrmm3" path="res://letra/Slackey-Regular.ttf" id="3_y220t"]
@@ -9,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dprju33m3ndwu" path="res://assets/items_nivel_1/limón.png" id="5_4kltc"]
 [ext_resource type="Texture2D" uid="uid://dxrihpfcjabaa" path="res://assets/items_nivel_1/pan.png" id="6_hl07w"]
 [ext_resource type="Texture2D" uid="uid://4juvbch806pe" path="res://assets/items_nivel_1/pedazo chicharron.png" id="7_swkix"]
+[ext_resource type="Texture2D" uid="uid://5ro54ft0qmbj" path="res://interfaces/sprite/sheet/corazonn  -Sheet.png" id="9_uegxj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5cxw"]
 bg_color = Color(0.96825105, 0.6216625, 3.85046e-07, 0.9882353)
@@ -30,6 +30,82 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y220t"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kltc"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl07w"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swkix"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc5d0"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3vwu"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i47d"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgwkc"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2x3"]
+atlas = ExtResource("9_uegxj")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svq4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y220t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl07w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swkix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc5d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3vwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i47d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgwkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2x3")
+}],
+"loop": false,
+"name": &"romper",
+"speed": 15.0
+}]
 
 [node name="Ui" type="CanvasLayer" unique_id=1530218491 groups=["hud"]]
 script = ExtResource("1_u7n8c")
@@ -531,22 +607,37 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.10675144, 0.10675144)
 
-[node name="heart1" type="TextureRect" parent="Hearts" unique_id=1820383687]
-layout_mode = 2
-texture = ExtResource("2_f5cxw")
+[node name="heart1" type="AnimatedSprite2D" parent="Hearts" unique_id=866553053]
+position = Vector2(3091.2947, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.15209599
 
-[node name="heart2" type="TextureRect" parent="Hearts" unique_id=2092192059]
-layout_mode = 2
-texture = ExtResource("2_f5cxw")
+[node name="heart2" type="AnimatedSprite2D" parent="Hearts" unique_id=270810707]
+position = Vector2(2388.7275, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.23673286
 
-[node name="heart3" type="TextureRect" parent="Hearts" unique_id=884037500]
-layout_mode = 2
-texture = ExtResource("2_f5cxw")
+[node name="heart3" type="AnimatedSprite2D" parent="Hearts" unique_id=973281771]
+position = Vector2(1676.7936, 346.59955)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
 
-[node name="heart4" type="TextureRect" parent="Hearts" unique_id=1986956134]
-layout_mode = 2
-texture = ExtResource("2_f5cxw")
+[node name="heart4" type="AnimatedSprite2D" parent="Hearts" unique_id=1519546308]
+position = Vector2(983.5944, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
 
-[node name="heart5" type="TextureRect" parent="Hearts" unique_id=816782730]
-layout_mode = 2
-texture = ExtResource("2_f5cxw")
+[node name="heart5" type="AnimatedSprite2D" parent="Hearts" unique_id=579205759]
+position = Vector2(299.76285, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956

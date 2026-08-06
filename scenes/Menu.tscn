@@ -302,6 +302,12 @@ scale = Vector2(0.7375, 0.725)
 sprite_frames = ExtResource("16_6c8sk")
 animation = &"idle"
 
+[node name="DECORACION" type="AnimatedSprite2D" parent="." unique_id=1581579971]
+position = Vector2(2122, 1000)
+scale = Vector2(0.7375, 0.725)
+sprite_frames = ExtResource("16_6c8sk")
+animation = &"idle"
+
 [connection signal="pressed" from="Control/Single_Player" to="." method="_on_single_player_pressed"]
 [connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]

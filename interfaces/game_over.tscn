@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dpax7lj5ax0lu"]
+
+[ext_resource type="Script" uid="uid://01gc3rl5gfaa" path="res://interfaces/game_over.gd" id="1_qtk0t"]
+[ext_resource type="Texture2D" uid="uid://ds8rohg4nq7q5" path="res://interfaces/sprite/game overs .png" id="2_qtk0t"]
+
+[sub_resource type="StyleBoxEmpty" id="Empty"]
+
+[node name="GAME_OVER" type="CanvasLayer" unique_id=21925564]
+process_mode = 3
+layer = 2
+script = ExtResource("1_qtk0t")
+retry_scene = "uid://bdcomvhmo3lf1"
+menu_scene = "uid://cnl10kue3lo6a"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1771014887]
+position = Vector2(653.50006, 367.5)
+scale = Vector2(0.40968752, 0.42166668)
+texture = ExtResource("2_qtk0t")
+
+[node name="PauseContainer" type="Control" parent="." unique_id=312303521]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 24.0
+offset_right = 38.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPanel" type="PanelContainer" parent="PauseContainer" unique_id=430112830]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 448.0
+offset_right = 867.0
+offset_bottom = 978.0
+theme_override_styles/panel = SubResource("Empty")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseContainer/RightPanel" unique_id=1857426595]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="RetryButton" type="Button" parent="PauseContainer/RightPanel/VBoxContainer" unique_id=1140287677]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "RETRY"
+
+[node name="ExitButton" type="Button" parent="PauseContainer/RightPanel/VBoxContainer" unique_id=1332804678]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "EXIT"
+
+[connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/ExitButton" to="." method="_on_title_screen_button_pressed"]

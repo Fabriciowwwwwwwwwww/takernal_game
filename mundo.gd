@@ -8,8 +8,17 @@ extends Node2D
 
 @onready var posicion_inicial: Marker2D = $posicion_inicial
 
+@export var nodo_puzle : Node2D 
+
+# Arrastra aquí tu Sprite, Panel o Partículas
+@export var imagen_victoria : Sprite2D 
+
+
+@onready var musica: AudioStreamPlayer2D = $sonido_mundo
 
 func _ready():
+	musica.play()
+
 
 	var centro = posicion_inicial.global_position
 

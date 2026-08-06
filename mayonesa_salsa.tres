@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dlbjar5mw4olu"]
+
+[ext_resource type="Texture2D" uid="uid://c553vhngsyw23" path="res://interfaces/sprite/sheet/mayonsesa1.png" id="1_f25dn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncjdl"]
+atlas = ExtResource("1_f25dn")
+region = Rect2(0, 0, 518, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fu8t"]
+atlas = ExtResource("1_f25dn")
+region = Rect2(518, 0, 518, 270)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncjdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fu8t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

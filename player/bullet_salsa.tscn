@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dfnd4tjonef4s"]
+
+[ext_resource type="Script" uid="uid://7755goani0j0" path="res://player/bullet_salsa.gd" id="1_sqxkg"]
+[ext_resource type="SpriteFrames" uid="uid://dlbjar5mw4olu" path="res://mayonesa_salsa.tres" id="2_sqxkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j40gx"]
+radius = 18.0
+height = 146.0
+
+[node name="Bullet" type="Area2D" unique_id=178091810]
+script = ExtResource("1_sqxkg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=176154318]
+position = Vector2(20.000002, -2.0000005)
+rotation = -0.0015010834
+scale = Vector2(0.3128515, 0.21960513)
+sprite_frames = ExtResource("2_sqxkg")
+animation = &"idle"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1398089051]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365285930]
+position = Vector2(14, 0)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_j40gx")

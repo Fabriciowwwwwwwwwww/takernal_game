@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c5qx6lmwv77ei"]
+
+[ext_resource type="Texture2D" uid="uid://cx7womnr82x3i" path="res://interfaces/sprite/sheet/chirri1.png" id="1_n5pwr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlru3"]
+atlas = ExtResource("1_n5pwr")
+region = Rect2(0, 0, 518, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw73g"]
+atlas = ExtResource("1_n5pwr")
+region = Rect2(518, 0, 518, 270)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlru3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw73g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
