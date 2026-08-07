@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://7qyuabqc8lnb"]
+
+[ext_resource type="Texture2D" uid="uid://cfnilgvxuups0" path="res://assets/NIVEL_costa-ASSETS/plato .png" id="1_6m5fv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7udjc"]
+size = Vector2(453, 42)
+
+[sub_resource type="Animation" id="Animation_6m5fv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(230, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-230, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 120)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_7udjc"]
+resource_name = "movimiento_platos"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(230, 0), Vector2(0, 120), Vector2(-230, 0), Vector2(0, -120), Vector2(230, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-230, 0), Vector2(0, -120), Vector2(230, 0), Vector2(0, 120), Vector2(-230, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 120), Vector2(-230, 0), Vector2(0, -120), Vector2(230, 0), Vector2(0, 120)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -120), Vector2(230, 0), Vector2(0, 120), Vector2(-230, 0), Vector2(0, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_diski"]
+resource_name = "quieto"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(230, 0), Vector2(230, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-230, 0), Vector2(-230, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 120), Vector2(0, 120)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -120), Vector2(0, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_5tvr2"]
+resource_name = "retroceso"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(230, 0), Vector2(0, 120), Vector2(-230, 0), Vector2(0, -120), Vector2(230, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-230, 0), Vector2(0, -120), Vector2(230, 0), Vector2(0, 120), Vector2(-230, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody2D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 120), Vector2(-230, 0), Vector2(0, -120), Vector2(230, 0), Vector2(0, 120)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StaticBody2D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -120), Vector2(230, 0), Vector2(0, 120), Vector2(-230, 0), Vector2(0, -120)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5tvr2"]
+_data = {
+&"RESET": SubResource("Animation_6m5fv"),
+&"movimiento_platos": SubResource("Animation_7udjc"),
+&"quieto": SubResource("Animation_diski"),
+&"retroceso": SubResource("Animation_5tvr2")
+}
+
+[node name="Platos" type="Node2D" unique_id=1143187593]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1178684853]
+position = Vector2(230, 0)
+scale = Vector2(0.355, 0.355)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D2" unique_id=1961794140]
+scale = Vector2(0.43741107, 0.4374111)
+texture = ExtResource("1_6m5fv")
+region_enabled = true
+region_rect = Rect2(203.12701, 897.7026, 1075.2244, 363.0031)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1786662208]
+shape = SubResource("RectangleShape2D_7udjc")
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=796233363]
+position = Vector2(-230, 0)
+scale = Vector2(0.355, 0.355)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D3" unique_id=2054870663]
+scale = Vector2(0.43741107, 0.4374111)
+texture = ExtResource("1_6m5fv")
+region_enabled = true
+region_rect = Rect2(203.12701, 897.7026, 1075.2244, 363.0031)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=603455918]
+shape = SubResource("RectangleShape2D_7udjc")
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=2086454225]
+position = Vector2(0, 120)
+scale = Vector2(0.355, 0.355)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D4" unique_id=1834606264]
+scale = Vector2(0.43741107, 0.4374111)
+texture = ExtResource("1_6m5fv")
+region_enabled = true
+region_rect = Rect2(203.12701, 897.7026, 1075.2244, 363.0031)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1038131594]
+shape = SubResource("RectangleShape2D_7udjc")
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="." unique_id=1658858523]
+position = Vector2(0, -120)
+scale = Vector2(0.355, 0.355)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D5" unique_id=89452348]
+scale = Vector2(0.43741107, 0.4374111)
+texture = ExtResource("1_6m5fv")
+region_enabled = true
+region_rect = Rect2(203.12701, 897.7026, 1075.2244, 363.0031)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=1776070964]
+shape = SubResource("RectangleShape2D_7udjc")
+one_way_collision = true
+one_way_collision_margin = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=638634272]
+libraries/ = SubResource("AnimationLibrary_5tvr2")
+autoplay = &"retroceso"
