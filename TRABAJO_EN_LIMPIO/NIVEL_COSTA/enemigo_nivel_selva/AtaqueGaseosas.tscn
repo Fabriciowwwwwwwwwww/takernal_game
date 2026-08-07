@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bja6q3cd61tr1"]
+
+[ext_resource type="Script" uid="uid://e1jt2tja3jkj" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/AtaqueGaseosas.gd" id="1_gk5ln"]
+[ext_resource type="Script" uid="uid://dcvoqq706uf6m" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/rain_attack.gd" id="2_fnkwm"]
+[ext_resource type="PackedScene" uid="uid://ckwkhbdrbvc0k" path="res://player/bullet.tscn" id="3_fnkwm"]
+[ext_resource type="SpriteFrames" uid="uid://di468sbs68w1q" path="res://gaseosa.tres" id="3_vkcod"]
+
+[node name="AtaqueGaseosa" type="Node2D" unique_id=1072733640]
+script = ExtResource("1_gk5ln")
+tiempo_descanso = 2.5
+
+[node name="RainAttack" type="Node2D" parent="." unique_id=1655591714]
+script = ExtResource("2_fnkwm")
+proyectil = ExtResource("3_fnkwm")
+
+[node name="Izquierda" type="Marker2D" parent="RainAttack" unique_id=1125424882]
+
+[node name="Derecha" type="Marker2D" parent="RainAttack" unique_id=2037933128]
+position = Vector2(1213, 0)
+
+[node name="Centro" type="Marker2D" parent="RainAttack" unique_id=446379016]
+position = Vector2(650, 0)
+
+[node name="gaseosa" type="Node2D" parent="." unique_id=555019864]
+position = Vector2(31, 667)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="gaseosa" unique_id=1455232202]
+position = Vector2(57.999992, -129.99998)
+scale = Vector2(0.37812498, 0.27617186)
+sprite_frames = ExtResource("3_vkcod")
+animation = &"idle"
+frame_progress = 0.6506725
+
+[node name="gaseosa2" type="Node2D" parent="." unique_id=236838541]
+position = Vector2(1123, 670)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="gaseosa2" unique_id=154310186]
+position = Vector2(57.999992, -129.99998)
+scale = Vector2(0.37812498, 0.27617186)
+sprite_frames = ExtResource("3_vkcod")
+animation = &"idle"
+frame_progress = 0.986888

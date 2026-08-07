@@ -138,7 +138,7 @@ func actualizar_progreso():
 func generar_objetivos():
 
 	for ingrediente in objetivo_ingredientes:
-		objetivo_ingredientes[ingrediente] = randi_range(10,15)
+		objetivo_ingredientes[ingrediente] = randi_range(4,7)
 
 
 	$Panel2/HBoxContainer/ingre1/camote_label.text = str(objetivo_ingredientes["camote"])

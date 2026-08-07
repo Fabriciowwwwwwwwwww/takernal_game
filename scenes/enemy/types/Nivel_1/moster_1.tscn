@@ -27,6 +27,7 @@ velocidad = 1000
 [node name="Timer" type="Timer" parent="." unique_id=1652395765]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2080245554]
+position = Vector2(466, 538)
 scale = Vector2(0.2825824, 0.28258243)
 sprite_frames = ExtResource("10_j5lxu")
 animation = &"idle"

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://xgihd0jia2nj"]
+
+[ext_resource type="PackedScene" uid="uid://o4cvab4qol1e" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/salsas_spaw.tscn" id="1_22nvg"]
+[ext_resource type="Texture2D" uid="uid://dmwxxcv3ab8r0" path="res://assets/NIVEL_costa-ASSETS/COSTA escenario .png" id="1_4146j"]
+[ext_resource type="PackedScene" uid="uid://bja6q3cd61tr1" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/AtaqueGaseosas.tscn" id="2_4146j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogess"]
+size = Vector2(1455, 165.5)
+
+[node name="EscenaAtaque1" type="Node2D" unique_id=2134803770]
+
+[node name="Fondo_principal" type="TextureRect" parent="." unique_id=114954429]
+offset_left = -92.0
+offset_top = -55.0
+offset_right = 1327.0
+offset_bottom = 734.0
+texture = ExtResource("1_4146j")
+expand_mode = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fondo_principal" unique_id=778164840]
+position = Vector2(624, 774)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo_principal/StaticBody2D" unique_id=92563844]
+position = Vector2(0, -18.25)
+shape = SubResource("RectangleShape2D_ogess")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fondo_principal/StaticBody2D" unique_id=1833161366]
+position = Vector2(702, -385)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ogess")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Fondo_principal/StaticBody2D" unique_id=909898811]
+position = Vector2(-657, -383)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ogess")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="SalsasSpawner" parent="." unique_id=954538583 instance=ExtResource("1_22nvg")]
+
+[node name="AtaqueGaseosa" parent="." unique_id=1072733640 instance=ExtResource("2_4146j")]
+
+[node name="PosicionP1" type="Marker2D" parent="." unique_id=2119068220]
+position = Vector2(593, 458)
+
+[node name="PosicionP2" type="Marker2D" parent="." unique_id=1804344218]
+position = Vector2(683, 460)

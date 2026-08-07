@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://o4cvab4qol1e"]
+
+[ext_resource type="Script" uid="uid://o5ekgetjqg3n" path="res://salsas_spawner.gd" id="1_1eg0m"]
+[ext_resource type="PackedScene" uid="uid://b7ohhbxl2vwhb" path="res://armas/salsas.tscn" id="2_v8k3a"]
+[ext_resource type="PackedScene" uid="uid://dfnd4tjonef4s" path="res://player/bullet_salsa.tscn" id="3_q34ql"]
+[ext_resource type="SpriteFrames" uid="uid://dnhf8eacqaa1y" path="res://mostasa_salsa.tres" id="4_7mtbp"]
+[ext_resource type="Texture2D" uid="uid://b278upjroqg61" path="res://armas/sprite/las salsas/chimi chrriii .png" id="5_oq4sr"]
+[ext_resource type="SpriteFrames" uid="uid://c5qx6lmwv77ei" path="res://chirri_salsa.tres" id="6_5dhcm"]
+[ext_resource type="Texture2D" uid="uid://byhe8f31x8jtv" path="res://armas/sprite/las salsas/ketchup .png" id="7_sg8xr"]
+[ext_resource type="SpriteFrames" uid="uid://5sdsi4pbosmc" path="res://ketchup_salsa.tres" id="8_aj2xy"]
+[ext_resource type="Texture2D" uid="uid://d3vwcpvwn2x4u" path="res://armas/sprite/las salsas/mayoneiai .png" id="9_yapsr"]
+[ext_resource type="SpriteFrames" uid="uid://dlbjar5mw4olu" path="res://mayonesa_salsa.tres" id="10_iwrem"]
+
+[node name="SalsasSpawner" type="Node2D" unique_id=954538583]
+script = ExtResource("1_1eg0m")
+armas = Array[NodePath]([NodePath("Salsas"), NodePath("Salsas2"), NodePath("Salsas3"), NodePath("Salsas4"), NodePath("Salsas5"), NodePath("Salsas6")])
+tiempo_entre_patrones = 4.0
+
+[node name="Timer" type="Timer" parent="." unique_id=795672459]
+autostart = true
+
+[node name="Salsas" parent="." unique_id=1743966541 instance=ExtResource("2_v8k3a")]
+position = Vector2(1026, 792)
+proyectil = ExtResource("3_q34ql")
+spriteframes_proyectil = ExtResource("4_7mtbp")
+tipo_direccion = 1
+sentido = -1
+
+[node name="Salsas2" parent="." unique_id=637920735 instance=ExtResource("2_v8k3a")]
+position = Vector2(466, 792)
+sprite_arma = ExtResource("5_oq4sr")
+proyectil = ExtResource("3_q34ql")
+spriteframes_proyectil = ExtResource("6_5dhcm")
+tipo_direccion = 1
+sentido = -1
+
+[node name="Salsas3" parent="." unique_id=1355058607 instance=ExtResource("2_v8k3a")]
+position = Vector2(-61, 550)
+rotation = 1.5707964
+sprite_arma = ExtResource("7_sg8xr")
+proyectil = ExtResource("3_q34ql")
+spriteframes_proyectil = ExtResource("8_aj2xy")
+distancia_salida = 120.0
+
+[node name="Salsas4" parent="." unique_id=1908566432 instance=ExtResource("2_v8k3a")]
+position = Vector2(1352, 609)
+rotation = -1.5707964
+sprite_arma = ExtResource("9_yapsr")
+proyectil = ExtResource("3_q34ql")
+spriteframes_proyectil = ExtResource("10_iwrem")
+sentido = -1
+distancia_salida = 120.0
+
+[node name="Salsas5" parent="." unique_id=370705733 instance=ExtResource("2_v8k3a")]
+position = Vector2(672, -145)
+rotation = -3.1415927
+sprite_arma = ExtResource("7_sg8xr")
+proyectil = ExtResource("3_q34ql")
+spriteframes_proyectil = ExtResource("8_aj2xy")
+tipo_direccion = 1
+distancia_salida = 150.0
+
+[node name="Salsas6" parent="." unique_id=977913451 instance=ExtResource("2_v8k3a")]
+position = Vector2(315, -148)
+rotation = -3.1415927
+sprite_arma = ExtResource("9_yapsr")
+proyectil = ExtResource("3_q34ql")
+spriteframes_proyectil = ExtResource("10_iwrem")
+tipo_direccion = 1
+distancia_salida = 150.0

@@ -63,7 +63,7 @@ func _on_body_entered(body: Node) -> void:
 func animacion_desaparicion() -> void:
 
 
-	freeze = true
+	
 
 	linear_velocity = Vector2.ZERO
 

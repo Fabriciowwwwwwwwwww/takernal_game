@@ -30,7 +30,7 @@ var _marker_izq_extremo: Marker2D = null
 var _marker_der_extremo: Marker2D = null
 
 var _lanzando := false
-var activo := true
+var activo := false
 
 @onready var _audio_lanzamiento: AudioStreamPlayer2D = $AudioStreamPlayer
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D

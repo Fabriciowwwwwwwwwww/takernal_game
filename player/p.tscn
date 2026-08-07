@@ -377,6 +377,7 @@ animations = [{
 radius = 13.106401
 
 [node name="P" type="CharacterBody2D" unique_id=1738953310 groups=["player"]]
+z_index = 10
 scale = Vector2(3, 3)
 collision_mask = 2
 script = ExtResource("1_oohw6")

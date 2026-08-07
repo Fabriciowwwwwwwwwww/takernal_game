@@ -89,14 +89,14 @@ animation = &"explosion"
 
 [node name="roto1" type="AudioStreamPlayer2D" parent="." unique_id=1545487427]
 stream = ExtResource("2_r00wr")
-volume_db = 14.0
+volume_db = 9.0
 
 [node name="roto2" type="AudioStreamPlayer2D" parent="." unique_id=1788524879]
 stream = ExtResource("3_lopa5")
-volume_db = 14.0
+volume_db = 9.0
 
 [node name="roto3" type="AudioStreamPlayer2D" parent="." unique_id=1243728490]
 stream = ExtResource("2_fdnve")
-volume_db = 14.0
+volume_db = 9.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
