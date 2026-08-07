@@ -113,7 +113,7 @@ func actualizar_progreso():
 
 	barra.value = progreso
 
-	if progreso >= 85 and not cebolla_llamada:
+	if progreso >= 65 and not cebolla_llamada:
 
 		cebolla_llamada = true
 
@@ -129,7 +129,7 @@ func actualizar_progreso():
 
 			print("NO EXISTE CEBOLLA SPAWNER")
 
-	if progreso >= 15 and not cafe_llamado:
+	if progreso >= 25 and not cafe_llamado:
 
 		cafe_llamado = true
 

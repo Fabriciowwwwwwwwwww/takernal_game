@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://e4eys0tsscli" path="res://armas/sprite/cafe/cafe felchita/cafefñechas7.png" id="3_irqiq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx2oa"]
-radius = 30.58155
-height = 82.139694
+radius = 17.58155
+height = 54.139698
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dxktq"]
 animations = [{
