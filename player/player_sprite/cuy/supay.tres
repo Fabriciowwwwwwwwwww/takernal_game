@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://8gnoolrchuk5"]
+
+[ext_resource type="Texture2D" uid="uid://bkcdmc06ng4ab" path="res://assets/enemy_nivel1/chicharrdisparo00.png" id="1_dwb87"]
+[ext_resource type="Texture2D" uid="uid://b6vknsfo71ljf" path="res://assets/enemy_nivel1/chicharrdisparo01.png" id="2_pg17a"]
+[ext_resource type="Texture2D" uid="uid://calimyn6fhn23" path="res://assets/enemy_nivel1/chicharrdisparo02.png" id="3_p14sf"]
+[ext_resource type="Texture2D" uid="uid://cmwjwmnh5cno3" path="res://assets/enemy_nivel1/chicharrdisparo03.png" id="4_rls67"]
+[ext_resource type="Texture2D" uid="uid://ohnwwfofam1g" path="res://assets/enemy_nivel1/chicharrdisparo04.png" id="5_0ysyg"]
+[ext_resource type="Texture2D" uid="uid://ctkyioyic7so6" path="res://assets/enemy_nivel1/chicharrdisparo05.png" id="6_b8c32"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dwb87")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pg17a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p14sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rls67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0ysyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b8c32")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]

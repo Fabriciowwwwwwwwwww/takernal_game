@@ -1,0 +1,43 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c78wwbrid3ba0"]
+
+[ext_resource type="Texture2D" uid="uid://cmw41gimx217x" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro5.png" id="1_voqq8"]
+[ext_resource type="Texture2D" uid="uid://d3qdegpuf7wud" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro6.png" id="2_l2g5p"]
+[ext_resource type="Texture2D" uid="uid://7yb4dk4pcdrw" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro7.png" id="3_5p1uo"]
+[ext_resource type="Texture2D" uid="uid://cdy14kplu8xx2" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro8.png" id="4_jfxi0"]
+[ext_resource type="Texture2D" uid="uid://kbdmvusxd1bq" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro9.png" id="5_eojyr"]
+[ext_resource type="Texture2D" uid="uid://rrtgtffu3t3e" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro10.png" id="6_4w8vf"]
+[ext_resource type="Texture2D" uid="uid://cmnw3re6ygt6c" path="res://player/player_sprite/cuynegro/cuyCaminata/cuynegro11.png" id="7_f7nxr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_voqq8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l2g5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5p1uo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jfxi0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eojyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4w8vf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f7nxr")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]

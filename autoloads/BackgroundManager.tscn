@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d0g6f4xm27lm"]
+
+[ext_resource type="Script" uid="uid://b4oqidpliolal" path="res://autoloads/background_manager.gd" id="1_j2ud8"]
+[ext_resource type="Texture2D" uid="uid://buhg4tmg2u02j" path="res://interfaces/sprite/sheet/imagenes_referencia/lurin.jpg" id="2_2aslb"]
+[ext_resource type="Texture2D" uid="uid://cisyecko42q5o" path="res://interfaces/sprite/sheet/imagenes_referencia/lurin_noche.jpg" id="3_lr6e5"]
+[ext_resource type="Texture2D" uid="uid://b1svkgqmeju6a" path="res://interfaces/sprite/sheet/imagenes_referencia/lurin_maldicion.jpg" id="4_fxluw"]
+[ext_resource type="Texture2D" uid="uid://0x3vrf8r8gu4" path="res://interfaces/sprite/sheet/imagenes_referencia/cielo limeño 02 .png" id="5_lr6e5"]
+[ext_resource type="Texture2D" uid="uid://cpyda36mjv5wk" path="res://interfaces/sprite/sheet/imagenes_referencia/mapa peru .png" id="6_fxluw"]
+[ext_resource type="Texture2D" uid="uid://dmks0k1n2jqly" path="res://interfaces/sprite/escenario3.png" id="7_0rnl1"]
+[ext_resource type="Texture2D" uid="uid://b0e0e23jhqkmq" path="res://interfaces/sprite/sheet/imagenes_referencia/sierra.jpeg" id="8_7xr4p"]
+[ext_resource type="Texture2D" uid="uid://bmxjvcdptreef" path="res://interfaces/sprite/sheet/imagenes_referencia/selva.jpg" id="9_lffdg"]
+
+[node name="BackgroundManager" type="Node2D" unique_id=1675869216]
+script = ExtResource("1_j2ud8")
+fondos = Dictionary[String, Texture2D]({
+"lurin": ExtResource("7_0rnl1"),
+"mapa_peru": ExtResource("6_fxluw"),
+"oraculo": ExtResource("5_lr6e5"),
+"restaurante_dia": ExtResource("2_2aslb"),
+"restaurante_maldicion": ExtResource("4_fxluw"),
+"restaurante_noche": ExtResource("3_lr6e5"),
+"selva": ExtResource("9_lffdg"),
+"sierra": ExtResource("8_7xr4p")
+})

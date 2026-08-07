@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var dialogue: DialogueResource
-
+@onready var sprite:Sprite2D = $CanvasLayer2/Sprite2D
 @export_file("*.tscn") var next_scene: String
 
 
 func _ready():
-
+	BackgroundManager.registrar_fondo(sprite)
 	print("===== DIALOGO INICIADO =====")
 
 	print("Escena actual:",

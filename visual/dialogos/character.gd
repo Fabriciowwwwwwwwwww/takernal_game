@@ -53,8 +53,8 @@ func update_animation():
 
 	if talking:
 
-		if animated_sprite.sprite_frames.has_animation("talking"):
-			animated_sprite.play("talking")
+		if animated_sprite.sprite_frames.has_animation("talk"):
+			animated_sprite.play("talk")
 
 	else:
 

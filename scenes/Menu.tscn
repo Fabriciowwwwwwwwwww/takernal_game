@@ -163,10 +163,10 @@ centered = false
 [node name="Single_Player" type="TextureButton" parent="Control" unique_id=352330779 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_mm3o3")
 use_parent_material = true
-offset_left = 187.0
-offset_top = 340.0
-offset_right = 787.0
-offset_bottom = 734.0
+offset_left = 177.0
+offset_top = 304.0
+offset_right = 777.0
+offset_bottom = 698.0
 scale = Vector2(0.7, 0.7)
 focus_neighbor_bottom = NodePath("../Multi_Player")
 button_mask = 0
@@ -199,10 +199,10 @@ text = "Single Player"
 [node name="Multi_Player" type="TextureButton" parent="Control" unique_id=1548086522 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
-offset_left = 167.0
-offset_top = 664.0
-offset_right = 1007.0
-offset_bottom = 1086.5
+offset_left = 171.0
+offset_top = 564.0
+offset_right = 1011.0
+offset_bottom = 986.5
 scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Single_Player")
 focus_neighbor_bottom = NodePath("../Quit")
@@ -216,10 +216,10 @@ texture_focused = ExtResource("12_rehui")
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
-offset_left = 79.99997
-offset_top = 144.99994
-offset_right = 970.0
-offset_bottom = 323.99994
+offset_left = 71.42858
+offset_top = 148.57146
+offset_right = 1027.4286
+offset_bottom = 327.57147
 rotation = -0.006470233
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
@@ -236,10 +236,10 @@ text = "Multi_Player"
 [node name="Quit" type="TextureButton" parent="Control" unique_id=1040227390 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
-offset_left = 175.0
-offset_top = 995.99994
-offset_right = 1015.0
-offset_bottom = 1390.0
+offset_left = 163.0
+offset_top = 825.99994
+offset_right = 1003.0
+offset_bottom = 1220.0
 scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Multi_Player")
 button_mask = 0
@@ -268,6 +268,43 @@ theme_override_constants/shadow_outline_size = 10
 theme_override_fonts/font = ExtResource("13_yvxia")
 theme_override_font_sizes/font_size = 128
 text = "Quit"
+
+[node name="creditos" type="TextureButton" parent="Control" unique_id=280908064 groups=["ui_botones"]]
+material = SubResource("ShaderMaterial_w4fob")
+use_parent_material = true
+offset_left = 155.0
+offset_top = 1102.0
+offset_right = 995.0
+offset_bottom = 1496.0
+scale = Vector2(0.7, 0.7)
+focus_neighbor_top = NodePath("../Multi_Player")
+button_mask = 0
+texture_normal = ExtResource("10_8fhjo")
+texture_pressed = ExtResource("11_760fv")
+texture_hover = ExtResource("12_rehui")
+texture_focused = ExtResource("12_rehui")
+
+[node name="Label" type="Label" parent="Control/creditos" unique_id=1220957991]
+material = SubResource("ShaderMaterial_w4fob")
+use_parent_material = true
+layout_mode = 0
+offset_left = 78.0
+offset_top = 148.0
+offset_right = 968.0
+offset_bottom = 327.0
+rotation = 0.020596132
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 15
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("13_yvxia")
+theme_override_font_sizes/font_size = 128
+text = "creditos
+"
 
 [node name="Timer" type="Timer" parent="Control" unique_id=1991803515]
 wait_time = 2.0
@@ -300,7 +337,7 @@ animation = &"idle"
 position = Vector2(2122, 1000)
 scale = Vector2(0.7375, 0.725)
 sprite_frames = ExtResource("16_6c8sk")
-animation = &"idle"
+animation = &"dash"
 
 [node name="DECORACION" type="AnimatedSprite2D" parent="." unique_id=1581579971]
 position = Vector2(2122, 1000)
@@ -311,5 +348,6 @@ animation = &"idle"
 [connection signal="pressed" from="Control/Single_Player" to="." method="_on_single_player_pressed"]
 [connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Control/creditos" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
 [connection signal="timeout" from="Sombras_transición/Sombra_time" to="." method="_on_sombra_time_timeout"]

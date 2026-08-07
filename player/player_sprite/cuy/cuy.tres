@@ -1,13 +1,18 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://b1kln6lxwj247"]
 
-[ext_resource type="Texture2D" uid="uid://tqylcr6opin6" path="res://player/player_sprite/cuy/cuy_correr0003.png" id="1_2s8nv"]
-[ext_resource type="Texture2D" uid="uid://dc71y6uc5u6rf" path="res://player/player_sprite/cuy/cuy_idle0002.png" id="2_4lcwf"]
+[ext_resource type="Texture2D" uid="uid://b3kjg31nr77ix" path="res://player/player_sprite/cuy/cuy_idle/cuy00.png" id="1_ek4qj"]
+[ext_resource type="Texture2D" uid="uid://phi47lje5h18" path="res://player/player_sprite/cuy/cuy_idle/cuy01.png" id="2_gu6fe"]
+[ext_resource type="Texture2D" uid="uid://bwt4tfwjfehy8" path="res://player/player_sprite/cuy/cuy_idle/cuy02.png" id="3_3twuy"]
+[ext_resource type="Texture2D" uid="uid://bpojaspb3p8ut" path="res://player/player_sprite/cuy/cuy_idle/cuy03.png" id="4_pv10j"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2s8nv")
+"texture": ExtResource("1_ek4qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gu6fe")
 }],
 "loop": true,
 "name": &"idle",
@@ -15,7 +20,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4lcwf")
+"texture": ExtResource("1_ek4qj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gu6fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3twuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pv10j")
 }],
 "loop": true,
 "name": &"talk",

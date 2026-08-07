@@ -1,9 +1,83 @@
 ~ start
 
-Phoenix: Hola, soy Phoenix.
+do BackgroundManager.cambiar_fondo("mapa_peru")
 
-Trucy: ¡Hola Phoenix!
+narrador: Perú...
+narrador: Una tierra donde los sabores cuentan historias y cada región guarda una tradición única.
 
-Apollo: Tenemos un nuevo caso.
+narrador: Lima, la capital del Perú, conocida como la Capital Mundial de la Gastronomía.
+narrador: Un lugar donde culturas de todo el mundo se encuentran en cada plato.
 
+do BackgroundManager.cambiar_fondo("lurin")
+
+narrador: Al sur de Lima se encuentra Lurín...
+narrador: Un valle lleno de historia, tradiciones y sabores que han pasado de generación en generación.
+
+narrador: Aquí, en una pequeña chicharronería, una familia mantiene viva la unión a través de la comida.
+
+do BackgroundManager.cambiar_fondo("sierra")
+
+narrador: En los Andes, las montañas guardan recetas ancestrales.
+narrador: La papa, el maíz y la quinua son tesoros que han alimentado a nuestro pueblo durante siglos.
+
+narrador: Cada comunidad comparte sus sabores como símbolo de unión y respeto.
+
+do BackgroundManager.cambiar_fondo("selva")
+
+narrador: En la Amazonía, la naturaleza ofrece ingredientes únicos.
+narrador: Frutas, raíces y conocimientos ancestrales forman parte de una cocina llena de vida.
+
+narrador: Desde la costa hasta la selva...
+narrador: Perú es un país unido por sus sabores.
+
+do BackgroundManager.cambiar_fondo("restaurante_dia")
+
+rosa: Bienvenidos a la chicharronería de Lurín.
+rosa: Aquí la comida siempre ha unido a las familias.
+rosa: Ese antiguo oráculo protege este lugar desde hace muchos años.
+
+pacha: ¡Qué tranquilo está todo!
+
+camac: Ojalá siempre sea así.
+
+
+do BackgroundManager.cambiar_fondo("restaurante_noche")
+
+supay: Buenas noches.
+
+rosa: Bienvenido.
+
+supay: Dicen que aquí la comida une a las personas.
+
+supay: Veamos si eso es verdad...
+
+
+do BackgroundManager.cambiar_fondo("restaurante_maldicion")
+
+supay: ¡Que la discordia se extienda!
+
+rosa: ¿Qué está pasando?
+
+pacha: ¡Los clientes están peleando!
+
+camac: ¡El oráculo está brillando!
+
+
+do BackgroundManager.cambiar_fondo("oraculo")
+
+oraculo: Pacha...
+
+oraculo: Cámac...
+
+oraculo: Supay ha separado al Perú.
+
+oraculo: Los sabores que unían nuestras regiones están desapareciendo.
+
+oraculo: Recuperen los ingredientes de la Receta Sagrada.
+
+oraculo: Solo ustedes pueden devolver la unión.
+
+pacha: ¡Aceptamos la misión!
+
+camac: ¡Vamos!
 => END

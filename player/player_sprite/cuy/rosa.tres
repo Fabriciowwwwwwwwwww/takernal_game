@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cq132u7g1sl00"]
+
+[ext_resource type="Texture2D" uid="uid://4juvbch806pe" path="res://assets/items_nivel_1/pedazo chicharron.png" id="1_7hgon"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7hgon")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7hgon")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]

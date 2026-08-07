@@ -21,6 +21,7 @@ DialogueManager="*uid://c3rodes2l3gxb"
 SceneManager="*uid://tr8vjkb7hbj1"
 PauseOverlay="*uid://bo2gd4sehdugm"
 GameManager="*uid://eyndqidv0eja"
+BackgroundManager="*uid://d0g6f4xm27lm"
 
 [dialogue_manager]
 
