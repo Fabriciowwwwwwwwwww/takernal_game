@@ -8,6 +8,7 @@ narrador: Una tierra donde los sabores cuentan historias y cada región guarda u
 narrador: Lima, la capital del Perú, conocida como la Capital Mundial de la Gastronomía.
 narrador: Un lugar donde culturas de todo el mundo se encuentran en cada plato.
 
+
 do BackgroundManager.cambiar_fondo("lurin")
 
 narrador: Al sur de Lima se encuentra Lurín...
@@ -15,12 +16,14 @@ narrador: Un valle lleno de historia, tradiciones y sabores que han pasado de ge
 
 narrador: Aquí, en una pequeña chicharronería, una familia mantiene viva la unión a través de la comida.
 
+
 do BackgroundManager.cambiar_fondo("sierra")
 
 narrador: En los Andes, las montañas guardan recetas ancestrales.
 narrador: La papa, el maíz y la quinua son tesoros que han alimentado a nuestro pueblo durante siglos.
 
 narrador: Cada comunidad comparte sus sabores como símbolo de unión y respeto.
+
 
 do BackgroundManager.cambiar_fondo("selva")
 
@@ -30,7 +33,9 @@ narrador: Frutas, raíces y conocimientos ancestrales forman parte de una cocina
 narrador: Desde la costa hasta la selva...
 narrador: Perú es un país unido por sus sabores.
 
+
 do BackgroundManager.cambiar_fondo("restaurante_dia")
+
 
 rosa: Bienvenidos a la chicharronería de Lurín.
 rosa: Aquí la comida siempre ha unido a las familias.
@@ -43,9 +48,10 @@ camac: Ojalá siempre sea así.
 
 do BackgroundManager.cambiar_fondo("restaurante_noche")
 
+
 supay: Buenas noches.
 
-rosa: Bienvenido.
+rosa_feliz: Bienvenido.
 
 supay: Dicen que aquí la comida une a las personas.
 
@@ -54,9 +60,10 @@ supay: Veamos si eso es verdad...
 
 do BackgroundManager.cambiar_fondo("restaurante_maldicion")
 
-supay: ¡Que la discordia se extienda!
 
-rosa: ¿Qué está pasando?
+supay_diablo: ¡Que la discordia se extienda!
+
+rosa_triste: ¿Qué está pasando?
 
 pacha: ¡Los clientes están peleando!
 
@@ -65,19 +72,26 @@ camac: ¡El oráculo está brillando!
 
 do BackgroundManager.cambiar_fondo("oraculo")
 
+
 oraculo: Pacha...
 
 oraculo: Cámac...
 
-oraculo: Supay ha separado al Perú.
+oraculo_molesto: Supay ha separado al Perú.
 
-oraculo: Los sabores que unían nuestras regiones están desapareciendo.
+oraculo_molesto: Los sabores que unían nuestras regiones están desapareciendo.
 
-oraculo: Recuperen los ingredientes de la Receta Sagrada.
+oraculo_molesto: Recuperen los ingredientes de la Receta Sagrada.
 
-oraculo: Solo ustedes pueden devolver la unión.
+oraculo_molesto: Solo ustedes pueden devolver la unión.
+
 
 pacha: ¡Aceptamos la misión!
 
 camac: ¡Vamos!
+
+
+supay_diablo: ¡Esto apenas comienza!
+
+
 => END

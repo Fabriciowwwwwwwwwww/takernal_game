@@ -1,7 +1,50 @@
 [gd_scene format=3 uid="uid://dpax7lj5ax0lu"]
 
 [ext_resource type="Script" uid="uid://01gc3rl5gfaa" path="res://interfaces/game_over.gd" id="1_qtk0t"]
-[ext_resource type="Texture2D" uid="uid://ds8rohg4nq7q5" path="res://interfaces/sprite/game overs .png" id="2_qtk0t"]
+[ext_resource type="Texture2D" uid="uid://b7oy0oc1trlph" path="res://interfaces/sprite/game_over/game_over_cuy1.png" id="2_gu4gw"]
+[ext_resource type="Texture2D" uid="uid://bdx0qkhnf4ruc" path="res://interfaces/sprite/game_over/game_over_cuy3.png" id="3_iprt5"]
+[ext_resource type="Texture2D" uid="uid://bkh3vnoi3ewl2" path="res://interfaces/sprite/game_over/game_over_cuy4.png" id="4_8ajg0"]
+[ext_resource type="Texture2D" uid="uid://c54ygho5tlirn" path="res://interfaces/sprite/game_over/cuy1.png" id="5_df0lg"]
+[ext_resource type="Texture2D" uid="uid://ddwr8jueh5n0b" path="res://interfaces/sprite/game_over/cuy2.png" id="6_tbfy7"]
+[ext_resource type="Texture2D" uid="uid://htufrupqju2c" path="res://interfaces/sprite/game_over/cuy3.png" id="7_tl6gm"]
+[ext_resource type="Texture2D" uid="uid://dqslaj6jp5k05" path="res://interfaces/sprite/game_over/cuy4.png" id="8_kd6lk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r16l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gu4gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iprt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ajg0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f08b4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_df0lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tbfy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tl6gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kd6lk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="Empty"]
 
@@ -12,10 +55,17 @@ script = ExtResource("1_qtk0t")
 retry_scene = "uid://bdcomvhmo3lf1"
 menu_scene = "uid://cnl10kue3lo6a"
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1771014887]
-position = Vector2(653.50006, 367.5)
-scale = Vector2(0.40968752, 0.42166668)
-texture = ExtResource("2_qtk0t")
+[node name="Background" type="AnimatedSprite2D" parent="." unique_id=737260015]
+position = Vector2(635.80115, 359.99997)
+scale = Vector2(0.8616404, 0.88888884)
+sprite_frames = SubResource("SpriteFrames_7r16l")
+animation = &"idle"
+
+[node name="cuy" type="AnimatedSprite2D" parent="." unique_id=1898648804]
+position = Vector2(655, 213)
+scale = Vector2(0.8616404, 0.91330254)
+sprite_frames = SubResource("SpriteFrames_f08b4")
+animation = &"idle"
 
 [node name="PauseContainer" type="Control" parent="." unique_id=312303521]
 layout_mode = 3

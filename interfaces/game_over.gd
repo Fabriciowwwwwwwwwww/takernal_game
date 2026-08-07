@@ -4,12 +4,16 @@ extends CanvasLayer
 @export_file("*.tscn") var retry_scene: String
 @export_file("*.tscn") var menu_scene: String
 
+@onready var sprite_1: AnimatedSprite2D = $Background
+@onready var sprite_2: AnimatedSprite2D = $cuy
 
 @onready var retry_button: Button = $PauseContainer/RightPanel/VBoxContainer/RetryButton
 @onready var exit_button: Button = $PauseContainer/RightPanel/VBoxContainer/ExitButton
 
 
 func _ready() -> void:
+	sprite_1.play("idle")
+	sprite_2.play("idle")
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	

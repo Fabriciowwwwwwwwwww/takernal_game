@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cmapu8vyj45gq"]
+
+[ext_resource type="Texture2D" uid="uid://yxgdpnp8iqc3" path="res://interfaces/sprite/sheet/imagenes_referencia/rostros PENDIENTE/oraculo b..png" id="2_rkan5"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rkan5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rkan5")
+}],
+"loop": true,
+"name": &"molesto",
+"speed": 5.0
+}]

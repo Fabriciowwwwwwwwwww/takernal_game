@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bx71otxurmxlk"]
+
+[ext_resource type="Texture2D" uid="uid://beu156ld3l8jo" path="res://interfaces/sprite/sheet/imagenes_referencia/rostros PENDIENTE/supay.png" id="1_dw6qm"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dw6qm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

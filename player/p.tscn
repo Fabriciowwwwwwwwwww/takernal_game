@@ -384,6 +384,7 @@ tiempo_lanzamiento = 0.4
 throw_force = 700.0
 speed = 280.0
 jump_force = -850.0
+dash_speed = 700.0
 bullet_scene = ExtResource("2_y5xqi")
 sprite_frame = ExtResource("3_bqu37")
 

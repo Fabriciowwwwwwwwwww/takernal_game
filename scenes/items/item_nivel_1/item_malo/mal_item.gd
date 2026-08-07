@@ -15,7 +15,6 @@ var desapareciendo := false
 
 func _ready():
 
-	body_entered.connect(_on_body_entered)
 
 	contact_monitor = true
 	max_contacts_reported = 10
@@ -43,7 +42,7 @@ func _on_body_entered(body: Node) -> void:
 		if body.has_method("perder_vida"):
 			body.perder_vida()
 
-		animacion_desaparicion()
+		call_deferred("animacion_desaparicion")
 
 		return
 
@@ -56,7 +55,7 @@ func _on_body_entered(body: Node) -> void:
 
 		desapareciendo = true
 
-		animacion_desaparicion()
+		call_deferred("animacion_desaparicion")
 
 
 

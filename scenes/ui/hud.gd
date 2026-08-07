@@ -12,7 +12,14 @@ var cafe_llamado := false
 var vidas := 5
 
 @onready var barra = $ProgressBar
-
+var probabilidad_pedido: Dictionary[String, float] = {
+	"camote": 0.80,
+	"cebolla": 0.75,
+	"sal": 0.55,
+	"limon": 0.60,
+	"pan": 0.35,
+	"chicharron": 0.55
+}
 
 # Cantidades necesarias (Panel2)
 var objetivo_ingredientes = {
@@ -106,7 +113,7 @@ func actualizar_progreso():
 
 	barra.value = progreso
 
-	if progreso >= 10 and not cebolla_llamada:
+	if progreso >= 85 and not cebolla_llamada:
 
 		cebolla_llamada = true
 
@@ -122,7 +129,7 @@ func actualizar_progreso():
 
 			print("NO EXISTE CEBOLLA SPAWNER")
 
-	if progreso >= 75 and not cafe_llamado:
+	if progreso >= 15 and not cafe_llamado:
 
 		cafe_llamado = true
 
@@ -134,11 +141,22 @@ func actualizar_progreso():
 # ============================
 # GENERAR PEDIDO ALEATORIO
 # ============================
-
 func generar_objetivos():
 
 	for ingrediente in objetivo_ingredientes:
-		objetivo_ingredientes[ingrediente] = randi_range(10,15)
+		
+		var cantidad := 0
+		
+		# Ingredientes más comunes tendrán más cantidad
+		var prob := probabilidad_pedido[ingrediente]
+
+		for i in range(30):
+			
+			if randf() <= prob:
+				cantidad += 1
+
+		# mínimo 1, máximo 12
+		objetivo_ingredientes[ingrediente] = clamp(cantidad, 1, 30)
 
 
 	$Panel2/HBoxContainer/ingre1/camote_label.text = str(objetivo_ingredientes["camote"])
@@ -192,3 +210,25 @@ func actualizar_corazones():
 
 			if corazones[i].animation != "romper":
 				corazones[i].play("romper")
+func elegir_ingrediente_pedido() -> String:
+
+	var total := 0.0
+
+	for ingrediente in probabilidad_pedido:
+		total += probabilidad_pedido[ingrediente]
+
+
+	var random := randf() * total
+
+	var acumulado := 0.0
+
+
+	for ingrediente in probabilidad_pedido:
+
+		acumulado += probabilidad_pedido[ingrediente]
+
+		if random <= acumulado:
+			return ingrediente
+
+
+	return "camote"

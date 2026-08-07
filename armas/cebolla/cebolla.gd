@@ -275,54 +275,20 @@ func ocultar():
 
 
 
-
 func _on_area_2d_body_entered(body: Node2D):
-
 
 	if body.is_in_group("player"):
 
-
 		if not puede_dañar:
-
 			return
-
-
 
 		puede_dañar = false
 
+		print("CEBOLLA GOLPEO A:", body.name)
 
+		if body.has_method("perder_vida"):
+			body.perder_vida()
 
-		print(
-			"CEBOLLA GOLPEO A:",
-			body.name
-		)
-
-
-
-		var ui = get_tree().current_scene.get_node("Ui")
-
-
-
-		if ui:
-
-
-			print("QUITANDO VIDA")
-
-
-			ui.perder_vida()
-
-
-		else:
-
-
-			print("NO SE ENCONTRO UI")
-
-
-
-		await get_tree().create_timer(
-			tiempo_entre_daños
-		).timeout
-
-
+		await get_tree().create_timer(tiempo_entre_daños).timeout
 
 		puede_dañar = true

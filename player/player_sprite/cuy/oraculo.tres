@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b1kln6lxwj247"]
+
+[ext_resource type="Texture2D" uid="uid://dcq7sf5steynt" path="res://interfaces/sprite/sheet/imagenes_referencia/rostros PENDIENTE/oraculo A..png" id="1_ejbvd"]
+[ext_resource type="Texture2D" uid="uid://yxgdpnp8iqc3" path="res://interfaces/sprite/sheet/imagenes_referencia/rostros PENDIENTE/oraculo b..png" id="2_rapoe"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ejbvd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rapoe")
+}],
+"loop": true,
+"name": &"molesto",
+"speed": 5.0
+}]

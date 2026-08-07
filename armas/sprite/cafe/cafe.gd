@@ -1,5 +1,5 @@
 extends Node2D
-
+@export var monstruo: Node
 @export var cantidad_balas := 3
 @onready var CUERPO: AnimatedSprite2D = $CUERPO
 @onready var ESPUMA: AnimatedSprite2D = $ESPUMA
@@ -31,7 +31,6 @@ func _ready():
 	CUERPO.play("idle")
 	ESPUMA.play("idle")
 	ESPUMA.visible = true
-
 func _ataque():
 
 	print("RECIBI ATAQUE")
@@ -45,26 +44,39 @@ func _ataque():
 	atacando = true
 
 
-	print("VOY AL PUNTO FINAL")
+	# Activar solo ingredientes buenos
+	if monstruo:
+		monstruo.solo_buenos = true
 
 
-	await mover(punto_final.global_position)
+	print("INICIO ATAQUE CAFE")
 
 
-	print("LLEGUE AL FINAL")
+	for i in range(3):
+
+		print("VIAJE CAFE:", i + 1)
 
 
-	await get_tree().create_timer(0.5).timeout
+		print("VOY AL PUNTO FINAL")
+		await mover(punto_final.global_position)
 
 
-	print("AHORA REGRESO AL INICIO")
+		print("LLEGUE AL FINAL")
+
+		await get_tree().create_timer(0.5).timeout
 
 
-	await mover(punto_inicio.global_position)
+		print("REGRESO")
+		await mover(punto_inicio.global_position)
 
 
-	print("VOLVI AL INICIO")
+		await get_tree().create_timer(0.3).timeout
 
+
+
+	# Desactivar solo buenos
+	if monstruo:
+		monstruo.solo_buenos = false
 
 
 	CUERPO.play("idle")
@@ -75,8 +87,7 @@ func _ataque():
 	atacando = false
 
 
-	print("ATAQUE TERMINADO")
-
+	print("ATAQUE CAFE TERMINADO")
 
 func mover(destino: Vector2):
 
@@ -144,7 +155,7 @@ func disparar():
 		return
 
 
-	var cantidad = [3, 4, 5].pick_random()
+	var cantidad = [3, 4].pick_random()
 
 	print("CANTIDAD DE BALAS:", cantidad)
 

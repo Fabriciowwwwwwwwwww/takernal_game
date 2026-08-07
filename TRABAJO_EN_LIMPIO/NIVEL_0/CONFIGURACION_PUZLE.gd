@@ -7,7 +7,14 @@ signal nivel_superado
 const TAM_CASILLA = 64
 const TAMAÑO = 7
 const ANCHO_TABLERO_LATERAL = 220
+@export_category("Posición del Puzzle")
 
+@export var posicion_tablero: Vector2 = Vector2(160,100)
+@export_category("Panel de ingredientes")
+
+@export var posicion_panel: Vector2 = Vector2(750,100)
+
+@export var tamaño_panel: Vector2 = Vector2(180,450)
 var dibujando = false
 var camino = []
 var linea : Line2D
@@ -38,8 +45,9 @@ func _ready():
 			orden_indices.append(i)
 
 	linea = Line2D.new()
-	linea.width = 30
-	linea.default_color = Color("a63da6")
+	linea.width = 16
+	linea.default_color = Color("f97316")
+	linea.z_index = 5
 	linea.joint_mode = Line2D.LINE_JOINT_ROUND
 	linea.begin_cap_mode = Line2D.LINE_CAP_ROUND
 	linea.end_cap_mode = Line2D.LINE_CAP_ROUND
@@ -50,58 +58,156 @@ func _ready():
 	crear_sprites_tablero_lateral()
 	
 	queue_redraw()
-
 func _draw():
+
 	for x in range(TAMAÑO):
 		for y in range(TAMAÑO):
-			var rect = Rect2(x * TAM_CASILLA, y * TAM_CASILLA, TAM_CASILLA, TAM_CASILLA)
-			draw_rect(rect, Color.WHITE, true)
-			draw_rect(rect, Color("d1d5db"), false, 2)
 
-	var inicio_x = (TAMAÑO * TAM_CASILLA) + 20
-	var rect_panel = Rect2(inicio_x, 0, ANCHO_TABLERO_LATERAL, TAMAÑO * TAM_CASILLA)
-	draw_rect(rect_panel, Color("f3f4f6"), true)
-	draw_rect(rect_panel, Color("9ca3af"), false, 2)
+			var rect = Rect2(
+				posicion_tablero.x + x*TAM_CASILLA,
+				posicion_tablero.y + y*TAM_CASILLA,
+				TAM_CASILLA,
+				TAM_CASILLA
+			)
 
-	var font = ThemeDB.fallback_font
-	draw_string(font, Vector2(inicio_x + 15, 30), "ORDEN DE PASO:", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color.BLACK)
+			draw_rect(rect, Color("fff7ed"), true)
+			draw_rect(rect, Color("d6b98c"), false,3)
 
-	var texto_estado = "Casillas: " + str(camino.size()) + " / " + str(TAMAÑO * TAMAÑO)
-	draw_string(font, Vector2(inicio_x + 15, TAMAÑO * TAM_CASILLA - 20), texto_estado, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("374151"))
+
+			var font = ThemeDB.fallback_font
+
+
+			var texto_estado = "Casillas: " + str(camino.size()) + " / " + str(TAMAÑO * TAMAÑO)
+
+
+			draw_string(
+				font,
+				Vector2(
+					posicion_tablero.x,
+					posicion_tablero.y + (TAMAÑO * TAM_CASILLA) + 35
+				),
+				texto_estado,
+				HORIZONTAL_ALIGNMENT_LEFT,
+				-1,
+				18,
+				Color.BLACK
+			)
+
+
+	var rect_panel = Rect2(
+		posicion_panel,
+		tamaño_panel
+	)
+
+
+	draw_rect(
+		rect_panel,
+		Color("fff7ed"),
+		true
+	)
+
+
+	draw_rect(
+		rect_panel,
+		Color("c08457"),
+		false,
+		4
+	)
+
+	draw_rect(rect_panel,Color("fafafa"),true)
+	draw_rect(rect_panel,Color("9ca3af"),false,3)
+
 
 func crear_sprites_mapa():
+
 	for pos in mapa_puntos.keys():
+
 		var idx = mapa_puntos[pos]
-		var centro = Vector2(pos.x * TAM_CASILLA + TAM_CASILLA / 2.0, pos.y * TAM_CASILLA + TAM_CASILLA / 2.0)
+
+
+		var centro = Vector2(
+			posicion_tablero.x + pos.x*TAM_CASILLA + TAM_CASILLA/2,
+			posicion_tablero.y + pos.y*TAM_CASILLA + TAM_CASILLA/2
+		)
+
+
 		var sprite = Sprite2D.new()
+
 		sprite.texture = imagenes[idx]
 		sprite.position = centro
-		var tex_size = sprite.texture.get_size()
-		sprite.scale = Vector2(40.0 / tex_size.x, 40.0 / tex_size.y)
-		add_child(sprite)
+		sprite.z_index = 3
 
+
+		var tamaño = sprite.texture.get_size()
+
+		sprite.scale = Vector2(
+			40.0/tamaño.x,
+			40.0/tamaño.y
+		)
+
+
+		add_child(sprite)
 func crear_sprites_tablero_lateral():
-	var inicio_x = (TAMAÑO * TAM_CASILLA) + 20
-	var alto_fila = 40
-	var paso = 1
+
+	var alto_fila = 55
+
 
 	for pos in mapa_puntos.keys():
+
 		var i = mapa_puntos[pos]
-		var pos_y = 60 + (i * alto_fila)
-		
+
+
+		var pos_y = posicion_panel.y + 60 + (i * alto_fila)
+
+
+
+		# Número 1,2,3...
 		var label = Label.new()
-		label.text = str(paso) + "."
-		paso += 1
-		label.position = Vector2(inicio_x + 20, pos_y - 5)
-		label.add_theme_color_override("font_color", Color.BLACK)
+
+		label.text = str(i + 1)
+
+		label.position = Vector2(
+			posicion_panel.x + 25,
+			pos_y
+		)
+
+		label.add_theme_font_size_override(
+			"font_size",
+			22
+		)
+
+		label.add_theme_color_override(
+			"font_color",
+			Color.BLACK
+		)
+
 		add_child(label)
 
+
+
+		# Imagen ingrediente
 		var sprite = Sprite2D.new()
+
 		sprite.texture = imagenes[i]
-		sprite.position = Vector2(inicio_x + 70, pos_y + 10)
+
+		sprite.position = Vector2(
+			posicion_panel.x + 90,
+			pos_y + 10
+		)
+
+		sprite.z_index = 3
+
+
 		var tex_size = sprite.texture.get_size()
-		sprite.scale = Vector2(28.0 / tex_size.x, 28.0 / tex_size.y)
+
+		sprite.scale = Vector2(
+			35.0 / tex_size.x,
+			35.0 / tex_size.y
+		)
+
+
 		add_child(sprite)
+
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -162,7 +268,10 @@ func mover(pos):
 
 func agregar_casilla(casilla):
 	camino.append(casilla)
-	var pos_pixel = Vector2(casilla.x * TAM_CASILLA + TAM_CASILLA / 2.0, casilla.y * TAM_CASILLA + TAM_CASILLA / 2.0)
+	var pos_pixel = Vector2(
+		posicion_tablero.x + casilla.x*TAM_CASILLA + TAM_CASILLA/2,
+		posicion_tablero.y + casilla.y*TAM_CASILLA + TAM_CASILLA/2
+	)
 	linea.add_point(pos_pixel)
 	queue_redraw()
 	comprobar_victoria()
@@ -186,15 +295,21 @@ func comprobar_victoria():
 			
 			emit_signal("nivel_superado")
 			prints("completado puzle")
-
 func obtener_casilla(pos):
-	var x = int(pos.x / TAM_CASILLA)
-	var y = int(pos.y / TAM_CASILLA)
+
+	var x = int(
+		(pos.x - posicion_tablero.x) / TAM_CASILLA
+	)
+
+	var y = int(
+		(pos.y - posicion_tablero.y) / TAM_CASILLA
+	)
+
 
 	if x < 0 or y < 0 or x >= TAMAÑO or y >= TAMAÑO:
-		return Vector2i(-1, -1)
+		return Vector2i(-1,-1)
 
-	return Vector2i(x, y)
 
+	return Vector2i(x,y)
 func distancia(a, b):
 	return abs(a.x - b.x) + abs(a.y - b.y)

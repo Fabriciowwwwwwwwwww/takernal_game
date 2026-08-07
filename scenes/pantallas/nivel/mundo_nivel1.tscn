@@ -131,6 +131,7 @@ texture = ExtResource("1_dtdnh")
 
 [node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
 position = Vector2(695, 252)
+probabilidad_doble_malo = 0.25
 limite_izquierdo = 100.0
 fuerza_parabola = 550.0
 fuerza_extremo_min = 600.0
@@ -156,16 +157,18 @@ scale = Vector2(0.4926563, 0.4405555)
 texture = ExtResource("11_sn2vc")
 
 [node name="Plataforma" parent="." unique_id=800985412 instance=ExtResource("11_f40s6")]
-position = Vector2(194, 573)
+position = Vector2(267, 582)
 
 [node name="Plataforma2" parent="." unique_id=332697378 instance=ExtResource("11_f40s6")]
-position = Vector2(530, 677)
+position = Vector2(631, 677)
 
 [node name="Plataforma4" parent="." unique_id=1428451578 instance=ExtResource("11_f40s6")]
-position = Vector2(600, 489)
+position = Vector2(626, 476)
+rango = 300.0
+velocidad = 40.0
 
 [node name="Plataforma3" parent="." unique_id=1379313556 instance=ExtResource("11_f40s6")]
-position = Vector2(908, 577)
+position = Vector2(1004, 586)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1759075108]
 position = Vector2(713, 394)
@@ -173,19 +176,23 @@ zoom = Vector2(0.9, 0.9)
 
 [node name="cafe_estado" type="Node2D" parent="." unique_id=1228545771]
 
-[node name="Cafe" parent="cafe_estado" unique_id=25083689 instance=ExtResource("13_gvbt3")]
+[node name="Cafe" parent="cafe_estado" unique_id=25083689 node_paths=PackedStringArray("monstruo") instance=ExtResource("13_gvbt3")]
 position = Vector2(1321, 717)
-tiempo_disparo = 3.0
+monstruo = NodePath("../../Moster1")
+velocidad = 130.0
+tiempo_disparo = 2.0
 escena_bala_cafe = ExtResource("14_ccdgp")
 
 [node name="PuntoFinal" type="Marker2D" parent="cafe_estado" unique_id=1402665352]
-position = Vector2(79, 737)
+position = Vector2(76, 767)
 
 [node name="PuntoInicio" type="Marker2D" parent="cafe_estado" unique_id=1626315032]
-position = Vector2(1312, 738)
+position = Vector2(1344, 756)
 
-[node name="cebollaSpawner2" type="Node2D" parent="." unique_id=1358788672]
+[node name="cebollaSpawner2" type="Node2D" parent="." unique_id=1358788672 node_paths=PackedStringArray("monstruo")]
 script = ExtResource("15_pi1o1")
+monstruo = NodePath("../Moster1")
+duracion_evento = 30.0
 
 [node name="Timer" type="Timer" parent="cebollaSpawner2" unique_id=592199919]
 autostart = true
@@ -193,66 +200,104 @@ autostart = true
 [node name="Cebolla" parent="cebollaSpawner2" unique_id=307812441 instance=ExtResource("16_4wp5p")]
 position = Vector2(219, -44)
 tipo_direccion = 1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla2" parent="cebollaSpawner2" unique_id=238253279 instance=ExtResource("16_4wp5p")]
 position = Vector2(492, -43)
 tipo_direccion = 1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla10" parent="cebollaSpawner2" unique_id=235129132 instance=ExtResource("16_4wp5p")]
 position = Vector2(797, -43)
 tipo_direccion = 1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
+
+[node name="Cebolla4" parent="cebollaSpawner2" unique_id=410884745 instance=ExtResource("16_4wp5p")]
+position = Vector2(640, -46)
+tipo_direccion = 1
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
+
+[node name="Cebolla13" parent="cebollaSpawner2" unique_id=881692119 instance=ExtResource("16_4wp5p")]
+position = Vector2(970, -40)
+tipo_direccion = 1
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
+
+[node name="Cebolla14" parent="cebollaSpawner2" unique_id=1837379524 instance=ExtResource("16_4wp5p")]
+position = Vector2(339, -46)
+tipo_direccion = 1
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla3" parent="cebollaSpawner2" unique_id=2056597707 instance=ExtResource("16_4wp5p")]
 position = Vector2(1173, -50)
 tipo_direccion = 1
-distancia_salida = 1200.0
-
-[node name="Cebolla4" parent="cebollaSpawner2" unique_id=126767030 instance=ExtResource("16_4wp5p")]
-position = Vector2(-47, 295)
-rotation = -1.5707964
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla5" parent="cebollaSpawner2" unique_id=1199029920 instance=ExtResource("16_4wp5p")]
-position = Vector2(-66, 422)
+position = Vector2(-32, 400)
 rotation = -1.5707964
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla6" parent="cebollaSpawner2" unique_id=459029087 instance=ExtResource("16_4wp5p")]
-position = Vector2(-78, 719)
+position = Vector2(-30, 628.525)
 rotation = -1.5707964
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla11" parent="cebollaSpawner2" unique_id=1579962084 instance=ExtResource("16_4wp5p")]
-position = Vector2(-89, 590)
+position = Vector2(-30, 527)
 rotation = -1.5707964
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla7" parent="cebollaSpawner2" unique_id=2086657097 instance=ExtResource("16_4wp5p")]
-position = Vector2(1469, 344)
+position = Vector2(1453, 315)
 rotation = 1.5707964
 sentido = -1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla12" parent="cebollaSpawner2" unique_id=1980448531 instance=ExtResource("16_4wp5p")]
-position = Vector2(1510, 704)
+position = Vector2(1453, 734)
 rotation = 1.5707964
 sentido = -1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla8" parent="cebollaSpawner2" unique_id=559424532 instance=ExtResource("16_4wp5p")]
-position = Vector2(1477, 461)
+position = Vector2(1458, 464)
 rotation = 1.5707964
 sentido = -1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="Cebolla9" parent="cebollaSpawner2" unique_id=1300042220 instance=ExtResource("16_4wp5p")]
-position = Vector2(1477, 574)
+position = Vector2(1467, 628.525)
 rotation = 1.5707964
 sentido = -1
-distancia_salida = 1200.0
+velocidad_inicial = 40.0
+velocidad_maxima = 700.0
+aceleracion = 500.0
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=1268955572]
 stream = ExtResource("7_4vjds")

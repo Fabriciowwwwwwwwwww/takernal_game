@@ -7,14 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://dprju33m3ndwu" path="res://assets/items_nivel_1/limón.png" id="5_uam3i"]
 [ext_resource type="Texture2D" uid="uid://dxrihpfcjabaa" path="res://assets/items_nivel_1/pan.png" id="6_61cbd"]
 [ext_resource type="Texture2D" uid="uid://4juvbch806pe" path="res://assets/items_nivel_1/pedazo chicharron.png" id="7_wnphp"]
+[ext_resource type="Texture2D" uid="uid://cbhfaaoomqu14" path="res://interfaces/sprite/sheet/imagenes_referencia/libro3.png" id="8_i0ua8"]
+[ext_resource type="Texture2D" uid="uid://mx4ajkwat067" path="res://interfaces/sprite/sheet/imagenes_referencia/libro2.png" id="9_6q2tm"]
 
-[node name="Node2D" type="Node2D" unique_id=1419322551]
+[node name="Puzzle" type="Node2D" unique_id=1337689431]
 script = ExtResource("1_2wmso")
-imagenes = Array[Texture2D]([ExtResource("2_i0ua8"), ExtResource("3_6q2tm"), ExtResource("4_as0jd"), ExtResource("7_wnphp"), ExtResource("5_uam3i"), ExtResource("6_61cbd"), null])
+posicion_tablero = null
+posicion_panel = null
+imagenes = Array[Texture2D]([ExtResource("2_i0ua8"), ExtResource("3_6q2tm"), ExtResource("4_as0jd"), ExtResource("7_wnphp"), ExtResource("5_uam3i"), ExtResource("6_61cbd")])
 
-[node name="Line2D" type="Line2D" parent="." unique_id=508406447]
-width = 20.0
-default_color = Color(0.28854367, 5.6337045e-05, 0.28866512, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+[node name="fondo" type="Sprite2D" parent="." unique_id=1149612691]
+z_index = -10
+position = Vector2(644.00006, 362.49997)
+scale = Vector2(0.9501467, 0.9570312)
+texture = ExtResource("8_i0ua8")
+
+[node name="libro" type="Sprite2D" parent="." unique_id=832930170]
+z_index = -10
+position = Vector2(648, 365)
+scale = Vector2(1.1077712, 0.9713542)
+texture = ExtResource("9_6q2tm")

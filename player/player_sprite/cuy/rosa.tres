@@ -1,22 +1,14 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://cq132u7g1sl00"]
 
-[ext_resource type="Texture2D" uid="uid://4juvbch806pe" path="res://assets/items_nivel_1/pedazo chicharron.png" id="1_7hgon"]
+[ext_resource type="Texture2D" uid="uid://c7orxgboqmtyi" path="res://interfaces/sprite/sheet/imagenes_referencia/rostros PENDIENTE/portrait.png" id="2_s02r8"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_7hgon")
+"texture": ExtResource("2_s02r8")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_7hgon")
-}],
-"loop": true,
-"name": &"talk",
 "speed": 5.0
 }]

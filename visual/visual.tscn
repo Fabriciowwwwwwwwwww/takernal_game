@@ -3,12 +3,17 @@
 [ext_resource type="Script" uid="uid://tchefywvbov0" path="res://visual/dialoguer.gd" id="1_8jp05"]
 [ext_resource type="Resource" uid="uid://b15k1msa1g5ra" path="res://visual/dialogos/dialogo_prueba.dialogue" id="2_1x58t"]
 [ext_resource type="PackedScene" uid="uid://8sxo21au16tw" path="res://visual/dialogos/character.tscn" id="3_jddu3"]
-[ext_resource type="SpriteFrames" uid="uid://b1kln6lxwj247" path="res://player/player_sprite/cuy/cuy.tres" id="5_1x58t"]
-[ext_resource type="SpriteFrames" uid="uid://0edauqf3ed6r" path="res://player/player_sprite/cuy/cuy_prueba.tres" id="5_5kt6r"]
+[ext_resource type="SpriteFrames" uid="uid://b1kln6lxwj247" path="res://player/player_sprite/cuy/oraculo.tres" id="5_1x58t"]
 [ext_resource type="Texture2D" uid="uid://buhg4tmg2u02j" path="res://interfaces/sprite/sheet/imagenes_referencia/lurin.jpg" id="7_5kt6r"]
+[ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="7_8ucjn"]
 [ext_resource type="SpriteFrames" uid="uid://c78wwbrid3ba0" path="res://player/player_sprite/cuy/cuy_2_v.tres" id="7_bnbv7"]
 [ext_resource type="SpriteFrames" uid="uid://cq132u7g1sl00" path="res://player/player_sprite/cuy/rosa.tres" id="8_svti5"]
 [ext_resource type="SpriteFrames" uid="uid://8gnoolrchuk5" path="res://player/player_sprite/cuy/supay.tres" id="9_8ucjn"]
+[ext_resource type="SpriteFrames" uid="uid://dot8r2ts3yj8h" path="res://player/player_sprite/cuy/rosa_feliz.tres" id="10_svti5"]
+[ext_resource type="SpriteFrames" uid="uid://durcm4vfx8f58" path="res://player/player_sprite/cuy/rosa_triste.tres" id="11_gp0lr"]
+[ext_resource type="SpriteFrames" uid="uid://cmapu8vyj45gq" path="res://player/player_sprite/cuy/oraculo_enojado.tres" id="12_bfjca"]
+[ext_resource type="SpriteFrames" uid="uid://bx71otxurmxlk" path="res://player/player_sprite/cuy/supay_molesto.tres" id="13_efr6t"]
+[ext_resource type="SpriteFrames" uid="uid://s7e0xjwujjhh" path="res://player/player_sprite/cuy/supay_super_molesto.tres" id="14_ldcbb"]
 
 [node name="visual" type="Node2D" unique_id=1074617880]
 script = ExtResource("1_8jp05")
@@ -31,14 +36,18 @@ offset_right = 131.0
 offset_bottom = 49.0
 
 [node name="Character" parent="CanvasLayer2/Control" unique_id=1792491478 instance=ExtResource("3_jddu3")]
-position = Vector2(440, 341)
+position = Vector2(485, 209)
 character_frames = Dictionary[String, SpriteFrames]({
 "camac": ExtResource("7_bnbv7"),
-"oraculo": ExtResource("5_5kt6r"),
-"pacha": ExtResource("5_1x58t"),
+"oraculo": ExtResource("5_1x58t"),
+"oraculo_molesto": ExtResource("12_bfjca"),
+"pacha": ExtResource("7_8ucjn"),
 "rosa": ExtResource("8_svti5"),
-"supay": ExtResource("9_8ucjn")
+"rosa_feliz": ExtResource("10_svti5"),
+"rosa_triste": ExtResource("11_gp0lr"),
+"supay": ExtResource("9_8ucjn"),
+"supay_diablo": ExtResource("14_ldcbb"),
+"supay_molesto": ExtResource("13_efr6t")
 })
-talking = false
 
 [node name="CanvasLayer22" type="CanvasLayer" parent="." unique_id=1137710267]

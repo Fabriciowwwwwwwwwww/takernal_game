@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://bhng1ewjs4apw"]
 
 [ext_resource type="Texture2D" uid="uid://c33st7xotr4xg" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma .png" id="1_srcb2"]
+[ext_resource type="Script" uid="uid://cb6q80tpjmckw" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma.gd" id="1_tjdte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srcb2"]
 size = Vector2(223, 20)
 
-[node name="Plataforma" type="StaticBody2D" unique_id=800985412 groups=["plataforma"]]
+[node name="plataforma_movil" type="AnimatableBody2D" unique_id=295768519 groups=["plataforma"]]
 collision_layer = 2
 collision_mask = 9
+script = ExtResource("1_tjdte")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1680210812]
 position = Vector2(84, 68.00001)

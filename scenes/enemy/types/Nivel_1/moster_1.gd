@@ -1,5 +1,5 @@
 extends "res://scenes/enemy/monster_base.gd"
-
+var solo_buenos := false
 @export var pan_scene: PackedScene
 @export var cebolla_scene: PackedScene
 @export var camote_scene: PackedScene
@@ -11,7 +11,7 @@ extends "res://scenes/enemy/monster_base.gd"
 
 @export var intervalo_lanzamiento: float = 1.5
 @export var intervalo_entre_disparos: float = 0.2
-@export var probabilidad_doble_malo: float = 0.65
+@export var probabilidad_doble_malo: float = 0.35
 @export var limite_izquierdo: float = 160.0
 @export var limite_derecho: float = 1158.0
 @export var margen_frenado: float = 250.0
@@ -45,17 +45,17 @@ func _ready():
 			_spawn_points.append(child)
 			
 	_pool_buenos = [
-		{ "escena": pan_scene,          "prob": 0.02 },
-		{ "escena": cebolla_scene,      "prob": 0.08 },
-		{ "escena": camote_scene,       "prob": 0.07 },
-		{ "escena": limon_scene,        "prob": 0.06 },
-		{ "escena": sal_especial_scene, "prob": 0.05 },
-		{ "escena": chicharron_scene,   "prob": 0.05 },
+		{ "escena": pan_scene,          "prob": 0.06 },
+		{ "escena": cebolla_scene,      "prob": 0.12 },
+		{ "escena": camote_scene,       "prob": 0.10 },
+		{ "escena": limon_scene,        "prob": 0.09 },
+		{ "escena": sal_especial_scene, "prob": 0.08 },
+		{ "escena": chicharron_scene,   "prob": 0.08 },
 	]
-	
+
 	_pool_malos = [
-		{ "escena": basura_scene,       "prob": 0.42 },
-		{ "escena": ladrillo_scene,     "prob": 0.29 },
+		{ "escena": basura_scene,       "prob": 0.24 },
+		{ "escena": ladrillo_scene,     "prob": 0.23 },
 	]
 	
 	for m in _spawn_points:
@@ -162,16 +162,20 @@ func spawnear_tanda(nombre_animacion: String = "lanzar"):
 	var pool_1: Array
 	var pool_2: Array
 	
-	if randf() < probabilidad_doble_malo:
-		pool_1 = _pool_malos
-		pool_2 = _pool_malos
+	if solo_buenos:
+		pool_1 = _pool_buenos
+		pool_2 = _pool_buenos
 	else:
-		if randf() < 0.5:
-			pool_1 = _pool_buenos
+		if randf() < probabilidad_doble_malo:
+			pool_1 = _pool_malos
 			pool_2 = _pool_malos
 		else:
-			pool_1 = _pool_malos
-			pool_2 = _pool_buenos
+			if randf() < 0.5:
+				pool_1 = _pool_buenos
+				pool_2 = _pool_malos
+			else:
+				pool_1 = _pool_malos
+				pool_2 = _pool_buenos
 			
 	spawnear_item(markers[0], pool_1)
 	

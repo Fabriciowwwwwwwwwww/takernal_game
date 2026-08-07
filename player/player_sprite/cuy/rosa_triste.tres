@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://durcm4vfx8f58"]
+
+[ext_resource type="Texture2D" uid="uid://csobf2xrq2mlc" path="res://interfaces/sprite/sheet/imagenes_referencia/rostros PENDIENTE/portraitristeza.png" id="1_gx5mk"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gx5mk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

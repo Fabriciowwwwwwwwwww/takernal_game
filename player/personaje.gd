@@ -1,6 +1,8 @@
 extends CharacterBody2D
 var siendo_lanzado := false
-
+@export var tiempo_invencible := 5.0
+@export var tiempo_parpadeo := 2.0
+var invencible := false
 @export var tiempo_lanzamiento := 0.35
 @export var angulo_lanzamiento := 35.0
 @export var throw_force := 1200.0
@@ -227,9 +229,19 @@ func drop_from_platform():
 	dropping = false
 	
 func perder_vida():
+
+	if invencible:
+		return
+
+	invencible = true
+
 	$"../Ui".perder_vida()
 
+	parpadear_invencible()
 
+	await get_tree().create_timer(tiempo_invencible).timeout
+
+	invencible = false
 func cargar_companero(companero: CharacterBody2D):
 
 	if cargando:
@@ -300,3 +312,23 @@ func intentar_cargar():
 		if body != self and body is CharacterBody2D:
 			cargar_companero(body)
 			break
+func parpadear_invencible() -> void:
+
+	var tiempo := 0.0
+
+	while tiempo < tiempo_parpadeo:
+
+		# Rojo
+		$AnimatedSprite2D.modulate = Color(1, 0.2, 0.2)
+
+		await get_tree().create_timer(0.15).timeout
+
+		# Normal
+		$AnimatedSprite2D.modulate = Color(1, 1, 1)
+
+		await get_tree().create_timer(0.15).timeout
+
+		tiempo += 0.3
+
+	# Dejar color normal
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)

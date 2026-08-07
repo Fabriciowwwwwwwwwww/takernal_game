@@ -23,14 +23,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0lm4n"]
-size = Vector2(25, 1332)
+size = Vector2(22, 1467.5)
 
 [node name="Cebolla" type="Node2D" unique_id=307812441]
 script = ExtResource("1_0lm4n")
+distancia_salida = 1300.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=887934390]
-position = Vector2(15.000001, -962.2508)
-scale = Vector2(0.15136942, 1.4212016)
+position = Vector2(11, -1060)
+scale = Vector2(0.15136942, 1.6283222)
 sprite_frames = SubResource("SpriteFrames_b44wv")
 animation = &"idle"
 frame_progress = 0.91423637
@@ -38,7 +39,7 @@ frame_progress = 0.91423637
 [node name="Area2D" type="Area2D" parent="." unique_id=13904160]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1579157662]
-position = Vector2(13.5, -647)
+position = Vector2(7, -735.25)
 shape = SubResource("RectangleShape2D_0lm4n")
 
 [node name="Pivot" type="Marker2D" parent="." unique_id=1132243272]
