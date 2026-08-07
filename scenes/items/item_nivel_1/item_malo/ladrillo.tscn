@@ -80,15 +80,15 @@ shape = SubResource("CircleShape2D_iuphg")
 
 [node name="roto1" type="AudioStreamPlayer2D" parent="." unique_id=466565919]
 stream = ExtResource("3_audio1")
-volume_db = 14.0
+volume_db = 9.0
 
 [node name="roto2" type="AudioStreamPlayer2D" parent="." unique_id=872259328]
 stream = ExtResource("4_audio2")
-volume_db = 14.0
+volume_db = 9.0
 
 [node name="roto3" type="AudioStreamPlayer2D" parent="." unique_id=345233985]
 stream = ExtResource("5_audio3")
-volume_db = 14.0
+volume_db = 9.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1890302940]
 position = Vector2(1.9999999, 3)

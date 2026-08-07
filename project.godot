@@ -50,6 +50,7 @@ folder_colors={
 
 plataforma="Describe el objeto playaforma"
 player=""
+balas_jugador="el boos reconocerá las balas"
 
 [input]
 

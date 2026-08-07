@@ -3,24 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="1_6ba58"]
 [ext_resource type="Texture2D" uid="uid://tfi7tltfih8u" path="res://icon.svg" id="1_lgngo"]
 [ext_resource type="Script" uid="uid://dpux3yy1jy17" path="res://mundo.gd" id="1_pij3u"]
-[ext_resource type="PackedScene" uid="uid://b7ohhbxl2vwhb" path="res://armas/salsas.tscn" id="3_fw4w5"]
 [ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="3_t4fig"]
 [ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="4_muygd"]
-[ext_resource type="Script" uid="uid://o5ekgetjqg3n" path="res://salsas_spawner.gd" id="4_otwa2"]
-[ext_resource type="Texture2D" uid="uid://b278upjroqg61" path="res://armas/sprite/las salsas/chimi chrriii .png" id="5_aou4a"]
-[ext_resource type="Texture2D" uid="uid://byhe8f31x8jtv" path="res://armas/sprite/las salsas/ketchup .png" id="6_2hh7m"]
-[ext_resource type="Texture2D" uid="uid://d3vwcpvwn2x4u" path="res://armas/sprite/las salsas/mayoneiai .png" id="7_t8jxu"]
 [ext_resource type="SpriteFrames" uid="uid://di468sbs68w1q" path="res://gaseosa.tres" id="8_8wx08"]
 [ext_resource type="PackedScene" uid="uid://dfb1g16vlk7hf" path="res://armas/RainAttack.tscn" id="8_t8jxu"]
+[ext_resource type="PackedScene" uid="uid://o4cvab4qol1e" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/salsas_spaw.tscn" id="9_lwdvv"]
 [ext_resource type="Script" uid="uid://kdy0xag5a510" path="res://spawn_lluvia.gd" id="9_pfhxm"]
-[ext_resource type="PackedScene" uid="uid://dfnd4tjonef4s" path="res://player/bullet_salsa.tscn" id="11_0hui5"]
 [ext_resource type="PackedScene" uid="uid://bo2gd4sehdugm" path="res://interfaces/pause_overlay.tscn" id="11_0oi55"]
 [ext_resource type="Script" uid="uid://bognet8idgjwn" path="res://bola_spawner.gd" id="12_57gmc"]
-[ext_resource type="SpriteFrames" uid="uid://dnhf8eacqaa1y" path="res://mostasa_salsa.tres" id="12_83snu"]
 [ext_resource type="PackedScene" uid="uid://dnthfqxk8by4k" path="res://player/BolaDiablo .tscn" id="13_0crsg"]
-[ext_resource type="SpriteFrames" uid="uid://c5qx6lmwv77ei" path="res://chirri_salsa.tres" id="14_bve4g"]
-[ext_resource type="SpriteFrames" uid="uid://5sdsi4pbosmc" path="res://ketchup_salsa.tres" id="16_t4fig"]
-[ext_resource type="SpriteFrames" uid="uid://dlbjar5mw4olu" path="res://mayonesa_salsa.tres" id="18_muygd"]
 [ext_resource type="AudioStream" uid="uid://bfwakangwvsta" path="res://sonidos/nivel1/festejo_pan_chicharron.ogg" id="19_j2eq6"]
 [ext_resource type="Script" uid="uid://cbd0fwt4qbbyt" path="res://cebolla_spawner_2.gd" id="24_muygd"]
 [ext_resource type="PackedScene" uid="uid://brxmt5vaxpy63" path="res://armas/cebolla/cebolla.tscn" id="25_y1gce"]
@@ -140,7 +131,6 @@ texture = ExtResource("1_lgngo")
 
 [node name="spawn_lluvia_inka" type="Node2D" parent="." unique_id=538924717]
 script = ExtResource("9_pfhxm")
-tiempo_lluvia = 4.0
 
 [node name="Timer" type="Timer" parent="spawn_lluvia_inka" unique_id=1763559120]
 autostart = true
@@ -165,63 +155,7 @@ sprite_frames = ExtResource("8_8wx08")
 animation = &"idle"
 frame_progress = 0.986888
 
-[node name="SalsasSpawner" type="Node2D" parent="." unique_id=1149292236]
-script = ExtResource("4_otwa2")
-armas = Array[NodePath]([NodePath("Salsas"), NodePath("Salsas2"), NodePath("Salsas3"), NodePath("Salsas4"), NodePath("Salsas5"), NodePath("Salsas6")])
-tiempos = Array[float]([3.0, 4.0, 5.0, 3.0, 6.0, 3.0])
-
-[node name="Timer" type="Timer" parent="SalsasSpawner" unique_id=1103755351]
-autostart = true
-
-[node name="Salsas" parent="SalsasSpawner" unique_id=1743966541 instance=ExtResource("3_fw4w5")]
-position = Vector2(835, 724)
-proyectil = ExtResource("11_0hui5")
-spriteframes_proyectil = ExtResource("12_83snu")
-tipo_direccion = 1
-sentido = -1
-
-[node name="Salsas2" parent="SalsasSpawner" unique_id=1233252558 instance=ExtResource("3_fw4w5")]
-position = Vector2(333, 724)
-sprite_arma = ExtResource("5_aou4a")
-proyectil = ExtResource("11_0hui5")
-spriteframes_proyectil = ExtResource("14_bve4g")
-tipo_direccion = 1
-sentido = -1
-
-[node name="Salsas3" parent="SalsasSpawner" unique_id=1156096122 instance=ExtResource("3_fw4w5")]
-position = Vector2(-87, 408)
-rotation = 1.5707964
-sprite_arma = ExtResource("6_2hh7m")
-proyectil = ExtResource("11_0hui5")
-spriteframes_proyectil = ExtResource("16_t4fig")
-distancia_salida = 120.0
-
-[node name="Salsas4" parent="SalsasSpawner" unique_id=1697408258 instance=ExtResource("3_fw4w5")]
-position = Vector2(1336, 534)
-rotation = -1.5707964
-sprite_arma = ExtResource("7_t8jxu")
-proyectil = ExtResource("11_0hui5")
-spriteframes_proyectil = ExtResource("18_muygd")
-sentido = -1
-distancia_salida = 120.0
-
-[node name="Salsas5" parent="SalsasSpawner" unique_id=970397195 instance=ExtResource("3_fw4w5")]
-position = Vector2(672, -145)
-rotation = -3.1415927
-sprite_arma = ExtResource("6_2hh7m")
-proyectil = ExtResource("11_0hui5")
-spriteframes_proyectil = ExtResource("16_t4fig")
-tipo_direccion = 1
-distancia_salida = 150.0
-
-[node name="Salsas6" parent="SalsasSpawner" unique_id=1624289686 instance=ExtResource("3_fw4w5")]
-position = Vector2(315, -148)
-rotation = -3.1415927
-sprite_arma = ExtResource("7_t8jxu")
-proyectil = ExtResource("11_0hui5")
-spriteframes_proyectil = ExtResource("18_muygd")
-tipo_direccion = 1
-distancia_salida = 150.0
+[node name="SalsasSpawner" parent="." unique_id=954538583 instance=ExtResource("9_lwdvv")]
 
 [node name="cebollaSpawner2" type="Node2D" parent="." unique_id=831090137]
 script = ExtResource("24_muygd")
@@ -311,3 +245,4 @@ autostart = true
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=2056089042]
 stream = ExtResource("19_j2eq6")
+volume_db = 23.683

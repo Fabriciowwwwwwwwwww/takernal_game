@@ -159,6 +159,7 @@ func generar_objetivos():
 		objetivo_ingredientes[ingrediente] = clamp(cantidad, 1, 30)
 
 
+
 	$Panel2/HBoxContainer/ingre1/camote_label.text = str(objetivo_ingredientes["camote"])
 	$Panel2/HBoxContainer/ingre2/cebolla_label.text = str(objetivo_ingredientes["cebolla"])
 	$Panel2/HBoxContainer/ingre3/sal_label.text = str(objetivo_ingredientes["sal"])

@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://bwb22qmsr0ypi"]
+
+[ext_resource type="Script" uid="uid://cl0836kepuqfw" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/codigo_infinito.gd" id="1_m2nqo"]
+[ext_resource type="Script" uid="uid://btvljga1to8mi" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Guiones/guion_intermedio.gd" id="1_uukrg"]
+[ext_resource type="Texture2D" uid="uid://cybtck5ilhc7i" path="res://assets/NIVEL_costa-ASSETS/cielo limeño .png" id="2_bvm5s"]
+[ext_resource type="Shader" uid="uid://bnm2hujx2de78" path="res://transiciones/transicion1.gdshader" id="4_6ogni"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uukrg"]
+shader = ExtResource("4_6ogni")
+shader_parameter/progress = 0.0
+shader_parameter/reverse = false
+shader_parameter/numberOfTiles = Vector2(10, 8.438)
+shader_parameter/pixelsPerTile = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_diwut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/reverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ebrou"]
+resource_name = "transition_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/reverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cxkg1"]
+resource_name = "transition_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/reverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ogni"]
+_data = {
+&"RESET": SubResource("Animation_diwut"),
+&"transition_in": SubResource("Animation_ebrou"),
+&"transition_out": SubResource("Animation_cxkg1")
+}
+
+[node name="GuionIntermedio" type="CanvasLayer" unique_id=156871687]
+process_mode = 3
+script = ExtResource("1_uukrg")
+
+[node name="Fondo_movimiento2" type="ParallaxBackground" parent="." unique_id=1869335750]
+process_mode = 3
+layer = 6
+script = ExtResource("1_m2nqo")
+velocidad_scroll = 60.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Fondo_movimiento2" unique_id=808257734]
+motion_mirroring = Vector2(2680, 0)
+
+[node name="CieloLimeño" type="Sprite2D" parent="Fondo_movimiento2/ParallaxLayer" unique_id=1807264604]
+texture_filter = 1
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("2_bvm5s")
+centered = false
+
+[node name="CieloLimeño2" type="Sprite2D" parent="Fondo_movimiento2/ParallaxLayer" unique_id=886827288]
+texture_filter = 1
+position = Vector2(1345, 1)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("2_bvm5s")
+centered = false
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=480789319]
+material = SubResource("ShaderMaterial_uukrg")
+offset_left = -67.0
+offset_top = -54.0
+offset_right = 1371.0
+offset_bottom = 795.0
+color = Color(0, 0, 0, 1)
+
+[node name="transitionAnimation" type="AnimationPlayer" parent="." unique_id=1525941635]
+libraries/ = SubResource("AnimationLibrary_6ogni")
