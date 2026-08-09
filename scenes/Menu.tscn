@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="14_nxcfj"]
 [ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="15_rtd1e"]
 [ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="16_6c8sk"]
+[ext_resource type="AudioStream" uid="uid://d4mlr0noqg3gt" path="res://sonidos/criollo_menu_puzzle.ogg" id="17_6c8sk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2qgrd"]
 shader = ExtResource("8_i7htd")
@@ -344,6 +345,9 @@ position = Vector2(2122, 1000)
 scale = Vector2(0.7375, 0.725)
 sprite_frames = ExtResource("16_6c8sk")
 animation = &"idle"
+
+[node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=720821340]
+stream = ExtResource("17_6c8sk")
 
 [connection signal="pressed" from="Control/Single_Player" to="." method="_on_single_player_pressed"]
 [connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]

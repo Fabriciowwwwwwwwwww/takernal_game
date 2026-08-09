@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://5t52ubtah4k7"]
+
+[ext_resource type="Script" uid="uid://dyfefglhcumo1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/proyectiles/RocotoTeledirigido.gd" id="1_w67nt"]
+[ext_resource type="SpriteFrames" uid="uid://dnhf8eacqaa1y" path="res://mostasa_salsa.tres" id="2_w67nt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3cypu"]
+radius = 34.132095
+
+[node name="RocotoTeledirigido" type="Area2D" unique_id=1466472176]
+script = ExtResource("1_w67nt")
+velocidad = 900.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882137454]
+shape = SubResource("CircleShape2D_3cypu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1388630870]
+position = Vector2(4.0000076, 7)
+scale = Vector2(0.29726565, 0.2214844)
+sprite_frames = ExtResource("2_w67nt")
+animation = &"idle"
+frame_progress = 0.8679866
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=968527232]

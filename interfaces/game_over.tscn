@@ -52,12 +52,11 @@ animations = [{
 process_mode = 3
 layer = 2
 script = ExtResource("1_qtk0t")
-retry_scene = "uid://bdcomvhmo3lf1"
 menu_scene = "uid://cnl10kue3lo6a"
 
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=737260015]
-position = Vector2(635.80115, 359.99997)
-scale = Vector2(0.8616404, 0.88888884)
+position = Vector2(639.30115, 359.99997)
+scale = Vector2(0.866351, 0.88888884)
 sprite_frames = SubResource("SpriteFrames_7r16l")
 animation = &"idle"
 

@@ -50,7 +50,6 @@ var dialogue_line: DialogueLine:
 		else:
 			# El diálogo terminó
 
-			print("DIÁLOGO FINALIZADO")
 
 			await get_tree().create_timer(0.5).timeout
 
@@ -141,8 +140,7 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 
 	if character_node:
 		temporary_game_states.append(character_node)
-	else:
-		print("NO SE ENCONTRO CHARACTER")
+
 
 
 	temporary_game_states += extra_game_states

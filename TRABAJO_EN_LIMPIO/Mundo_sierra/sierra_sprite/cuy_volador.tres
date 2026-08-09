@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ck68wnuoj2ai4"]
+
+[ext_resource type="Texture2D" uid="uid://d32sdiiqybe4i" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuydaño (1)/CUYdaño00.PNG" id="1_iu7ju"]
+[ext_resource type="Texture2D" uid="uid://c8nmvi2c500tl" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/CUYDISPAROCONDOR/CUYIDLE00.PNG" id="1_vvn2n"]
+[ext_resource type="Texture2D" uid="uid://btt78p57tyy2g" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/CUYDISPAROCONDOR/CUYIDLE01.PNG" id="2_6sk3o"]
+[ext_resource type="Texture2D" uid="uid://datdlbm1vn6i2" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuydaño (1)/CUYdaño01.PNG" id="2_kf5ke"]
+[ext_resource type="Texture2D" uid="uid://c5l7ds3pb3l1h" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/CUYDISPAROCONDOR/CUYIDLE02.PNG" id="3_pghv4"]
+[ext_resource type="Texture2D" uid="uid://coh6j7gb4iqrb" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuydaño (1)/CUYdaño02.PNG" id="3_tusgq"]
+[ext_resource type="Texture2D" uid="uid://b06ukuoyookci" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/CUYDISPAROCONDOR/CUYIDLE03.PNG" id="4_ks0yj"]
+[ext_resource type="Texture2D" uid="uid://dfct82hwh35wy" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuydaño (1)/CUYdaño03.PNG" id="4_qk1tb"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iu7ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kf5ke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tusgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qk1tb")
+}],
+"loop": false,
+"name": &"daño",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vvn2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6sk3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pghv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ks0yj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

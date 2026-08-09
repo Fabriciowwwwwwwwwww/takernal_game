@@ -1,10 +1,12 @@
 extends Control
 
 var tipo_boton := ""
+@onready var musica: AudioStreamPlayer2D = $sonido_mundo
 @onready var camion: AnimatedSprite2D =$carro
 @onready var cuy_1: AnimatedSprite2D =$cuy1
 @onready var cuy_2: AnimatedSprite2D =$cuy2
 func _ready() -> void:
+	musica.play()
 	camion.play("idle")
 	cuy_1.play("idle")
 	cuy_2.play("idle")

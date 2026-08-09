@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dvuokrr4dkrig"]
+
+[ext_resource type="Script" uid="uid://duxigdkjui6el" path="res://player/bullet.gd" id="1_cllr2"]
+[ext_resource type="Texture2D" uid="uid://docn65y6ilxdv" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/pluma.png" id="2_lm07u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfsxo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lm07u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j40gx"]
+radius = 9.0
+height = 40.0
+
+[node name="Bullet" type="Area2D" unique_id=178091810 groups=["balas_jugador"]]
+collision_layer = 8
+collision_mask = 36
+script = ExtResource("1_cllr2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=176154318]
+position = Vector2(2, -3)
+rotation = -1.5726897
+scale = Vector2(0.40303254, 0.48400116)
+sprite_frames = SubResource("SpriteFrames_xfsxo")
+animation = &"idle"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1398089051]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=365285930]
+position = Vector2(-1.9999986, -1)
+rotation = -4.0317106
+shape = SubResource("CapsuleShape2D_j40gx")

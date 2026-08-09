@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-@export_file("*.tscn") var retry_scene: String
+var escena_anterior: String = ""
 @export_file("*.tscn") var menu_scene: String
 
 @onready var sprite_1: AnimatedSprite2D = $Background
@@ -26,7 +26,8 @@ func _ready() -> void:
 		retry_button.grab_focus()
 
 
-
+func configurar_escena_anterior(ruta: String) -> void:
+	escena_anterior = ruta
 func mostrar_game_over():
 
 	visible = true
@@ -41,9 +42,13 @@ func _on_retry_button_pressed() -> void:
 
 	get_tree().paused = false
 
+	if escena_anterior == "":
+		print("ERROR: No se encontró la escena anterior")
+		return
+
 	SceneManager.change_scene(
 		self,
-		retry_scene
+		escena_anterior
 	)
 
 

@@ -1,5 +1,5 @@
 extends "res://scenes/enemy/monster_base.gd"
-
+@export var cantidad_items_solo_buenos: int = 2
 
 @export var pan_scene: PackedScene
 @export var cebolla_scene: PackedScene
@@ -298,8 +298,7 @@ func _elegir_item_random(pool:Array) -> PackedScene:
 
 	return pool[-1]["escena"]
 
-
-func spawnear_tanda(nombre_animacion:String="lanzar"):
+func spawnear_tanda(nombre_animacion:String = "lanzar"):
 
 	if not activo:
 		return
@@ -309,33 +308,55 @@ func spawnear_tanda(nombre_animacion:String="lanzar"):
 	markers.shuffle()
 
 
-	var buenos_restantes = true
+	# ==========================================
+	# CANTIDAD DE ITEMS
+	# ==========================================
+
+	var cantidad_a_lanzar = cantidad_items_por_tanda
+
+	if solo_buenos:
+		cantidad_a_lanzar = cantidad_items_solo_buenos
 
 
-	for i in range(cantidad_items_por_tanda):
+	# ==========================================
+	# LANZAMIENTO
+	# ==========================================
 
-		var pool_actual:Array
+	for i in range(cantidad_a_lanzar):
+
+		var pool_actual: Array
 
 
-		var prob_malo = 0.35
+		# ======================================
+		# MODO SOLO BUENOS
+		# ======================================
+
+		if solo_buenos:
+
+			pool_actual = _pool_buenos
 
 
-		# 65% buenos / 35% malos
-		if randf() < prob_malo:
-
-			pool_actual = _pool_malos
+		# ======================================
+		# MODO NORMAL
+		# ======================================
 
 		else:
 
-			pool_actual = _pool_buenos
+			var prob_malo = 0.40
 
 
+			if randf() < prob_malo:
 
-		# Si quieres modo solo buenos
-		if solo_buenos:
-			pool_actual = _pool_buenos
+				pool_actual = _pool_malos
+
+			else:
+
+				pool_actual = _pool_buenos
 
 
+		# ======================================
+		# ELEGIR MARKER
+		# ======================================
 
 		var punto = markers[i % markers.size()]
 
@@ -349,7 +370,6 @@ func spawnear_tanda(nombre_animacion:String="lanzar"):
 		await get_tree().create_timer(
 			intervalo_entre_disparos
 		).timeout
-
 func spawnear_item(
 	punto:Marker2D,
 	pool:Array

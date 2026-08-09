@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://tchefywvbov0" path="res://visual/dialoguer.gd" id="1_8jp05"]
 [ext_resource type="Resource" uid="uid://b15k1msa1g5ra" path="res://visual/dialogos/dialogo_prueba.dialogue" id="2_1x58t"]
 [ext_resource type="PackedScene" uid="uid://8sxo21au16tw" path="res://visual/dialogos/character.tscn" id="3_jddu3"]
+[ext_resource type="Texture2D" uid="uid://bmxjvcdptreef" path="res://interfaces/sprite/sheet/imagenes_referencia/selva.jpg" id="3_svti5"]
 [ext_resource type="SpriteFrames" uid="uid://b1kln6lxwj247" path="res://player/player_sprite/cuy/oraculo.tres" id="5_1x58t"]
-[ext_resource type="Texture2D" uid="uid://buhg4tmg2u02j" path="res://interfaces/sprite/sheet/imagenes_referencia/lurin.jpg" id="7_5kt6r"]
 [ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="7_8ucjn"]
 [ext_resource type="SpriteFrames" uid="uid://c78wwbrid3ba0" path="res://player/player_sprite/cuy/cuy_2_v.tres" id="7_bnbv7"]
 [ext_resource type="SpriteFrames" uid="uid://cq132u7g1sl00" path="res://player/player_sprite/cuy/rosa.tres" id="8_svti5"]
@@ -14,18 +14,19 @@
 [ext_resource type="SpriteFrames" uid="uid://cmapu8vyj45gq" path="res://player/player_sprite/cuy/oraculo_enojado.tres" id="12_bfjca"]
 [ext_resource type="SpriteFrames" uid="uid://bx71otxurmxlk" path="res://player/player_sprite/cuy/supay_molesto.tres" id="13_efr6t"]
 [ext_resource type="SpriteFrames" uid="uid://s7e0xjwujjhh" path="res://player/player_sprite/cuy/supay_super_molesto.tres" id="14_ldcbb"]
+[ext_resource type="AudioStream" uid="uid://b857vo0o07hvp" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sonido_sierra/huayno_rocoto_relleno.ogg" id="15_gp0lr"]
 
 [node name="visual" type="Node2D" unique_id=1074617880]
 script = ExtResource("1_8jp05")
 dialogue = ExtResource("2_1x58t")
-next_scene = "uid://bdcomvhmo3lf1"
+next_scene = "uid://cmru44o2ygycc"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1961522530]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer2" unique_id=538427688]
-position = Vector2(629.37506, 355.5767)
-scale = Vector2(1.2570802, 1.3074179)
-texture = ExtResource("7_5kt6r")
+position = Vector2(641, 359.5)
+scale = Vector2(0.80125016, 0.80111104)
+texture = ExtResource("3_svti5")
 
 [node name="Control" type="Control" parent="CanvasLayer2" unique_id=1551800409]
 layout_mode = 3
@@ -51,3 +52,6 @@ character_frames = Dictionary[String, SpriteFrames]({
 })
 
 [node name="CanvasLayer22" type="CanvasLayer" parent="." unique_id=1137710267]
+
+[node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=1465573778]
+stream = ExtResource("15_gp0lr")

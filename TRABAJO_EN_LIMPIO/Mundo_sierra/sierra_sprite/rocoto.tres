@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ci3v4rnab6c3h"]
+
+[ext_resource type="Texture2D" uid="uid://duk7l8rbq7o18" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito1.png" id="1_mft7p"]
+[ext_resource type="Texture2D" uid="uid://qktguquo30dx" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocoto/rocoto.png" id="1_ox47f"]
+[ext_resource type="Texture2D" uid="uid://c4iy0uh1ylr66" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito2.png" id="2_slslb"]
+[ext_resource type="Texture2D" uid="uid://bwj428cw6il50" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito3.png" id="3_3hqxv"]
+[ext_resource type="Texture2D" uid="uid://gp78sig713l2" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito4.png" id="4_ckl3e"]
+[ext_resource type="Texture2D" uid="uid://bkm4n1hxlylv4" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito5.png" id="5_vbllm"]
+[ext_resource type="Texture2D" uid="uid://bufxoho3x4frn" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito6.png" id="6_ip5iq"]
+[ext_resource type="Texture2D" uid="uid://chbwdoluxypud" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/ROCOTOdañoIDLE (1)/daño (1).png" id="7_a076q"]
+[ext_resource type="Texture2D" uid="uid://drf0h74js8jun" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/ROCOTOdañoIDLE (1)/daño (2).png" id="8_8ujns"]
+[ext_resource type="Texture2D" uid="uid://j8wdfitdgft6" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/ROCOTOdañoIDLE (1)/rocotosolo1.png" id="9_sgudg"]
+[ext_resource type="Texture2D" uid="uid://btc2bnpnggykx" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/ROCOTOdañoIDLE (1)/rocotosolo2.png" id="10_l8uc7"]
+[ext_resource type="Texture2D" uid="uid://dmhathf1yupcx" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/ROCOTOdañoIDLE (1)/rocotosolo3.png" id="11_kuhvj"]
+[ext_resource type="Texture2D" uid="uid://d063puulahjg5" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/ROCOTOdañoIDLE (1)/rocotosolo4.png" id="12_1lbsw"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mft7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_slslb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3hqxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ckl3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vbllm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ip5iq")
+}],
+"loop": false,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_a076q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8ujns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sgudg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l8uc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kuhvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1lbsw")
+}],
+"loop": true,
+"name": &"herido",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ox47f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

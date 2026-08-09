@@ -8,6 +8,9 @@ var cafe_llamado := false
 	$Hearts/heart4,
 	$Hearts/heart5
 ]
+var puzzle_llamado := false
+
+@export_file("*.tscn") var puzzle_scene: String
 @export_file("*.tscn") var escena_game_over
 var vidas := 5
 
@@ -80,19 +83,22 @@ func mostrar_game_over():
 
 	get_tree().paused = false
 
-
 	if escena_game_over != "":
 
-		print("Cargando Game Over con transición:", escena_game_over)
+		var escena_actual := get_tree().current_scene.scene_file_path
 
-		SceneManager.change_scene(
-			self,
-			escena_game_over
-		)
+		print("Escena actual:", escena_actual)
+
+		var game_over = load(escena_game_over).instantiate()
+
+		game_over.configurar_escena_anterior(escena_actual)
+
+		get_tree().current_scene.add_child(game_over)
 
 	else:
 
 		print("NO HAY ESCENA GAME OVER ASIGNADA")
+
 func actualizar_progreso():
 
 	var total_necesario := 0
@@ -100,24 +106,37 @@ func actualizar_progreso():
 
 
 	for ingrediente in objetivo_ingredientes:
+
 		total_necesario += objetivo_ingredientes[ingrediente]
 		total_conseguido += ingredientes_conseguidos[ingrediente]
 
 
 	if total_necesario > 0:
-		progreso = (float(total_conseguido) / float(total_necesario)) * 100.0
-	else:
-		progreso = 0
 
+		progreso = (
+			float(total_conseguido) /
+			float(total_necesario)
+		) * 100.0
+
+	else:
+
+		progreso = 0
 
 
 	barra.value = progreso
 
-	if progreso >= 65 and not cebolla_llamada:
+
+	# ==========================================
+	# EVENTO CEBOLLAS - 65%
+	# ==========================================
+
+	if progreso >= 65.0 and not cebolla_llamada:
 
 		cebolla_llamada = true
 
-		var spawner = get_tree().current_scene.get_node("cebollaSpawner2")
+		var spawner = get_tree().current_scene.get_node_or_null(
+			"cebollaSpawner2"
+		)
 
 
 		if spawner:
@@ -129,18 +148,46 @@ func actualizar_progreso():
 
 			print("NO EXISTE CEBOLLA SPAWNER")
 
-	if progreso >= 25 and not cafe_llamado:
+
+	# ==========================================
+	# ATAQUE CAFÉ - 25%
+	# ==========================================
+
+	if progreso >= 25.0 and not cafe_llamado:
 
 		cafe_llamado = true
 
 		var cafe = $"../cafe_estado/Cafe"
 
+
 		if cafe:
+
 			cafe._ataque()
 
-# ============================
-# GENERAR PEDIDO ALEATORIO
-# ============================
+
+	# ==========================================
+	# PUZZLE - 100%
+	# ==========================================
+
+	if progreso >= 100.0 and not puzzle_llamado:
+
+		puzzle_llamado = true
+
+		print("PROGRESO AL 100%")
+		print("CAMBIANDO A PUZZLE...")
+
+		if puzzle_scene:
+
+			SceneManager.change_scene(
+				self,
+				puzzle_scene
+			)
+
+		else:
+
+			print("ERROR: No se asignó puzzle_scene")
+
+
 func generar_objetivos():
 
 	for ingrediente in objetivo_ingredientes:

@@ -9,14 +9,6 @@ narrador: Lima, la capital del Perú, conocida como la Capital Mundial de la Gas
 narrador: Un lugar donde culturas de todo el mundo se encuentran en cada plato.
 
 
-do BackgroundManager.cambiar_fondo("lurin")
-
-narrador: Al sur de Lima se encuentra Lurín...
-narrador: Un valle lleno de historia, tradiciones y sabores que han pasado de generación en generación.
-
-narrador: Aquí, en una pequeña chicharronería, una familia mantiene viva la unión a través de la comida.
-
-
 do BackgroundManager.cambiar_fondo("sierra")
 
 narrador: En los Andes, las montañas guardan recetas ancestrales.

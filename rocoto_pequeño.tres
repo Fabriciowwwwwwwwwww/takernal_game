@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://butm1inj80h7e"]
+
+[ext_resource type="Texture2D" uid="uid://bp1vvmmvaiatn" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/pimiento.png" id="1_88o1v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlk1g"]
+atlas = ExtResource("1_88o1v")
+region = Rect2(0, 0, 59, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxrnr"]
+atlas = ExtResource("1_88o1v")
+region = Rect2(59, 0, 59, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuxo6"]
+atlas = ExtResource("1_88o1v")
+region = Rect2(118, 0, 59, 89)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlk1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxrnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuxo6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

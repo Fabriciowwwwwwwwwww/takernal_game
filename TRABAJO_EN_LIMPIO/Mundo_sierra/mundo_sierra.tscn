@@ -1,0 +1,297 @@
+[gd_scene format=3 uid="uid://cmru44o2ygycc"]
+
+[ext_resource type="Script" uid="uid://crnp01g0jvj5d" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/parallax_capas.gd" id="1_f416o"]
+[ext_resource type="Script" uid="uid://b04fdo7kbj8vw" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/mundo_sierra.gd" id="1_jwfge"]
+[ext_resource type="Texture2D" uid="uid://dr8f1mdmn6nwy" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/SIERRA cerro de fondo .png" id="2_f416o"]
+[ext_resource type="Texture2D" uid="uid://dxnhthjt7s3b6" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/SIERRA cerro piso .png" id="3_5x62o"]
+[ext_resource type="SpriteFrames" uid="uid://c4ibh6ufi7mc2" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/condor.tres" id="3_gx2m7"]
+[ext_resource type="Texture2D" uid="uid://ds1sotq83o23e" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/SIERRA huascaran .png" id="4_ox1et"]
+[ext_resource type="SpriteFrames" uid="uid://ck68wnuoj2ai4" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_volador.tres" id="4_v3bsf"]
+[ext_resource type="Texture2D" uid="uid://dq3trqba1lexh" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/SIERRA nubes .png" id="5_5fbnc"]
+[ext_resource type="PackedScene" uid="uid://2tbh7qgulm8" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/jugador_sierra.tscn" id="6_5x62o"]
+[ext_resource type="PackedScene" uid="uid://bw3fxudhylfi6" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/Enemigo_sierra.tscn" id="8_5fbnc"]
+[ext_resource type="PackedScene" uid="uid://bskmbkob1hxxa" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/ui_sierra.tscn" id="9_v1qtp"]
+[ext_resource type="Script" uid="uid://bf4qf5dyr3qjl" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/ui_sierra.gd" id="10_ih64u"]
+[ext_resource type="AudioStream" uid="uid://b857vo0o07hvp" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sonido_sierra/huayno_rocoto_relleno.ogg" id="13_gx2m7"]
+[ext_resource type="Script" uid="uid://myscfyfv2rod" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/spawner_sierra.gd" id="14_v3bsf"]
+[ext_resource type="PackedScene" uid="uid://cn8nu5afpucgy" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/proyectiles/RocotoGrande.tscn" id="15_1t8fu"]
+[ext_resource type="Script" uid="uid://o4bm61odjnya" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/ataque_naves.gd" id="16_mkrxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx2m7"]
+size = Vector2(1614.5, 23)
+
+[node name="MundoSierra" type="Node2D" unique_id=1294510388]
+script = ExtResource("1_jwfge")
+jugador1 = ExtResource("6_5x62o")
+jugador2 = ExtResource("6_5x62o")
+sprite_frames_condor_p1 = ExtResource("3_gx2m7")
+sprite_frames_cuy_p1 = ExtResource("4_v3bsf")
+sprite_frames_condor_p2 = ExtResource("3_gx2m7")
+sprite_frames_cuy_p2 = ExtResource("4_v3bsf")
+
+[node name="Fondo_movimiento2" type="ParallaxBackground" parent="." unique_id=1318720892]
+
+[node name="monte_1" type="ParallaxLayer" parent="Fondo_movimiento2" unique_id=498100378]
+position = Vector2(-76, 91)
+motion_mirroring = Vector2(2540, 0)
+script = ExtResource("1_f416o")
+velocidad = 50.0
+
+[node name="montañas_sierra" type="Sprite2D" parent="Fondo_movimiento2/monte_1" unique_id=293128491]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-6, -3)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("2_f416o")
+centered = false
+
+[node name="montañas_sierra2" type="Sprite2D" parent="Fondo_movimiento2/monte_1" unique_id=54905895]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(844, -18)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("2_f416o")
+centered = false
+
+[node name="montañas_sierra3" type="Sprite2D" parent="Fondo_movimiento2/monte_1" unique_id=1593270346]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1690, -35)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("2_f416o")
+centered = false
+
+[node name="monte_2" type="ParallaxLayer" parent="Fondo_movimiento2" unique_id=1516924192]
+position = Vector2(-184, 102)
+motion_mirroring = Vector2(2540, 0)
+script = ExtResource("1_f416o")
+velocidad = 30.0
+
+[node name="montañas_sierra3" type="Sprite2D" parent="Fondo_movimiento2/monte_2" unique_id=2017025192]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-142, -20)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("4_ox1et")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra4" type="Sprite2D" parent="Fondo_movimiento2/monte_2" unique_id=629899267]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(725, -23)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("4_ox1et")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra5" type="Sprite2D" parent="Fondo_movimiento2/monte_2" unique_id=903034986]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1583, -27)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("4_ox1et")
+centered = false
+flip_h = true
+
+[node name="monte_3_mini" type="ParallaxLayer" parent="Fondo_movimiento2" unique_id=1972303351]
+position = Vector2(-692, 91)
+motion_mirroring = Vector2(2540, 0)
+script = ExtResource("1_f416o")
+velocidad = 40.0
+
+[node name="montañas_sierra8" type="Sprite2D" parent="Fondo_movimiento2/monte_3_mini" unique_id=1807455842]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(113, -6)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_5x62o")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra9" type="Sprite2D" parent="Fondo_movimiento2/monte_3_mini" unique_id=974939487]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(613, -6)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_5x62o")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra10" type="Sprite2D" parent="Fondo_movimiento2/monte_3_mini" unique_id=97713402]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1119, -7)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_5x62o")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra11" type="Sprite2D" parent="Fondo_movimiento2/monte_3_mini" unique_id=1294718782]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1626, -11.999999)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_5x62o")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra12" type="Sprite2D" parent="Fondo_movimiento2/monte_3_mini" unique_id=116454374]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(2126, -13.999999)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_5x62o")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra13" type="Sprite2D" parent="Fondo_movimiento2/monte_3_mini" unique_id=598332303]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(4195, -13)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_5x62o")
+centered = false
+flip_h = true
+
+[node name="nubes" type="ParallaxLayer" parent="Fondo_movimiento2" unique_id=2085486999]
+position = Vector2(0, 1)
+motion_mirroring = Vector2(2680, 0)
+script = ExtResource("1_f416o")
+velocidad = 30.0
+
+[node name="montañas_sierra4" type="Sprite2D" parent="Fondo_movimiento2/nubes" unique_id=953081344]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-416.99997, -11)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("5_5fbnc")
+centered = false
+flip_h = true
+
+[node name="montañas_sierra6" type="Sprite2D" parent="Fondo_movimiento2/nubes" unique_id=1089150037]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(941, -11)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("5_5fbnc")
+centered = false
+flip_h = true
+
+[node name="EnemigoSierra" parent="." unique_id=1869811607 node_paths=PackedStringArray("marker_flecha_arriba", "marker_flecha_centro", "marker_flecha_abajo") groups=["enemigo"] instance=ExtResource("8_5fbnc")]
+position = Vector2(1193, 496)
+marker_flecha_arriba = NodePath("../SpawnPoint2")
+marker_flecha_centro = NodePath("../SpawnPoint3")
+marker_flecha_abajo = NodePath("../SpawnPoint4")
+cantidad_flecha_grande = 30
+pausa_entre_flechas = 1.0
+tiempo_rafaga_especial = 10.0
+cantidad_flecha_lateral = 20
+separacion_especial = 15.0
+limite_abajo = 700.0
+tiempo_entre_ataques = 2.0
+cantidad_por_flecha = 18
+separacion_flecha = 24.0
+altura_flecha_arriba = 130.0
+altura_flecha_abajo = 500.0
+
+[node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("9_v1qtp")]
+script = ExtResource("10_ih64u")
+escena_game_over = "uid://dpax7lj5ax0lu"
+
+[node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=978252150]
+stream = ExtResource("13_gx2m7")
+
+[node name="posicion_inicial" type="Marker2D" parent="." unique_id=1637942122]
+position = Vector2(244, 419)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2136811478]
+position = Vector2(713, 394)
+zoom = Vector2(0.8, 0.8)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=1345895069]
+position = Vector2(-48, 72)
+collision_layer = 2
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D7" unique_id=698009694]
+position = Vector2(757.75, 15)
+shape = SubResource("RectangleShape2D_gx2m7")
+one_way_collision_margin = 4.0
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="." unique_id=2146727681]
+position = Vector2(-39, 842)
+collision_layer = 2
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D8" unique_id=1557029959]
+position = Vector2(710.75, 15)
+shape = SubResource("RectangleShape2D_gx2m7")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="." unique_id=816093736]
+position = Vector2(-85, -124)
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D9" unique_id=18198128]
+position = Vector2(710.75, 15)
+shape = SubResource("RectangleShape2D_gx2m7")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="." unique_id=2006153813]
+position = Vector2(1541, -90)
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D10" unique_id=121261475]
+position = Vector2(710.75, 15)
+shape = SubResource("RectangleShape2D_gx2m7")
+one_way_collision = true
+one_way_collision_margin = 4.0
+
+[node name="Spawner" type="Node2D" parent="." unique_id=204438987 node_paths=PackedStringArray("spawns")]
+script = ExtResource("14_v3bsf")
+nave_scene = ExtResource("15_1t8fu")
+cantidad_naves = 5
+velocidad = 350.0
+spawns = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3")]
+
+[node name="SpawnPoint" type="Marker2D" parent="Spawner" unique_id=1482071879]
+position = Vector2(1601, 240)
+
+[node name="SpawnPoint2" type="Marker2D" parent="Spawner" unique_id=2006434053]
+position = Vector2(1607, 488)
+
+[node name="SpawnPoint3" type="Marker2D" parent="Spawner" unique_id=1583500218]
+position = Vector2(1607, 699)
+
+[node name="AtaqueNaves" type="Node2D" parent="." unique_id=2012206141 node_paths=PackedStringArray("spawn_marker", "spawns_serpiente")]
+script = ExtResource("16_mkrxx")
+nave_scene = ExtResource("15_1t8fu")
+spawn_marker = NodePath("SpawnPoint")
+cantidad_naves = 7
+separacion_vertical = 110.0
+intervalo_salida = 1.0
+velocidad_nave = 300.0
+velocidad_nokia = 220.0
+distancia_vertical_quiebre = 80.0
+spawns_serpiente = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3")]
+
+[node name="SpawnPoint" type="Marker2D" parent="AtaqueNaves" unique_id=1323667015]
+position = Vector2(1629, 450)
+
+[node name="SpawnPoint2" type="Marker2D" parent="AtaqueNaves" unique_id=295429011]
+position = Vector2(1586, 263)
+
+[node name="SpawnPoint3" type="Marker2D" parent="AtaqueNaves" unique_id=515341107]
+position = Vector2(1586, 585)
+
+[node name="SpawnPoint2" type="Marker2D" parent="." unique_id=639040763]
+position = Vector2(1253, 196)
+
+[node name="SpawnPoint3" type="Marker2D" parent="." unique_id=1554779523]
+position = Vector2(1308, 462)
+
+[node name="SpawnPoint4" type="Marker2D" parent="." unique_id=2103916088]
+position = Vector2(1218, 745)

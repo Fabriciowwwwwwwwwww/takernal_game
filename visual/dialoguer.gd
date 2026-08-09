@@ -3,9 +3,11 @@ extends Node2D
 @export var dialogue: DialogueResource
 @onready var sprite:Sprite2D = $CanvasLayer2/Sprite2D
 @export_file("*.tscn") var next_scene: String
+@onready var musica: AudioStreamPlayer2D = $sonido_mundo
 
 
 func _ready():
+	musica.play()
 	BackgroundManager.registrar_fondo(sprite)
 	print("===== DIALOGO INICIADO =====")
 

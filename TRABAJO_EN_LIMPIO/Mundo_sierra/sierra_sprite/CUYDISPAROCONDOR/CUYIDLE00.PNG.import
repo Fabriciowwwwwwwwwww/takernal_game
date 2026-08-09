@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cspyutl4yl5o6"
-path="res://.godot/imported/111.png-f7a0ea1757d759d66631aa316d7da65c.ctex"
+uid="uid://c8nmvi2c500tl"
+path="res://.godot/imported/CUYIDLE00.PNG-3d91c2c1fa7157ad6f96a141db36366f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interfaces/sprite/111.png"
-dest_files=["res://.godot/imported/111.png-f7a0ea1757d759d66631aa316d7da65c.ctex"]
+source_file="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/CUYDISPAROCONDOR/CUYIDLE00.PNG"
+dest_files=["res://.godot/imported/CUYIDLE00.PNG-3d91c2c1fa7157ad6f96a141db36366f.ctex"]
 
 [params]
 

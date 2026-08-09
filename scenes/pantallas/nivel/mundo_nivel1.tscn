@@ -43,6 +43,7 @@ offset_bottom = 784.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u84de")
 
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
+puzzle_scene = "uid://c7orxugj2vc0v"
 escena_game_over = "uid://dpax7lj5ax0lu"
 
 [node name="piso_mounstruo" type="StaticBody2D" parent="." unique_id=892334228]
@@ -131,7 +132,7 @@ texture = ExtResource("1_dtdnh")
 
 [node name="Moster1" parent="." unique_id=1862692794 instance=ExtResource("3_00txm")]
 position = Vector2(695, 252)
-probabilidad_doble_malo = 0.7
+probabilidad_doble_malo = 0.8
 limite_izquierdo = 100.0
 fuerza_parabola = 550.0
 fuerza_extremo_min = 600.0
