@@ -55,6 +55,8 @@ func iniciar_patron() -> void:
 			await get_tree().create_timer(0.5).timeout
 			lanzar_huevo()
 			await get_tree().create_timer(1.0).timeout
+			
+		await get_tree().create_timer(5.0).timeout
 
 func lanzar_objeto(escena: PackedScene) -> void:
 	if escena == null:
