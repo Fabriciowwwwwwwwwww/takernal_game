@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://c4bol8hxpp0lw"]
 
-[node name="MundoSelva" type="Node2D" unique_id=347929153]
+[ext_resource type="Script" uid="uid://cclpuglmnan7e" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/mundo_selva.gd" id="1_8d5b5"]
+[ext_resource type="PackedScene" uid="uid://uj0fe6fypfvl" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/escena_incial_selva.tscn" id="2_dfp2p"]
+[ext_resource type="PackedScene" uid="uid://ce1xgsruxlipa" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/escena_dialogo.tscn" id="3_rpiqq"]
+[ext_resource type="PackedScene" uid="uid://dlh22i24rdf8n" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/escena_monstruo_selva.tscn" id="4_dfp2p"]
+[ext_resource type="PackedScene" uid="uid://55ypyk17nj5r" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/personaje_selva/cuy_delfin - copia.tscn" id="5_rpiqq"]
+
+[node name="MundoSelva" type="Node2D" unique_id=347929153 node_paths=PackedStringArray("jugador_1")]
+script = ExtResource("1_8d5b5")
+escena_round_1 = ExtResource("2_dfp2p")
+escena_interludio = ExtResource("3_rpiqq")
+escena_round_2 = ExtResource("4_dfp2p")
+jugador_1 = NodePath("CuyDelfin")
+
+[node name="CuyDelfin" parent="." unique_id=122758712 instance=ExtResource("5_rpiqq")]

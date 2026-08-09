@@ -4,7 +4,7 @@ extends Node
 @export var escena_round_1: PackedScene
 @export var escena_interludio: PackedScene
 @export var escena_round_2: PackedScene
-@onready var musica_costa: AudioStreamPlayer2D = $MUSICA_COSTA
+
 
 @export_category("Jugadores")
 @export var jugador_1: Node2D
@@ -17,7 +17,6 @@ var round_actual: Node = null
 var interludio_actual: Node = null
 
 func _ready():
-	musica_costa.play()
 	iniciar_flujo_juego()
 
 func iniciar_flujo_juego():

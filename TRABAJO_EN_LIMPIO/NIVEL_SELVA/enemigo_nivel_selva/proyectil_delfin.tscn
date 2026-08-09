@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cufx1iyf0we18"]
+
+[ext_resource type="Texture2D" uid="uid://7xu55c1lpnl2" path="res://assets/nivel_selva_assets/new/delfin_/shotdelfin1.png" id="1_rlpka"]
+[ext_resource type="Script" uid="uid://be0a77f12k5ur" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/proyectil_delfin.gd" id="1_sttvs"]
+[ext_resource type="Texture2D" uid="uid://hww1wouebdde" path="res://assets/nivel_selva_assets/new/delfin_/shotdelfin2.png" id="2_sttvs"]
+[ext_resource type="Texture2D" uid="uid://dgkuu3e7snrok" path="res://assets/nivel_selva_assets/new/delfin_/shotdelfin3.png" id="3_2lmel"]
+[ext_resource type="Texture2D" uid="uid://da6uh6576omjw" path="res://assets/nivel_selva_assets/new/delfin_/cargadodelfin1.png" id="4_qss1t"]
+[ext_resource type="Texture2D" uid="uid://dsubo3mj0qd8j" path="res://assets/nivel_selva_assets/new/delfin_/cargadodelfin2.png" id="5_ca4xg"]
+[ext_resource type="Texture2D" uid="uid://echln4wx0tab" path="res://assets/nivel_selva_assets/new/delfin_/cargadodelfin3.png" id="6_cj5m7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8fcn"]
+radius = 27.504545
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owt88"]
+atlas = ExtResource("1_rlpka")
+region = Rect2(852, 640, 426, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lye20"]
+atlas = ExtResource("2_sttvs")
+region = Rect2(852, 640, 426, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxy8j"]
+atlas = ExtResource("3_2lmel")
+region = Rect2(852, 640, 426, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph7sx"]
+atlas = ExtResource("4_qss1t")
+region = Rect2(0, 640, 1280, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obggh"]
+atlas = ExtResource("5_ca4xg")
+region = Rect2(0, 640, 1280, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv8pe"]
+atlas = ExtResource("6_cj5m7")
+region = Rect2(0, 640, 1280, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olul5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owt88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lye20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxy8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph7sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obggh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv8pe")
+}],
+"loop": false,
+"name": &"movimiento_bala",
+"speed": 7.0
+}]
+
+[node name="ProyectilDelfin" type="Area2D" unique_id=666427131 groups=["balas_jugador"]]
+script = ExtResource("1_sttvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=273026167]
+position = Vector2(-4.5, -0.5)
+shape = SubResource("CircleShape2D_n8fcn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=667602918]
+scale = Vector2(0.103906244, 0.103906244)
+sprite_frames = SubResource("SpriteFrames_olul5")
+animation = &"movimiento_bala"
+frame = 5
+frame_progress = 1.0
+offset = Vector2(-394.5865, 57.74436)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

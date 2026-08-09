@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://uj0fe6fypfvl"]
+
+[ext_resource type="Script" uid="uid://ctvyfj48inxcy" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/escena_incial_selva.gd" id="1_mphbk"]
+[ext_resource type="Texture2D" uid="uid://bfhwgu6ikskxa" path="res://assets/nivel_selva_assets/SELVA FONDO .png" id="1_ucsvx"]
+[ext_resource type="PackedScene" uid="uid://c6hkyb1i36fuj" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/chifles.tscn" id="2_6vrsu"]
+[ext_resource type="Texture2D" uid="uid://cl5mvbwcnj81g" path="res://assets/nivel_selva_assets/SELVA OLAS .png" id="2_o5n2o"]
+[ext_resource type="PackedScene" uid="uid://dtxs10khp6rc5" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/chifle_2.tscn" id="3_6vrsu"]
+[ext_resource type="Script" uid="uid://btxns17ylakb" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/codigo_infinito_selva.gd" id="3_mphbk"]
+[ext_resource type="Texture2D" uid="uid://b1ve4jwt84f3n" path="res://assets/nivel_selva_assets/arbolessssss .png" id="6_shp5u"]
+[ext_resource type="AudioStream" uid="uid://3hhgyhpynbns" path="res://sonidos/paiche_juane_amazonico.ogg" id="8_vxijk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxijk"]
+size = Vector2(1455, 165.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shp5u"]
+size = Vector2(176, 545)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pntga"]
+size = Vector2(114, 537)
+
+[node name="EscenaIncialSelva" type="Node2D" unique_id=1446525092]
+script = ExtResource("1_mphbk")
+chifle_1_escena = ExtResource("2_6vrsu")
+chifle_2_escena = ExtResource("3_6vrsu")
+
+[node name="ParallaxBackground8" type="ParallaxBackground" parent="." unique_id=1144497429]
+script = ExtResource("3_mphbk")
+velocidad_scroll = -20.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground8" unique_id=118557754]
+motion_mirroring = Vector2(2100, 0)
+
+[node name="SelvaFondo" type="Sprite2D" parent="ParallaxBackground8/ParallaxLayer" unique_id=1709701195]
+texture_filter = 1
+position = Vector2(1129.5, 260.75)
+scale = Vector2(0.7603125, 0.37694448)
+texture = ExtResource("1_ucsvx")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground8/ParallaxLayer" unique_id=1330743292]
+position = Vector2(1504, 187)
+scale = Vector2(0.32972226, 0.32972223)
+texture = ExtResource("6_shp5u")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground8/ParallaxLayer" unique_id=846361166]
+position = Vector2(455, 190.00002)
+scale = Vector2(0.32972226, 0.32972223)
+texture = ExtResource("6_shp5u")
+
+[node name="ParallaxBackground5" type="ParallaxBackground" parent="." unique_id=638753440]
+script = ExtResource("3_mphbk")
+velocidad_scroll = 300.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground5" unique_id=1628568836]
+position = Vector2(9, 99)
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground5/ParallaxLayer" unique_id=1512372383]
+texture_filter = 1
+position = Vector2(1222, 321)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=750353169]
+script = ExtResource("3_mphbk")
+velocidad_scroll = 280.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1393515366]
+position = Vector2(9, 99)
+motion_mirroring = Vector2(2370, 0)
+
+[node name="SelvaOlas4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1796151540]
+texture_filter = 1
+position = Vector2(346, 377)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-0.13752747, 858.48486, 798.9743, 102.75055)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1996551992]
+texture_filter = 1
+position = Vector2(1134, 377)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(820.9966, 858.48486, 798.97534, 102.75055)
+
+[node name="SelvaOlas6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1321622548]
+texture_filter = 1
+position = Vector2(1921, 377)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(1681.5997, 858.48486, 794.0228, 102.75055)
+
+[node name="ParallaxBackground7" type="ParallaxBackground" parent="." unique_id=2140771346]
+script = ExtResource("3_mphbk")
+velocidad_scroll = 300.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground7" unique_id=16525835]
+position = Vector2(9, 99)
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground7/ParallaxLayer" unique_id=1088166192]
+texture_filter = 1
+position = Vector2(1230, 409)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=27448347]
+script = ExtResource("3_mphbk")
+velocidad_scroll = 300.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=29527477]
+position = Vector2(9, 99)
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=2045351597]
+texture_filter = 1
+position = Vector2(354, 483)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-3.647, 1114.711, 808.716, 165.419)
+
+[node name="SelvaOlas2" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=1760569652]
+texture_filter = 1
+position = Vector2(1162, 483)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(828.9287, 1114.711, 809.71826, 165.41907)
+
+[node name="SelvaOlas3" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=1941049949]
+texture_filter = 1
+position = Vector2(1965, 483)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(1697.0065, 1116.2734, 804.5792, 162.81213)
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="." unique_id=105332242]
+script = ExtResource("3_mphbk")
+velocidad_scroll = 350.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3" unique_id=1163139914]
+position = Vector2(9, 99)
+motion_mirroring = Vector2(2850, 0)
+
+[node name="SelvaOlas3" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer" unique_id=411461514]
+texture_filter = 1
+position = Vector2(667, 667)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-3.6549835, 1437.1039, 1443.0645, 323.03894)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer" unique_id=1369470038]
+texture_filter = 1
+position = Vector2(2093, 667)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-3.6549835, 1437.1039, 1443.0645, 323.03894)
+
+[node name="ParallaxBackground4" type="ParallaxBackground" parent="." unique_id=864750868]
+script = ExtResource("3_mphbk")
+velocidad_scroll = 320.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground4" unique_id=1659268055]
+position = Vector2(9, 99)
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas4" type="Sprite2D" parent="ParallaxBackground4/ParallaxLayer" unique_id=1646634936]
+texture_filter = 1
+position = Vector2(1227, 491)
+texture = ExtResource("2_o5n2o")
+region_enabled = true
+region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1128467029]
+position = Vector2(1526, 423)
+
+[node name="paredes" type="StaticBody2D" parent="." unique_id=1470157995 groups=["plataforma"]]
+position = Vector2(2150, 1156)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paredes" unique_id=1260928630 groups=["plataforma"]]
+position = Vector2(-1515, -609)
+shape = SubResource("RectangleShape2D_vxijk")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="paredes" unique_id=713752773 groups=["plataforma"]]
+position = Vector2(-2219, -820.5)
+shape = SubResource("RectangleShape2D_shp5u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="paredes" unique_id=1650093162 groups=["plataforma"]]
+position = Vector2(-837, -821.5)
+shape = SubResource("RectangleShape2D_pntga")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1718645747]
+stream = ExtResource("8_vxijk")
+
+[node name="PosicionP1" type="Marker2D" parent="." unique_id=488956743]
+position = Vector2(450, 260)
+
+[node name="PosicionP2" type="Marker2D" parent="." unique_id=1926098305]
+position = Vector2(540, 262)
