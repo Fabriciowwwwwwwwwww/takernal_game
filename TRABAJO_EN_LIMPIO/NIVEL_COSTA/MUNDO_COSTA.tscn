@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://xgihd0jia2nj" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/Escena ataque1.tscn" id="2_fwl6c"]
 [ext_resource type="PackedScene" uid="uid://bwb22qmsr0ypi" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Guiones/Guion_intermedio.tscn" id="2_u0bxo"]
 [ext_resource type="PackedScene" uid="uid://c002oax282d0d" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/enemigo_causa.tscn" id="4_ahcmn"]
-[ext_resource type="AudioStream" uid="uid://b87pg54sojkbg" path="res://sonidos/marinera_causa_nortena.ogg" id="6_ahusb"]
 
 [node name="MundoCosta" type="Node2D" unique_id=528600275 node_paths=PackedStringArray("jugador_1")]
 process_mode = 3
@@ -17,7 +16,3 @@ jugador_1 = NodePath("P")
 
 [node name="P" parent="." unique_id=1738953310 instance=ExtResource("2_13w4h")]
 position = Vector2(629, 554)
-
-[node name="MUSICA_COSTA" type="AudioStreamPlayer2D" parent="." unique_id=1252718994]
-stream = ExtResource("6_ahusb")
-volume_db = 10.297

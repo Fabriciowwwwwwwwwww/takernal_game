@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://kslsgsatrpy6"]
+
+[ext_resource type="Script" uid="uid://240clk7vdqkf" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/huevo.gd" id="1_gh0r6"]
+[ext_resource type="Texture2D" uid="uid://bpnnqvx50b65y" path="res://assets/nivel_selva_assets/huevoexplosion1.png" id="1_k2onf"]
+[ext_resource type="Texture2D" uid="uid://c8dm5eegr53ym" path="res://assets/nivel_selva_assets/huevoexplosion2.png" id="2_gh0r6"]
+[ext_resource type="Texture2D" uid="uid://cv83sr33bj0vr" path="res://assets/nivel_selva_assets/huevoexplosion3.png" id="3_1dsu4"]
+[ext_resource type="Texture2D" uid="uid://boqxhsda3d88b" path="res://assets/nivel_selva_assets/huevoexplosion4.png" id="4_bv55v"]
+[ext_resource type="Texture2D" uid="uid://b6kdkw0evi0e0" path="res://assets/nivel_selva_assets/huevo00.png" id="5_8sdqj"]
+[ext_resource type="Texture2D" uid="uid://d2ukak1nv20i" path="res://assets/nivel_selva_assets/huevo01.png" id="6_1lbhk"]
+[ext_resource type="Texture2D" uid="uid://dtxs5blg6rt5s" path="res://assets/nivel_selva_assets/huevo02.png" id="7_eyb2h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru4ic"]
+atlas = ExtResource("1_k2onf")
+region = Rect2(590, 526, 590, 526)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8tf6"]
+atlas = ExtResource("2_gh0r6")
+region = Rect2(590, 526, 590, 526)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca5i4"]
+atlas = ExtResource("3_1dsu4")
+region = Rect2(590, 526, 590, 526)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2yka"]
+atlas = ExtResource("4_bv55v")
+region = Rect2(0, 0, 1770, 1580)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xoss"]
+atlas = ExtResource("5_8sdqj")
+region = Rect2(590, 526, 590, 526)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lomw2"]
+atlas = ExtResource("6_1lbhk")
+region = Rect2(590, 526, 590, 526)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7trr0"]
+atlas = ExtResource("7_eyb2h")
+region = Rect2(590, 526, 590, 526)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_713i8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru4ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8tf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca5i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2yka")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xoss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lomw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7trr0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ek4fc"]
+radius = 165.00304
+
+[node name="Huevo" type="Area2D" unique_id=1486732636 groups=["daño_jugador"]]
+script = ExtResource("1_gh0r6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=991343510]
+z_index = 6
+scale = Vector2(0.1951865, 0.1951865)
+sprite_frames = SubResource("SpriteFrames_713i8")
+animation = &"explosion"
+offset = Vector2(-78, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1693776690]
+scale = Vector2(0.15126957, 0.19518656)
+shape = SubResource("CircleShape2D_ek4fc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

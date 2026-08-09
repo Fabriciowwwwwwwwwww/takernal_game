@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://to6um7hb213t"]
+
+[ext_resource type="Script" uid="uid://btxns17ylakb" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/codigo_infinito_selva.gd" id="1_8k00s"]
+[ext_resource type="Texture2D" uid="uid://bfhwgu6ikskxa" path="res://assets/nivel_selva_assets/SELVA FONDO .png" id="1_odqvj"]
+[ext_resource type="Texture2D" uid="uid://cl5mvbwcnj81g" path="res://assets/nivel_selva_assets/SELVA OLAS .png" id="2_2c56r"]
+[ext_resource type="PackedScene" uid="uid://c8banxl0uw2fc" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/monstruopaiche.tscn" id="4_8k00s"]
+[ext_resource type="PackedScene" uid="uid://clhxyvjhkvqap" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/personaje/cuy_delfin.tscn" id="5_svxpx"]
+
+[node name="EnemigoSelva" type="Node2D" unique_id=1379598569]
+position = Vector2(-5, 0)
+
+[node name="ParallaxBackground6" type="ParallaxBackground" parent="." unique_id=747997298]
+script = ExtResource("1_8k00s")
+velocidad_scroll = 5.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground6" unique_id=58507288]
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaFondo" type="Sprite2D" parent="ParallaxBackground6/ParallaxLayer" unique_id=401364585]
+texture_filter = 1
+position = Vector2(1138.2501, 166.25)
+scale = Vector2(0.7548437, 0.27194446)
+texture = ExtResource("1_odqvj")
+
+[node name="ParallaxBackground5" type="ParallaxBackground" parent="." unique_id=1900236526]
+script = ExtResource("1_8k00s")
+velocidad_scroll = 100.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground5" unique_id=1806005457]
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground5/ParallaxLayer" unique_id=849340003]
+texture_filter = 1
+position = Vector2(1222, 321)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1550222812]
+script = ExtResource("1_8k00s")
+velocidad_scroll = 80.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1470283002]
+motion_mirroring = Vector2(2370, 0)
+
+[node name="SelvaOlas4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1001726093]
+texture_filter = 1
+position = Vector2(346, 377)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-0.13752747, 858.48486, 798.9743, 102.75055)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=875124095]
+texture_filter = 1
+position = Vector2(1134, 377)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(820.9966, 858.48486, 798.97534, 102.75055)
+
+[node name="SelvaOlas6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1291951908]
+texture_filter = 1
+position = Vector2(1921, 377)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(1681.5997, 858.48486, 794.0228, 102.75055)
+
+[node name="ParallaxBackground7" type="ParallaxBackground" parent="." unique_id=2146733669]
+script = ExtResource("1_8k00s")
+velocidad_scroll = 100.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground7" unique_id=1735398019]
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground7/ParallaxLayer" unique_id=1308791746]
+texture_filter = 1
+position = Vector2(1230, 409)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="." unique_id=1768405004]
+script = ExtResource("1_8k00s")
+velocidad_scroll = 100.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2" unique_id=2137028817]
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=1210954381]
+texture_filter = 1
+position = Vector2(354, 483)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-3.647, 1114.711, 808.716, 165.419)
+
+[node name="SelvaOlas2" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=381391416]
+texture_filter = 1
+position = Vector2(1162, 483)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(828.9287, 1114.711, 809.71826, 165.41907)
+
+[node name="SelvaOlas3" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer" unique_id=2075817708]
+texture_filter = 1
+position = Vector2(1965, 483)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(1697.0065, 1116.2734, 804.5792, 162.81213)
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="." unique_id=403316344]
+script = ExtResource("1_8k00s")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3" unique_id=1496726861]
+motion_mirroring = Vector2(2850, 0)
+
+[node name="SelvaOlas3" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer" unique_id=1877534288]
+texture_filter = 1
+position = Vector2(667, 667)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-3.6549835, 1437.1039, 1443.0645, 323.03894)
+
+[node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer" unique_id=1522196707]
+texture_filter = 1
+position = Vector2(2093, 667)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-3.6549835, 1437.1039, 1443.0645, 323.03894)
+
+[node name="ParallaxBackground4" type="ParallaxBackground" parent="." unique_id=1402214288]
+script = ExtResource("1_8k00s")
+velocidad_scroll = 120.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground4" unique_id=938398271]
+motion_mirroring = Vector2(2410, 0)
+
+[node name="SelvaOlas4" type="Sprite2D" parent="ParallaxBackground4/ParallaxLayer" unique_id=2114727887]
+texture_filter = 1
+position = Vector2(1227, 491)
+texture = ExtResource("2_2c56r")
+region_enabled = true
+region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
+
+[node name="monstruopaiche" parent="." unique_id=187744477 instance=ExtResource("4_8k00s")]
+position = Vector2(896, 176)
+
+[node name="CuyDelfin" parent="." unique_id=122758712 instance=ExtResource("5_svxpx")]

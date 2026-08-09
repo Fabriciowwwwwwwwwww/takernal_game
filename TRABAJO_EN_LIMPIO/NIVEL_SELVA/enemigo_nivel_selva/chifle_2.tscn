@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dtxs10khp6rc5"]
+
+[ext_resource type="Script" uid="uid://dadr782yls7mj" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/chifle_2.gd" id="1_1h63t"]
+[ext_resource type="Texture2D" uid="uid://cxuh05mbf3hbq" path="res://assets/nivel_selva_assets/new/chifleal.png" id="2_jlqr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s52vh"]
+size = Vector2(50.500916, 151.16763)
+
+[node name="chifle2" type="Area2D" unique_id=650290613]
+rotation = -1.5740997
+script = ExtResource("1_1h63t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1379702377]
+texture_filter = 1
+scale = Vector2(0.2721263, 0.25526643)
+texture = ExtResource("2_jlqr4")
+region_enabled = true
+region_rect = Rect2(219.0202, 7.319618, 198.41486, 634.2189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=311843439]
+scale = Vector2(1.0798677, 1.0798677)
+shape = SubResource("RectangleShape2D_s52vh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
