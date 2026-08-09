@@ -23,6 +23,7 @@ var animacion_ataque_activa: bool = false
 var animacion_herido_activa: bool = false
 
 @export_category("Ráfaga especial")
+@export var cantidad_rafaga_grande: int = 18
 @export var tiempo_rafaga_especial: float = 12.0
 @export var cantidad_flecha_lateral: int = 10
 @export var separacion_especial: float = 28.0
@@ -269,36 +270,96 @@ func recibir_daño() -> void:
 # =========================================================
 # CONTROL DE ATAQUES
 # =========================================================
+
 func iniciar_patron() -> void:
-	var ataques: Array[int] = [0, 1, 2,3]
+
+	var ataques: Array[int] = [0, 1, 2, 3]
 	var ultimo_ataque: int = -1
 
 	while is_inside_tree():
+
+		# =====================================================
+		# MEZCLAR LOS 4 ATAQUES
+		# =====================================================
+
 		ataques.shuffle()
+
+
+		# =====================================================
+		# EVITAR QUE EL PRIMER ATAQUE SEA IGUAL AL ÚLTIMO
+		# =====================================================
+
 		while ataques[0] == ultimo_ataque:
 			ataques.shuffle()
 
-		for tipo_ataque in ataques:
+
+		# =====================================================
+		# EJECUTAR LOS 4 ATAQUES
+		# =====================================================
+
+		for tipo_ataque: int in ataques:
+
 			if not is_inside_tree():
 				return
 
+
+			# =================================================
+			# GUARDAR ATAQUE ACTUAL
+			# =================================================
+
 			ultimo_ataque = tipo_ataque
 
+
+			# =================================================
+			# SELECCIONAR ATAQUE
+			# =================================================
+
 			match tipo_ataque:
+
 				0:
+					print("======================================")
 					print(">>> ATAQUE: 3 FLECHAS")
+					print("======================================")
+
 					await ataque_tres_flechas()
+
+
 				1:
+					print("======================================")
 					print(">>> ATAQUE: DIAGONAL")
+					print("======================================")
+
 					await ataque_diagonal()
+
+
 				2:
+					print("======================================")
 					print(">>> ATAQUE: MISIL TELEDIRIGIDO")
+					print("======================================")
+
 					await ataque_teledirigido()
+
+
 				3:
-					print(">>> ATAQUE: MISIL ataque_rafaga_especial")
+					print("======================================")
+					print(">>> ATAQUE: RAFAGA ESPECIAL")
+					print("======================================")
+
 					await ataque_rafaga_especial()
 
-			await get_tree().create_timer(tiempo_entre_ataques).timeout
+
+			# =================================================
+			# ESPERA ENTRE ATAQUES
+			# =================================================
+
+			if not is_inside_tree():
+				return
+
+			await get_tree().create_timer(
+				tiempo_entre_ataques
+			).timeout
+
+
 
 
 func ataque_teledirigido() -> void:
@@ -563,13 +624,15 @@ func disparar_flecha(
 # =========================================================
 
 
-
-
 func ataque_rafaga_especial() -> void:
+
 	if atacando:
 		return
 
 	if rocoto_pequeno_scene == null:
+		return
+
+	if jugadores.is_empty():
 		return
 
 	atacando = true
@@ -581,20 +644,72 @@ func ataque_rafaga_especial() -> void:
 	var posicion: Vector2 = marker_disparo.global_position
 
 	# =====================================================
-	# CONFIGURACIÓN DEL ATAQUE
+	# CONFIGURACIÓN
 	# =====================================================
 
-	# Tiempo entre cada grupo de proyectiles
 	var pausa_entre_grupos: float = 0.45
 
+	# Qué tanto se desvía hacia el jugador
+	var fuerza_apuntado: float = 0.20
+
+
 	# =====================================================
-	# ELEGIR QUÉ LATERAL SALE PRIMERO
+	# BUSCAR JUGADOR
+	# =====================================================
+
+	var jugador_objetivo: Node2D = jugadores.pick_random()
+
+	if jugador_objetivo == null:
+		atacando = false
+		return
+
+	var posicion_jugador: Vector2 = jugador_objetivo.global_position
+
+	print(
+		"[RAFAGA] Jugador objetivo: ",
+		jugador_objetivo.name
+	)
+
+	print(
+		"[RAFAGA] Posición jugador: ",
+		posicion_jugador
+	)
+
+
+	# =====================================================
+	# DIRECCIÓN HACIA EL JUGADOR
+	# =====================================================
+
+	var direccion_jugador: Vector2 = (
+		posicion_jugador - posicion
+	).normalized()
+
+
+	# =====================================================
+	# DIRECCIÓN CENTRAL
+	# =====================================================
+
+	var direccion_central: Vector2 = Vector2.LEFT.lerp(
+		direccion_jugador,
+		fuerza_apuntado
+	).normalized()
+
+
+	print(
+		"[RAFAGA] Dirección final: ",
+		direccion_central
+	)
+
+
+	# =====================================================
+	# ELEGIR LATERAL
 	# =====================================================
 
 	var direccion_lateral: int = 1
 
 	if randi() % 2 == 0:
 		direccion_lateral = -1
+
 
 	# =====================================================
 	# 1. RAFAGA CENTRAL
@@ -604,15 +719,22 @@ func ataque_rafaga_especial() -> void:
 
 	await disparar_flecha_especial(
 		posicion,
-		Vector2.LEFT,
-		cantidad_flecha_grande,
+		direccion_central,
+		cantidad_rafaga_grande,
 		0.0
 	)
 
-	# Espera antes del siguiente grupo
+
+	# =====================================================
+	# PAUSA
+	# process_always = false
+	# =====================================================
+
 	await get_tree().create_timer(
-		pausa_entre_grupos
+		pausa_entre_grupos,
+		false
 	).timeout
+
 
 	# =====================================================
 	# 2. RAFAGA LATERAL
@@ -626,10 +748,16 @@ func ataque_rafaga_especial() -> void:
 		cantidad_flecha_lateral
 	)
 
-	# Espera antes del último grupo
+
+	# =====================================================
+	# PAUSA
+	# =====================================================
+
 	await get_tree().create_timer(
-		pausa_entre_grupos
+		pausa_entre_grupos,
+		false
 	).timeout
+
 
 	# =====================================================
 	# 3. RAFAGA LATERAL CONTRARIA
@@ -643,18 +771,21 @@ func ataque_rafaga_especial() -> void:
 		cantidad_flecha_lateral
 	)
 
+
 	# =====================================================
 	# FINAL
 	# =====================================================
 
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(
+		0.6,
+		false
+	).timeout
 
 	atacando = false
 
 	print("======================================")
 	print("=== RAFAGA ESPECIAL TERMINADA ===")
 	print("======================================")
-
 
 
 func disparar_flecha_especial(

@@ -38,14 +38,45 @@ extends Node2D
 @onready var musica: AudioStreamPlayer2D = $sonido_mundo
 @onready var enemigo = $EnemigoSierra
 
+# IMPORTANTE:
+# Ajusta esta ruta si tu CanvasLayer está en otro lugar.
+@onready var hud: CanvasLayer = $CanvasLayer
+
 
 # =========================================================
 # READY
 # =========================================================
 
-func _ready():
+func _ready() -> void:
 
-	musica.play()
+	print("======================================")
+	print("=========== INICIANDO MUNDO ===========")
+	print("======================================")
+
+	if musica:
+		musica.play()
+
+
+	# =====================================================
+	# DETECTAR MODO DE JUEGO
+	# =====================================================
+
+	var es_coop: bool = (
+		GameManager.modo_juego == GameManager.ModoJuego.COOP
+	)
+
+	if es_coop:
+
+		print("[MUNDO] MODO COOPERATIVO")
+
+	else:
+
+		print("[MUNDO] MODO UN JUGADOR")
+
+
+	# =====================================================
+	# POSICIÓN CENTRAL
+	# =====================================================
 
 	var centro: Vector2 = posicion_inicial.global_position
 
@@ -66,13 +97,16 @@ func _ready():
 	p1.global_position = centro + Vector2(-40, 0)
 
 
+	print("[MUNDO] Jugador 1 creado")
+
+
 	# =====================================================
 	# JUGADOR 2
 	# =====================================================
 
 	var p2 = null
 
-	if GameManager.modo_juego == GameManager.ModoJuego.COOP:
+	if es_coop:
 
 		p2 = jugador2.instantiate()
 
@@ -85,9 +119,11 @@ func _ready():
 
 		p2.global_position = centro + Vector2(40, 0)
 
+		print("[MUNDO] Jugador 2 creado")
+
 
 	# =====================================================
-	# ENTREGAR JUGADORES AL ENEMIGO
+	# CREAR LISTA DE JUGADORES
 	# =====================================================
 
 	var jugadores: Array[Node2D] = [p1]
@@ -95,4 +131,47 @@ func _ready():
 	if p2 != null:
 		jugadores.append(p2)
 
-	enemigo.asignar_jugadores(jugadores)
+
+	# =====================================================
+	# ENTREGAR JUGADORES AL ENEMIGO
+	# =====================================================
+
+	if enemigo != null:
+
+		if enemigo.has_method("asignar_jugadores"):
+
+			enemigo.asignar_jugadores(jugadores)
+
+			print(
+				"[MUNDO] Jugadores entregados al enemigo: ",
+				jugadores.size()
+			)
+
+
+	# =====================================================
+	# CONECTAR MUNDO → HUD
+	# =====================================================
+
+	if hud != null:
+
+		if hud.has_method("configurar_modo_juego"):
+
+			hud.configurar_modo_juego(
+				es_coop,
+				jugadores
+			)
+
+			print("[MUNDO] HUD configurado correctamente")
+
+		else:
+
+			print(
+				"[MUNDO] ERROR: El HUD no tiene ",
+				"configurar_modo_juego()"
+			)
+
+	else:
+
+		print(
+			"[MUNDO] ERROR: CanvasLayer HUD no encontrado"
+		)

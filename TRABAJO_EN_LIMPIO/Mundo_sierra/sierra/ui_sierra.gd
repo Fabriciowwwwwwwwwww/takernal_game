@@ -1,15 +1,55 @@
 extends CanvasLayer
+var juego_ganado: bool = false
 
+
+# =========================================================
+# MODO DE JUEGO
+# =========================================================
+
+var modo_coop: bool = false
+
+var jugadores_activos: Array[Node2D] = []
+
+
+# =========================================================
+# CONFIGURACIÓN NORMAL
+# =========================================================
+
+const VIDA_NORMAL: float = 150.0
+
+
+# =========================================================
+# CONFIGURACIÓN COOPERATIVA
+# =========================================================
+
+const VIDA_COOP: float = 300.0
+
+
+# =========================================================
+# MULTIPLICADOR DE CAOS
+# =========================================================
+
+var multiplicador_caos: float = 1.0
 # =========================================================
 # JUGADOR
 # =========================================================
+# =========================================================
+# VICTORIA
+# =========================================================
+
+@export_category("Victoria")
+
+@export_file("*.tscn") var siguiente_escena: String
+
+@export var tiempo_antes_siguiente_nivel: float = 4.0
 
 @export_category("Jugador")
 @export var jugador: Node2D
 
 @onready var spawn: Node2D = $"../Spawner"
 @onready var spawn2: Node2D = $"../AtaqueNaves"
-
+@onready var victoria: CanvasLayer = $"../CanvasLayer_victoria"
+@onready var personaje_victoria: AnimatedSprite2D = $"../CanvasLayer_victoria/AnimatedSprite2D"
 
 # =========================================================
 # BARRA DE PROGRESO
@@ -51,14 +91,22 @@ var vidas := 5
 
 @export_category("Vida del enemigo")
 
-@export var vida_maxima_enemigo: float = 200.0
+@export var vida_maxima_enemigo: float = 150.0
 
-var progreso_enemigo: float = 200.0
+var progreso_enemigo: float = 150.0
 
 # Cada cuánto daño se activa una oleada
-var siguiente_umbral: float = 190.0
+# =========================================================
+# ATAQUES POR PORCENTAJE DE VIDA
+# =========================================================
 
+@export_category("Ataques por vida")
 
+# Cada cuánto porcentaje de vida perdida se activa un ataque
+@export_range(1.0, 50.0, 1.0)
+var porcentaje_por_ataque: float = 10.0
+
+var siguiente_porcentaje_vida: float = 90.0
 # =========================================================
 # ATAQUES AUTOMÁTICOS
 # =========================================================
@@ -122,6 +170,7 @@ func _ready() -> void:
 
 		barra_progreso.max_value = vida_maxima_enemigo
 		barra_progreso.value = progreso_enemigo
+	siguiente_porcentaje_vida = 100.0 - porcentaje_por_ataque
 
 
 	# ---------------------------------------------------------
@@ -139,9 +188,11 @@ func _ready() -> void:
 
 func disminuir_progreso(cantidad: float = 1.0) -> void:
 
-	if progreso_enemigo <= 0.0:
+	if juego_ganado:
 		return
 
+	if progreso_enemigo <= 0.0:
+		return
 
 	# ---------------------------------------------------------
 	# RESTAR VIDA
@@ -154,66 +205,67 @@ func disminuir_progreso(cantidad: float = 1.0) -> void:
 		progreso_enemigo
 	)
 
-
 	# ---------------------------------------------------------
 	# ACTUALIZAR BARRA
 	# ---------------------------------------------------------
 
 	if barra_progreso:
-
 		barra_progreso.value = progreso_enemigo
-
 
 	print(
 		"[HUD] Progreso del enemigo: ",
-		progreso_enemigo
+		progreso_enemigo,
+		"/",
+		vida_maxima_enemigo
 	)
 
+	# ---------------------------------------------------------
+	# CALCULAR PORCENTAJE DE VIDA ACTUAL
+	# ---------------------------------------------------------
+
+	var porcentaje_vida_actual: float = (
+		progreso_enemigo / vida_maxima_enemigo
+	) * 100.0
+
+	print(
+		"[HUD] Vida: ",
+		porcentaje_vida_actual,
+		"%"
+	)
 
 	# ---------------------------------------------------------
-	# ATAQUE POR CADA 10 PUNTOS
+	# ATAQUE CADA X% DE VIDA
 	# ---------------------------------------------------------
 
-	if progreso_enemigo <= siguiente_umbral and progreso_enemigo > 0.0:
+	if (
+		porcentaje_vida_actual <= siguiente_porcentaje_vida
+		and progreso_enemigo > 0.0
+	):
 
 		print(
-			"[HUD] Umbral alcanzado: ",
-			siguiente_umbral
+			"[HUD] Umbral de vida alcanzado: ",
+			siguiente_porcentaje_vida,
+			"%"
 		)
 
 		activar_spawn_ponderado()
 
-		siguiente_umbral -= 10.0
+		# Pasar al siguiente porcentaje
+		siguiente_porcentaje_vida -= porcentaje_por_ataque
 
+		# Evitar que siga bajando indefinidamente
+		siguiente_porcentaje_vida = max(
+			0.0,
+			siguiente_porcentaje_vida
+		)
 
 	# ---------------------------------------------------------
-	# DERROTA
+	# DERROTA DEL JEFE
 	# ---------------------------------------------------------
 
 	if progreso_enemigo <= 0.0:
 
 		ganar_juego()
-
-
-# =========================================================
-# ATAQUES AUTOMÁTICOS
-# =========================================================
-#
-# Estos ataques NO dependen de la vida.
-#
-# Aunque el jugador no dispare:
-#
-# 200
-# ↓
-# ataque automático
-# ↓
-# 200
-# ↓
-# ataque automático
-# ↓
-# 200
-#
-# =========================================================
 
 func iniciar_ataques_automaticos() -> void:
 
@@ -290,53 +342,94 @@ func iniciar_ataques_automaticos() -> void:
 # 35% = solamente uno de los dos
 #
 # =========================================================
-
 func activar_spawn_ponderado() -> void:
 
 	var probabilidad: float = randf()
 
 
 	# =====================================================
-	# 65% ATAQUE MASIVO
+	# COOPERATIVO
+	# =====================================================
+
+	if modo_coop:
+
+		print("======================================")
+		print("[HUD] ATAQUE COOPERATIVO")
+		print("======================================")
+
+
+		# =================================================
+		# 85% → ATAQUE MASIVO
+		# SPAWNER + NAVES
+		# =================================================
+
+		if probabilidad <= 0.85:
+
+			print(
+				"[HUD] ¡ATAQUE MASIVO COOP!"
+			)
+
+			activar_spawner_principal()
+
+			activar_spawner_naves()
+
+
+			# ---------------------------------------------
+			# 50% DE PROBABILIDAD DE REPETIR
+			# ---------------------------------------------
+
+			if randf() <= 0.50:
+
+				await get_tree().create_timer(
+					0.35
+				).timeout
+
+				if not juego_ganado:
+
+					print(
+						"[HUD] ¡SEGUNDA OLEADA COOP!"
+					)
+
+					activar_spawner_principal()
+
+					activar_spawner_naves()
+
+
+		# =================================================
+		# 15% → SOLO UNO
+		# =================================================
+
+		else:
+
+			print(
+				"[HUD] Ataque individual COOP"
+			)
+
+			if randf() < 0.5:
+
+				activar_spawner_principal()
+
+			else:
+
+				activar_spawner_naves()
+
+
+		return
+
+
+	# =====================================================
+	# UN JUGADOR
 	# =====================================================
 
 	if probabilidad <= 0.65:
 
 		print(
-			"[HUD] ¡ATAQUE MASIVO! ",
-			"Spawn + AtaqueNaves"
+			"[HUD] ¡ATAQUE MASIVO!"
 		)
 
+		activar_spawner_principal()
 
-		# -------------------------------------------------
-		# SPAWN PRINCIPAL
-		# -------------------------------------------------
-
-		if spawn != null:
-
-			if spawn.has_method("iniciar_ataque"):
-
-				spawn.call_deferred(
-					"iniciar_ataque"
-				)
-
-
-		# -------------------------------------------------
-		# ATAQUE DE NAVES
-		# -------------------------------------------------
-
-		if spawn2 != null:
-
-			if spawn2.has_method("iniciar_ataque"):
-
-				spawn2.call_deferred(
-					"iniciar_ataque"
-				)
-
-
-	# =====================================================
-	# 35% ATAQUE INDIVIDUAL
-	# =====================================================
+		activar_spawner_naves()
 
 	else:
 
@@ -344,59 +437,212 @@ func activar_spawn_ponderado() -> void:
 			"[HUD] Ataque individual"
 		)
 
-
-		# Elegir aleatoriamente cuál de los dos atacar
-
 		if randf() < 0.5:
 
-			# ---------------------------------------------
-			# SOLO SPAWN
-			# ---------------------------------------------
-
-			print(
-				"[HUD] → Solo Spawner"
-			)
-
-
-			if spawn != null:
-
-				if spawn.has_method("iniciar_ataque"):
-
-					spawn.call_deferred(
-						"iniciar_ataque"
-					)
+			activar_spawner_principal()
 
 		else:
 
-			# ---------------------------------------------
-			# SOLO ATAQUE NAVES
-			# ---------------------------------------------
-
-			print(
-				"[HUD] → Solo AtaqueNaves"
-			)
-
-
-			if spawn2 != null:
-
-				if spawn2.has_method("iniciar_ataque"):
-
-					spawn2.call_deferred(
-						"iniciar_ataque"
-					)
-
-
+			activar_spawner_naves()
 # =========================================================
 # GANAR JUEGO
 # =========================================================
+# =========================================================
+# ACTIVAR SPAWNER PRINCIPAL
+# =========================================================
 
+func activar_spawner_principal() -> void:
+
+	if spawn == null:
+		return
+
+	if spawn.has_method("iniciar_ataque"):
+
+		print(
+			"[HUD] → Activando Spawner"
+		)
+
+		spawn.call_deferred(
+			"iniciar_ataque"
+		)
+
+
+# =========================================================
+# ACTIVAR ATAQUE DE NAVES
+# =========================================================
+
+func activar_spawner_naves() -> void:
+
+	if spawn2 == null:
+		return
+
+	if spawn2.has_method("iniciar_ataque"):
+
+		print(
+			"[HUD] → Activando AtaqueNaves"
+		)
+
+		spawn2.call_deferred(
+			"iniciar_ataque"
+		)
 func ganar_juego() -> void:
+
+	# ---------------------------------------------------------
+	# EVITAR EJECUTAR VICTORIA DOS VECES
+	# ---------------------------------------------------------
+
+	if juego_ganado:
+		return
+
+	juego_ganado = true
 
 	print("======================================")
 	print("============== GANASTE ===============")
 	print("======================================")
 
+	# ---------------------------------------------------------
+	# DETENER ATAQUES
+	# ---------------------------------------------------------
 
+	detener_todos_los_ataques()
+
+	# ---------------------------------------------------------
+	# HACER AL JUGADOR INVULNERABLE
+	# ---------------------------------------------------------
+
+	if jugador != null:
+
+		if jugador.has_method("hacer_invulnerable"):
+			jugador.hacer_invulnerable(true)
+
+		elif "invulnerable" in jugador:
+			jugador.invulnerable = true
+
+		if jugador is CharacterBody2D:
+			jugador.velocity = Vector2.ZERO
+
+	# ---------------------------------------------------------
+	# MOSTRAR VICTORIA
+	# ---------------------------------------------------------
+
+	if victoria != null:
+
+		victoria.visible = true
+
+		# Permitir que siga funcionando durante pausa
+		victoria.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	# ---------------------------------------------------------
+	# COMPROBAR PERSONAJE DE VICTORIA
+	# ---------------------------------------------------------
+
+	if personaje_victoria == null:
+
+		print(
+			"[VICTORIA] ERROR: AnimatedSprite2D no encontrado"
+		)
+
+		get_tree().paused = true
+
+		return
+
+	# ---------------------------------------------------------
+	# MOSTRAR PERSONAJE
+	# ---------------------------------------------------------
+
+	personaje_victoria.visible = true
+
+	personaje_victoria.play("idle")
+
+	# ---------------------------------------------------------
+	# POSICIÓN INICIAL
+	# ---------------------------------------------------------
+
+	var posicion_inicial := Vector2(
+		-150.0,
+		300.0
+	)
+
+	# ---------------------------------------------------------
+	# POSICIÓN FINAL
+	# ---------------------------------------------------------
+
+	var posicion_final := Vector2(
+		640.0,
+		300.0
+	)
+
+	personaje_victoria.position = posicion_inicial
+
+	# ---------------------------------------------------------
+	# PAUSAR EL JUEGO
+	# ---------------------------------------------------------
+
+	get_tree().paused = true
+
+	# ---------------------------------------------------------
+	# CREAR TWEEN
+	# ---------------------------------------------------------
+
+	var tween := create_tween()
+
+	tween.set_pause_mode(
+		Tween.TWEEN_PAUSE_PROCESS
+	)
+
+	tween.set_trans(
+		Tween.TRANS_QUAD
+	)
+
+	tween.set_ease(
+		Tween.EASE_OUT
+	)
+
+	tween.tween_property(
+		personaje_victoria,
+		"position",
+		posicion_final,
+		2.0
+	)
+
+	# ---------------------------------------------------------
+	# ESPERAR QUE TERMINE EL MOVIMIENTO
+	# ---------------------------------------------------------
+
+	await tween.finished
+
+	# ---------------------------------------------------------
+	# IDLE EN EL CENTRO
+	# ---------------------------------------------------------
+
+	personaje_victoria.play("idle")
+
+	print(
+		"[VICTORIA] Personaje llegó al centro"
+	)
+
+	# ---------------------------------------------------------
+	# ESPERAR ANTES DEL SIGUIENTE NIVEL
+	# ---------------------------------------------------------
+
+	print(
+		"[VICTORIA] Esperando ",
+		tiempo_antes_siguiente_nivel,
+		" segundos..."
+	)
+
+	var timer := get_tree().create_timer(
+		tiempo_antes_siguiente_nivel,
+		true
+	)
+
+	await timer.timeout
+
+	# ---------------------------------------------------------
+	# CAMBIAR DE ESCENA
+	# ---------------------------------------------------------
+
+	cambiar_al_siguiente_nivel()
 # =========================================================
 # PERDER VIDA
 # =========================================================
@@ -543,3 +789,197 @@ func preparar_game_over() -> void:
 
 
 	mostrar_game_over()
+func cambiar_al_siguiente_nivel() -> void:
+
+	print("======================================")
+	print("====== CAMBIANDO AL SIGUIENTE ========")
+	print("======================================")
+
+	# Quitar pausa antes de cambiar
+	get_tree().paused = false
+
+	# ---------------------------------------------------------
+	# COMPROBAR ESCENA
+	# ---------------------------------------------------------
+
+	if siguiente_escena.is_empty():
+
+		print(
+			"[VICTORIA] ERROR: No se asignó siguiente_escena"
+		)
+
+		return
+
+	# ---------------------------------------------------------
+	# CAMBIAR ESCENA
+	# ---------------------------------------------------------
+
+	print(
+		"[VICTORIA] Cargando: ",
+		siguiente_escena
+	)
+
+	get_tree().change_scene_to_file(
+		siguiente_escena
+	)
+func detener_todos_los_ataques() -> void:
+
+	print("[HUD] DETENIENDO TODOS LOS ATAQUES")
+
+	# ---------------------------------------------------------
+	# DETENER SISTEMA DE ATAQUES AUTOMÁTICOS
+	# ---------------------------------------------------------
+
+	ataque_automatico_activo = false
+	ataques_automaticos = false
+
+
+	# ---------------------------------------------------------
+	# DETENER SPAWNER PRINCIPAL
+	# ---------------------------------------------------------
+
+	if spawn != null:
+
+		if spawn.has_method("detener_ataque"):
+
+			spawn.detener_ataque()
+
+			print("[HUD] Spawner detenido")
+
+
+	# ---------------------------------------------------------
+	# DETENER ATAQUE DE NAVES
+	# ---------------------------------------------------------
+
+	if spawn2 != null:
+
+		if spawn2.has_method("detener_ataque"):
+
+			spawn2.detener_ataque()
+
+			print("[HUD] AtaqueNaves detenido")
+
+
+	# ---------------------------------------------------------
+	# ELIMINAR PROYECTILES EXISTENTES
+	# ---------------------------------------------------------
+
+	eliminar_proyectiles()
+
+
+	# ---------------------------------------------------------
+	# CONFIRMACIÓN
+	# ---------------------------------------------------------
+
+	print("[HUD] TODOS LOS ATAQUES DETENIDOS")
+func eliminar_proyectiles() -> void:
+
+	print("[HUD] Eliminando proyectiles existentes")
+
+	var proyectiles := get_tree().get_nodes_in_group("proyectil")
+
+	print(
+		"[HUD] Proyectiles encontrados: ",
+		proyectiles.size()
+	)
+
+	for proyectil in proyectiles:
+
+		if is_instance_valid(proyectil):
+
+			proyectil.queue_free()
+# =========================================================
+# CONFIGURAR MODO DE JUEGO
+# =========================================================
+
+func configurar_modo_juego(
+	es_coop: bool,
+	jugadores: Array[Node2D]
+) -> void:
+
+	modo_coop = es_coop
+
+	jugadores_activos = jugadores
+
+
+	# =====================================================
+	# UN JUGADOR
+	# =====================================================
+
+	if not modo_coop:
+
+		print("======================================")
+		print("[HUD] DIFICULTAD: UN JUGADOR")
+		print("======================================")
+
+		vida_maxima_enemigo = VIDA_NORMAL
+
+		multiplicador_caos = 1.0
+
+		tiempo_minimo_ataque = 4.0
+		tiempo_maximo_ataque = 8.0
+
+
+	# =====================================================
+	# COOPERATIVO
+	# =====================================================
+
+	else:
+
+		print("======================================")
+		print("[HUD] DIFICULTAD: COOPERATIVO")
+		print("======================================")
+
+		# DOBLE DE VIDA
+		vida_maxima_enemigo = VIDA_COOP
+
+		# Más caos
+		multiplicador_caos = 2.0
+
+		# Ataques más frecuentes
+		tiempo_minimo_ataque = 2.0
+		tiempo_maximo_ataque = 4.0
+
+
+	# =====================================================
+	# REINICIAR VIDA
+	# =====================================================
+
+	progreso_enemigo = vida_maxima_enemigo
+
+
+	# =====================================================
+	# CONFIGURAR BARRA
+	# =====================================================
+
+	if barra_progreso:
+
+		barra_progreso.max_value = vida_maxima_enemigo
+		barra_progreso.value = progreso_enemigo
+
+
+	# =====================================================
+	# PRÓXIMO ATAQUE
+	# =====================================================
+
+	siguiente_porcentaje_vida = (
+		100.0 - porcentaje_por_ataque
+	)
+
+
+	print(
+		"[HUD] Vida enemigo: ",
+		vida_maxima_enemigo
+	)
+
+	print(
+		"[HUD] Caos: x",
+		multiplicador_caos
+	)
+
+	print(
+		"[HUD] Tiempo ataques: ",
+		tiempo_minimo_ataque,
+		" - ",
+		tiempo_maximo_ataque
+	)

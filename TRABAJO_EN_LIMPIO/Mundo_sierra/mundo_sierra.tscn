@@ -9,16 +9,39 @@
 [ext_resource type="SpriteFrames" uid="uid://ck68wnuoj2ai4" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_volador.tres" id="4_v3bsf"]
 [ext_resource type="Texture2D" uid="uid://dq3trqba1lexh" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/SIERRA nubes .png" id="5_5fbnc"]
 [ext_resource type="PackedScene" uid="uid://2tbh7qgulm8" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/jugador_sierra.tscn" id="6_5x62o"]
-[ext_resource type="PackedScene" uid="uid://bw3fxudhylfi6" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/Enemigo_sierra.tscn" id="8_5fbnc"]
 [ext_resource type="PackedScene" uid="uid://bskmbkob1hxxa" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/ui_sierra.tscn" id="9_v1qtp"]
 [ext_resource type="Script" uid="uid://bf4qf5dyr3qjl" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/ui_sierra.gd" id="10_ih64u"]
 [ext_resource type="AudioStream" uid="uid://b857vo0o07hvp" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sonido_sierra/huayno_rocoto_relleno.ogg" id="13_gx2m7"]
 [ext_resource type="Script" uid="uid://myscfyfv2rod" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/spawner_sierra.gd" id="14_v3bsf"]
 [ext_resource type="PackedScene" uid="uid://cn8nu5afpucgy" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/proyectiles/RocotoGrande.tscn" id="15_1t8fu"]
 [ext_resource type="Script" uid="uid://o4bm61odjnya" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/ataque_naves.gd" id="16_mkrxx"]
+[ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="17_4pjgj"]
+[ext_resource type="PackedScene" uid="uid://c7h557wmxg3hu" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/enemigo_sierra.scn" id="17_eki23"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx2m7"]
 size = Vector2(1614.5, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eki23"]
+atlas = ExtResource("17_4pjgj")
+region = Rect2(0, 0, 882, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asn0a"]
+atlas = ExtResource("17_4pjgj")
+region = Rect2(882, 0, 882, 185)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvxhx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eki23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asn0a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="MundoSierra" type="Node2D" unique_id=1294510388]
 script = ExtResource("1_jwfge")
@@ -178,25 +201,9 @@ texture = ExtResource("5_5fbnc")
 centered = false
 flip_h = true
 
-[node name="EnemigoSierra" parent="." unique_id=1869811607 node_paths=PackedStringArray("marker_flecha_arriba", "marker_flecha_centro", "marker_flecha_abajo") groups=["enemigo"] instance=ExtResource("8_5fbnc")]
-position = Vector2(1193, 496)
-marker_flecha_arriba = NodePath("../SpawnPoint2")
-marker_flecha_centro = NodePath("../SpawnPoint3")
-marker_flecha_abajo = NodePath("../SpawnPoint4")
-cantidad_flecha_grande = 30
-pausa_entre_flechas = 1.0
-tiempo_rafaga_especial = 10.0
-cantidad_flecha_lateral = 20
-separacion_especial = 15.0
-limite_abajo = 700.0
-tiempo_entre_ataques = 2.0
-cantidad_por_flecha = 18
-separacion_flecha = 24.0
-altura_flecha_arriba = 130.0
-altura_flecha_abajo = 500.0
-
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("9_v1qtp")]
 script = ExtResource("10_ih64u")
+siguiente_escena = "uid://cnl10kue3lo6a"
 escena_game_over = "uid://dpax7lj5ax0lu"
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=978252150]
@@ -251,6 +258,7 @@ one_way_collision = true
 one_way_collision_margin = 4.0
 
 [node name="Spawner" type="Node2D" parent="." unique_id=204438987 node_paths=PackedStringArray("spawns")]
+process_mode = 1
 script = ExtResource("14_v3bsf")
 nave_scene = ExtResource("15_1t8fu")
 cantidad_naves = 5
@@ -267,6 +275,7 @@ position = Vector2(1607, 488)
 position = Vector2(1607, 699)
 
 [node name="AtaqueNaves" type="Node2D" parent="." unique_id=2012206141 node_paths=PackedStringArray("spawn_marker", "spawns_serpiente")]
+process_mode = 1
 script = ExtResource("16_mkrxx")
 nave_scene = ExtResource("15_1t8fu")
 spawn_marker = NodePath("SpawnPoint")
@@ -288,10 +297,26 @@ position = Vector2(1586, 263)
 position = Vector2(1586, 585)
 
 [node name="SpawnPoint2" type="Marker2D" parent="." unique_id=639040763]
-position = Vector2(1253, 196)
+position = Vector2(1317, 217)
 
 [node name="SpawnPoint3" type="Marker2D" parent="." unique_id=1554779523]
-position = Vector2(1308, 462)
+position = Vector2(1333, 470)
 
 [node name="SpawnPoint4" type="Marker2D" parent="." unique_id=2103916088]
-position = Vector2(1218, 745)
+position = Vector2(1313, 741)
+
+[node name="CanvasLayer_victoria" type="CanvasLayer" parent="." unique_id=153589958]
+process_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer_victoria" unique_id=1725270589]
+position = Vector2(-574, 391)
+sprite_frames = SubResource("SpriteFrames_pvxhx")
+animation = &"idle"
+
+[node name="EnemigoSierra" parent="." unique_id=1869811607 node_paths=PackedStringArray("marker_flecha_arriba", "marker_flecha_centro", "marker_flecha_abajo") groups=["enemigo"] instance=ExtResource("17_eki23")]
+position = Vector2(1278, 387)
+marker_flecha_arriba = NodePath("../SpawnPoint2")
+marker_flecha_centro = NodePath("../SpawnPoint3")
+marker_flecha_abajo = NodePath("../SpawnPoint4")
+pausa_entre_flechas = 1.0
+cantidad_flecha_lateral = 7

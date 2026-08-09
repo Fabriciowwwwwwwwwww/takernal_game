@@ -114,6 +114,7 @@ offset_bottom = 634.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
+mouse_filter = 2
 script = ExtResource("1_2af52")
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1549198536]
@@ -149,8 +150,10 @@ scale = Vector2(1.1921824, 1.3944069)
 texture = ExtResource("5_thu7x")
 centered = false
 
-[node name="Control" type="Node2D" parent="." unique_id=1929182962]
-position = Vector2(-673, 0)
+[node name="Control" type="Control" parent="." unique_id=2056450502]
+anchors_preset = 0
+offset_left = -673.0
+offset_right = -673.0
 script = ExtResource("7_l3wcu")
 
 [node name="Título" type="Sprite2D" parent="Control" unique_id=726667771]
@@ -164,13 +167,14 @@ centered = false
 [node name="Single_Player" type="TextureButton" parent="Control" unique_id=352330779 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_mm3o3")
 use_parent_material = true
+layout_mode = 0
 offset_left = 177.0
 offset_top = 304.0
 offset_right = 777.0
-offset_bottom = 698.0
+offset_bottom = 550.0
 scale = Vector2(0.7, 0.7)
 focus_neighbor_bottom = NodePath("../Multi_Player")
-button_mask = 0
+mouse_filter = 1
 texture_normal = ExtResource("10_8fhjo")
 texture_pressed = ExtResource("11_760fv")
 texture_hover = ExtResource("12_rehui")
@@ -182,10 +186,11 @@ use_parent_material = true
 layout_mode = 0
 offset_left = 65.0
 offset_top = 162.5
-offset_right = 955.0
+offset_right = 1100.0
 offset_bottom = 523.5
 rotation = -0.0009083748
 scale = Vector2(0.4, 0.4)
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -200,14 +205,15 @@ text = "Single Player"
 [node name="Multi_Player" type="TextureButton" parent="Control" unique_id=1548086522 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
+layout_mode = 0
 offset_left = 171.0
-offset_top = 564.0
+offset_top = 570.0
 offset_right = 1011.0
-offset_bottom = 986.5
+offset_bottom = 816.0
 scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Single_Player")
 focus_neighbor_bottom = NodePath("../Quit")
-button_mask = 0
+mouse_filter = 1
 texture_normal = ExtResource("10_8fhjo")
 texture_pressed = ExtResource("11_760fv")
 texture_hover = ExtResource("12_rehui")
@@ -223,6 +229,7 @@ offset_right = 1027.4286
 offset_bottom = 327.57147
 rotation = -0.006470233
 scale = Vector2(0.4, 0.4)
+mouse_filter = 1
 theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -237,13 +244,14 @@ text = "Multi_Player"
 [node name="Quit" type="TextureButton" parent="Control" unique_id=1040227390 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
+layout_mode = 0
 offset_left = 163.0
-offset_top = 825.99994
+offset_top = 836.0
 offset_right = 1003.0
-offset_bottom = 1220.0
+offset_bottom = 1082.0
 scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Multi_Player")
-button_mask = 0
+mouse_filter = 1
 texture_normal = ExtResource("10_8fhjo")
 texture_pressed = ExtResource("11_760fv")
 texture_hover = ExtResource("12_rehui")
@@ -273,13 +281,14 @@ text = "Quit"
 [node name="creditos" type="TextureButton" parent="Control" unique_id=280908064 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
+layout_mode = 0
 offset_left = 155.0
 offset_top = 1102.0
 offset_right = 995.0
-offset_bottom = 1496.0
+offset_bottom = 1348.0
 scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Multi_Player")
-button_mask = 0
+mouse_filter = 1
 texture_normal = ExtResource("10_8fhjo")
 texture_pressed = ExtResource("11_760fv")
 texture_hover = ExtResource("12_rehui")
@@ -313,8 +322,11 @@ autostart = true
 
 [node name="Sombras_transición" parent="." unique_id=618434902 instance=ExtResource("14_nxcfj")]
 layout_mode = 0
-offset_right = 2586.0
-offset_bottom = 1476.0
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 2578.0
+offset_bottom = 1460.0
+mouse_filter = 2
 
 [node name="Sombra_time" type="Timer" parent="Sombras_transición" unique_id=161622666]
 
@@ -352,6 +364,5 @@ stream = ExtResource("17_6c8sk")
 [connection signal="pressed" from="Control/Single_Player" to="." method="_on_single_player_pressed"]
 [connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Control/creditos" to="." method="_on_quit_pressed"]
-[connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/creditos" to="." method="_on_creditos_pressed"]
 [connection signal="timeout" from="Sombras_transición/Sombra_time" to="." method="_on_sombra_time_timeout"]
