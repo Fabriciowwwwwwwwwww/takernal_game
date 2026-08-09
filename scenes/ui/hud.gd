@@ -1,6 +1,59 @@
+
 extends CanvasLayer
-var cebolla_llamada := false
-var cafe_llamado := false
+
+
+# =========================================================
+# ESTADO DEL JUEGO
+# =========================================================
+
+var puzzle_llamado: bool = false
+var juego_ganado: bool = false
+
+var cebolla_llamada: bool = false
+var cafe_llamado: bool = false
+
+
+# =========================================================
+# MODO DE JUEGO / DIFICULTAD
+# =========================================================
+
+var es_coop: bool = false
+
+var multiplicador_dificultad: float = 1.0
+var multiplicador_ingredientes: float = 1.0
+var multiplicador_spawn: float = 1.0
+
+
+# =========================================================
+# ESCENAS
+# =========================================================
+
+@export_category("Escenas")
+
+@export_file("*.tscn")
+var puzzle_scene: String
+
+@export_file("*.tscn")
+var escena_game_over: String
+
+
+# =========================================================
+# VICTORIA
+# =========================================================
+
+@export_category("Victoria")
+
+@export var tiempo_antes_siguiente_nivel: float = 4.0
+
+@onready var victoria: CanvasLayer = $"../CanvasLayer_victoria"
+
+@onready var personaje_victoria: AnimatedSprite2D = $"../CanvasLayer_victoria/AnimatedSprite2D"
+
+
+# =========================================================
+# CORAZONES
+# =========================================================
+
 @onready var corazones = [
 	$Hearts/heart1,
 	$Hearts/heart2,
@@ -8,106 +61,393 @@ var cafe_llamado := false
 	$Hearts/heart4,
 	$Hearts/heart5
 ]
-var puzzle_llamado := false
 
-@export_file("*.tscn") var puzzle_scene: String
-@export_file("*.tscn") var escena_game_over
-var vidas := 5
 
-@onready var barra = $ProgressBar
+# =========================================================
+# VIDA
+# =========================================================
+
+var vidas: int = 5
+
+
+# =========================================================
+# BARRA DE PROGRESO
+# =========================================================
+
+@onready var barra: ProgressBar = $ProgressBar
+
+var progreso: float = 0.0
+
+
+# =========================================================
+# PROBABILIDADES DE PEDIDO
+# =========================================================
+
 var probabilidad_pedido: Dictionary[String, float] = {
+
 	"camote": 0.80,
 	"cebolla": 0.75,
 	"sal": 0.55,
 	"limon": 0.60,
 	"pan": 0.35,
 	"chicharron": 0.55
+
 }
 
-# Cantidades necesarias (Panel2)
+
+# =========================================================
+# OBJETIVOS
+# =========================================================
+
 var objetivo_ingredientes = {
+
 	"camote": 0,
 	"cebolla": 0,
 	"sal": 0,
 	"limon": 0,
 	"pan": 0,
 	"chicharron": 0
+
 }
 
 
-# Cantidades conseguidas (Panel3)
+# =========================================================
+# INGREDIENTES CONSEGUIDOS
+# =========================================================
+
 var ingredientes_conseguidos = {
+
 	"camote": 0,
 	"cebolla": 0,
 	"sal": 0,
 	"limon": 0,
 	"pan": 0,
 	"chicharron": 0
+
 }
 
 
-var progreso := 0
+# =========================================================
+# READY
+# =========================================================
+
+func _ready() -> void:
+
+	print("======================================")
+	print("========== HUD PUZLE =================")
+	print("======================================")
 
 
-func _ready():
+	# ---------------------------------------------------------
+	# PROCESAR SI EL JUEGO ESTÁ PAUSADO
+	# ---------------------------------------------------------
 
-	generar_objetivos()
-	actualizar_panel3()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	for corazon in corazones:
-		corazon.visible = true
-		corazon.play("idle")
-func perder_vida():
 
-	if vidas <= 0:
-		return
+	# ---------------------------------------------------------
+	# DETECTAR MODO DE JUEGO
+	# ---------------------------------------------------------
 
-	# Corazón que se rompe (empieza por el de la derecha)
-	var indice := vidas - 1
+	es_coop = (
+		GameManager.modo_juego ==
+		GameManager.ModoJuego.COOP
+	)
 
-	vidas -= 1
 
-	if indice >= 0 and indice < corazones.size():
+	# ---------------------------------------------------------
+	# CONFIGURAR DIFICULTAD
+	# ---------------------------------------------------------
 
-		var corazon: AnimatedSprite2D = corazones[indice]
+	if es_coop:
 
-		corazon.play("romper")
+		multiplicador_dificultad = 2.0
+		multiplicador_ingredientes = 2.0
+		multiplicador_spawn = 2.0
 
-		await corazon.animation_finished
-
-		corazon.visible = false
-
-	if vidas <= 0:
-		mostrar_game_over()
-func mostrar_game_over():
-
-	get_tree().paused = false
-
-	if escena_game_over != "":
-
-		var escena_actual := get_tree().current_scene.scene_file_path
-
-		print("Escena actual:", escena_actual)
-
-		var game_over = load(escena_game_over).instantiate()
-
-		game_over.configurar_escena_anterior(escena_actual)
-
-		get_tree().current_scene.add_child(game_over)
+		print("======================================")
+		print("======= MODO COOPERATIVO =============")
+		print("======= DIFICULTAD X2 =================")
+		print("======= INGREDIENTES X2 ===============")
+		print("======= SPAWN X2 ======================")
+		print("======================================")
 
 	else:
 
-		print("NO HAY ESCENA GAME OVER ASIGNADA")
+		multiplicador_dificultad = 1.0
+		multiplicador_ingredientes = 1.0
+		multiplicador_spawn = 1.0
 
-func actualizar_progreso():
+		print("======================================")
+		print("======= MODO UN JUGADOR ===============")
+		print("======= DIFICULTAD NORMAL =============")
+		print("======================================")
 
-	var total_necesario := 0
-	var total_conseguido := 0
+
+	# ---------------------------------------------------------
+	# CONFIGURAR VICTORIA
+	# ---------------------------------------------------------
+
+	if victoria != null:
+
+		victoria.visible = false
+
+		victoria.process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+	if personaje_victoria != null:
+
+		personaje_victoria.visible = false
+
+
+	# ---------------------------------------------------------
+	# GENERAR PEDIDO
+	# ---------------------------------------------------------
+
+	generar_objetivos()
+
+
+	# ---------------------------------------------------------
+	# ACTUALIZAR PANEL
+	# ---------------------------------------------------------
+
+	actualizar_panel3()
+
+
+	# ---------------------------------------------------------
+	# INICIALIZAR CORAZONES
+	# ---------------------------------------------------------
+
+	for corazon in corazones:
+
+		if corazon != null:
+
+			corazon.visible = true
+			corazon.play("idle")
+
+
+	# ---------------------------------------------------------
+	# INICIALIZAR BARRA
+	# ---------------------------------------------------------
+
+	if barra != null:
+
+		barra.min_value = 0
+		barra.max_value = 100
+		barra.value = 0
+
+
+	print("[HUD PUZLE] Inicialización completada")
+
+
+# =========================================================
+# CONFIGURAR DIFICULTAD DESDE OTRO NODO
+# =========================================================
+
+func configurar_dificultad(
+	dificultad: float,
+	ingredientes: float,
+	spawn: float
+) -> void:
+
+	multiplicador_dificultad = dificultad
+	multiplicador_ingredientes = ingredientes
+	multiplicador_spawn = spawn
+
+	es_coop = dificultad >= 2.0
+
+	print("======================================")
+	print("[HUD] DIFICULTAD RECIBIDA")
+	print("======================================")
+
+	print(
+		"[HUD] Cooperativo: ",
+		es_coop
+	)
+
+	print(
+		"[HUD] Dificultad: ",
+		multiplicador_dificultad
+	)
+
+	print(
+		"[HUD] Ingredientes: ",
+		multiplicador_ingredientes
+	)
+
+	print(
+		"[HUD] Spawn: ",
+		multiplicador_spawn
+	)
+
+
+# =========================================================
+# GENERAR OBJETIVOS
+# =========================================================
+
+func generar_objetivos() -> void:
+
+	print("======================================")
+	print("[HUD] GENERANDO OBJETIVOS")
+	print("======================================")
+
+
+	for ingrediente in objetivo_ingredientes:
+
+		var cantidad: int = 0
+
+		var prob: float = probabilidad_pedido[ingrediente]
+
+
+		# -----------------------------------------------------
+		# GENERACIÓN NORMAL
+		# -----------------------------------------------------
+
+		for i in range(30):
+
+			if randf() <= prob:
+
+				cantidad += 1
+
+
+		# -----------------------------------------------------
+		# MÍNIMO 1
+		# -----------------------------------------------------
+
+		cantidad = clamp(
+			cantidad,
+			1,
+			30
+		)
+
+
+		# -----------------------------------------------------
+		# COOPERATIVO
+		# DOBLE DE INGREDIENTES
+		# -----------------------------------------------------
+
+		if es_coop:
+
+			cantidad *= 2
+
+
+		objetivo_ingredientes[ingrediente] = cantidad
+
+
+		print(
+			"[HUD] ",
+			ingrediente,
+			" = ",
+			cantidad
+		)
+
+
+	# =====================================================
+	# ACTUALIZAR PANEL 2
+	# =====================================================
+
+	$Panel2/HBoxContainer/ingre1/camote_label.text = str(
+		objetivo_ingredientes["camote"]
+	)
+
+	$Panel2/HBoxContainer/ingre2/cebolla_label.text = str(
+		objetivo_ingredientes["cebolla"]
+	)
+
+	$Panel2/HBoxContainer/ingre3/sal_label.text = str(
+		objetivo_ingredientes["sal"]
+	)
+
+	$Panel2/HBoxContainer/ingre4/Limon_label.text = str(
+		objetivo_ingredientes["limon"]
+	)
+
+	$Panel2/HBoxContainer/ingre5/pan_label.text = str(
+		objetivo_ingredientes["pan"]
+	)
+
+	$Panel2/HBoxContainer/ingre6/chicharron_label.text = str(
+		objetivo_ingredientes["chicharron"]
+	)
+
+
+# =========================================================
+# SUMAR INGREDIENTE
+# =========================================================
+
+func agregar_ingrediente(nombre: String) -> void:
+
+	if not nombre in ingredientes_conseguidos:
+
+		print(
+			"[HUD] Ingrediente desconocido: ",
+			nombre
+		)
+
+		return
+
+
+	ingredientes_conseguidos[nombre] += 1
+
+
+	print(
+		"[HUD] INGREDIENTE: ",
+		nombre,
+		" -> ",
+		ingredientes_conseguidos[nombre]
+	)
+
+
+	actualizar_panel3()
+
+	actualizar_progreso()
+
+
+# =========================================================
+# ACTUALIZAR PANEL 3
+# =========================================================
+
+func actualizar_panel3() -> void:
+
+	$Panel3/HBoxContainer/ingre1/camote_label.text = str(
+		ingredientes_conseguidos["camote"]
+	)
+
+	$Panel3/HBoxContainer/ingre2/cebolla_label.text = str(
+		ingredientes_conseguidos["cebolla"]
+	)
+
+	$Panel3/HBoxContainer/ingre3/sal_label.text = str(
+		ingredientes_conseguidos["sal"]
+	)
+
+	$Panel3/HBoxContainer/ingre4/Limon_label.text = str(
+		ingredientes_conseguidos["limon"]
+	)
+
+	$Panel3/HBoxContainer/ingre5/pan_label.text = str(
+		ingredientes_conseguidos["pan"]
+	)
+
+	$Panel3/HBoxContainer/ingre6/chicharron_label.text = str(
+		ingredientes_conseguidos["chicharron"]
+	)
+
+
+# =========================================================
+# ACTUALIZAR PROGRESO
+# =========================================================
+
+func actualizar_progreso() -> void:
+
+	var total_necesario: int = 0
+	var total_conseguido: int = 0
 
 
 	for ingrediente in objetivo_ingredientes:
 
 		total_necesario += objetivo_ingredientes[ingrediente]
+
 		total_conseguido += ingredientes_conseguidos[ingrediente]
 
 
@@ -120,15 +460,35 @@ func actualizar_progreso():
 
 	else:
 
-		progreso = 0
+		progreso = 0.0
 
 
-	barra.value = progreso
+	progreso = clamp(
+		progreso,
+		0.0,
+		100.0
+	)
 
 
-	# ==========================================
+	# ---------------------------------------------------------
+	# BARRA
+	# ---------------------------------------------------------
+
+	if barra != null:
+
+		barra.value = progreso
+
+
+	print(
+		"[HUD] Progreso: ",
+		progreso,
+		"%"
+	)
+
+
+	# =========================================================
 	# EVENTO CEBOLLAS - 65%
-	# ==========================================
+	# =========================================================
 
 	if progreso >= 65.0 and not cebolla_llamada:
 
@@ -139,130 +499,466 @@ func actualizar_progreso():
 		)
 
 
-		if spawner:
+		if spawner != null:
 
-			print("LLAMANDO EVENTO CEBOLLAS")
-			spawner.iniciar_evento_cebollas()
+			print(
+				"[HUD] LLAMANDO EVENTO CEBOLLAS"
+			)
+
+			if spawner.has_method(
+				"iniciar_evento_cebollas"
+			):
+
+				spawner.iniciar_evento_cebollas()
 
 		else:
 
-			print("NO EXISTE CEBOLLA SPAWNER")
+			print(
+				"[HUD] NO EXISTE CEBOLLA SPAWNER"
+			)
 
 
-	# ==========================================
+	# =========================================================
 	# ATAQUE CAFÉ - 25%
-	# ==========================================
+	# =========================================================
 
 	if progreso >= 25.0 and not cafe_llamado:
 
 		cafe_llamado = true
 
-		var cafe = $"../cafe_estado/Cafe"
+		var cafe = get_tree().current_scene.get_node_or_null(
+			"cafe_estado/Cafe"
+		)
 
 
-		if cafe:
+		if cafe != null:
 
-			cafe._ataque()
+			print(
+				"[HUD] LLAMANDO ATAQUE CAFÉ"
+			)
+
+			if cafe.has_method("_ataque"):
+
+				cafe._ataque()
+
+		else:
+
+			print(
+				"[HUD] NO EXISTE CAFE"
+			)
 
 
-	# ==========================================
-	# PUZZLE - 100%
-	# ==========================================
+	# =========================================================
+	# VICTORIA - 100%
+	# =========================================================
 
 	if progreso >= 100.0 and not puzzle_llamado:
 
 		puzzle_llamado = true
 
-		print("PROGRESO AL 100%")
-		print("CAMBIANDO A PUZZLE...")
+		print("======================================")
+		print("========= PUZLE COMPLETADO ===========")
+		print("======================================")
 
-		if puzzle_scene:
-
-			SceneManager.change_scene(
-				self,
-				puzzle_scene
-			)
-
-		else:
-
-			print("ERROR: No se asignó puzzle_scene")
+		ganar_juego()
 
 
-func generar_objetivos():
+# =========================================================
+# GANAR JUEGO
+# =========================================================
 
-	for ingrediente in objetivo_ingredientes:
-		
-		var cantidad := 0
-		
-		# Ingredientes más comunes tendrán más cantidad
-		var prob := probabilidad_pedido[ingrediente]
+func ganar_juego() -> void:
 
-		for i in range(30):
-			
-			if randf() <= prob:
-				cantidad += 1
+	# ---------------------------------------------------------
+	# EVITAR DOBLE VICTORIA
+	# ---------------------------------------------------------
 
-		# mínimo 1, máximo 12
-		objetivo_ingredientes[ingrediente] = clamp(cantidad, 1, 30)
+	if juego_ganado:
+
+		return
 
 
-
-	$Panel2/HBoxContainer/ingre1/camote_label.text = str(objetivo_ingredientes["camote"])
-	$Panel2/HBoxContainer/ingre2/cebolla_label.text = str(objetivo_ingredientes["cebolla"])
-	$Panel2/HBoxContainer/ingre3/sal_label.text = str(objetivo_ingredientes["sal"])
-	$Panel2/HBoxContainer/ingre4/Limon_label.text = str(objetivo_ingredientes["limon"])
-	$Panel2/HBoxContainer/ingre5/pan_label.text = str(objetivo_ingredientes["pan"])
-	$Panel2/HBoxContainer/ingre6/chicharron_label.text = str(objetivo_ingredientes["chicharron"])
+	juego_ganado = true
 
 
+	print("======================================")
+	print("============== GANASTE ===============")
+	print("======================================")
 
 
+	# ---------------------------------------------------------
+	# DETENER JUGADORES
+	# ---------------------------------------------------------
 
-# ============================
-# SUMAR INGREDIENTE CONSEGUIDO
-# ============================
-
-func agregar_ingrediente(nombre:String):
-
-	if nombre in ingredientes_conseguidos:
-		ingredientes_conseguidos[nombre] += 1
-
-	print("INGREDIENTE:", nombre)
-
-	actualizar_panel3()
-	actualizar_progreso()
+	var jugadores = get_tree().get_nodes_in_group(
+		"jugador"
+	)
 
 
-func actualizar_panel3():
+	for jugador in jugadores:
 
-	$Panel3/HBoxContainer/ingre1/camote_label.text = str(ingredientes_conseguidos["camote"])
-	$Panel3/HBoxContainer/ingre2/cebolla_label.text = str(ingredientes_conseguidos["cebolla"])
-	$Panel3/HBoxContainer/ingre3/sal_label.text = str(ingredientes_conseguidos["sal"])
-	$Panel3/HBoxContainer/ingre4/Limon_label.text = str(ingredientes_conseguidos["limon"])
-	$Panel3/HBoxContainer/ingre5/pan_label.text = str(ingredientes_conseguidos["pan"])
-	$Panel3/HBoxContainer/ingre6/chicharron_label.text = str(ingredientes_conseguidos["chicharron"])
+		if not is_instance_valid(jugador):
+
+			continue
 
 
+		# ---------------------------------------------
+		# HACER INVULNERABLE
+		# ---------------------------------------------
+
+		if jugador.has_method(
+			"hacer_invulnerable"
+		):
+
+			jugador.hacer_invulnerable(true)
 
 
-func actualizar_corazones():
+		elif "invulnerable" in jugador:
+
+			jugador.invulnerable = true
+
+
+		# ---------------------------------------------
+		# DETENER MOVIMIENTO
+		# ---------------------------------------------
+
+		if jugador is CharacterBody2D:
+
+			jugador.velocity = Vector2.ZERO
+
+
+	# ---------------------------------------------------------
+	# MOSTRAR VICTORIA
+	# ---------------------------------------------------------
+
+	if victoria == null:
+
+		print(
+			"[VICTORIA] ERROR: CanvasLayer_victoria no encontrado"
+		)
+
+		return
+
+
+	victoria.visible = true
+
+	victoria.process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+	# ---------------------------------------------------------
+	# COMPROBAR PERSONAJE
+	# ---------------------------------------------------------
+
+	if personaje_victoria == null:
+
+		print(
+			"[VICTORIA] ERROR: AnimatedSprite2D no encontrado"
+		)
+
+		return
+
+
+	# ---------------------------------------------------------
+	# MOSTRAR PERSONAJE
+	# ---------------------------------------------------------
+
+	personaje_victoria.visible = true
+
+	personaje_victoria.play("idle")
+
+
+	# ---------------------------------------------------------
+	# POSICIÓN INICIAL
+	# ---------------------------------------------------------
+
+	var posicion_inicial := Vector2(
+		-150.0,
+		300.0
+	)
+
+
+	# ---------------------------------------------------------
+	# POSICIÓN FINAL
+	# ---------------------------------------------------------
+
+	var posicion_final := Vector2(
+		640.0,
+		300.0
+	)
+
+
+	personaje_victoria.position = posicion_inicial
+
+
+	# ---------------------------------------------------------
+	# PAUSAR JUEGO
+	# ---------------------------------------------------------
+
+	get_tree().paused = true
+
+
+	# ---------------------------------------------------------
+	# TWEEN
+	# ---------------------------------------------------------
+
+	var tween := create_tween()
+
+
+	tween.set_pause_mode(
+		Tween.TWEEN_PAUSE_PROCESS
+	)
+
+
+	tween.set_trans(
+		Tween.TRANS_QUAD
+	)
+
+
+	tween.set_ease(
+		Tween.EASE_OUT
+	)
+
+
+	tween.tween_property(
+		personaje_victoria,
+		"position",
+		posicion_final,
+		2.0
+	)
+
+
+	# ---------------------------------------------------------
+	# ESPERAR MOVIMIENTO
+	# ---------------------------------------------------------
+
+	await tween.finished
+
+
+	# ---------------------------------------------------------
+	# IDLE EN EL CENTRO
+	# ---------------------------------------------------------
+
+	personaje_victoria.play("idle")
+
+
+	print(
+		"[VICTORIA] Personaje llegó al centro"
+	)
+
+
+	# ---------------------------------------------------------
+	# ESPERAR
+	# ---------------------------------------------------------
+
+	print(
+		"[VICTORIA] Esperando ",
+		tiempo_antes_siguiente_nivel,
+		" segundos..."
+	)
+
+
+	var timer := get_tree().create_timer(
+		tiempo_antes_siguiente_nivel,
+		true
+	)
+
+
+	await timer.timeout
+
+
+	# ---------------------------------------------------------
+	# CAMBIAR ESCENA
+	# ---------------------------------------------------------
+
+	cambiar_al_siguiente_nivel()
+
+
+# =========================================================
+# CAMBIAR AL SIGUIENTE NIVEL
+# =========================================================
+
+func cambiar_al_siguiente_nivel() -> void:
+
+	print("======================================")
+	print("====== CAMBIANDO AL SIGUIENTE ========")
+	print("======================================")
+
+
+	get_tree().paused = false
+
+
+	# ---------------------------------------------------------
+	# COMPROBAR ESCENA
+	# ---------------------------------------------------------
+
+	if puzzle_scene.is_empty():
+
+		print(
+			"[VICTORIA] ERROR: puzzle_scene no asignada"
+		)
+
+		return
+
+
+	print(
+		"[VICTORIA] Cargando: ",
+		puzzle_scene
+	)
+
+
+	# ---------------------------------------------------------
+	# CAMBIAR ESCENA
+	# ---------------------------------------------------------
+
+	SceneManager.change_scene(
+		self,
+		puzzle_scene
+	)
+
+
+# =========================================================
+# PERDER VIDA
+# =========================================================
+
+func perder_vida() -> void:
+
+	if vidas <= 0:
+
+		return
+
+
+	# ---------------------------------------------------------
+	# CORAZÓN
+	# ---------------------------------------------------------
+
+	var indice: int = vidas - 1
+
+	vidas -= 1
+
+
+	# ---------------------------------------------------------
+	# ROMPER CORAZÓN
+	# ---------------------------------------------------------
+
+	if indice >= 0 and indice < corazones.size():
+
+		var corazon: AnimatedSprite2D = corazones[indice]
+
+
+		if corazon != null:
+
+			corazon.visible = true
+
+			corazon.play("romper")
+
+
+			await corazon.animation_finished
+
+
+			corazon.visible = false
+
+
+	# ---------------------------------------------------------
+	# ACTUALIZAR
+	# ---------------------------------------------------------
+
+	actualizar_corazones()
+
+
+	# ---------------------------------------------------------
+	# GAME OVER
+	# ---------------------------------------------------------
+
+	if vidas <= 0:
+
+		await get_tree().create_timer(
+			2.0
+		).timeout
+
+
+		mostrar_game_over()
+
+
+# =========================================================
+# ACTUALIZAR CORAZONES
+# =========================================================
+
+func actualizar_corazones() -> void:
 
 	for i in corazones.size():
 
 		if i < vidas:
 
+			corazones[i].visible = true
+
 			if corazones[i].animation != "idle":
+
 				corazones[i].play("idle")
 
 		else:
 
-			if corazones[i].animation != "romper":
-				corazones[i].play("romper")
+			corazones[i].visible = false
+
+
+# =========================================================
+# GAME OVER
+# =========================================================
+
+func mostrar_game_over() -> void:
+
+	get_tree().paused = false
+
+
+	if escena_game_over.is_empty():
+
+		print(
+			"[GAME OVER] No se asignó escena_game_over"
+		)
+
+		return
+
+
+	var escena_actual: String = (
+		get_tree().current_scene.scene_file_path
+	)
+
+
+	print(
+		"[GAME OVER] Escena actual: ",
+		escena_actual
+	)
+
+
+	var game_over = load(
+		escena_game_over
+	).instantiate()
+
+
+	if game_over.has_method(
+		"configurar_escena_anterior"
+	):
+
+		game_over.configurar_escena_anterior(
+			escena_actual
+		)
+
+
+	get_tree().current_scene.add_child(
+		game_over
+	)
+
+
+# =========================================================
+# ELEGIR INGREDIENTE DEL PEDIDO
+# =========================================================
+
 func elegir_ingrediente_pedido() -> String:
 
 	var total := 0.0
 
+
 	for ingrediente in probabilidad_pedido:
+
 		total += probabilidad_pedido[ingrediente]
 
 
@@ -275,8 +971,46 @@ func elegir_ingrediente_pedido() -> String:
 
 		acumulado += probabilidad_pedido[ingrediente]
 
+
 		if random <= acumulado:
+
 			return ingrediente
 
 
 	return "camote"
+
+
+# =========================================================
+# OBTENER MULTIPLICADOR DE DIFICULTAD
+# =========================================================
+
+func obtener_multiplicador_dificultad() -> float:
+
+	return multiplicador_dificultad
+
+
+# =========================================================
+# OBTENER MULTIPLICADOR DE INGREDIENTES
+# =========================================================
+
+func obtener_multiplicador_ingredientes() -> float:
+
+	return multiplicador_ingredientes
+
+
+# =========================================================
+# OBTENER MULTIPLICADOR DE SPAWN
+# =========================================================
+
+func obtener_multiplicador_spawn() -> float:
+
+	return multiplicador_spawn
+
+
+# =========================================================
+# SABER SI ES COOP
+# =========================================================
+
+func es_modo_coop() -> bool:
+
+	return es_coop

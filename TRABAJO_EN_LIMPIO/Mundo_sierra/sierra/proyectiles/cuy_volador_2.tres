@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://do850jloywwv3"]
+
+[ext_resource type="Texture2D" uid="uid://dvn480wgfjiog" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/daeñodisparocuynegroE1.png" id="1_flere"]
+[ext_resource type="Texture2D" uid="uid://dk6a5eyk7t16e" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/daeñodisparocuynegroE2.png" id="2_1e5db"]
+[ext_resource type="Texture2D" uid="uid://lryrb8asf8gd" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/daeñodisparocuynegroE3.png" id="3_tm8jy"]
+[ext_resource type="Texture2D" uid="uid://ctjvaj00tmw7i" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/daeñodisparocuynegroE4.png" id="4_2wdx2"]
+[ext_resource type="Texture2D" uid="uid://bww8iqj8qtu7i" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/idlecuynegroE1.png" id="5_ryj0k"]
+[ext_resource type="Texture2D" uid="uid://bm1l4d18iboql" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/idlecuynegroE2.png" id="6_5byd1"]
+[ext_resource type="Texture2D" uid="uid://bbksdk8m4qhy7" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/idlecuynegroE3.png" id="7_6krr8"]
+[ext_resource type="Texture2D" uid="uid://bymta18hqswq3" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/cuy_negro_volador/idlecuynegroE4.png" id="8_3en3a"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_flere")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1e5db")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tm8jy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2wdx2")
+}],
+"loop": true,
+"name": &"daño",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ryj0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5byd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6krr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3en3a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

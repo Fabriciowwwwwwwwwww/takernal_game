@@ -7,7 +7,7 @@ extends Control
 
 @export_category("Créditos")
 
-@export var velocidad_creditos: float = 45.0
+@export var velocidad_creditos: float = 500.0
 
 @export var posicion_inicial_y: float = 750.0
 
@@ -25,7 +25,14 @@ var escena_menu: String
 
 @onready var texto_creditos: Label = $Mascara/Control/TextoCreditos
 
-@onready var boton_saltar: Button = $BotonSaltar
+
+# =========================================================
+# VARIABLES
+# =========================================================
+
+var creditos_terminados: bool = false
+
+var tween_creditos: Tween = null
 
 
 # =========================================================
@@ -33,6 +40,16 @@ var escena_menu: String
 # =========================================================
 
 func _ready() -> void:
+	PauseOverlay.puede_pausar = false
+
+	print("======================================")
+	print("=========== INICIANDO CREDITOS ========")
+	print("======================================")
+
+
+	# =====================================================
+	# PROCESAR SIEMPRE
+	# =====================================================
 
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -40,19 +57,27 @@ func _ready() -> void:
 
 
 	# =====================================================
-	# COMPROBAR NODOS
+	# COMPROBAR CONTENIDO
 	# =====================================================
 
 	if contenido_creditos == null:
 
-		print("[CREDITOS] ERROR: No existe Mascara/Control")
+		print(
+			"[CREDITOS] ERROR: Mascara/Control no encontrado"
+		)
 
 		return
 
 
+	# =====================================================
+	# COMPROBAR TEXTO
+	# =====================================================
+
 	if texto_creditos == null:
 
-		print("[CREDITOS] ERROR: No existe TextoCreditos")
+		print(
+			"[CREDITOS] ERROR: TextoCreditos no encontrado"
+		)
 
 		return
 
@@ -62,96 +87,66 @@ func _ready() -> void:
 	# =====================================================
 
 	contenido_creditos.position = Vector2(
-		0.0,
+		contenido_creditos.position.x,
 		posicion_inicial_y
 	)
 
 
 	# =====================================================
-	# CONFIGURAR TEXTO
+	# MOSTRAR TEXTO
 	# =====================================================
 
 	texto_creditos.visible = true
 
 
-	texto_creditos.text = """NUESTRO JUEGO
+	print(
+		"[CREDITOS] Texto cargado:"
+	)
 
-COMIDA QUE NOS UNE
-
-Un juego creado para la Game Jam
-
-
-────────────────────
-
-
-EQUIPO
-
-
-PROGRAMACIÓN
-
-Fabricio García
-
-
-ARTE
-
-Nombre del artista
-
-
-MÚSICA
-
-Nombre del músico
-
-
-DISEÑO
-
-Nombre del diseñador
-
-
-────────────────────
-
-
-AGRADECIMIENTOS
-
-
-A nuestras familias
-
-A nuestros amigos
-
-A todas las personas que jugaron
-
-
-────────────────────
-
-
-GRACIAS POR JUGAR
-
-
-❤️
-
-
-FIN"""
+	print(
+		texto_creditos.text
+	)
 
 
 	# =====================================================
-	# BOTÓN OMITIR
-	# =====================================================
-
-	if boton_saltar != null:
-
-		if not boton_saltar.pressed.is_connected(
-			saltar_creditos
-		):
-
-			boton_saltar.pressed.connect(
-				saltar_creditos
-			)
-
-
-	# =====================================================
-	# INICIAR
+	# INICIAR CRÉDITOS
 	# =====================================================
 
 	iniciar_creditos()
+
+
+# =========================================================
+# INPUT
+# =========================================================
+#
+# ENTER = SALTAR CRÉDITOS
+#
+# También acepta ENTER DEL TECLADO NUMÉRICO.
+#
+# =========================================================
+
+func _input(event: InputEvent) -> void:
+
+	if creditos_terminados:
+
+		return
+
+
+	if event is InputEventKey:
+
+		if event.pressed and not event.echo:
+
+			if (
+				event.keycode == KEY_ENTER
+				or
+				event.keycode == KEY_KP_ENTER
+			):
+
+				print("======================================")
+				print("       ¡ENTER PRESIONADO!             ")
+				print("======================================")
+
+				saltar_creditos()
 
 
 # =========================================================
@@ -160,10 +155,20 @@ FIN"""
 
 func iniciar_creditos() -> void:
 
+	if creditos_terminados:
+
+		return
+
+
+	# =====================================================
+	# COMPROBAR VELOCIDAD
+	# =====================================================
+
 	if velocidad_creditos <= 0.0:
 
 		print(
-			"[CREDITOS] ERROR: velocidad_creditos inválida"
+			"[CREDITOS] ERROR: velocidad_creditos inválida: ",
+			velocidad_creditos
 		)
 
 		return
@@ -174,7 +179,8 @@ func iniciar_creditos() -> void:
 	# =====================================================
 
 	var distancia: float = abs(
-		posicion_inicial_y - posicion_final_y
+		posicion_inicial_y -
+		posicion_final_y
 	)
 
 
@@ -182,12 +188,11 @@ func iniciar_creditos() -> void:
 	# DURACIÓN
 	# =====================================================
 
-	var duracion: float = distancia / velocidad_creditos
+	var duracion: float = (
+		distancia /
+		velocidad_creditos
+	)
 
-
-	print("======================================")
-	print("[CREDITOS] INICIANDO")
-	print("======================================")
 
 	print(
 		"[CREDITOS] Distancia: ",
@@ -206,16 +211,25 @@ func iniciar_creditos() -> void:
 
 
 	# =====================================================
-	# TWEEN
+	# CREAR TWEEN
 	# =====================================================
 
-	var tween: Tween = create_tween()
+	tween_creditos = create_tween()
 
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	tween_creditos.set_trans(
+		Tween.TRANS_LINEAR
+	)
+
+	tween_creditos.set_ease(
+		Tween.EASE_IN_OUT
+	)
 
 
-	tween.tween_property(
+	# =====================================================
+	# MOVER CRÉDITOS
+	# =====================================================
+
+	tween_creditos.tween_property(
 		contenido_creditos,
 		"position:y",
 		posicion_final_y,
@@ -227,22 +241,78 @@ func iniciar_creditos() -> void:
 	# ESPERAR
 	# =====================================================
 
-	await tween.finished
+	await tween_creditos.finished
 
 
+	# =====================================================
+	# COMPROBAR SI FUERON OMITIDOS
+	# =====================================================
+
+	if creditos_terminados:
+
+		return
+
+
+	# =====================================================
+	# CRÉDITOS TERMINADOS
+	# =====================================================
+
+	creditos_terminados = true
+
+
+	print("======================================")
 	print("[CREDITOS] CRÉDITOS TERMINADOS")
+	print("======================================")
 
 
 	volver_al_menu()
 
 
 # =========================================================
-# OMITIR
+# SALTAR CRÉDITOS
 # =========================================================
 
 func saltar_creditos() -> void:
 
-	print("[CREDITOS] Créditos omitidos")
+	print(
+		"[CREDITOS] Saltando créditos..."
+	)
+
+
+	# =====================================================
+	# EVITAR DOBLE EJECUCIÓN
+	# =====================================================
+
+	if creditos_terminados:
+
+		return
+
+
+	# =====================================================
+	# MARCAR TERMINADO
+	# =====================================================
+
+	creditos_terminados = true
+
+
+	# =====================================================
+	# DETENER TWEEN
+	# =====================================================
+
+	if tween_creditos != null:
+
+		if tween_creditos.is_valid():
+
+			print(
+				"[CREDITOS] Deteniendo Tween..."
+			)
+
+			tween_creditos.kill()
+
+
+	# =====================================================
+	# VOLVER AL MENÚ
+	# =====================================================
 
 	volver_al_menu()
 
@@ -253,19 +323,43 @@ func saltar_creditos() -> void:
 
 func volver_al_menu() -> void:
 
+	print(
+		"[CREDITOS] Intentando volver al menú..."
+	)
+
+
+	# =====================================================
+	# COMPROBAR ESCENA
+	# =====================================================
+
 	if escena_menu.is_empty():
 
 		print(
-			"[CREDITOS] ERROR: escena_menu no asignada"
+			"[CREDITOS] ERROR: escena_menu está vacía"
 		)
 
 		return
 
 
+	# =====================================================
+	# QUITAR PAUSA
+	# =====================================================
+
 	get_tree().paused = false
 
 
-	print("[CREDITOS] Volviendo al menú")
+	# =====================================================
+	# CAMBIAR ESCENA
+	# =====================================================
+
+	print(
+		"[CREDITOS] Volviendo al menú..."
+	)
+
+	print(
+		"[CREDITOS] Escena: ",
+		escena_menu
+	)
 
 
 	SceneManager.change_scene(

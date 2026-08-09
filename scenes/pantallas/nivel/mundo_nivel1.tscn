@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ch8wj232dc7x2" path="res://armas/sprite/cafe/BALA_CAFE.tscn" id="14_ccdgp"]
 [ext_resource type="Script" uid="uid://cbd0fwt4qbbyt" path="res://cebolla_spawner_2.gd" id="15_pi1o1"]
 [ext_resource type="PackedScene" uid="uid://brxmt5vaxpy63" path="res://armas/cebolla/cebolla.tscn" id="16_4wp5p"]
+[ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="18_1sp1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u84de"]
 bg_color = Color(0.38908264, 0.4078815, 0.42152596, 1)
@@ -26,6 +27,28 @@ size = Vector2(1435, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00txm"]
 size = Vector2(1442, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eki23"]
+atlas = ExtResource("18_1sp1r")
+region = Rect2(0, 0, 882, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asn0a"]
+atlas = ExtResource("18_1sp1r")
+region = Rect2(882, 0, 882, 185)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vd8u0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eki23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asn0a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Mundo" type="Node2D" unique_id=694270786]
 script = ExtResource("1_u84de")
@@ -265,3 +288,11 @@ distancia_salida = 1200.0
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=1268955572]
 stream = ExtResource("7_4vjds")
+
+[node name="CanvasLayer_victoria" type="CanvasLayer" parent="." unique_id=1932832725]
+process_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer_victoria" unique_id=1588324779]
+position = Vector2(-574, 391)
+sprite_frames = SubResource("SpriteFrames_vd8u0")
+animation = &"idle"

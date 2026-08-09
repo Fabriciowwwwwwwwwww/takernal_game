@@ -40,7 +40,7 @@ extends Node2D
 
 # IMPORTANTE:
 # Ajusta esta ruta si tu CanvasLayer está en otro lugar.
-@onready var hud: CanvasLayer = $CanvasLayer
+@onready var hud: CanvasLayer =$Ui
 
 
 # =========================================================

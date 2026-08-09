@@ -150,17 +150,8 @@ func configurar_botones() -> void:
 	# LABELS
 	# =====================================================
 
-	var labels: Array[Control] = [
-		$Control/Single_Player/Label,
-		$Control/Multi_Player/Label,
-		$Control/Quit/Label,
-		$Control/creditos/Label
-	]
 
-	for label in labels:
 
-		if label != null:
-			label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 # =========================================================

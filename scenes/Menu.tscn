@@ -8,14 +8,18 @@
 [ext_resource type="Script" uid="uid://dc3qawe6568dg" path="res://interfaces/shaders/Shaders/Shader_Menu.gd" id="7_l3wcu"]
 [ext_resource type="Shader" uid="uid://com58ff036i8q" path="res://interfaces/shaders/Shaders/Menu.gdshader" id="8_i7htd"]
 [ext_resource type="Texture2D" uid="uid://ca536qv5kheeo" path="res://interfaces/sprite/2.png" id="9_dek3k"]
-[ext_resource type="Texture2D" uid="uid://dv3u5oeml25cu" path="res://interfaces/sprite/flecha.png" id="10_8fhjo"]
-[ext_resource type="Texture2D" uid="uid://bp8fbmlplp2g2" path="res://interfaces/sprite/flecha_pressed.png" id="11_760fv"]
-[ext_resource type="Texture2D" uid="uid://ccchl24uqdqbu" path="res://interfaces/sprite/flecha_hover.png" id="12_rehui"]
-[ext_resource type="FontFile" uid="uid://c4lty2phrrmm3" path="res://letra/Slackey-Regular.ttf" id="13_yvxia"]
+[ext_resource type="Texture2D" uid="uid://dymwcoiasw23q" path="res://interfaces/sprite/1x (2)/Recurso 19cc.png" id="9_i7htd"]
+[ext_resource type="Texture2D" uid="uid://lwtt2svg68oa" path="res://interfaces/sprite/iluminacion/Recurso 23cc.png" id="10_dek3k"]
+[ext_resource type="Texture2D" uid="uid://ckeil0qglnshj" path="res://interfaces/sprite/1x (2)/Recurso 17cc.png" id="11_8fhjo"]
+[ext_resource type="Texture2D" uid="uid://vljy5f8a8cnp" path="res://interfaces/sprite/iluminacion/Recurso 21cc.png" id="12_760fv"]
+[ext_resource type="Texture2D" uid="uid://flophu5d8boa" path="res://interfaces/sprite/1x (2)/Recurso 16cc.png" id="13_rehui"]
 [ext_resource type="Texture2D" uid="uid://c0rcf2ioohfe5" path="res://interfaces/sprite/camion-Sheet.png" id="14_2af52"]
 [ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="14_nxcfj"]
+[ext_resource type="Texture2D" uid="uid://fgjovmougl2u" path="res://interfaces/sprite/iluminacion/Recurso 20cc.png" id="14_yvxia"]
+[ext_resource type="Texture2D" uid="uid://booptxycxqjct" path="res://interfaces/sprite/1x (2)/Recurso 18cc.png" id="15_nxcfj"]
 [ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="15_rtd1e"]
 [ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="16_6c8sk"]
+[ext_resource type="Texture2D" uid="uid://bl4iwppqifi5q" path="res://interfaces/sprite/iluminacion/Recurso 22cc.png" id="16_uwbky"]
 [ext_resource type="AudioStream" uid="uid://d4mlr0noqg3gt" path="res://sonidos/criollo_menu_puzzle.ogg" id="17_6c8sk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2qgrd"]
@@ -172,35 +176,12 @@ offset_left = 177.0
 offset_top = 304.0
 offset_right = 777.0
 offset_bottom = 550.0
-scale = Vector2(0.7, 0.7)
 focus_neighbor_bottom = NodePath("../Multi_Player")
 mouse_filter = 1
-texture_normal = ExtResource("10_8fhjo")
-texture_pressed = ExtResource("11_760fv")
-texture_hover = ExtResource("12_rehui")
-texture_focused = ExtResource("12_rehui")
-
-[node name="Label" type="Label" parent="Control/Single_Player" unique_id=704218450]
-material = SubResource("ShaderMaterial_w4fob")
-use_parent_material = true
-layout_mode = 0
-offset_left = 65.0
-offset_top = 162.5
-offset_right = 1100.0
-offset_bottom = 523.5
-rotation = -0.0009083748
-scale = Vector2(0.4, 0.4)
-mouse_filter = 1
-theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("13_yvxia")
-theme_override_font_sizes/font_size = 128
-text = "Single Player"
+texture_normal = ExtResource("9_i7htd")
+texture_pressed = ExtResource("9_i7htd")
+texture_hover = ExtResource("9_i7htd")
+texture_focused = ExtResource("10_dek3k")
 
 [node name="Multi_Player" type="TextureButton" parent="Control" unique_id=1548086522 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
@@ -210,36 +191,13 @@ offset_left = 171.0
 offset_top = 570.0
 offset_right = 1011.0
 offset_bottom = 816.0
-scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Single_Player")
 focus_neighbor_bottom = NodePath("../Quit")
 mouse_filter = 1
-texture_normal = ExtResource("10_8fhjo")
-texture_pressed = ExtResource("11_760fv")
-texture_hover = ExtResource("12_rehui")
-texture_focused = ExtResource("12_rehui")
-
-[node name="Label" type="Label" parent="Control/Multi_Player" unique_id=1868631330]
-material = SubResource("ShaderMaterial_w4fob")
-use_parent_material = true
-layout_mode = 0
-offset_left = 71.42858
-offset_top = 148.57146
-offset_right = 1027.4286
-offset_bottom = 327.57147
-rotation = -0.006470233
-scale = Vector2(0.4, 0.4)
-mouse_filter = 1
-theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("13_yvxia")
-theme_override_font_sizes/font_size = 128
-text = "Multi_Player"
+texture_normal = ExtResource("11_8fhjo")
+texture_pressed = ExtResource("11_8fhjo")
+texture_hover = ExtResource("11_8fhjo")
+texture_focused = ExtResource("12_760fv")
 
 [node name="Quit" type="TextureButton" parent="Control" unique_id=1040227390 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
@@ -249,72 +207,27 @@ offset_left = 163.0
 offset_top = 836.0
 offset_right = 1003.0
 offset_bottom = 1082.0
-scale = Vector2(0.7, 0.7)
 focus_neighbor_top = NodePath("../Multi_Player")
 mouse_filter = 1
-texture_normal = ExtResource("10_8fhjo")
-texture_pressed = ExtResource("11_760fv")
-texture_hover = ExtResource("12_rehui")
-texture_focused = ExtResource("12_rehui")
-
-[node name="Label" type="Label" parent="Control/Quit" unique_id=1277900499]
-material = SubResource("ShaderMaterial_w4fob")
-use_parent_material = true
-layout_mode = 0
-offset_left = 78.0
-offset_top = 148.0
-offset_right = 968.0
-offset_bottom = 327.0
-rotation = 0.020596132
-scale = Vector2(0.4, 0.4)
-theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("13_yvxia")
-theme_override_font_sizes/font_size = 128
-text = "Quit"
+texture_normal = ExtResource("13_rehui")
+texture_pressed = ExtResource("13_rehui")
+texture_hover = ExtResource("13_rehui")
+texture_focused = ExtResource("14_yvxia")
 
 [node name="creditos" type="TextureButton" parent="Control" unique_id=280908064 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_w4fob")
 use_parent_material = true
 layout_mode = 0
-offset_left = 155.0
-offset_top = 1102.0
-offset_right = 995.0
-offset_bottom = 1348.0
-scale = Vector2(0.7, 0.7)
+offset_left = 167.0
+offset_top = 1100.0
+offset_right = 1007.0
+offset_bottom = 1346.0
 focus_neighbor_top = NodePath("../Multi_Player")
 mouse_filter = 1
-texture_normal = ExtResource("10_8fhjo")
-texture_pressed = ExtResource("11_760fv")
-texture_hover = ExtResource("12_rehui")
-texture_focused = ExtResource("12_rehui")
-
-[node name="Label" type="Label" parent="Control/creditos" unique_id=1220957991]
-material = SubResource("ShaderMaterial_w4fob")
-use_parent_material = true
-layout_mode = 0
-offset_left = 78.0
-offset_top = 148.0
-offset_right = 968.0
-offset_bottom = 327.0
-rotation = 0.020596132
-scale = Vector2(0.4, 0.4)
-theme_override_colors/font_color = Color(1, 0.858824, 0, 0.854902)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 15
-theme_override_constants/outline_size = 20
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("13_yvxia")
-theme_override_font_sizes/font_size = 128
-text = "creditos
-"
+texture_normal = ExtResource("15_nxcfj")
+texture_pressed = ExtResource("15_nxcfj")
+texture_hover = ExtResource("15_nxcfj")
+texture_focused = ExtResource("16_uwbky")
 
 [node name="Timer" type="Timer" parent="Control" unique_id=1991803515]
 wait_time = 2.0
