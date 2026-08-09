@@ -1,12 +1,13 @@
-
 extends Control
 
 
 # =========================================================
-# VARIABLES
+# VARIABLES & ESCENAS DESDE EL INSPECTOR
 # =========================================================
 
-var tipo_boton: String = ""
+@export_file("*.tscn") var escena_single: String
+@export_file("*.tscn") var escena_multi: String
+@export_file("*.tscn") var escena_creditos: String
 
 var indice_boton: int = 0
 
@@ -90,17 +91,6 @@ func _ready() -> void:
 
 
 	# =====================================================
-	# TRANSICIÓN
-	# =====================================================
-
-	configurar_transicion()
-
-	$"Sombras_transición".show()
-
-	$"Sombras_transición/AnimationPlayer".play("Sombra_off")
-
-
-	# =====================================================
 	# BOTÓN INICIAL
 	# =====================================================
 
@@ -112,10 +102,6 @@ func _ready() -> void:
 	print("====================================")
 	print("[MENU] Menú iniciado")
 	print("[MENU] GUI INPUT: ", get_tree().root.gui_disable_input)
-	print("[MENU] SINGLE FILTER: ", boton_single.mouse_filter)
-	print("[MENU] MULTI FILTER: ", boton_multi.mouse_filter)
-	print("[MENU] QUIT FILTER: ", boton_quit.mouse_filter)
-	print("[MENU] CREDITOS FILTER: ", boton_creditos.mouse_filter)
 	print("[MENU] Mouse habilitado")
 	print("====================================")
 
@@ -144,14 +130,6 @@ func configurar_botones() -> void:
 		# =================================================
 
 		boton.focus_mode = Control.FOCUS_ALL
-
-
-	# =====================================================
-	# LABELS
-	# =====================================================
-
-
-
 
 
 # =========================================================
@@ -184,31 +162,12 @@ func seleccionar_boton(indice: int) -> void:
 
 # =========================================================
 # INPUT GLOBAL
-#
-# Aquí controlamos:
-#
-# ↑ / W = subir
-# ↓ / S = bajar
-# ENTER / ESPACIO = aceptar
-#
 # =========================================================
 
 func _input(event: InputEvent) -> void:
 
-	# =====================================================
-	# EVITAR INPUT MIENTRAS CAMBIA DE ESCENA
-	# =====================================================
-
 	if mouse_bloqueado:
 		return
-
-
-	# =====================================================
-	# ARRIBA
-	#
-	# FLECHA ARRIBA
-	# W
-	# =====================================================
 
 	if event is InputEventKey:
 
@@ -230,14 +189,6 @@ func _input(event: InputEvent) -> void:
 
 				return
 
-
-			# =================================================
-			# ABAJO
-			#
-			# FLECHA ABAJO
-			# S
-			# =================================================
-
 			if tecla.keycode == KEY_DOWN \
 			or tecla.keycode == KEY_S:
 
@@ -252,14 +203,6 @@ func _input(event: InputEvent) -> void:
 
 				return
 
-
-			# =================================================
-			# ACEPTAR
-			#
-			# ENTER
-			# ESPACIO
-			# =================================================
-
 			if tecla.keycode == KEY_ENTER \
 			or tecla.keycode == KEY_KP_ENTER \
 			or tecla.keycode == KEY_SPACE:
@@ -270,11 +213,6 @@ func _input(event: InputEvent) -> void:
 
 				return
 
-
-	# =====================================================
-	# MOUSE
-	# =====================================================
-
 	if event is InputEventMouseButton:
 
 		var mouse_event := event as InputEventMouseButton
@@ -283,42 +221,19 @@ func _input(event: InputEvent) -> void:
 
 			if mouse_event.pressed:
 
-				print(
-					"[MOUSE] CLICK EN: ",
-					mouse_event.position
-				)
-
 				var control := get_viewport().gui_get_hovered_control()
 
 				if control != null:
 
-					print(
-						"[MOUSE] HOVER: ",
-						control.get_path()
-					)
-
 					var boton := buscar_boton(control)
 
 					if boton != null:
-
-						print(
-							"[MOUSE] BOTÓN ENCONTRADO: ",
-							boton.name
-						)
 
 						boton.emit_signal("pressed")
 
 						get_viewport().set_input_as_handled()
 
 						return
-
-
-				print("[MOUSE] NO ENCONTRÓ BOTÓN")
-
-
-	# =====================================================
-	# MOUSE MOVIÉNDOSE
-	# =====================================================
 
 	if event is InputEventMouseMotion:
 
@@ -339,11 +254,6 @@ func _input(event: InputEvent) -> void:
 						indice_boton = nuevo_indice
 
 						boton.grab_focus()
-
-						print(
-							"[MOUSE] Hover: ",
-							boton.name
-						)
 
 
 # =========================================================
@@ -398,49 +308,6 @@ func activar_boton_actual() -> void:
 
 
 # =========================================================
-# TRANSICIÓN
-# =========================================================
-
-func configurar_transicion() -> void:
-
-	desactivar_mouse_recursivo(
-		$"Sombras_transición"
-	)
-
-
-# =========================================================
-# DESACTIVAR MOUSE DE TRANSICIÓN
-# =========================================================
-
-func desactivar_mouse_recursivo(nodo: Node) -> void:
-
-	if nodo is Control:
-
-		var control: Control = nodo
-
-		control.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	for hijo: Node in nodo.get_children():
-
-		desactivar_mouse_recursivo(hijo)
-
-
-# =========================================================
-# INICIAR TRANSICIÓN
-# =========================================================
-
-func iniciar_transicion() -> void:
-
-	mouse_bloqueado = true
-
-	$"Sombras_transición".show()
-
-	$"Sombras_transición/Sombra_time".start()
-
-	$"Sombras_transición/AnimationPlayer".play("Sombra_on")
-
-
-# =========================================================
 # SINGLE PLAYER
 # =========================================================
 
@@ -453,9 +320,12 @@ func _on_single_player_pressed() -> void:
 
 	GameManager.modo_juego = GameManager.ModoJuego.SINGLE
 
-	tipo_boton = "start"
+	mouse_bloqueado = true
 
-	iniciar_transicion()
+	if escena_single != "":
+		SceneManager.change_scene(self, escena_single)
+	else:
+		push_warning("[MENU] La escena Single Player está vacía en el inspector.")
 
 
 # =========================================================
@@ -471,9 +341,12 @@ func _on_multi_player_pressed() -> void:
 
 	GameManager.modo_juego = GameManager.ModoJuego.COOP
 
-	tipo_boton = "start"
+	mouse_bloqueado = true
 
-	iniciar_transicion()
+	if escena_multi != "":
+		SceneManager.change_scene(self, escena_multi)
+	else:
+		push_warning("[MENU] La escena Multiplayer está vacía en el inspector.")
 
 
 # =========================================================
@@ -503,30 +376,12 @@ func _on_creditos_pressed() -> void:
 
 	print("[MENU] CLICK CREDITOS")
 
-	tipo_boton = "creditos"
+	mouse_bloqueado = true
 
-	iniciar_transicion()
-
-
-# =========================================================
-# FIN DE TRANSICIÓN
-# =========================================================
-
-func _on_sombra_time_timeout() -> void:
-
-	print("[MENU] FIN DE TRANSICIÓN")
-
-	if tipo_boton == "start":
-
-		get_tree().change_scene_to_file(
-			"res://visual/visual.tscn"
-		)
-
-	elif tipo_boton == "creditos":
-
-		get_tree().change_scene_to_file(
-			"res://scenes/creditos.tscn"
-		)
+	if escena_creditos != "":
+		SceneManager.change_scene(self, escena_creditos)
+	else:
+		push_warning("[MENU] La escena Créditos está vacía en el inspector.")
 
 
 # =========================================================
@@ -538,23 +393,4 @@ func _process(_delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 
 		var posicion := get_viewport().get_mouse_position()
-
-		print(
-			"[MOUSE] Posición: ",
-			posicion
-		)
-
 		var control := get_viewport().gui_get_hovered_control()
-
-		if control != null:
-
-			print(
-				"[MOUSE] Control detectado: ",
-				control.get_path()
-			)
-
-		else:
-
-			print(
-				"[MOUSE] NO HAY CONTROL DETECTADO"
-			)

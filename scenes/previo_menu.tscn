@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c4xeqyh2nfy8t"]
+
+[ext_resource type="Script" uid="uid://b7yqv4ittncy6" path="res://scenes/previo_menu.gd" id="1_aqd0l"]
+[ext_resource type="Texture2D" uid="uid://b7hcjf7u4iy3e" path="res://scenes/inicio/inicio.jpeg" id="2_660hs"]
+[ext_resource type="Texture2D" uid="uid://ch4t36al8ndtk" path="res://scenes/inicio/Recurso 24cc.png" id="2_m5jfr"]
+[ext_resource type="AudioStream" uid="uid://b857vo0o07hvp" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sonido_sierra/huayno_rocoto_relleno.ogg" id="4_7l27l"]
+
+[node name="PrevioMenu" type="Node2D" unique_id=233058576]
+script = ExtResource("1_aqd0l")
+next_scene = "uid://bimdsu5nupunf"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1476651025]
+position = Vector2(650, 354.49997)
+scale = Vector2(1.5605701, 1.2902684)
+texture = ExtResource("2_660hs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=538216235]
+position = Vector2(608, 522)
+texture = ExtResource("2_m5jfr")
+
+[node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=681159316]
+stream = ExtResource("4_7l27l")

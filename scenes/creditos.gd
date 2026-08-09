@@ -6,7 +6,7 @@ extends Control
 # =========================================================
 
 @export_category("Créditos")
-
+@onready var musica: AudioStreamPlayer2D = $sonido_mundo
 @export var velocidad_creditos: float = 500.0
 
 @export var posicion_inicial_y: float = 750.0
@@ -40,6 +40,7 @@ var tween_creditos: Tween = null
 # =========================================================
 
 func _ready() -> void:
+	musica.play()
 	PauseOverlay.puede_pausar = false
 
 	print("======================================")

@@ -63,6 +63,7 @@ animations = [{
 
 [node name="ProyectilDelfin" type="Area2D" unique_id=666427131 groups=["balas_jugador"]]
 script = ExtResource("1_sttvs")
+"daño" = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=273026167]
 position = Vector2(-4.5, -0.5)

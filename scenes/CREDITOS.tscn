@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://ds1sotq83o23e" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/SIERRA huascaran .png" id="15_ai1c2"]
 [ext_resource type="Texture2D" uid="uid://ci4dm2eg2kgal" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/JUEGI escenario 1.png" id="15_ib6i8"]
 [ext_resource type="Texture2D" uid="uid://bwj428cw6il50" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotovomito/rocotovomito3.png" id="16_5pk71"]
-[ext_resource type="AudioStream" uid="uid://d4mlr0noqg3gt" path="res://sonidos/criollo_menu_puzzle.ogg" id="17_7b658"]
 [ext_resource type="Texture2D" uid="uid://qktguquo30dx" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocoto/rocoto.png" id="17_cgvcd"]
 [ext_resource type="Texture2D" uid="uid://bjpgba418xvmq" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/rocoto_grande.png" id="20_7b658"]
 [ext_resource type="Texture2D" uid="uid://bp1vvmmvaiatn" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/pimiento.png" id="21_w26al"]
@@ -43,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmdwr1g6we2v" path="res://assets/enemy_nivel_costa/pies.png" id="40_duww1"]
 [ext_resource type="Texture2D" uid="uid://bq8pji8ok3uhy" path="res://assets/enemy_nivel1/chicharrmove02.png" id="41_ggnyh"]
 [ext_resource type="Texture2D" uid="uid://cmwjwmnh5cno3" path="res://assets/enemy_nivel1/chicharrdisparo03.png" id="42_xi77w"]
+[ext_resource type="AudioStream" uid="uid://b87pg54sojkbg" path="res://sonidos/marinera_causa_nortena.ogg" id="43_bf5ux"]
 
 [node name="creditos" type="Control" unique_id=469561961]
 layout_mode = 3
@@ -54,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_srqc1")
-posicion_inicial_y = 800.0
+velocidad_creditos = 240.0
 posicion_final_y = -13500.0
 escena_menu = "uid://cnl10kue3lo6a"
 
@@ -551,7 +551,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("42_xi77w")
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=720821340]
-stream = ExtResource("17_7b658")
+stream = ExtResource("43_bf5ux")
 
 [node name="TextoProgramacion" type="Label" parent="." unique_id=1696251295]
 layout_mode = 0

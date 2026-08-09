@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bfhwgu6ikskxa" path="res://assets/nivel_selva_assets/SELVA FONDO .png" id="5_m8ass"]
 [ext_resource type="Texture2D" uid="uid://cl5mvbwcnj81g" path="res://assets/nivel_selva_assets/SELVA OLAS .png" id="6_17n0d"]
 [ext_resource type="AudioStream" uid="uid://3hhgyhpynbns" path="res://sonidos/paiche_juane_amazonico.ogg" id="7_ql7ah"]
-[ext_resource type="PackedScene" uid="uid://c8banxl0uw2fc" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/monstruopaiche.tscn" id="8_furyt"]
+[ext_resource type="PackedScene" uid="uid://bvnucxwqb85mk" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/ui_selva.tscn" id="8_djeop"]
+[ext_resource type="Script" uid="uid://carqfgdttbtq2" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/ui_selva.gd" id="9_ds8ne"]
+[ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="10_ds8ne"]
+[ext_resource type="PackedScene" uid="uid://cw67o3i5ub2wh" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/enemigo_nivel_selva/monstruopaiche.scn" id="11_17n0d"]
+[ext_resource type="PackedScene" uid="uid://ctgo5fau83avl" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/personaje_selva/cuy_delfin.scn" id="11_m8ass"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxijk"]
 size = Vector2(1455, 80)
@@ -16,6 +20,28 @@ size = Vector2(176, 545)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_furyt"]
 size = Vector2(114, 537)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eki23"]
+atlas = ExtResource("10_ds8ne")
+region = Rect2(0, 0, 882, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asn0a"]
+atlas = ExtResource("10_ds8ne")
+region = Rect2(882, 0, 882, 185)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8ass"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eki23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asn0a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="EscenaIncialSelva" type="Node2D" unique_id=1446525092]
 script = ExtResource("1_wyg2l")
@@ -142,14 +168,16 @@ motion_mirroring = Vector2(2850, 0)
 
 [node name="SelvaOlas3" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer" unique_id=411461514]
 texture_filter = 1
-position = Vector2(667, 667)
+position = Vector2(667, 580.25)
+scale = Vector2(1, 0.4628483)
 texture = ExtResource("6_17n0d")
 region_enabled = true
 region_rect = Rect2(-3.6549835, 1437.1039, 1443.0645, 323.03894)
 
 [node name="SelvaOlas5" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer" unique_id=1369470038]
 texture_filter = 1
-position = Vector2(2093, 667)
+position = Vector2(2093, 582.25)
+scale = Vector2(1, 0.47523218)
 texture = ExtResource("6_17n0d")
 region_enabled = true
 region_rect = Rect2(-3.6549835, 1437.1039, 1443.0645, 323.03894)
@@ -163,7 +191,8 @@ motion_mirroring = Vector2(2410, 0)
 
 [node name="SelvaOlas4" type="Sprite2D" parent="ParallaxBackground4/ParallaxLayer" unique_id=1646634936]
 texture_filter = 1
-position = Vector2(1227, 491)
+position = Vector2(1223, 355.25)
+scale = Vector2(1, 0.5)
 texture = ExtResource("6_17n0d")
 region_enabled = true
 region_rect = Rect2(-8.950005, 694.865, 2563.3125, 117.722534)
@@ -173,7 +202,7 @@ position = Vector2(2134, 1130)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1759686821 groups=["plataforma"]]
-position = Vector2(-1515, -615)
+position = Vector2(-1540, -528)
 shape = SubResource("RectangleShape2D_vxijk")
 debug_color = Color(0, 0, 0, 0.41960785)
 
@@ -185,9 +214,6 @@ shape = SubResource("RectangleShape2D_ql7ah")
 position = Vector2(-1148, -863)
 shape = SubResource("RectangleShape2D_furyt")
 
-[node name="monstruopaiche" parent="." unique_id=187744477 instance=ExtResource("8_furyt")]
-position = Vector2(971, 453)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2138671860]
 stream = ExtResource("7_ql7ah")
 
@@ -196,3 +222,31 @@ position = Vector2(389, 331)
 
 [node name="PosicionP2" type="Marker2D" parent="." unique_id=801122278]
 position = Vector2(479, 333)
+
+[node name="Ui" parent="." unique_id=1530218491 node_paths=PackedStringArray("jefe") groups=["hud_selva"] instance=ExtResource("8_djeop")]
+script = ExtResource("9_ds8ne")
+jefe = NodePath("../monstruopaiche")
+siguiente_escena = "uid://8aoldlgahdd7"
+escena_game_over = "uid://dpax7lj5ax0lu"
+
+[node name="CanvasLayer_victoria" type="CanvasLayer" parent="." unique_id=1708337729]
+process_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer_victoria" unique_id=1015904001]
+position = Vector2(-590, 180)
+sprite_frames = SubResource("SpriteFrames_m8ass")
+animation = &"idle"
+
+[node name="chifle" type="Marker2D" parent="." unique_id=36306023]
+position = Vector2(951, 356)
+
+[node name="chifle2" type="Marker2D" parent="." unique_id=2133774027]
+position = Vector2(973, 518)
+
+[node name="monstruopaiche" parent="." unique_id=187744477 instance=ExtResource("11_17n0d")]
+position = Vector2(959, 453)
+movimiento_vertical = 90.0
+velocidad_movimiento = 1.8
+
+[node name="CuyDelfin" parent="." unique_id=122758712 instance=ExtResource("11_m8ass")]
+position = Vector2(259, 474)

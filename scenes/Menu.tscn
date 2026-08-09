@@ -7,25 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://dmks0k1n2jqly" path="res://interfaces/sprite/escenario3.png" id="5_thu7x"]
 [ext_resource type="Script" uid="uid://dc3qawe6568dg" path="res://interfaces/shaders/Shaders/Shader_Menu.gd" id="7_l3wcu"]
 [ext_resource type="Shader" uid="uid://com58ff036i8q" path="res://interfaces/shaders/Shaders/Menu.gdshader" id="8_i7htd"]
-[ext_resource type="Texture2D" uid="uid://ca536qv5kheeo" path="res://interfaces/sprite/2.png" id="9_dek3k"]
 [ext_resource type="Texture2D" uid="uid://dymwcoiasw23q" path="res://interfaces/sprite/1x (2)/Recurso 19cc.png" id="9_i7htd"]
 [ext_resource type="Texture2D" uid="uid://lwtt2svg68oa" path="res://interfaces/sprite/iluminacion/Recurso 23cc.png" id="10_dek3k"]
 [ext_resource type="Texture2D" uid="uid://ckeil0qglnshj" path="res://interfaces/sprite/1x (2)/Recurso 17cc.png" id="11_8fhjo"]
 [ext_resource type="Texture2D" uid="uid://vljy5f8a8cnp" path="res://interfaces/sprite/iluminacion/Recurso 21cc.png" id="12_760fv"]
 [ext_resource type="Texture2D" uid="uid://flophu5d8boa" path="res://interfaces/sprite/1x (2)/Recurso 16cc.png" id="13_rehui"]
 [ext_resource type="Texture2D" uid="uid://c0rcf2ioohfe5" path="res://interfaces/sprite/camion-Sheet.png" id="14_2af52"]
-[ext_resource type="PackedScene" uid="uid://clgowavqodxut" path="res://transiciones/Sombras.tscn" id="14_nxcfj"]
 [ext_resource type="Texture2D" uid="uid://fgjovmougl2u" path="res://interfaces/sprite/iluminacion/Recurso 20cc.png" id="14_yvxia"]
 [ext_resource type="Texture2D" uid="uid://booptxycxqjct" path="res://interfaces/sprite/1x (2)/Recurso 18cc.png" id="15_nxcfj"]
 [ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="15_rtd1e"]
 [ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="16_6c8sk"]
 [ext_resource type="Texture2D" uid="uid://bl4iwppqifi5q" path="res://interfaces/sprite/iluminacion/Recurso 22cc.png" id="16_uwbky"]
 [ext_resource type="AudioStream" uid="uid://d4mlr0noqg3gt" path="res://sonidos/criollo_menu_puzzle.ogg" id="17_6c8sk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qgrd"]
-shader = ExtResource("8_i7htd")
-shader_parameter/transition_progress = 0.0
-shader_parameter/screen_size = Vector2(1152, 648)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mm3o3"]
 shader = ExtResource("8_i7htd")
@@ -120,6 +113,9 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("1_2af52")
+escena_single = "uid://cmru44o2ygycc"
+escena_multi = "uid://cmru44o2ygycc"
+escena_creditos = "uid://8aoldlgahdd7"
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1549198536]
 
@@ -159,14 +155,6 @@ anchors_preset = 0
 offset_left = -673.0
 offset_right = -673.0
 script = ExtResource("7_l3wcu")
-
-[node name="Título" type="Sprite2D" parent="Control" unique_id=726667771]
-material = SubResource("ShaderMaterial_2qgrd")
-use_parent_material = true
-position = Vector2(25, 66)
-scale = Vector2(1, 0.57058823)
-texture = ExtResource("9_dek3k")
-centered = false
 
 [node name="Single_Player" type="TextureButton" parent="Control" unique_id=352330779 groups=["ui_botones"]]
 material = SubResource("ShaderMaterial_mm3o3")
@@ -233,16 +221,6 @@ texture_focused = ExtResource("16_uwbky")
 wait_time = 2.0
 autostart = true
 
-[node name="Sombras_transición" parent="." unique_id=618434902 instance=ExtResource("14_nxcfj")]
-layout_mode = 0
-offset_left = -8.0
-offset_top = -16.0
-offset_right = 2578.0
-offset_bottom = 1460.0
-mouse_filter = 2
-
-[node name="Sombra_time" type="Timer" parent="Sombras_transición" unique_id=161622666]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1165050831]
 libraries/ = SubResource("AnimationLibrary_w4fob")
 autoplay = &"Movimiento"
@@ -278,4 +256,3 @@ stream = ExtResource("17_6c8sk")
 [connection signal="pressed" from="Control/Multi_Player" to="." method="_on_multi_player_pressed"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Control/creditos" to="." method="_on_creditos_pressed"]
-[connection signal="timeout" from="Sombras_transición/Sombra_time" to="." method="_on_sombra_time_timeout"]

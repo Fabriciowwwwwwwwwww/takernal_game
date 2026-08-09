@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://bvnucxwqb85mk"]
+
+[ext_resource type="Texture2D" uid="uid://5ro54ft0qmbj" path="res://interfaces/sprite/sheet/corazonn  -Sheet.png" id="1_5dcx8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5cxw"]
+bg_color = Color(0.96825105, 0.6216625, 3.85046e-07, 0.9882353)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y220t"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kltc"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl07w"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swkix"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc5d0"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3vwu"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i47d"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgwkc"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2x3"]
+atlas = ExtResource("1_5dcx8")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_svq4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y220t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl07w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swkix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc5d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3vwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i47d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgwkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2x3")
+}],
+"loop": false,
+"name": &"romper",
+"speed": 15.0
+}]
+
+[node name="Ui" type="CanvasLayer" unique_id=1530218491 groups=["hud"]]
+
+[node name="Panel" type="Panel" parent="." unique_id=1851388026]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 0.25500003
+offset_right = -3.1520996
+offset_bottom = -77.24002
+theme_override_styles/panel = SubResource("StyleBoxFlat_f5cxw")
+
+[node name="BarraProgreso" type="ProgressBar" parent="." unique_id=1377565292]
+offset_left = 642.0
+offset_top = 50.0
+offset_right = 1206.0
+offset_bottom = 78.0
+max_value = 300.0
+
+[node name="Label" type="Label" parent="BarraProgreso" unique_id=1498071556]
+layout_mode = 0
+offset_left = 216.0
+offset_top = -26.0
+offset_right = 405.0
+offset_bottom = -3.0
+theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "PROGRESO"
+
+[node name="Hearts" type="HBoxContainer" parent="." unique_id=1054148548]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.999878
+offset_top = 14.0
+offset_right = 1949.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.10675144, 0.10675144)
+
+[node name="heart1" type="AnimatedSprite2D" parent="Hearts" unique_id=866553053]
+position = Vector2(3091.2947, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.15209599
+
+[node name="heart2" type="AnimatedSprite2D" parent="Hearts" unique_id=270810707]
+position = Vector2(2388.7275, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.23673286
+
+[node name="heart3" type="AnimatedSprite2D" parent="Hearts" unique_id=973281771]
+position = Vector2(1676.7936, 346.59955)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
+
+[node name="heart4" type="AnimatedSprite2D" parent="Hearts" unique_id=1519546308]
+position = Vector2(983.5944, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
+
+[node name="heart5" type="AnimatedSprite2D" parent="Hearts" unique_id=579205759]
+position = Vector2(299.76285, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
+
+[node name="heart6" type="AnimatedSprite2D" parent="Hearts" unique_id=152345427]
+position = Vector2(3821.9639, 346.59955)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
+
+[node name="heart7" type="AnimatedSprite2D" parent="Hearts" unique_id=1841104856]
+position = Vector2(4580.7354, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
+
+[node name="heart8" type="AnimatedSprite2D" parent="Hearts" unique_id=1811629988]
+position = Vector2(5320.773, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_svq4k")
+animation = &"idle"
+frame_progress = 0.5822956
