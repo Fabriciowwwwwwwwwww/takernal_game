@@ -47,13 +47,13 @@ func _ready() -> void:
 		right_action = "p1_right"
 		jump_action = "p1_jump"
 		dash_action = "p1_dash"
-		shoot_action = "disparo_selva1"
+		shoot_action = "p1_shoot"
 	else:
 		left_action = "p2_left"
 		right_action = "p2_right"
 		jump_action = "p2_jump"
 		dash_action = "p2_dash"
-		shoot_action = "disparo_selva2"
+		shoot_action = "p1_shoot"
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not is_dashing:
