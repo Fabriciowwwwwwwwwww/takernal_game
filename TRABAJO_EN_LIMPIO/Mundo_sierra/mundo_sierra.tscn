@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://o4bm61odjnya" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/ataque_naves.gd" id="16_mkrxx"]
 [ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="17_4pjgj"]
 [ext_resource type="PackedScene" uid="uid://c7h557wmxg3hu" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/enemigo_sierra.scn" id="17_eki23"]
+[ext_resource type="AudioStream" uid="uid://ckclvexujl7km" path="res://sonidos/cuy_win.ogg" id="20_pvxhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx2m7"]
 size = Vector2(1614.5, 23)
@@ -249,6 +250,10 @@ texture = ExtResource("5_eki23")
 script = ExtResource("10_ih64u")
 siguiente_escena = "uid://cnl10kue3lo6a"
 escena_game_over = "uid://dpax7lj5ax0lu"
+
+[node name="sonido_victoria" type="AudioStreamPlayer" parent="." unique_id=1117848295]
+stream = ExtResource("20_pvxhx")
+volume_db = 5.403
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=978252150]
 stream = ExtResource("13_gx2m7")
