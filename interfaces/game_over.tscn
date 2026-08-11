@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddwr8jueh5n0b" path="res://interfaces/sprite/game_over/cuy2.png" id="6_tbfy7"]
 [ext_resource type="Texture2D" uid="uid://htufrupqju2c" path="res://interfaces/sprite/game_over/cuy3.png" id="7_tl6gm"]
 [ext_resource type="Texture2D" uid="uid://dqslaj6jp5k05" path="res://interfaces/sprite/game_over/cuy4.png" id="8_kd6lk"]
+[ext_resource type="AudioStream" uid="uid://3qc4jiyjt7vr" path="res://sonidos/cuy_pierde.ogg" id="9_tbfy7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7r16l"]
 animations = [{
@@ -101,6 +102,10 @@ custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "EXIT"
+
+[node name="sonido_gameover" type="AudioStreamPlayer" parent="." unique_id=452412431]
+stream = ExtResource("9_tbfy7")
+volume_db = 6.19
 
 [connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="PauseContainer/RightPanel/VBoxContainer/ExitButton" to="." method="_on_title_screen_button_pressed"]

@@ -46,6 +46,9 @@ var multiplicador_caos: float = 1.0
 @export_category("Jugador")
 @export var jugador: Node2D
 
+@onready var sonido_victoria: AudioStreamPlayer = $"../sonido_victoria"
+
+
 @onready var spawn: Node2D = $"../Spawner"
 @onready var spawn2: Node2D = $"../AtaqueNaves"
 @onready var victoria: CanvasLayer = $"../CanvasLayer_victoria"
@@ -495,7 +498,11 @@ func ganar_juego() -> void:
 		return
 
 	juego_ganado = true
-
+	if sonido_victoria != null:
+		print("sonido-victoria")
+		sonido_victoria.process_mode = Node.PROCESS_MODE_ALWAYS 
+		sonido_victoria.play()
+		
 	print("======================================")
 	print("============== GANASTE ===============")
 	print("======================================")

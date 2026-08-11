@@ -8,6 +8,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dbomnggvl7icx" path="res://player/player_sprite/cuy/cuy_1.tres" id="3_6d5th"]
 [ext_resource type="SpriteFrames" uid="uid://71elc67fwus3" path="res://player/player_sprite/cuynegro/cuy_2.tres" id="4_aae4c"]
 [ext_resource type="Texture2D" uid="uid://c33st7xotr4xg" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma .png" id="6_f40s6"]
+[ext_resource type="AudioStream" uid="uid://ckclvexujl7km" path="res://sonidos/cuy_win.ogg" id="6_vd8u0"]
 [ext_resource type="AudioStream" uid="uid://bfwakangwvsta" path="res://sonidos/nivel1/festejo_pan_chicharron.ogg" id="7_4vjds"]
 [ext_resource type="Texture2D" uid="uid://c2jkj20jrosb" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/fondo .png" id="9_aae4c"]
 [ext_resource type="PackedScene" uid="uid://bhng1ewjs4apw" path="res://scenes/pantallas/nivel/sprite/fondo nivel 0/plataforma.tscn" id="11_f40s6"]
@@ -70,6 +71,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u84de")
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("1_sn2vc")]
 puzzle_scene = "uid://c7orxugj2vc0v"
 escena_game_over = "uid://dpax7lj5ax0lu"
+
+[node name="sonido_victoria" type="AudioStreamPlayer" parent="." unique_id=704023812]
+stream = ExtResource("6_vd8u0")
+volume_db = 5.403
 
 [node name="piso_mounstruo" type="StaticBody2D" parent="." unique_id=892334228]
 position = Vector2(-3, 217)

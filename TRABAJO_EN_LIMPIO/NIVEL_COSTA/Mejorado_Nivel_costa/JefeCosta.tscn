@@ -1,0 +1,938 @@
+[gd_scene format=3 uid="uid://lproppxsia4g"]
+
+[ext_resource type="Script" uid="uid://dyx2sjgi4v1ji" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Mejorado_Nivel_costa/jefe_costa.gd" id="1_3pktd"]
+[ext_resource type="Script" uid="uid://cl0836kepuqfw" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/codigo_infinito.gd" id="2_5lb4f"]
+[ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_kgxno"]
+[ext_resource type="Texture2D" uid="uid://ctww1xjf6xrms" path="res://assets/NIVEL_costa-ASSETS/cielo limeño 02 .png" id="3_1jnlf"]
+[ext_resource type="Texture2D" uid="uid://dgmdwr1g6we2v" path="res://assets/enemy_nivel_costa/pies.png" id="4_kgxno"]
+[ext_resource type="Texture2D" uid="uid://bnno3mdm4wmtp" path="res://assets/enemy_nivel_costa/palta.png" id="5_a3wqv"]
+[ext_resource type="Texture2D" uid="uid://crduleu5hj40f" path="res://assets/enemy_nivel_costa/intermedio.png" id="6_vchx8"]
+[ext_resource type="Texture2D" uid="uid://cibjxxyqff1w5" path="res://assets/enemy_nivel_costa/cebolla}.png" id="7_e6j83"]
+[ext_resource type="Texture2D" uid="uid://ce61cyoim8imq" path="res://assets/enemy_nivel_costa/cabeza}.png" id="8_017mt"]
+[ext_resource type="AudioStream" uid="uid://ckclvexujl7km" path="res://sonidos/cuy_win.ogg" id="8_kgxno"]
+[ext_resource type="Script" uid="uid://2v112eyqjqbb" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Mejorado_Nivel_costa/ui_jefecosta.gd" id="9_tbu5b"]
+[ext_resource type="Texture2D" uid="uid://5ro54ft0qmbj" path="res://interfaces/sprite/sheet/corazonn  -Sheet.png" id="10_p5b25"]
+[ext_resource type="AudioStream" uid="uid://cpk4hdcrmqshi" path="res://sonidos/marinera_causa_nortena (2).ogg" id="11_ai53s"]
+[ext_resource type="PackedScene" uid="uid://7qyuabqc8lnb" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Platos/platos.tscn" id="12_w02hl"]
+[ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="15_vchx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wak1x"]
+size = Vector2(1455, 181.5)
+
+[sub_resource type="Animation" id="Animation_tij4k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1101, 620)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("piernas:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1105, 582)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cuello:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1101, 551)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("boca:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1098, 519)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cabeza:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1097, 478)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cabeza:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("patas:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("piernas:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("cuello:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("boca:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jntnr"]
+resource_name = "ataque_escalera"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("piernas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03, 2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1100, 520), Vector2(1097, 520), Vector2(158, 520), Vector2(158, 520), Vector2(158, 520)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cuello:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.03, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1095, 420), Vector2(1095, 420), Vector2(1095, 420), Vector2(158, 420), Vector2(158, 420), Vector2(158, 420)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("boca:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.03, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1098, 332.2258), Vector2(1098, 332.2258), Vector2(1098, 332.2258), Vector2(157, 332.2258), Vector2(157, 332.2258)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cabeza:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.03, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1099, 225), Vector2(1099, 225), Vector2(1099, 225), Vector2(1099, 225), Vector2(155, 225)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("patas:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.01, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1101, 620), Vector2(157, 620), Vector2(157, 620), Vector2(157, 620), Vector2(157, 620)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("patas:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("piernas:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("cuello:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("boca:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cabeza:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_kp7py"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1101, 620), Vector2(1111, 620)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("piernas:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1105, 582), Vector2(1105, 582)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cuello:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1101, 551), Vector2(1087, 550)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("boca:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1098, 519), Vector2(1098, 519)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cabeza:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1097, 478), Vector2(1103, 485)]
+}
+
+[sub_resource type="Animation" id="Animation_rb43m"]
+resource_name = "posicion_ataque"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1101, 620), Vector2(1101, 620)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("piernas:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1105, 582), Vector2(1100, 520)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cuello:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1101, 551), Vector2(1095, 420)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("boca:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1098, 519), Vector2(1098, 332.2258)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cabeza:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1097, 478), Vector2(1099, 225)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("patas:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.1308997]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("piernas:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1134464]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("cuello:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.04363323]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("boca:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.061086524]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cabeza:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.082030475]
+}
+
+[sub_resource type="Animation" id="Animation_x2m7i"]
+resource_name = "subida"
+length = 6.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patas:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4666667, 3.4333334, 4.6666665, 6.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1101, 620), Vector2(1101, 620), Vector2(136, 620), Vector2(136, 620), Vector2(136, 620)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("piernas:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.4666667, 3.4333334, 4.6666665, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1100, 520), Vector2(1100, 520), Vector2(1100, 520), Vector2(1100, 520), Vector2(126, 520)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("cuello:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.4666667, 3.4333334, 4.6666665, 6.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1095, 420), Vector2(1095, 420), Vector2(1095, 420), Vector2(142, 420), Vector2(142, 420)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("boca:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4666667, 3.4333334, 4.6666665, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1098, 326), Vector2(1098, 326), Vector2(1098, 326), Vector2(1098, 326), Vector2(124, 326)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cabeza:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.4666667, 3.4333334, 4.6666665, 6.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1099, 225), Vector2(1099, 225), Vector2(138, 225), Vector2(138, 225), Vector2(138, 225)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cabeza:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 1.2, 2.4666667, 5.1000004, 5.3, 5.5000005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.082030475, 0.054140113, 0.25481808, -0.25481808, 0.0, 0.054140113, 0.25481808, -0.25481808]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("patas:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 1.2, 2.4666667, 5.166667, 5.366667, 5.5666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.1308997, -0.07853982, 0.23911011, -0.31415927, 0.0, -0.07853982, 0.23911011, -0.31415927]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("piernas:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.03333333, 2.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1134464, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("cuello:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.04363323, -0.04363323]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("boca:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.061086524, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbh21"]
+_data = {
+&"RESET": SubResource("Animation_tij4k"),
+&"ataque_escalera": SubResource("Animation_jntnr"),
+&"idle": SubResource("Animation_kp7py"),
+&"posicion_ataque": SubResource("Animation_rb43m"),
+&"subida": SubResource("Animation_x2m7i")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5cfc"]
+size = Vector2(2089.5, 327)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bx06g"]
+bg_color = Color(0.96825105, 0.6216625, 3.85046e-07, 0.9882353)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y220t"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kltc"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl07w"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swkix"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc5d0"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3vwu"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i47d"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgwkc"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2x3"]
+atlas = ExtResource("10_p5b25")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jm8jc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y220t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl07w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swkix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc5d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3vwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i47d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgwkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2x3")
+}],
+"loop": false,
+"name": &"romper",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eki23"]
+atlas = ExtResource("15_vchx8")
+region = Rect2(0, 0, 882, 185)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asn0a"]
+atlas = ExtResource("15_vchx8")
+region = Rect2(882, 0, 882, 185)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6j83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eki23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asn0a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b713"]
+size = Vector2(158, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4vjd"]
+size = Vector2(160, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3wqv"]
+size = Vector2(158, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jamj"]
+size = Vector2(162, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljkqi"]
+size = Vector2(165, 99)
+
+[node name="JefeCosta" type="Node2D" unique_id=20155278]
+script = ExtResource("1_3pktd")
+jugador1 = ExtResource("2_kgxno")
+jugador2 = ExtResource("2_kgxno")
+
+[node name="Fondo_movimiento2" type="ParallaxBackground" parent="." unique_id=1623880493]
+script = ExtResource("2_5lb4f")
+velocidad_scroll = 20.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Fondo_movimiento2" unique_id=249121669]
+motion_mirroring = Vector2(2680, 0)
+
+[node name="CieloLimeño" type="Sprite2D" parent="Fondo_movimiento2/ParallaxLayer" unique_id=614936328]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_1jnlf")
+centered = false
+
+[node name="CieloLimeño2" type="Sprite2D" parent="Fondo_movimiento2/ParallaxLayer" unique_id=1775375824]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(1345, 1)
+scale = Vector2(0.4205556, 0.4205556)
+texture = ExtResource("3_1jnlf")
+centered = false
+flip_h = true
+
+[node name="paredes" type="StaticBody2D" parent="." unique_id=508594118]
+position = Vector2(624, 774)
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="paredes" unique_id=1620377953]
+position = Vector2(685, -377)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_wak1x")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="paredes" unique_id=978101039]
+position = Vector2(-680, -381)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_wak1x")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1724224121]
+libraries/ = SubResource("AnimationLibrary_nbh21")
+autoplay = &"subida"
+
+[node name="Node" type="Node" parent="." unique_id=1713411037]
+
+[node name="SpawnJugador1" type="Marker2D" parent="Node" unique_id=729164960]
+position = Vector2(593, 458)
+
+[node name="Eliminador" type="Area2D" parent="." unique_id=2105835247]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eliminador" unique_id=2056823149]
+position = Vector2(705.25, 895.5)
+shape = SubResource("RectangleShape2D_j5cfc")
+debug_color = Color(0.7063049, 0.48884135, 1.92523e-07, 0.41960785)
+
+[node name="Ui" type="CanvasLayer" parent="." unique_id=1480456125]
+script = ExtResource("9_tbu5b")
+escena_game_over = "uid://dpax7lj5ax0lu"
+siguiente_escena = "uid://cnl10kue3lo6a"
+
+[node name="Panel" type="Panel" parent="Ui" unique_id=488453946]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 0.25500003
+offset_right = -3.1520996
+offset_bottom = -77.24002
+theme_override_styles/panel = SubResource("StyleBoxFlat_bx06g")
+
+[node name="BarraProgreso" type="ProgressBar" parent="Ui" unique_id=843078037]
+offset_left = 436.0
+offset_top = 46.0
+offset_right = 1171.0
+offset_bottom = 74.0
+max_value = 150.0
+
+[node name="Label" type="Label" parent="Ui/BarraProgreso" unique_id=1336615139]
+layout_mode = 0
+offset_left = 333.0
+offset_top = -23.0
+offset_right = 522.0
+theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "PROGRESO"
+
+[node name="Hearts" type="HBoxContainer" parent="Ui" unique_id=63800532]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.999878
+offset_top = 14.0
+offset_right = 1949.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.10675144, 0.10675144)
+
+[node name="heart1" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=460778536]
+position = Vector2(3091.2947, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jm8jc")
+animation = &"idle"
+
+[node name="heart2" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=755742384]
+position = Vector2(2388.7275, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jm8jc")
+animation = &"idle"
+
+[node name="heart3" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=2109689728]
+position = Vector2(1676.7936, 346.59955)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jm8jc")
+animation = &"idle"
+
+[node name="heart4" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=1796174084]
+position = Vector2(983.5944, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jm8jc")
+animation = &"idle"
+
+[node name="heart5" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=709729383]
+position = Vector2(299.76285, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jm8jc")
+animation = &"idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1905564478]
+stream = ExtResource("11_ai53s")
+
+[node name="sonido_victoria" type="AudioStreamPlayer" parent="." unique_id=874299382]
+stream = ExtResource("8_kgxno")
+volume_db = 5.403
+
+[node name="Platos" parent="." unique_id=1143187593 instance=ExtResource("12_w02hl")]
+position = Vector2(584, 452)
+
+[node name="CanvasLayer_victoria" type="CanvasLayer" parent="." unique_id=955927213]
+process_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer_victoria" unique_id=396066850]
+position = Vector2(-574, 391)
+sprite_frames = SubResource("SpriteFrames_e6j83")
+animation = &"idle"
+
+[node name="patas" type="Area2D" parent="." unique_id=11851639]
+position = Vector2(1101, 620)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="patas" unique_id=72494314]
+position = Vector2(1, 4.5)
+shape = SubResource("RectangleShape2D_0b713")
+
+[node name="Sprite2D5" type="Sprite2D" parent="patas" unique_id=1590747194]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_kgxno")
+region_enabled = true
+region_rect = Rect2(900.7937, 1941.6719, 654.4027, 385.3025)
+
+[node name="piernas" type="Area2D" parent="." unique_id=1787016416]
+position = Vector2(1105, 582)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piernas" unique_id=754055158]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_g4vjd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="piernas" unique_id=733524338]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_a3wqv")
+region_enabled = true
+region_rect = Rect2(894.20386, 1551.665, 666.6345, 281.33203)
+
+[node name="cuello" type="Area2D" parent="." unique_id=1967882522]
+position = Vector2(1101, 551)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cuello" unique_id=564931998]
+shape = SubResource("RectangleShape2D_a3wqv")
+
+[node name="Sprite2D3" type="Sprite2D" parent="cuello" unique_id=2074144930]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_vchx8")
+region_enabled = true
+region_rect = Rect2(863.62427, 1099.0874, 666.6345, 397.53442)
+
+[node name="boca" type="Area2D" parent="." unique_id=1433537512]
+position = Vector2(1098, 519)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boca" unique_id=1953589234]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_1jamj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="boca" unique_id=1556272626]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_e6j83")
+region_enabled = true
+region_rect = Rect2(863.62427, 872.7986, 684.9822, 269.10022)
+
+[node name="Cabeza" type="Area2D" parent="." unique_id=2040876894]
+position = Vector2(1097, 478)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cabeza" unique_id=1049321071]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_ljkqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cabeza" unique_id=441679956]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("8_017mt")
+region_enabled = true
+region_rect = Rect2(845.27637, 395.75735, 703.3301, 440.3458)
+
+[connection signal="body_entered" from="Eliminador" to="." method="_on_eliminador_body_entered"]
+[connection signal="body_entered" from="patas" to="." method="_on_patas_body_entered"]
+[connection signal="body_entered" from="piernas" to="." method="_on_piernas_body_entered"]
+[connection signal="body_entered" from="cuello" to="." method="_on_cuello_body_entered"]
+[connection signal="body_entered" from="boca" to="." method="_on_boca_body_entered"]
+[connection signal="body_entered" from="Cabeza" to="." method="_on_cabeza_body_entered"]

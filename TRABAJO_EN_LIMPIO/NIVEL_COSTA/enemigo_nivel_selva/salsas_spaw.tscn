@@ -52,7 +52,7 @@ sentido = -1
 distancia_salida = 120.0
 
 [node name="Salsas5" parent="." unique_id=370705733 instance=ExtResource("2_v8k3a")]
-position = Vector2(672, -145)
+position = Vector2(681, 22)
 rotation = -3.1415927
 sprite_arma = ExtResource("7_sg8xr")
 proyectil = ExtResource("3_q34ql")
@@ -61,7 +61,7 @@ tipo_direccion = 1
 distancia_salida = 150.0
 
 [node name="Salsas6" parent="." unique_id=977913451 instance=ExtResource("2_v8k3a")]
-position = Vector2(315, -148)
+position = Vector2(324, 19)
 rotation = -3.1415927
 sprite_arma = ExtResource("9_yapsr")
 proyectil = ExtResource("3_q34ql")

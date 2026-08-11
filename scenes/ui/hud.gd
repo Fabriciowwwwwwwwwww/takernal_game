@@ -40,6 +40,7 @@ var escena_game_over: String
 # =========================================================
 # VICTORIA
 # =========================================================
+@onready var sonido_victoria: AudioStreamPlayer = $"../sonido_victoria"
 
 @export_category("Victoria")
 
@@ -579,7 +580,11 @@ func ganar_juego() -> void:
 
 
 	juego_ganado = true
-
+	
+	if sonido_victoria != null:
+		print("sonido-victoria")
+		sonido_victoria.process_mode = Node.PROCESS_MODE_ALWAYS 
+		sonido_victoria.play()
 
 	print("======================================")
 	print("============== GANASTE ===============")

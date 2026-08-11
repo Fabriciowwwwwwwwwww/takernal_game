@@ -10,6 +10,7 @@ var escena_anterior: String = ""
 @onready var retry_button: Button = $PauseContainer/RightPanel/VBoxContainer/RetryButton
 @onready var exit_button: Button = $PauseContainer/RightPanel/VBoxContainer/ExitButton
 
+@onready var sonido_gameover: AudioStreamPlayer = $sonido_gameover
 
 func _ready() -> void:
 	sprite_1.play("idle")
@@ -20,7 +21,9 @@ func _ready() -> void:
 	visible = true
 	
 	get_tree().paused = true
-
+	if sonido_gameover != null:
+		sonido_gameover.process_mode = Node.PROCESS_MODE_ALWAYS # Ignora la pausa
+		sonido_gameover.play()
 
 	if retry_button:
 		retry_button.grab_focus()

@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://7y4gdf2ncujj"]
+
+[ext_resource type="Script" uid="uid://csgsm8rmjmv3m" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Mejorado_Nivel_costa/nivel_salsa.gd" id="1_pqg5m"]
+[ext_resource type="PackedScene" uid="uid://bk1orqrpq3jxw" path="res://player/p.tscn" id="2_sgjdb"]
+[ext_resource type="Texture2D" uid="uid://dmwxxcv3ab8r0" path="res://assets/NIVEL_costa-ASSETS/COSTA escenario .png" id="3_7aj4b"]
+[ext_resource type="PackedScene" uid="uid://o4cvab4qol1e" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/salsas_spaw.tscn" id="4_ctfni"]
+[ext_resource type="PackedScene" uid="uid://bja6q3cd61tr1" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/enemigo_nivel_selva/AtaqueGaseosas.tscn" id="5_fivas"]
+[ext_resource type="AudioStream" uid="uid://2itwhcr1638y" path="res://sonidos/criollo_dialogos.ogg" id="6_sgjdb"]
+[ext_resource type="Texture2D" uid="uid://5ro54ft0qmbj" path="res://interfaces/sprite/sheet/corazonn  -Sheet.png" id="8_7aj4b"]
+[ext_resource type="Script" uid="uid://iy2xvhgql7rt" path="res://TRABAJO_EN_LIMPIO/NIVEL_COSTA/Mejorado_Nivel_costa/ui_costa.gd" id="8_sgjdb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u4eh"]
+size = Vector2(1455, 165.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctfni"]
+bg_color = Color(0.96825105, 0.6216625, 3.85046e-07, 0.9882353)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y220t"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kltc"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl07w"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swkix"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc5d0"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3vwu"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(2560, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i47d"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(3200, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgwkc"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(3840, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2x3"]
+atlas = ExtResource("8_7aj4b")
+region = Rect2(4480, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fivas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y220t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kltc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl07w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swkix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc5d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3vwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i47d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgwkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2x3")
+}],
+"loop": false,
+"name": &"romper",
+"speed": 15.0
+}]
+
+[node name="NivelSalsa" type="Node2D" unique_id=32278974]
+script = ExtResource("1_pqg5m")
+escena_transicion = "uid://8kr3g23v17fg"
+jugador1 = ExtResource("2_sgjdb")
+jugador2 = ExtResource("2_sgjdb")
+
+[node name="Fondo_principal" type="TextureRect" parent="." unique_id=777748362]
+texture_filter = 1
+offset_left = -92.0
+offset_top = -55.0
+offset_right = 1327.0
+offset_bottom = 734.0
+texture = ExtResource("3_7aj4b")
+expand_mode = 1
+
+[node name="SalsasSpawner" parent="." unique_id=954538583 instance=ExtResource("4_ctfni")]
+
+[node name="AtaqueGaseosa" parent="." unique_id=1072733640 instance=ExtResource("5_fivas")]
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="." unique_id=640800784]
+stream = ExtResource("6_sgjdb")
+
+[node name="Node" type="Node" parent="." unique_id=312841380]
+
+[node name="SpawnJugador1" type="Marker2D" parent="Node" unique_id=1204219621]
+position = Vector2(593, 458)
+
+[node name="Paredes" type="StaticBody2D" parent="." unique_id=382664831]
+position = Vector2(532, 719)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes" unique_id=224570865]
+position = Vector2(0, -18.25)
+shape = SubResource("RectangleShape2D_6u4eh")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Paredes" unique_id=213670962]
+position = Vector2(702, -385)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6u4eh")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Paredes" unique_id=1889353204]
+position = Vector2(-606, -379)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6u4eh")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="Ui" type="CanvasLayer" parent="." unique_id=1621314481]
+script = ExtResource("8_sgjdb")
+escena_game_over = "uid://dpax7lj5ax0lu"
+
+[node name="Panel" type="Panel" parent="Ui" unique_id=2117455502]
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 0.25500003
+offset_right = -3.1520996
+offset_bottom = -77.24002
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctfni")
+
+[node name="BarraProgreso" type="ProgressBar" parent="Ui" unique_id=1167249434]
+offset_left = 436.0
+offset_top = 46.0
+offset_right = 1171.0
+offset_bottom = 74.0
+max_value = 150.0
+
+[node name="Label" type="Label" parent="Ui/BarraProgreso" unique_id=807661690]
+layout_mode = 0
+offset_left = 333.0
+offset_top = -23.0
+offset_right = 522.0
+theme_override_colors/font_color = Color(0.3267214, 0.18581441, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "PROGRESO"
+
+[node name="Hearts" type="HBoxContainer" parent="Ui" unique_id=1217920968]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.999878
+offset_top = 14.0
+offset_right = 1949.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.10675144, 0.10675144)
+
+[node name="heart1" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=1830496379]
+position = Vector2(3091.2947, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fivas")
+animation = &"idle"
+
+[node name="heart2" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=1509003273]
+position = Vector2(2388.7275, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fivas")
+animation = &"idle"
+
+[node name="heart3" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=1034663276]
+position = Vector2(1676.7936, 346.59955)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fivas")
+animation = &"idle"
+
+[node name="heart4" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=605669478]
+position = Vector2(983.5944, 355.96713)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fivas")
+animation = &"idle"
+
+[node name="heart5" type="AnimatedSprite2D" parent="Ui/Hearts" unique_id=428474971]
+position = Vector2(299.76285, 365.3347)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_fivas")
+animation = &"idle"
