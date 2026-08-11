@@ -14,6 +14,9 @@
 [node name="Puzzle" type="Node2D" unique_id=1337689431]
 script = ExtResource("1_2wmso")
 siguiente_escena = "uid://cmru44o2ygycc"
+posicion_tablero = null
+posicion_panel = null
+"tamaño_panel" = null
 imagenes = Array[Texture2D]([ExtResource("2_i0ua8"), ExtResource("3_6q2tm"), ExtResource("4_as0jd"), ExtResource("7_wnphp"), ExtResource("5_uam3i"), ExtResource("6_61cbd")])
 
 [node name="fondo" type="Sprite2D" parent="." unique_id=1149612691]

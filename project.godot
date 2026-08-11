@@ -13,7 +13,8 @@ config_version=5
 config/name="cuy_juego"
 run/main_scene="uid://c4xeqyh2nfy8t"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://bu11lp5t2msf6"
+config/icon="uid://bu11lp5t2msf6"
 
 [autoload]
 

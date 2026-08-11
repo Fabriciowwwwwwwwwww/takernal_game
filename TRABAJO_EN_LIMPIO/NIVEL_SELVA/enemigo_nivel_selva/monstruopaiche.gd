@@ -715,15 +715,78 @@ func detener_combate() -> void:
 # DETECTAR BALA
 # =========================================================
 
-func _on_area_2d_area_entered(
-	area: Area2D
-) -> void:
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
 
 	if area == null:
 		return
 
+	# =====================================================
+	# BALA DEL JUGADOR
+	# =====================================================
+
 	if area.is_in_group("balas_jugador"):
 
 		print(
-			"[JEFE] Area2D detectó bala del jugador"
+			"[JEFE] ¡BALA RECIBIDA!"
 		)
+
+		# -------------------------------------------------
+		# PARPADEO ROJO
+		# -------------------------------------------------
+
+		activar_parpadeo_rojo()
+
+		# -------------------------------------------------
+		# BUSCAR HUD
+		# -------------------------------------------------
+
+		var hud = get_tree().get_first_node_in_group(
+			"hud_selva"
+		)
+
+		# -------------------------------------------------
+		# SI NO ESTÁ EN EL GRUPO, BUSCAR CanvasLayer
+		# -------------------------------------------------
+
+		if hud == null:
+
+			hud = get_tree().current_scene.get_node_or_null(
+				"CanvasLayer"
+			)
+
+		# -------------------------------------------------
+		# QUITAR VIDA AL JEFE DESDE EL HUD
+		# -------------------------------------------------
+
+		if hud != null:
+
+			if hud.has_method(
+				"recibir_daño_enemigo"
+			):
+
+				hud.recibir_daño_enemigo(1)
+
+				print(
+					"[JEFE] Daño enviado al HUD"
+				)
+
+			else:
+
+				print(
+					"[JEFE] ERROR: El HUD no tiene recibir_daño_enemigo()"
+				)
+
+		else:
+
+			print(
+				"[JEFE] ERROR: No se encontró el HUD"
+			)
+
+		# -------------------------------------------------
+		# ELIMINAR BALA
+		# -------------------------------------------------
+
+		if is_instance_valid(area):
+
+			area.queue_free()

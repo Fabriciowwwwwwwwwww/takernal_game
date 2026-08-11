@@ -113,8 +113,8 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 script = ExtResource("1_2af52")
-escena_single = "uid://cmru44o2ygycc"
-escena_multi = "uid://cmru44o2ygycc"
+escena_single = "uid://bdcomvhmo3lf1"
+escena_multi = "uid://bdcomvhmo3lf1"
 escena_creditos = "uid://8aoldlgahdd7"
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1549198536]

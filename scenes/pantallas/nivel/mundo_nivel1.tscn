@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cbd0fwt4qbbyt" path="res://cebolla_spawner_2.gd" id="15_pi1o1"]
 [ext_resource type="PackedScene" uid="uid://brxmt5vaxpy63" path="res://armas/cebolla/cebolla.tscn" id="16_4wp5p"]
 [ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="18_1sp1r"]
+[ext_resource type="Texture2D" uid="uid://dr7ywsn66y8p6" path="res://scenes/pantallas/nivel/sprite/how/Recurso 3cc.png" id="19_vd8u0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u84de"]
 bg_color = Color(0.38908264, 0.4078815, 0.42152596, 1)
@@ -56,6 +57,7 @@ jugador1 = ExtResource("2_0bc7o")
 jugador2 = ExtResource("2_0bc7o")
 sprite_frame_jugador1 = ExtResource("3_6d5th")
 sprite_frame_jugador2 = ExtResource("4_aae4c")
+tiempo_how = 3.0
 
 [node name="Panel" type="Panel" parent="." unique_id=1743825345]
 visible = false
@@ -296,3 +298,10 @@ process_mode = 3
 position = Vector2(-574, 391)
 sprite_frames = SubResource("SpriteFrames_vd8u0")
 animation = &"idle"
+
+[node name="how" type="CanvasLayer" parent="." unique_id=859601165]
+
+[node name="Sprite2D" type="Sprite2D" parent="how" unique_id=80732151]
+position = Vector2(641.5, 354.50003)
+scale = Vector2(1.5213777, 1.1484993)
+texture = ExtResource("19_vd8u0")

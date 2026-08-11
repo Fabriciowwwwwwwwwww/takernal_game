@@ -247,7 +247,7 @@ texture = ExtResource("5_eki23")
 
 [node name="Ui" parent="." unique_id=1530218491 instance=ExtResource("9_v1qtp")]
 script = ExtResource("10_ih64u")
-siguiente_escena = "uid://cnl10kue3lo6a"
+siguiente_escena = "uid://dlh22i24rdf8n"
 escena_game_over = "uid://dpax7lj5ax0lu"
 
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=978252150]

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://buhg4tmg2u02j" path="res://interfaces/sprite/sheet/imagenes_referencia/lurin.jpg" id="2_2aslb"]
 [ext_resource type="Texture2D" uid="uid://coofiyn7hmj27" path="res://interfaces/sprite/sheet/imagenes_referencia/mapa peru visual.png" id="3_8eh7f"]
 [ext_resource type="Texture2D" uid="uid://c0tnm3ujgwfm0" path="res://interfaces/sprite/sheet/imagenes_referencia/cielo visual.jpg" id="4_0rnl1"]
+[ext_resource type="Texture2D" uid="uid://cckmdwfaywbx4" path="res://interfaces/sprite/Fondo1.png" id="5_8eh7f"]
 [ext_resource type="Texture2D" uid="uid://4k22v8jd0cvr" path="res://interfaces/sprite/sheet/imagenes_referencia/PELEA visual.png" id="5_fxluw"]
 [ext_resource type="Texture2D" uid="uid://b0e0e23jhqkmq" path="res://interfaces/sprite/sheet/imagenes_referencia/sierra.jpeg" id="8_7xr4p"]
 [ext_resource type="Texture2D" uid="uid://bmxjvcdptreef" path="res://interfaces/sprite/sheet/imagenes_referencia/selva.jpg" id="9_lffdg"]
@@ -14,7 +15,7 @@ fondos = Dictionary[String, Texture2D]({
 "lurin": ExtResource("2_2aslb"),
 "mapa_peru": ExtResource("3_8eh7f"),
 "oraculo": ExtResource("4_0rnl1"),
-"restaurante_dia": ExtResource("2_2aslb"),
+"restaurante_dia": ExtResource("5_8eh7f"),
 "restaurante_maldicion": ExtResource("5_fxluw"),
 "restaurante_noche": ExtResource("5_fxluw"),
 "selva": ExtResource("9_lffdg"),

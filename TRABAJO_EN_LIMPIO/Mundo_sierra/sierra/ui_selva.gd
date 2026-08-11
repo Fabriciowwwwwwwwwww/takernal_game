@@ -762,3 +762,21 @@ func configurar_modo_juego(
 				jugador_actual.golpe_recibido.connect(
 					_on_jugador_golpe_recibido
 				)
+
+# =========================================================
+# CONFIGURAR VIDA DEL JEFE DESDE EL MUNDO
+# =========================================================
+
+func configurar_vida_jefe(nueva_vida: int) -> void:
+
+	vida_maxima_enemigo = nueva_vida
+	vida_enemigo = nueva_vida
+
+	print(
+		"[HUD SELVA] Vida del jefe configurada: ",
+		vida_enemigo,
+		"/",
+		vida_maxima_enemigo
+	)
+
+	actualizar_barra_enemigo()

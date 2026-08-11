@@ -1,4 +1,3 @@
-
 extends Node2D
 
 # =========================================================
@@ -47,18 +46,24 @@ extends Node2D
 
 
 # =========================================================
+# HOW / INICIO
+# =========================================================
+
+@export_category("Pantalla HOW")
+
+@onready var canvas_how: CanvasLayer = $how
+
+@export var tiempo_how: float = 6.0
+
+
+# =========================================================
 # DIFICULTAD
 # =========================================================
 
 var es_coop: bool = false
 
-# Multiplicador general de dificultad
 var multiplicador_dificultad: float = 1.0
-
-# Multiplicador de ingredientes
 var multiplicador_ingredientes: float = 1.0
-
-# Multiplicador de spawns
 var multiplicador_spawn: float = 1.0
 
 
@@ -71,6 +76,29 @@ func _ready() -> void:
 	print("======================================")
 	print("========== MUNDO PUZLE ===============")
 	print("======================================")
+
+
+	# ---------------------------------------------------------
+	# PAUSAR EL JUEGO AL INICIAR
+	# ---------------------------------------------------------
+
+	get_tree().paused = true
+
+	print("[MUNDO] Juego pausado")
+	print("[MUNDO] Mostrando HOW durante ", tiempo_how, " segundos")
+
+
+	# ---------------------------------------------------------
+	# MOSTRAR HOW
+	# ---------------------------------------------------------
+
+	if canvas_how != null:
+		canvas_how.show()
+
+		# IMPORTANTE:
+		# El Canvas debe seguir procesándose aunque el juego
+		# esté pausado.
+		canvas_how.process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 	# ---------------------------------------------------------
@@ -179,6 +207,44 @@ func _ready() -> void:
 	# =========================================================
 
 	configurar_puzle()
+
+
+	# =========================================================
+	# ESPERAR 6 SEGUNDOS Y CONTINUAR
+	# =========================================================
+
+	await mostrar_how()
+
+
+# =========================================================
+# MOSTRAR HOW
+# =========================================================
+
+func mostrar_how() -> void:
+
+	# Esperar 6 segundos aunque el juego esté pausado
+	await get_tree().create_timer(
+		tiempo_how,
+		true
+	).timeout
+
+
+	# ---------------------------------------------------------
+	# OCULTAR HOW
+	# ---------------------------------------------------------
+
+	if canvas_how != null:
+		canvas_how.hide()
+
+
+	# ---------------------------------------------------------
+	# QUITAR PAUSA
+	# ---------------------------------------------------------
+
+	get_tree().paused = false
+
+	print("[MUNDO] HOW terminado")
+	print("[MUNDO] Juego iniciado")
 
 
 # =========================================================
