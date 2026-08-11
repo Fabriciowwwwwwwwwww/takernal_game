@@ -16,27 +16,26 @@ var direction := Vector2.RIGHT
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-
 func _ready():
-
+	body_entered.connect(_on_body_entered)
+	
 	if sprite_frames:
 		sprite.sprite_frames = sprite_frames
 
 	if sprite.sprite_frames and sprite.sprite_frames.has_animation("idle"):
 		sprite.play("idle")
 
-
 func iniciar(nueva_direccion: Vector2):
-
 	direction = nueva_direccion.normalized()
 	rotation = direction.angle()
 
-
 func _physics_process(delta):
-
 	global_position += direction * speed * delta
 
+func _on_body_entered(body: Node2D):
+	if body.has_method("perder_vida"):
+		body.perder_vida()
+		queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-
 	queue_free()

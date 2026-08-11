@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cpk4hdcrmqshi"
+path="res://.godot/imported/marinera_causa_nortena (2).ogg-db414563bc48a46ed37b2bae052a4bc0.oggvorbisstr"
+
+[deps]
+
+source_file="res://sonidos/marinera_causa_nortena (2).ogg"
+dest_files=["res://.godot/imported/marinera_causa_nortena (2).ogg-db414563bc48a46ed37b2bae052a4bc0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
