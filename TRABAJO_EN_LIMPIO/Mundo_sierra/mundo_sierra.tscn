@@ -19,7 +19,7 @@
 [ext_resource type="Script" uid="uid://o4bm61odjnya" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/ataque_naves.gd" id="16_mkrxx"]
 [ext_resource type="Texture2D" uid="uid://bycxvcpx3skh1" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra_sprite/rocotos_misil (1)/victoria_panel.png" id="17_4pjgj"]
 [ext_resource type="PackedScene" uid="uid://c7h557wmxg3hu" path="res://TRABAJO_EN_LIMPIO/Mundo_sierra/sierra/enemigo_sierra.scn" id="17_eki23"]
-[ext_resource type="AudioStream" uid="uid://ckclvexujl7km" path="res://sonidos/cuy_win.ogg" id="20_pvxhx"]
+[ext_resource type="Texture2D" uid="uid://c1upibyeojlvt" path="res://scenes/pantallas/nivel/sprite/DEFINITIVO HOW TO PLAY (1)/Recurso 32cc.png" id="20_pvxhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx2m7"]
 size = Vector2(1614.5, 23)
@@ -251,10 +251,6 @@ script = ExtResource("10_ih64u")
 siguiente_escena = "uid://dlh22i24rdf8n"
 escena_game_over = "uid://dpax7lj5ax0lu"
 
-[node name="sonido_victoria" type="AudioStreamPlayer" parent="." unique_id=1117848295]
-stream = ExtResource("20_pvxhx")
-volume_db = 5.403
-
 [node name="sonido_mundo" type="AudioStreamPlayer2D" parent="." unique_id=978252150]
 stream = ExtResource("13_gx2m7")
 
@@ -369,3 +365,10 @@ marker_flecha_centro = NodePath("../SpawnPoint3")
 marker_flecha_abajo = NodePath("../SpawnPoint4")
 pausa_entre_flechas = 1.0
 cantidad_flecha_lateral = 7
+
+[node name="how" type="CanvasLayer" parent="." unique_id=45838292]
+
+[node name="Sprite2D" type="Sprite2D" parent="how" unique_id=759237445]
+position = Vector2(656.00006, 373)
+scale = Vector2(1.6878245, 1.2957261)
+texture = ExtResource("20_pvxhx")

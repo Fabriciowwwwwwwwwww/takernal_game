@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://btxns17ylakb" path="res://TRABAJO_EN_LIMPIO/NIVEL_SELVA/codigo_infinito_selva.gd" id="3_mphbk"]
 [ext_resource type="Texture2D" uid="uid://b1ve4jwt84f3n" path="res://assets/nivel_selva_assets/arbolessssss .png" id="6_shp5u"]
 [ext_resource type="AudioStream" uid="uid://3hhgyhpynbns" path="res://sonidos/paiche_juane_amazonico.ogg" id="8_vxijk"]
+[ext_resource type="Texture2D" uid="uid://gab5f4rngtma" path="res://scenes/pantallas/nivel/sprite/DEFINITIVO HOW TO PLAY (1)/Recurso 33cc.png" id="9_shp5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxijk"]
 size = Vector2(1455, 165.5)
@@ -200,3 +201,10 @@ position = Vector2(450, 260)
 
 [node name="PosicionP2" type="Marker2D" parent="." unique_id=1926098305]
 position = Vector2(540, 262)
+
+[node name="how" type="CanvasLayer" parent="." unique_id=328958838]
+
+[node name="Sprite2D" type="Sprite2D" parent="how" unique_id=1491894883]
+position = Vector2(644.2458, 367.87363)
+scale = Vector2(1.6878245, 1.2957261)
+texture = ExtResource("9_shp5u")

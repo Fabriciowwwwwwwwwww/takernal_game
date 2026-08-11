@@ -1,5 +1,6 @@
 extends Node2D
-
+@onready var canvas_how: CanvasLayer = $how
+@export var tiempo_how: float = 3.0
 # =========================================================
 # JUGADORES
 # =========================================================
@@ -52,6 +53,23 @@ func _ready() -> void:
 	print("======================================")
 	print("=========== INICIANDO MUNDO ===========")
 	print("======================================")
+	
+	
+	
+
+	get_tree().paused = true
+
+	print("[MUNDO] Juego pausado")
+	print("[MUNDO] Mostrando HOW durante ", tiempo_how, " segundos")
+
+	if canvas_how != null:
+		canvas_how.show()
+
+		# IMPORTANTE:
+		# El Canvas debe seguir procesándose aunque el juego
+		# esté pausado.
+		canvas_how.process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 	if musica:
 		musica.play()
@@ -175,3 +193,30 @@ func _ready() -> void:
 		print(
 			"[MUNDO] ERROR: CanvasLayer HUD no encontrado"
 		)
+	await mostrar_how()
+
+func mostrar_how() -> void:
+
+	# Esperar 6 segundos aunque el juego esté pausado
+	await get_tree().create_timer(
+		tiempo_how,
+		true
+	).timeout
+
+
+	# ---------------------------------------------------------
+	# OCULTAR HOW
+	# ---------------------------------------------------------
+
+	if canvas_how != null:
+		canvas_how.hide()
+
+
+	# ---------------------------------------------------------
+	# QUITAR PAUSA
+	# ---------------------------------------------------------
+
+	get_tree().paused = false
+
+	print("[MUNDO] HOW terminado")
+	print("[MUNDO] Juego iniciado")
